@@ -159,8 +159,24 @@ pub fn mesh_with_layout(
     position: Option<[f64; 2]>,
     layout: ElectrodeLayout,
 ) -> Result<(TriangleMesh2d<f64>, Vec<bool>)> {
+    mesh_with_refinement(spacing, g, position, layout, false)
+}
+
+/// Optional development candidate: add electrode-edge nodes and double interface
+/// polygon resolution. The historical mesh is preserved when refinement is false.
+pub fn mesh_with_refinement(
+    spacing: f64,
+    g: Geometry,
+    position: Option<[f64; 2]>,
+    layout: ElectrodeLayout,
+    refinement: bool,
+) -> Result<(TriangleMesh2d<f64>, Vec<bool>)> {
     layout.validate(g)?;
-    if spacing <= 0.0 || g.background <= 0.0 || g.radius <= 0.0 {
+    if ![spacing, g.background, g.radius, g.half_width, g.height]
+        .iter()
+        .all(|x| x.is_finite() && *x > 0.0)
+        || position.is_some_and(|p| p.iter().any(|x| !x.is_finite()))
+    {
         bail!("invalid geometry");
     }
     let mut tri = ConstrainedDelaunayTriangulation::<SpadePoint<f64>>::new();
@@ -182,7 +198,6 @@ pub fn mesh_with_layout(
     let mut xs: Vec<f64> = positive
         .iter()
         .rev()
-        .skip(0)
         .filter(|x| **x > 0.0)
         .map(|x| -x)
         .chain(positive.iter().copied())
@@ -199,9 +214,10 @@ pub fn mesh_with_layout(
         {
             bail!("target outside domain");
         }
-        let n = (2.0 * std::f64::consts::PI * g.radius / spacing)
-            .ceil()
-            .max(24.0) as usize;
+        let n = (2.0 * std::f64::consts::PI * g.radius
+            / (if refinement { spacing * 0.5 } else { spacing }))
+        .ceil()
+        .max(24.0) as usize;
         polygon = (0..n)
             .map(|i| {
                 let a = 2.0 * std::f64::consts::PI * i as f64 / n as f64;
@@ -218,6 +234,38 @@ pub fn mesh_with_layout(
                 }
             }
             tri.insert(SpadePoint::new(x, y))?;
+        }
+    }
+    if refinement {
+        // Resolve the mixed Dirichlet/Neumann edge neighborhood locally, without
+        // refining the entire exterior domain. Exclude nodes close to the target
+        // interface, whose constrained polygon is sampled separately.
+        for center in layout.centers {
+            for edge in [center - layout.half_width, center + layout.half_width] {
+                for ix in -4..=4 {
+                    for iy in 0..=4 {
+                        let x = edge + ix as f64 * spacing * 0.25;
+                        let y = iy as f64 * spacing * 0.25;
+                        if x.abs() >= g.half_width || y >= g.height {
+                            continue;
+                        }
+                        if position.is_some_and(|p| {
+                            ((x - p[0]).hypot(y - p[1]) - g.radius).abs() < spacing * 0.22
+                        }) {
+                            continue;
+                        }
+                        // Decimal electrode coordinates and grid arithmetic can
+                        // describe the same node with different last bits. Spade
+                        // treats those as distinct, creating ill-conditioned slivers.
+                        if tri.vertices().any(|v| {
+                            (v.position().x - x).abs() < 1e-11 && (v.position().y - y).abs() < 1e-11
+                        }) {
+                            continue;
+                        }
+                        tri.insert(SpadePoint::new(x, y))?;
+                    }
+                }
+            }
         }
     }
     let ring: Vec<_> = polygon
@@ -405,17 +453,26 @@ impl Model {
         state: Option<[f64; 3]>,
         layout: ElectrodeLayout,
     ) -> Result<Solution> {
+        self.solve_refined(state, layout, false)
+    }
+    pub fn solve_refined(
+        &self,
+        state: Option<[f64; 3]>,
+        layout: ElectrodeLayout,
+        refinement: bool,
+    ) -> Result<Solution> {
         layout.validate(self.geometry)?;
         if state.is_some_and(|s| !s.iter().all(|v| v.is_finite()) || s[2] <= 0.0) {
             bail!("invalid target state");
         }
         // Uniform permittivity uses exactly the same mesh as the empty target.
         let state = state.filter(|s| s[2] != self.geometry.background);
-        let (mesh, inside) = mesh_with_layout(
+        let (mesh, inside) = mesh_with_refinement(
             self.spacing,
             self.geometry,
             state.map(|s| [s[0], s[1]]),
             layout,
+            refinement,
         )?;
         let coefficients = inside
             .iter()

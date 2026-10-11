@@ -1,0 +1,14 @@
+{
+  "version": "5.0-numerical-development",
+  "status": "frozen_before_execution_not_confirmatory",
+  "probes": [[-0.0267,0.0063,7.7],[-0.0127,0.0131,3.1],[0.0029,0.0223,5.7],[0.0203,0.0307,2.3]],
+  "spacings_m": [0.001,0.0005,0.00025],
+  "layouts": ["baseline", "wider"],
+  "expanded_domain_m": [0.12,0.12],
+  "background_drift": 1.03,
+  "edge_interface_candidate": "0.5mm mesh; quarter-spacing electrode-edge nodes; double interface polygon resolution",
+  "mesh_inspection_limit_whitened": 1.0,
+  "solver_residual_limit": 1e-9,
+  "noise": "unchanged measurements::whiten, 24 calibration frames",
+  "failure_policy": "write per-probe evidence; no readiness claim from mesh agreement"
+}

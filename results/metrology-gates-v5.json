@@ -1,0 +1,32 @@
+{
+  "status": "engineering_complete_scientific_readiness_failed",
+  "formatting": "passed",
+  "release_tests_passed": 51,
+  "clippy": "passed_with_preexisting_warnings",
+  "historical_files_unchanged": 63,
+  "independent_metric_check": "passed",
+  "generic_trained_demo": "executed",
+  "numerical_study": "executed_all_8_probe_layouts",
+  "adaptive_study": "executed_2_cases_candidates_lost",
+  "numerical_readiness": false,
+  "confirmatory_statistical_validation": false,
+  "nist_submission_ready": false,
+  "nist_submitted": false,
+  "expensive_runs_skipped": false,
+  "artifact_sha256": {
+    "results/metrology-numerical-v5/probe-0-baseline.json": "f866a0e472fcc202a473f3e3130c9d9d25ef5bf39c956677f0594a589a1a8786",
+    "results/metrology-numerical-v5/probe-0-wider.json": "6773fff5d86d255098d5a4729677504cc5d61964f20ead5bfc0f1560d9014910",
+    "results/metrology-numerical-v5/probe-1-baseline.json": "f7b9270a54e211f347e754be2d2ba6901f67bf57c9819381e2ae0a34129226e4",
+    "results/metrology-numerical-v5/probe-1-wider.json": "4f640b5442c84938b2554061f508bb9513f3548ae833532c05062e3fc6eeea0d",
+    "results/metrology-numerical-v5/probe-2-baseline.json": "612b57001e401e6032de9c78a3d4f1737629523a7f3d22a9393669b54331a2a6",
+    "results/metrology-numerical-v5/probe-2-wider.json": "7dc9c822a107559786533f177ce149814cea184c6a1ea34abb74d17e42445820",
+    "results/metrology-numerical-v5/probe-3-baseline.json": "4a9561aeeabcee8034ef780d52f28aeaaeb603d3d42cb14a4b499017e865e197",
+    "results/metrology-numerical-v5/probe-3-wider.json": "6573b652eadec72a3adf667677b2374fa6060bf9eefdd160bd8c749f7e3c91bb",
+    "results/metrology-numerical-v5/started.json": "7ecfb83f79a54da7ccc722f7394dd35da6029a760a68a49629d4cfc1963fbf51",
+    "results/metrology-numerical-v5/summary.json": "5bab1fd7d6d1c84fdc2737d6b4b7b1e9d8c775434d2f6125c9f267b2b18538ec",
+    "results/metrology-adaptive-v5/case-0.json": "ed1bf582052bac41e12a84c8ababe1d10183b2e68d8b2e248d1473d22ed7e0c0",
+    "results/metrology-adaptive-v5/case-1.json": "090e2fdc4f08197d19d61ce3b077cd6c49e383e2e422a6f5fefffacf3c15e5b0",
+    "results/metrology-adaptive-v5/protocol.json": "31bdc26b19a61350d7d54edccf15253f600bbfc209cd16019e0661712bc44901",
+    "results/metrology-adaptive-v5/summary.json": "90f4b8828447dc72625c03f9bb8ac8ce5dbfc56db128e713ae875b14fd178d44"
+  }
+}

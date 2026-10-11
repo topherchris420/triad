@@ -1,0 +1,25 @@
+{
+  "budget": 54,
+  "candidate_spacings_m": [
+    0.001,
+    0.0005
+  ],
+  "dictionary_cache_key": "e4fac601b7d133f018e84cd2439997f61119edde234ae7da549f7a5c087dddb7",
+  "noise": "original covariance including 24-frame calibration mean uncertainty",
+  "observation_spacing_m": 0.0005,
+  "regions": 2,
+  "seed": 53101,
+  "states": [
+    [
+      -0.0173,
+      0.0107,
+      6.1
+    ],
+    [
+      0.0093,
+      0.0201,
+      3.9
+    ]
+  ],
+  "status": "development_only"
+}

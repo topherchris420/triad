@@ -13,18 +13,31 @@ permissions:
 jobs:
   test:
     name: Locked Rust tests
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
-          components: rustfmt
+          components: rustfmt, clippy
       - uses: Swatinem/rust-cache@v2
       - name: Check Rust formatting
         run: cargo fmt --all -- --check
       - name: Build and run numerical and research-integrity tests
         run: cargo test --locked
+      - name: Lint Rust
+        run: cargo clippy --locked --all-targets
+      - name: Train and independently verify the generic demonstration
+        run: |
+          cargo run --locked -- metrology demo --output results/ci-metrology-demo
+          cargo run --locked -- metrology validate --input results/ci-metrology-demo/report.json
+          python scripts/verify-metrology.py results/ci-metrology-demo/report.json
       - name: Recompute read-only audits from frozen artifacts
         run: |
           cargo run --locked -- audit

@@ -6,6 +6,7 @@ const HELP: &str = "TRIAD — when should a sensor refuse to answer?
 Usage: triad [--root PATH] COMMAND
 
 Inspect the instrument and evidence:
+  metrology --help Generic selective-risk evaluation and v5 development tools
   --help, -h       Show this guide
   --version, -V    Show package version
   audit           Describe frozen optimizer outcomes
@@ -34,6 +35,10 @@ Audit commands write derived reports; they do not modify frozen evidence.
 New research commands do not establish scientific findings merely by running.";
 
 fn main() -> Result<()> {
+    let early: Vec<_> = std::env::args().skip(1).collect();
+    if early.first().is_some_and(|a| a == "metrology") {
+        return triad::metrology_cli::run(&early[1..]);
+    }
     let mut root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut command = None;
     let mut input: Option<PathBuf> = None;

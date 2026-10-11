@@ -1,0 +1,1221 @@
+{
+  "adaptive": {
+    "abstain": true,
+    "cache_hits": 9,
+    "candidates": [
+      {
+        "interpolation_discrepancy_noise_units": 1.2657248790066695,
+        "residual_envelope_noise_units": [
+          2.1047851238793918,
+          4.63623488189273
+        ],
+        "residual_noise_units": 3.370510002886061,
+        "state": [
+          0.009000000000000001,
+          0.022,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.1649838233762906,
+        "residual_envelope_noise_units": [
+          2.3658358475862458,
+          4.695803494338827
+        ],
+        "residual_noise_units": 3.5308196709625363,
+        "state": [
+          0.009000000000000001,
+          0.022,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.1917545400585603,
+        "residual_envelope_noise_units": [
+          2.8028811310817643,
+          5.186390211198885
+        ],
+        "residual_noise_units": 3.994635671140325,
+        "state": [
+          0.009000000000000001,
+          0.022,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.6607533895369115,
+        "residual_envelope_noise_units": [
+          2.5593043698737663,
+          5.88081114894759
+        ],
+        "residual_noise_units": 4.220057759410678,
+        "state": [
+          0.006,
+          0.022,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.5371879750664317,
+        "residual_envelope_noise_units": [
+          2.8249000208437405,
+          5.899275970976603
+        ],
+        "residual_noise_units": 4.362087995910172,
+        "state": [
+          0.006,
+          0.022,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.0865497575763676,
+        "residual_envelope_noise_units": [
+          3.47352953955967,
+          5.646629054712405
+        ],
+        "residual_noise_units": 4.5600792971360375,
+        "state": [
+          0.009000000000000001,
+          0.02,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.5634985567407096,
+        "residual_envelope_noise_units": [
+          3.1938977178107253,
+          6.3208948312921445
+        ],
+        "residual_noise_units": 4.757396274551435,
+        "state": [
+          0.006,
+          0.022,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.0233158725832967,
+        "residual_envelope_noise_units": [
+          3.8157452216132937,
+          5.862376966779887
+        ],
+        "residual_noise_units": 4.83906109419659,
+        "state": [
+          0.009000000000000001,
+          0.022,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.2324852078215341e-11,
+        "residual_envelope_noise_units": [
+          5.479973084923168,
+          5.479973084947819
+        ],
+        "residual_noise_units": 5.4799730849354935,
+        "state": [
+          0.006,
+          0.02,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.3554587191532412,
+        "residual_envelope_noise_units": [
+          4.14017595678566,
+          6.851093395092143
+        ],
+        "residual_noise_units": 5.495634675938901,
+        "state": [
+          0.006,
+          0.022,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.0811806136385371,
+        "residual_envelope_noise_units": [
+          5.05558878999199,
+          7.2179500172690645
+        ],
+        "residual_noise_units": 6.136769403630527,
+        "state": [
+          0.009000000000000001,
+          0.022,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.2709982537577362,
+        "residual_envelope_noise_units": [
+          5.242708682635409,
+          7.7847051901508815
+        ],
+        "residual_noise_units": 6.513706936393145,
+        "state": [
+          0.009000000000000001,
+          0.02,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.4181633112070424,
+        "residual_envelope_noise_units": [
+          5.255372271200571,
+          8.091698893614655
+        ],
+        "residual_noise_units": 6.673535582407613,
+        "state": [
+          0.006,
+          0.022,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.214911401591745,
+        "residual_envelope_noise_units": [
+          6.962846028101189,
+          7.392668831284678
+        ],
+        "residual_noise_units": 7.177757429692933,
+        "state": [
+          0.006,
+          0.02,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.5211282487262192,
+        "residual_envelope_noise_units": [
+          6.569162157057674,
+          9.611418654510112
+        ],
+        "residual_noise_units": 8.090290405783893,
+        "state": [
+          0.012,
+          0.022,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.6452585739828203,
+        "residual_envelope_noise_units": [
+          6.476244428927551,
+          9.766761576893192
+        ],
+        "residual_noise_units": 8.121503002910371,
+        "state": [
+          0.012,
+          0.022,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.1979132246493134,
+        "residual_envelope_noise_units": [
+          6.961100336938833,
+          9.35692678623746
+        ],
+        "residual_noise_units": 8.159013561588147,
+        "state": [
+          0.009000000000000001,
+          0.02,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.5489819604155688,
+        "residual_envelope_noise_units": [
+          6.6376841323913744,
+          9.735648053222512
+        ],
+        "residual_noise_units": 8.186666092806943,
+        "state": [
+          0.012,
+          0.022,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.3397226176006525,
+        "residual_envelope_noise_units": [
+          7.154489457368881,
+          9.833934692570185
+        ],
+        "residual_noise_units": 8.494212074969534,
+        "state": [
+          0.012,
+          0.022,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.1343791830114172e-11,
+        "residual_envelope_noise_units": [
+          8.688719718186604,
+          8.688719718209292
+        ],
+        "residual_noise_units": 8.688719718197948,
+        "state": [
+          0.006,
+          0.02,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 2.0774403333569146e-11,
+        "residual_envelope_noise_units": [
+          8.940639354680297,
+          8.940639354721846
+        ],
+        "residual_noise_units": 8.940639354701071,
+        "state": [
+          0.012,
+          0.02,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.405092249326011,
+        "residual_envelope_noise_units": [
+          7.733498435307594,
+          10.543682933959616
+        ],
+        "residual_noise_units": 9.138590684633606,
+        "state": [
+          0.012,
+          0.022,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.596843935730644,
+        "residual_envelope_noise_units": [
+          8.717213785016694,
+          9.910901656477984
+        ],
+        "residual_noise_units": 9.31405772074734,
+        "state": [
+          0.009000000000000001,
+          0.024,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.302374384072751,
+        "residual_envelope_noise_units": [
+          8.229655772869856,
+          10.834404541015358
+        ],
+        "residual_noise_units": 9.532030156942607,
+        "state": [
+          0.009000000000000001,
+          0.02,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.2597616903791708e-11,
+        "residual_envelope_noise_units": [
+          9.592103211791214,
+          9.59210321181641
+        ],
+        "residual_noise_units": 9.592103211803812,
+        "state": [
+          0.006,
+          0.024,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.6199002057475602,
+        "residual_envelope_noise_units": [
+          9.269627286978773,
+          10.509427698473894
+        ],
+        "residual_noise_units": 9.889527492726334,
+        "state": [
+          0.009000000000000001,
+          0.024,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.11769482648910208,
+        "residual_envelope_noise_units": [
+          9.862892492458014,
+          10.098282145436217
+        ],
+        "residual_noise_units": 9.980587318947116,
+        "state": [
+          0.006,
+          0.02,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.06961012603431503,
+        "residual_envelope_noise_units": [
+          10.085999403568197,
+          10.225219655636826
+        ],
+        "residual_noise_units": 10.155609529602511,
+        "state": [
+          0.006,
+          0.024,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.21580776252184802,
+        "residual_envelope_noise_units": [
+          10.030256711540982,
+          10.461872236584679
+        ],
+        "residual_noise_units": 10.24606447406283,
+        "state": [
+          0.012,
+          0.02,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.5620241526806955,
+        "residual_envelope_noise_units": [
+          10.037914180168647,
+          11.161962485530038
+        ],
+        "residual_noise_units": 10.599938332849343,
+        "state": [
+          0.009000000000000001,
+          0.024,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.2724360043244174,
+        "residual_envelope_noise_units": [
+          9.415531854379775,
+          11.96040386302861
+        ],
+        "residual_noise_units": 10.687967858704193,
+        "state": [
+          0.009000000000000001,
+          0.02,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.353477006698251e-11,
+        "residual_envelope_noise_units": [
+          10.852144589708221,
+          10.852144589735289
+        ],
+        "residual_noise_units": 10.852144589721755,
+        "state": [
+          0.006,
+          0.024,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.2149230249569901e-11,
+        "residual_envelope_noise_units": [
+          11.082326050551282,
+          11.08232605057558
+        ],
+        "residual_noise_units": 11.082326050563431,
+        "state": [
+          0.006,
+          0.02,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.2035370466510702e-11,
+        "residual_envelope_noise_units": [
+          11.325016222030886,
+          11.325016222054956
+        ],
+        "residual_noise_units": 11.32501622204292,
+        "state": [
+          0.012,
+          0.024,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 2.4470862653719566e-11,
+        "residual_envelope_noise_units": [
+          11.482959998361098,
+          11.48295999841004
+        ],
+        "residual_noise_units": 11.482959998385569,
+        "state": [
+          0.012,
+          0.02,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.6142863984800035,
+        "residual_envelope_noise_units": [
+          10.87749647327174,
+          12.106069270231746
+        ],
+        "residual_noise_units": 11.491782871751743,
+        "state": [
+          0.009000000000000001,
+          0.024,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.12716292399414184,
+        "residual_envelope_noise_units": [
+          11.600675875855755,
+          11.855001723844039
+        ],
+        "residual_noise_units": 11.727838799849897,
+        "state": [
+          0.006,
+          0.024,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.0703999057119996,
+        "residual_envelope_noise_units": [
+          11.677492165376036,
+          11.818291976800035
+        ],
+        "residual_noise_units": 11.747892071088035,
+        "state": [
+          0.012,
+          0.024,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.473786035540271e-11,
+        "residual_envelope_noise_units": [
+          12.289478323191936,
+          12.289478323221413
+        ],
+        "residual_noise_units": 12.289478323206675,
+        "state": [
+          0.012,
+          0.024,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.11817782585150673,
+        "residual_envelope_noise_units": [
+          12.467114790094328,
+          12.703470441797343
+        ],
+        "residual_noise_units": 12.585292615945836,
+        "state": [
+          0.012,
+          0.02,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.5099598711449357,
+        "residual_envelope_noise_units": [
+          12.124700148193748,
+          13.14461989048362
+        ],
+        "residual_noise_units": 12.634660019338684,
+        "state": [
+          0.009000000000000001,
+          0.024,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.5047820623936576e-11,
+        "residual_envelope_noise_units": [
+          12.851804199705228,
+          12.851804199735323
+        ],
+        "residual_noise_units": 12.851804199720275,
+        "state": [
+          0.006,
+          0.024,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.1286093192657624,
+        "residual_envelope_noise_units": [
+          12.866658541563094,
+          13.12387718009462
+        ],
+        "residual_noise_units": 12.995267860828857,
+        "state": [
+          0.012,
+          0.024,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 3.357391122227885e-11,
+        "residual_envelope_noise_units": [
+          13.55109368311963,
+          13.551093683186776
+        ],
+        "residual_noise_units": 13.551093683153203,
+        "state": [
+          0.012,
+          0.02,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.614071531442241e-11,
+        "residual_envelope_noise_units": [
+          13.934300310518775,
+          13.934300310551055
+        ],
+        "residual_noise_units": 13.934300310534915,
+        "state": [
+          0.012,
+          0.024,
+          5.0
+        ]
+      }
+    ],
+    "elapsed_seconds": 9.0867104,
+    "forward_solves": 45,
+    "numerical_status": "mesh_and_search_completeness_unresolved"
+  },
+  "adaptive_error_mm": 1.9235384061671332,
+  "bounded_direct_refined": {
+    "abstain": true,
+    "cache_hits": 9,
+    "candidates": [
+      {
+        "interpolation_discrepancy_noise_units": 1.9148191626493998,
+        "residual_envelope_noise_units": [
+          1.642717344371897,
+          5.472355669670696
+        ],
+        "residual_noise_units": 3.5575365070212968,
+        "state": [
+          0.009000000000000001,
+          0.022,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.777793279518896,
+        "residual_envelope_noise_units": [
+          2.0918650875508797,
+          5.647451646588672
+        ],
+        "residual_noise_units": 3.8696583670697757,
+        "state": [
+          0.009000000000000001,
+          0.022,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.9342444398627839,
+        "residual_envelope_noise_units": [
+          2.9458487495687637,
+          4.814337629294331
+        ],
+        "residual_noise_units": 3.880093189431548,
+        "state": [
+          0.009000000000000001,
+          0.02,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 2.3470351123606665,
+        "residual_envelope_noise_units": [
+          2.049993944039957,
+          6.74406416876129
+        ],
+        "residual_noise_units": 4.397029056400624,
+        "state": [
+          0.006,
+          0.022,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.7901182826562663,
+        "residual_envelope_noise_units": [
+          2.65920221352894,
+          6.239438778841472
+        ],
+        "residual_noise_units": 4.449320496185206,
+        "state": [
+          0.009000000000000001,
+          0.022,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 2.1932134882101932,
+        "residual_envelope_noise_units": [
+          2.469091429555803,
+          6.8555184059761896
+        ],
+        "residual_noise_units": 4.662304917765996,
+        "state": [
+          0.006,
+          0.022,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.8044697524260426,
+        "residual_envelope_noise_units": [
+          4.145013989339245,
+          5.75395349419133
+        ],
+        "residual_noise_units": 4.949483741765287,
+        "state": [
+          0.006,
+          0.02,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 2.1962775456357417,
+        "residual_envelope_noise_units": [
+          2.965381256035743,
+          7.357936347307227
+        ],
+        "residual_noise_units": 5.161658801671485,
+        "state": [
+          0.006,
+          0.022,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.5633774401050105,
+        "residual_envelope_noise_units": [
+          3.79456814691331,
+          6.92132302712333
+        ],
+        "residual_noise_units": 5.35794558701832,
+        "state": [
+          0.009000000000000001,
+          0.022,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.9560897942562749,
+        "residual_envelope_noise_units": [
+          4.752096452228864,
+          6.664276040741413
+        ],
+        "residual_noise_units": 5.7081862464851385,
+        "state": [
+          0.009000000000000001,
+          0.02,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.9425343095897023,
+        "residual_envelope_noise_units": [
+          4.026413031641732,
+          7.911481650821137
+        ],
+        "residual_noise_units": 5.968947341231434,
+        "state": [
+          0.006,
+          0.022,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.6556416500665828,
+        "residual_envelope_noise_units": [
+          5.820509756540803,
+          7.131793056673969
+        ],
+        "residual_noise_units": 6.476151406607386,
+        "state": [
+          0.006,
+          0.02,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.6066846828382664,
+        "residual_envelope_noise_units": [
+          5.064419082956488,
+          8.277788448633022
+        ],
+        "residual_noise_units": 6.671103765794754,
+        "state": [
+          0.009000000000000001,
+          0.022,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.9740483094753334,
+        "residual_envelope_noise_units": [
+          5.200564161208973,
+          9.14866078015964
+        ],
+        "residual_noise_units": 7.174612470684306,
+        "state": [
+          0.006,
+          0.022,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.036396693561447,
+        "residual_envelope_noise_units": [
+          6.246576298860483,
+          8.319369685983377
+        ],
+        "residual_noise_units": 7.28297299242193,
+        "state": [
+          0.009000000000000001,
+          0.02,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.9154904553872794,
+        "residual_envelope_noise_units": [
+          6.976476217245107,
+          8.807457128019665
+        ],
+        "residual_noise_units": 7.891966672632386,
+        "state": [
+          0.006,
+          0.02,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 2.3604274685960815,
+        "residual_envelope_noise_units": [
+          5.733201392354288,
+          10.45405632954645
+        ],
+        "residual_noise_units": 8.09362886095037,
+        "state": [
+          0.012,
+          0.022,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 2.2054435859304404,
+        "residual_envelope_noise_units": [
+          5.936880516048598,
+          10.34776768790948
+        ],
+        "residual_noise_units": 8.142324101979039,
+        "state": [
+          0.012,
+          0.022,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 2.208879109021027,
+        "residual_envelope_noise_units": [
+          6.115588148484655,
+          10.533346366526708
+        ],
+        "residual_noise_units": 8.324467257505681,
+        "state": [
+          0.012,
+          0.022,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.8310322574229924,
+        "residual_envelope_noise_units": [
+          7.673019905953516,
+          9.3350844207995
+        ],
+        "residual_noise_units": 8.504052163376508,
+        "state": [
+          0.012,
+          0.02,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.0465517071131043,
+        "residual_envelope_noise_units": [
+          7.5584349757743405,
+          9.65153839000055
+        ],
+        "residual_noise_units": 8.604986682887445,
+        "state": [
+          0.009000000000000001,
+          0.02,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.9531201503206903,
+        "residual_envelope_noise_units": [
+          6.764399181064891,
+          10.67063948170627
+        ],
+        "residual_noise_units": 8.717519331385581,
+        "state": [
+          0.012,
+          0.022,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.8418885036058674,
+        "residual_envelope_noise_units": [
+          8.277375473485945,
+          9.96115248069768
+        ],
+        "residual_noise_units": 9.119263977091812,
+        "state": [
+          0.006,
+          0.02,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.985467702357528,
+        "residual_envelope_noise_units": [
+          7.451111206797435,
+          11.422046611512492
+        ],
+        "residual_noise_units": 9.436578909154964,
+        "state": [
+          0.012,
+          0.022,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.6839014251017826,
+        "residual_envelope_noise_units": [
+          8.963032123508555,
+          10.330834973712118
+        ],
+        "residual_noise_units": 9.646933548610336,
+        "state": [
+          0.012,
+          0.02,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.1058582905128234,
+        "residual_envelope_noise_units": [
+          8.614616062279906,
+          10.826332643305554
+        ],
+        "residual_noise_units": 9.72047435279273,
+        "state": [
+          0.009000000000000001,
+          0.02,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.5562675498511821,
+        "residual_envelope_noise_units": [
+          9.247818253645237,
+          10.3603533533476
+        ],
+        "residual_noise_units": 9.804085803496418,
+        "state": [
+          0.009000000000000001,
+          0.024,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.5522890181915951,
+        "residual_envelope_noise_units": [
+          9.522058268666493,
+          10.626636305049685
+        ],
+        "residual_noise_units": 10.074347286858089,
+        "state": [
+          0.006,
+          0.024,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.9927076368344062,
+        "residual_envelope_noise_units": [
+          9.179597606856536,
+          11.16501288052535
+        ],
+        "residual_noise_units": 10.172305243690943,
+        "state": [
+          0.006,
+          0.02,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.5138902727477671,
+        "residual_envelope_noise_units": [
+          9.858012734653867,
+          10.885793280149402
+        ],
+        "residual_noise_units": 10.371903007401635,
+        "state": [
+          0.009000000000000001,
+          0.024,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.46403401086419727,
+        "residual_envelope_noise_units": [
+          10.166440653037169,
+          11.094508674765562
+        ],
+        "residual_noise_units": 10.630474663901365,
+        "state": [
+          0.006,
+          0.024,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.9446576102111357,
+        "residual_envelope_noise_units": [
+          9.82999117932585,
+          11.719306399748122
+        ],
+        "residual_noise_units": 10.774648789536986,
+        "state": [
+          0.012,
+          0.02,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.5193737683752889,
+        "residual_envelope_noise_units": [
+          10.550959549643887,
+          11.589707086394464
+        ],
+        "residual_noise_units": 11.070333318019175,
+        "state": [
+          0.009000000000000001,
+          0.024,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.5088776404869896,
+        "residual_envelope_noise_units": [
+          10.806537154975901,
+          11.82429243594988
+        ],
+        "residual_noise_units": 11.31541479546289,
+        "state": [
+          0.006,
+          0.024,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.574556177581821,
+        "residual_envelope_noise_units": [
+          11.103419264046945,
+          12.252531619210586
+        ],
+        "residual_noise_units": 11.677975441628766,
+        "state": [
+          0.012,
+          0.024,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.8720489623302523,
+        "residual_envelope_noise_units": [
+          10.926243597779022,
+          12.670341522439527
+        ],
+        "residual_noise_units": 11.798292560109275,
+        "state": [
+          0.012,
+          0.02,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.4592987746037972,
+        "residual_envelope_noise_units": [
+          11.485281104200071,
+          12.403878653407665
+        ],
+        "residual_noise_units": 11.944579878803868,
+        "state": [
+          0.009000000000000001,
+          0.024,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.48521497329027363,
+        "residual_envelope_noise_units": [
+          11.622606679604491,
+          12.59303662618504
+        ],
+        "residual_noise_units": 12.107821652894765,
+        "state": [
+          0.012,
+          0.024,
+          7.25
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.35648221909063676,
+        "residual_envelope_noise_units": [
+          11.817524683172342,
+          12.530489121353616
+        ],
+        "residual_noise_units": 12.17400690226298,
+        "state": [
+          0.006,
+          0.024,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.529797417818764,
+        "residual_envelope_noise_units": [
+          12.123652907357451,
+          13.18324774299498
+        ],
+        "residual_noise_units": 12.653450325176216,
+        "state": [
+          0.012,
+          0.024,
+          6.5
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 1.0236091189797702,
+        "residual_envelope_noise_units": [
+          11.680427222703226,
+          13.727645460662767
+        ],
+        "residual_noise_units": 12.704036341682997,
+        "state": [
+          0.012,
+          0.02,
+          8.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.4655867911475629,
+        "residual_envelope_noise_units": [
+          12.596900942281792,
+          13.528074524576919
+        ],
+        "residual_noise_units": 13.062487733429355,
+        "state": [
+          0.009000000000000001,
+          0.024,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.44653244006479065,
+        "residual_envelope_noise_units": [
+          12.827072266097053,
+          13.720137146226635
+        ],
+        "residual_noise_units": 13.273604706161844,
+        "state": [
+          0.006,
+          0.024,
+          5.0
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.37575966417919493,
+        "residual_envelope_noise_units": [
+          12.983083402953465,
+          13.734602731311856
+        ],
+        "residual_noise_units": 13.35884306713266,
+        "state": [
+          0.012,
+          0.024,
+          5.75
+        ]
+      },
+      {
+        "interpolation_discrepancy_noise_units": 0.4654521844636551,
+        "residual_envelope_noise_units": [
+          13.825431619278731,
+          14.756335988206043
+        ],
+        "residual_noise_units": 14.290883803742387,
+        "state": [
+          0.012,
+          0.024,
+          5.0
+        ]
+      }
+    ],
+    "elapsed_seconds": 48.4973525,
+    "forward_solves": 45,
+    "numerical_status": "mesh_and_search_completeness_unresolved"
+  },
+  "bounded_direct_refined_error_mm": 1.9235384061671332,
+  "coarse": {
+    "converged": true,
+    "iterations": 6,
+    "normalized_residual": 1.1136827495275279,
+    "state": [
+      0.00794591531696067,
+      0.020331355950763443,
+      4.514479476727406
+    ]
+  },
+  "coarse_error_mm": 1.3737069937928448,
+  "coarse_seconds": 0.0003199,
+  "observation": [
+    0.006620157701884702,
+    0.011904154750725905,
+    -0.010977974717761236,
+    -0.017773763341498675,
+    0.03152294300646473,
+    0.012191390367957983,
+    -0.027588685898123685,
+    0.06838593010078121,
+    0.01055781501154151,
+    0.034469233132268746
+  ],
+  "truth_for_evaluation_only": [
+    0.0093,
+    0.0201,
+    3.9
+  ]
+}

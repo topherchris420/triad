@@ -1,0 +1,21 @@
+{
+  "algorithm": "batch logistic regression",
+  "calibration_seed": 51002,
+  "claim": "demonstrates calculation for a trained non-capacitive model only",
+  "development_seed": 51006,
+  "iterations": 1500,
+  "learning_rate": 0.15,
+  "shift": "test concept logit reverses feature coefficients; no refitting",
+  "test_seeds": [
+    51003,
+    51004
+  ],
+  "training_data_sha256": "0bfb9d41281d253ca338a7f95768acd601ac1dc7e7f0bd31bd7ffd7b16ff8078",
+  "training_rows": 800,
+  "training_seed": 51001,
+  "weights": [
+    0.49517541751071975,
+    1.5804574398415987,
+    -0.7675897076802825
+  ]
+}

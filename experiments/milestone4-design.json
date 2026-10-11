@@ -1,0 +1,24 @@
+{
+  "kind": "milestone4_exploratory_design_not_preregistered",
+  "status": "planning_only; do_not_generate_final_test_sequences",
+  "informed_by": "exposed_2026_10_11_v3_pilot_not_reusable_as_final_test",
+  "objective": "reliable_c2_v_d_selective_prediction_under_strong_drift",
+  "error_threshold_mm": 5,
+  "target_coverage": 0.8,
+  "feasibility": {
+    "v3_observed_c2_matched_accepted_risk": 0.014583333333333334,
+    "v3_unreachable_practical_absolute_reduction": 0.02,
+    "candidate_absolute_risk_reduction": 0.002,
+    "candidate_relative_risk_reduction": 0.15,
+    "interpretation": "Provisional, informed by exposed v3. Assess power, numerical reliability and practical significance BEFORE freezing versioned new protocol."
+  },
+  "gates": [
+    "Independent numerical readiness on new development region including near-electrode states",
+    "Mesh discretization, dictionary interpolation, and model discrepancy budget demonstrated under correlated covariance",
+    "Power simulation and sequence-level uncertainty under plausible drift and failure base rates",
+    "New independent randomized positions and calibration/development/test seeds not drawn yet",
+    "Predeclare sample size, acceptance target, risk reduction threshold, nuisance assumptions and CI procedure before test",
+    "Retain v3 as historical evidence and report any null or adverse findings"
+  ],
+  "no_final_seed_or_data_authorized": true
+}

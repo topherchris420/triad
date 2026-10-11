@@ -1,8 +1,8 @@
 # TRIAD Research Milestone 3: Selective Prediction and Geometry Screening
 
-**State:** implementation committed; new study results NOT yet established. The Milestone 2 baseline is frozen and must not be silently overwritten.
+**Historical study:** first experiment executed and archived on October 11, 2026. The numerical readiness gate failed and the declared primary hypothesis was **not supported**. See the [immutable experiment report](milestone3-results-2026-10-11.md). The Milestone 2 baseline remains frozen. The protocol JSON preserves its original pre-execution status as historical metadata; it must not be rewritten after observing results.
 
-## The new reproducible commands
+## Commands used in the completed experiment
 
 ```sh
 cargo test --locked
@@ -11,7 +11,7 @@ cargo run --release --locked -- selective
 cargo run --release --locked -- geometry-screen
 ```
 
-The first command tests numerical code, not scientific accuracy. The later commands are deliberately **not** part of `triad all`; they can require long CPU runs. They write fresh versioned artifacts and refuse to overwrite existing reports. The selective command also refuses an existing run directory, including incomplete runs. Read [research integrity](research-integrity.md) before running or recovering a study.
+The first command tests numerical code, not scientific accuracy. The recorded v3 outputs now exist: do not rerun these commands in the original root because they intentionally refuse overwrites. Use an isolated replay copy only for checking determinism, not for another independent scientific evaluation. The later commands are deliberately **not** part of `triad all`; they can require long CPU runs. They write fresh versioned artifacts and refuse to overwrite existing reports. The selective command also refuses an existing run directory, including incomplete runs. Read [research integrity](research-integrity.md) before running or recovering a study.
 
 ### 1. Numerical audit (`numerical`)
 

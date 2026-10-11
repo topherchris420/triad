@@ -1,0 +1,151 @@
+{
+  "baseline_config_sha256": "dfa96dab7da944361ba8b9fe39b6f81a60df8e3511cb1e1f53c39292dbad10a1",
+  "development_probe_count": 10,
+  "dictionary_key": "e4fac601b7d133f018e84cd2439997f61119edde234ae7da549f7a5c087dddb7",
+  "kind": "numerical_components_v4_development_only",
+  "limitations": [
+    "Previously inspected v3 development probes and four additional declared development probes; no untouched scientific holdout.",
+    "Localized interpolation samples eight 1 mm FEM signals per diagnostic state; it is NOT integrated into the inverse solver.",
+    "A local-patch improvement cannot remove 1 mm-to-0.5 mm FEM discretization error.",
+    "A one-noise-unit threshold is an inspection criterion, not proof of calibrated likelihoods.",
+    "No v3 results, original dictionary, observations, or predictions were changed."
+  ],
+  "max_local_patch_interpolation_noise_units": 2.2762057919351455,
+  "max_local_patch_total_noise_units": 10.482212553278142,
+  "max_mesh_discrepancy_noise_units": 9.820816580745745,
+  "max_original_interpolation_noise_units": 29.862103995713248,
+  "readiness_for_new_selective_claims": false,
+  "rows": [
+    {
+      "development_state": [
+        -0.0193,
+        0.0097,
+        5.4
+      ],
+      "local_patch_subdivisions_per_dictionary_cell": 4,
+      "local_patch_vs_exact_0_5mm_noise_units": 10.394840093240544,
+      "local_patch_vs_exact_1mm_noise_units": 2.2762057919351455,
+      "mesh_1mm_vs_0_5mm_noise_units": 8.138053319747028,
+      "original_dictionary_vs_exact_0_5mm_noise_units": 37.77753412455475,
+      "original_dictionary_vs_exact_1mm_noise_units": 29.862103995713248
+    },
+    {
+      "development_state": [
+        -0.0079,
+        0.0143,
+        3.7
+      ],
+      "local_patch_subdivisions_per_dictionary_cell": 4,
+      "local_patch_vs_exact_0_5mm_noise_units": 2.101236663983411,
+      "local_patch_vs_exact_1mm_noise_units": 0.32818245318673167,
+      "mesh_1mm_vs_0_5mm_noise_units": 1.8153457493766585,
+      "original_dictionary_vs_exact_0_5mm_noise_units": 8.23217966226065,
+      "original_dictionary_vs_exact_1mm_noise_units": 6.589073949367718
+    },
+    {
+      "development_state": [
+        0.0047,
+        0.0189,
+        6.2
+      ],
+      "local_patch_subdivisions_per_dictionary_cell": 4,
+      "local_patch_vs_exact_0_5mm_noise_units": 1.129784311438712,
+      "local_patch_vs_exact_1mm_noise_units": 0.06642465909582608,
+      "mesh_1mm_vs_0_5mm_noise_units": 1.0730998399712133,
+      "original_dictionary_vs_exact_0_5mm_noise_units": 3.164823845805352,
+      "original_dictionary_vs_exact_1mm_noise_units": 2.198025539972999
+    },
+    {
+      "development_state": [
+        0.0163,
+        0.0241,
+        4.6
+      ],
+      "local_patch_subdivisions_per_dictionary_cell": 4,
+      "local_patch_vs_exact_0_5mm_noise_units": 0.4733960141499444,
+      "local_patch_vs_exact_1mm_noise_units": 0.011442984216555116,
+      "mesh_1mm_vs_0_5mm_noise_units": 0.46561364491191,
+      "original_dictionary_vs_exact_0_5mm_noise_units": 0.2645100390031403,
+      "original_dictionary_vs_exact_1mm_noise_units": 0.39446022944144665
+    },
+    {
+      "development_state": [
+        0.0217,
+        0.0119,
+        7.1
+      ],
+      "local_patch_subdivisions_per_dictionary_cell": 4,
+      "local_patch_vs_exact_0_5mm_noise_units": 5.0630725938477505,
+      "local_patch_vs_exact_1mm_noise_units": 0.3240589379715383,
+      "mesh_1mm_vs_0_5mm_noise_units": 4.881783185950504,
+      "original_dictionary_vs_exact_0_5mm_noise_units": 4.632343051509738,
+      "original_dictionary_vs_exact_1mm_noise_units": 4.877139904142772
+    },
+    {
+      "development_state": [
+        -0.0141,
+        0.0263,
+        2.7
+      ],
+      "local_patch_subdivisions_per_dictionary_cell": 4,
+      "local_patch_vs_exact_0_5mm_noise_units": 0.21613122059358944,
+      "local_patch_vs_exact_1mm_noise_units": 0.01143553236919505,
+      "mesh_1mm_vs_0_5mm_noise_units": 0.2173162957558472,
+      "original_dictionary_vs_exact_0_5mm_noise_units": 0.26490176730970566,
+      "original_dictionary_vs_exact_1mm_noise_units": 0.39569403103165646
+    },
+    {
+      "development_state": [
+        -0.0221,
+        0.0091,
+        7.4
+      ],
+      "local_patch_subdivisions_per_dictionary_cell": 4,
+      "local_patch_vs_exact_0_5mm_noise_units": 10.482212553278142,
+      "local_patch_vs_exact_1mm_noise_units": 0.8062397216759891,
+      "mesh_1mm_vs_0_5mm_noise_units": 9.820816580745745,
+      "original_dictionary_vs_exact_0_5mm_noise_units": 33.074854381955134,
+      "original_dictionary_vs_exact_1mm_noise_units": 23.70925227563331
+    },
+    {
+      "development_state": [
+        -0.0023,
+        0.0127,
+        3.3
+      ],
+      "local_patch_subdivisions_per_dictionary_cell": 4,
+      "local_patch_vs_exact_0_5mm_noise_units": 2.893704926630661,
+      "local_patch_vs_exact_1mm_noise_units": 0.4756334338095735,
+      "mesh_1mm_vs_0_5mm_noise_units": 2.48896696751738,
+      "original_dictionary_vs_exact_0_5mm_noise_units": 4.887773678142947,
+      "original_dictionary_vs_exact_1mm_noise_units": 3.339693516642739
+    },
+    {
+      "development_state": [
+        0.0109,
+        0.0213,
+        5.8
+      ],
+      "local_patch_subdivisions_per_dictionary_cell": 4,
+      "local_patch_vs_exact_0_5mm_noise_units": 0.7969233120970247,
+      "local_patch_vs_exact_1mm_noise_units": 0.08396373816239264,
+      "mesh_1mm_vs_0_5mm_noise_units": 0.7210759617600241,
+      "original_dictionary_vs_exact_0_5mm_noise_units": 1.6256517731580407,
+      "original_dictionary_vs_exact_1mm_noise_units": 0.9718849117973177
+    },
+    {
+      "development_state": [
+        0.0197,
+        0.0261,
+        2.4
+      ],
+      "local_patch_subdivisions_per_dictionary_cell": 4,
+      "local_patch_vs_exact_0_5mm_noise_units": 0.20843499853835176,
+      "local_patch_vs_exact_1mm_noise_units": 0.008541518558217437,
+      "mesh_1mm_vs_0_5mm_noise_units": 0.21550276712140568,
+      "original_dictionary_vs_exact_0_5mm_noise_units": 0.2141033427594356,
+      "original_dictionary_vs_exact_1mm_noise_units": 0.3387361166356621
+    }
+  ],
+  "scientific_status": "diagnostic_not_validated_selector_or_inference_model"
+}

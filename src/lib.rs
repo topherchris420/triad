@@ -7,9 +7,11 @@ pub mod geometry_search;
 pub mod inverse;
 pub mod measurements;
 pub mod numerical_audit;
+pub mod numerical_components;
 pub mod observability;
 pub mod plots;
 pub mod selective;
+pub mod study_design;
 pub mod validation;
 
 pub mod research_integrity;

@@ -8,6 +8,9 @@ fn main() -> Result<()> {
         }
         Some("baseline") => triad::experiment::run(&root)?,
         Some("information") => triad::observability::run_information_audit(&root)?,
+        Some("numerical") => triad::numerical_audit::run(&root)?,
+        Some("selective") => triad::selective::run(&root)?,
+        Some("geometry-screen") => triad::geometry_search::run(&root)?,
         Some("audit") => {
             triad::diagnostics::run(&root)?;
         }
@@ -16,7 +19,7 @@ fn main() -> Result<()> {
             triad::experiment::run(&root)?;
             triad::diagnostics::run(&root)?;
         }
-        _ => bail!("Usage: triad validate | baseline | audit | information | all"),
+        _ => bail!("Usage: triad validate | baseline | audit | information | numerical | selective | geometry-screen | all"),
     }
     Ok(())
 }

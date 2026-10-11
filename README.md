@@ -5,7 +5,7 @@
 [![Rust verification](https://github.com/topherchris420/triad/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/topherchris420/triad/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0B5D63.svg)](LICENSE)
 
-[Start here](#start-with-the-evidence) · [Milestone 3 findings](docs/milestone3-results-2026-10-11.md) · [Milestone 4 findings](docs/milestone4-development-results-2026-10-11.md) · [Milestone 4 plan](docs/milestone4-plan.md) · [Original baseline](#baseline-results-the-system-is-accurate-in-some-places-and-fragile-in-others) · [Research code](#new-research-code-test-before-claiming) · [Evidence map](#evidence-map)
+[Portable research components](docs/portable-adoption.md) · [Start here](#start-with-the-evidence) · [Milestone 3 findings](docs/milestone3-results-2026-10-11.md) · [Milestone 4 findings](docs/milestone4-development-results-2026-10-11.md) · [Milestone 4 plan](docs/milestone4-plan.md) · [Original baseline](#baseline-results-the-system-is-accurate-in-some-places-and-fragile-in-others) · [Research code](#new-research-code-test-before-claiming) · [Evidence map](#evidence-map)
 
 *An independent Vers3Dynamics research instrument for sparse capacitive localization, physical observability, and the limits of confident inference.*
 
@@ -37,6 +37,22 @@ A separate ten-probe, development-only study split coarse dictionary interpolati
 **First executable study completed October 11, 2026. Scientific hypothesis not supported.** The six-probe numerical audit **failed** its readiness gate (worst interpolated-surrogate discrepancy **37.78 covariance-whitened noise units**). At matched 80% acceptance on 3,600 simulated test observations, the physics-informed selector D accepted **37** errors above 5 mm versus **42** for posterior C2, a **0.174-percentage-point** exploratory risk reduction. This did **not** reach the preregistered **2-percentage-point** practical threshold. In geometry screening, the development-selected layout did **not** beat the original on the independent holdout metric.
 
 Read the [complete results and limitations](docs/milestone3-results-2026-10-11.md). The [numerical](results/numerical-audit-v3.json), [selective](results/selective-v3/summary.json), and [geometry](results/geometry-screen-v1.json) reports are committed with provenance. **Passing CI or a successful experimental command is not proof that the physical or statistical hypothesis holds.**
+
+## Portable components: a path from diagnosis to reuse
+
+TRIAD now includes two **engineering-stage**, model-independent interfaces to make the scientific work more reusable without overstating its validity:
+
+| Component | What it does | What it cannot establish |
+| :--- | :--- | :--- |
+| [Conservative abstention controller](src/abstention.rs) | Fits a fail-closed threshold using fixed candidates and independent labeled calibration sequences; reports simultaneous, sequence-level conditional-risk and coverage bounds | A win for physics-informed D over C2, correctness under unseen distribution shift, or trustworthy scores with a failed forward model |
+| [Physical capture inspector](src/capture.rs) | Validates ten-channel recording order, timestamps, units, and empty-reference covariance/drift diagnostics | 3D field physics, commercial sensor equivalence, real-noise validation without actual device data, or permission to feed pF into a pF/m model |
+
+```sh
+cargo run --locked -- calibrate-abstention --input examples/abstention-calibration-demo.json
+cargo run --locked -- inspect-capture --input examples/synthetic-capture.json
+```
+
+Both examples are **synthetic fixtures**. The first intentionally refuses certification from an insufficient calibration sample. This work does **not** rerun or fix the failed Milestone 3/Milestone 4 physics gate. It makes future experiments and real captures auditable, with a documented [hardware/3D validation roadmap](docs/portable-adoption.md).
 
 ## Start with the evidence
 
@@ -107,6 +123,7 @@ A reduction in risk caused merely by refusing more predictions is not a discover
 | Retrospective optimizer audit | Dedicated read-only analytical command | **Implemented**, generated report is exploratory |
 | Posterior C2 / physics-informed D / probability calibration | Versioned Rust study | **Executed and archived; numerical gate failed, primary hypothesis not supported** |
 | Electrode geometry screening | Equal-width four-electrode alternatives with independent holdout | **Executed; selected alternative underperformed original on holdout screening metric** |
+| Portable abstention policy and capture interchange | Fail-closed model-agnostic gating, strict input/units and covariance diagnostics | **Implemented as engineering infrastructure; not independently validated** |
 | 3D fields, fabricated sensors, hardware trials | Outside the current study | **Not performed** |
 
 ### Baseline results: the system is accurate in some places and fragile in others

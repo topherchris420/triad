@@ -1,6 +1,6 @@
 # TRIAD
 
-**When should a sensor refuse to answer?**
+**When Physics-Informed Confidence Fails: Numerical Model Error in Sparse Capacitive Localization**
 
 [![Rust verification](https://github.com/topherchris420/triad/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/topherchris420/triad/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0B5D63.svg)](LICENSE)

@@ -39,10 +39,7 @@ fn calibrates_only_from_many_independent_sequences() {
     assert_eq!(policy.threshold, Some(0.5));
     assert_eq!(policy.independent_sequences, 250);
     assert_eq!(policy.decide(Some(0.2)), Decision::Accept);
-    assert_eq!(
-        policy.decide(Some(0.6)),
-        Decision::WithholdAboveThreshold
-    );
+    assert_eq!(policy.decide(Some(0.6)), Decision::WithholdAboveThreshold);
     assert_eq!(policy.decide(None), Decision::WithholdInvalidScore);
     assert_eq!(
         policy.decide(Some(f64::NAN)),
@@ -54,10 +51,7 @@ fn insufficient_independent_calibration_refuses_every_score() {
     let policy = fit(&spec(), &sequences(2)).unwrap();
     assert!(matches!(policy.status, PolicyStatus::Refused));
     assert!(policy.threshold.is_none());
-    assert_eq!(
-        policy.decide(Some(0.0)),
-        Decision::WithholdUncalibrated
-    );
+    assert_eq!(policy.decide(Some(0.0)), Decision::WithholdUncalibrated);
 }
 #[test]
 fn high_observed_error_refuses_even_with_many_sequences() {
@@ -94,8 +88,5 @@ fn serialization_round_trip_retains_fail_closed_behavior() {
     assert_eq!(restored.decide(Some(0.1)), Decision::Accept);
     let mut damaged = restored;
     damaged.threshold = Some(f64::NAN);
-    assert_eq!(
-        damaged.decide(Some(0.1)),
-        Decision::WithholdUncalibrated
-    );
+    assert_eq!(damaged.decide(Some(0.1)), Decision::WithholdUncalibrated);
 }

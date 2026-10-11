@@ -17,6 +17,18 @@ Established methods, not TRIAD inventions:
    [Publisher](https://proceedings.mlr.press/v97/geifman19a.html).
    Related trained selective prediction; TRIAD evaluates externally supplied
    predictors and does not introduce a new selective learning algorithm.
+4. Ran El-Yaniv and Yair Wiener. **On the Foundations of Noise-free Selective
+   Classification.** Journal of Machine Learning Research 11:1605–1641, 2010.
+   [Publisher PDF](https://www.jmlr.org/papers/volume11/el-yaniv10a/el-yaniv10a.pdf).
+   Earlier foundations of the risk/coverage trade-off; its noise-free assumptions
+   do not hold automatically for this noisy sensor or logistic demonstration.
+5. William L. Oberkampf and Timothy G. Trucano. **Verification and Validation in
+   Computational Fluid Dynamics.** Progress in Aerospace Sciences 38(3):209–272,
+   2002; Sandia report SAND2002-0529.
+   [Author institution](https://www.sandia.gov/research/publications/details/verification-and-validation-in-computational-fluid-dynamics-2002-03-01/).
+   Grounds the distinction between code/solution verification and model validation.
+   TRIAD uses that distinction: mesh disagreement and solver checks cannot
+   substitute for physical validation. No CFD-specific error estimator is claimed.
 
 Sources inspected October 11, 2026. The current
 [NIST catalog](https://airc.nist.gov/metrology/) includes Refusal Rate, Test

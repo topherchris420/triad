@@ -37,10 +37,14 @@
    imprecise. Training/calibration/test share the fixed spatial design but have
    independent observations and histories. Drift sequences are not split across
    partitions. This is a pilot, not a definitive distribution-wide result.
-9. **Calibration/selection:** 100% acceptance only. Posterior regions, C1/C2, local
-   nuisance-adjusted observability, method D, matched-coverage selective risk and
-   deployable threshold calibration remain unimplemented. The original hypothesis
-   cannot be accepted or rejected from the baseline results.
+9. **Calibration/selection:** The frozen baseline always answers. The subsequently
+   executed v3 study did evaluate C2 and D, but its numerical readiness gate failed
+   and its declared practical hypothesis was not supported. Milestone 4 separated
+   interpolation from mesh error without passing readiness. The new portable
+   abstention controller uses conservative bounds over independent calibration
+   sequences and predeclared thresholds, but it has not been validated on hardware
+   or demonstrated an improvement over C2 under drift. See
+   [portable adoption](portable-adoption.md) and [recorded v3 results](milestone3-results-2026-10-11.md).
 10. **Commercial and novelty:** source mechanisms differ from this experiment.
     No executable/hardware CAPSENSE comparison is available, no proprietary binary
     was analyzed, and no commercial superiority or defect claim is supported.
@@ -56,3 +60,13 @@ Next justified step after these milestones is a focused surrogate/information
 audit, then the predeclared strong-posterior comparison with new test sequences.
 3D simulation, hardware, electrode co-design and manuscript preparation require
 evidence beyond this pilot and should not be undertaken automatically.
+
+
+## New engineering interfaces, not evidence of physical validity
+
+The model-agnostic abstention library and hardware-ready capture schema intentionally
+reject missing calibration and incompatible units. Sample files are synthetic and
+only exercise their contracts. Actual three-dimensional physical capacitances (pF)
+cannot be inserted into the idealized two-dimensional capacitance-per-length (pF/m)
+likelihood. A validated 3D model, real recordings, held-out sensor/device sessions,
+electrical calibration, and independently preregistered C2-vs-D trials remain future work.

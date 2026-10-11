@@ -18,7 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
       - uses: Swatinem/rust-cache@v2
+      - name: Check Rust formatting
+        run: cargo fmt --all -- --check
       - name: Build and run numerical and research-integrity tests
         run: cargo test --locked
       - name: Recompute read-only audits from frozen artifacts
@@ -31,3 +35,6 @@ jobs:
           test -f results/evaluation.json
           test -f results/summary.json
           test -f results/reproducibility-check.json
+      - name: Verify audits did not alter frozen evidence
+        run: |
+          git diff --exit-code -- experiments/config.json results/cache results/dataset.json results/predictions.json results/evaluation.json results/summary.json results/validation.json results/reproducibility-check.json results/plots

@@ -5,6 +5,7 @@ use crate::{
     forward::Model,
     inverse::{Dictionary, Estimator},
     measurements::whiten,
+    research_integrity::write_new_json,
 };
 use anyhow::{ensure, Context, Result};
 use serde_json::json;
@@ -19,14 +20,24 @@ fn whitened_distance(a: &[f64; 10], b: &[f64; 10]) -> f64 {
 pub fn read_dictionary(root: &Path) -> Result<Dictionary> {
     let summary: serde_json::Value =
         serde_json::from_slice(&std::fs::read(root.join("results/summary.json"))?)?;
-    let key = summary["dictionary_key"].as_str().context("no dictionary key")?;
-    ensure!(key.len() >= 20, "invalid dictionary key");
+    let key = summary["dictionary_key"]
+        .as_str()
+        .context("no dictionary key")?;
+    ensure!(
+        key.len() == 64 && key.bytes().all(|b| b.is_ascii_hexdigit()),
+        "invalid dictionary key"
+    );
     let file = root.join(format!("results/cache/dictionary-{}.json", &key[..20]));
     let dictionary: Dictionary = serde_json::from_slice(&std::fs::read(file)?)?;
     ensure!(dictionary.cache_key == key, "dictionary cache changed");
     Ok(dictionary)
 }
 pub fn run(root: &Path) -> Result<()> {
+    let out = root.join("results/numerical-audit-v3.json");
+    ensure!(
+        !out.exists(),
+        "numerical audit already exists; refuse overwrite"
+    );
     let dictionary = read_dictionary(root)?;
     // These off-grid coordinates were not selected using the historical test labels.
     let probes = [
@@ -37,7 +48,10 @@ pub fn run(root: &Path) -> Result<()> {
         [0.0217, 0.0119, 7.1],
         [-0.0141, 0.0263, 2.7],
     ];
-    let estimator = Estimator { dictionary: &dictionary, calibration_frames: 24 };
+    let estimator = Estimator {
+        dictionary: &dictionary,
+        calibration_frames: 24,
+    };
     let mut rows = Vec::new();
     let mut largest_interpolation = 0.0_f64;
     let mut largest_mesh = 0.0_f64;
@@ -51,7 +65,9 @@ pub fn run(root: &Path) -> Result<()> {
         let mesh = whitened_distance(&coarse, &fine);
         let interpolation = whitened_distance(&interpolated, &fine);
         let estimate = estimator.estimate(&fine);
-        let best_discrete = dictionary.signals.iter()
+        let best_discrete = dictionary
+            .signals
+            .iter()
             .map(|signal| whitened_distance(signal, &fine).powi(2))
             .fold(f64::INFINITY, f64::min);
         // A multistart continuous fit should not be worse than every grid state,
@@ -73,9 +89,8 @@ pub fn run(root: &Path) -> Result<()> {
         }));
     }
     // Conservative inspection flag, not a proof of a numerically exact likelihood.
-    let likelihood_ready_for_claims = largest_interpolation <= 1.0
-        && largest_mesh <= 1.0
-        && largest_objective_gap <= 1e-6;
+    let likelihood_ready_for_claims =
+        largest_interpolation <= 1.0 && largest_mesh <= 1.0 && largest_objective_gap <= 1e-6;
     let cfg = std::fs::read(root.join("experiments/config.json"))?;
     let report = json!({
         "kind": "independent_development_numerical_audit_v3",
@@ -94,9 +109,11 @@ pub fn run(root: &Path) -> Result<()> {
             "A failed inspection gate does not prevent exploratory selectors, but prevents validated inference claims."
         ]
     });
-    let out = root.join("results/numerical-audit-v3.json");
-    std::fs::write(&out, serde_json::to_vec_pretty(&report)?)?;
+    write_new_json(&out, &report)?;
     println!("Numerical audit: {}", out.display());
-    println!("Claim-readiness inspection passed: {}", likelihood_ready_for_claims);
+    println!(
+        "Claim-readiness inspection passed: {}",
+        likelihood_ready_for_claims
+    );
     Ok(())
 }

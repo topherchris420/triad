@@ -1,6 +1,11 @@
 # TRIAD
 
-**trust and epistemic humility in physical sensing systems**
+**When should a sensor refuse to answer?**
+
+[![Rust verification](https://github.com/topherchris420/triad/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/topherchris420/triad/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-0B5D63.svg)](LICENSE)
+
+[Start here](#start-with-the-evidence) · [Recorded results](#baseline-results-the-system-is-accurate-in-some-places-and-fragile-in-others) · [New study](#new-research-code-test-before-claiming) · [Evidence map](#evidence-map)
 
 *An independent Vers3Dynamics research instrument for sparse capacitive localization, physical observability, and the limits of confident inference.*
 
@@ -16,6 +21,23 @@ The research is deliberately staged. First model the field. Then invert the meas
 ![Recorded TRIAD baseline scenario comparison](results/plots/scenario-comparison.png)
 
 *Plot generated from the frozen conventional-estimator simulation. These are localization errors, not improvements from selective prediction.*
+
+## Start with the evidence
+
+TRIAD is a **Rust research instrument**, with a frozen simulation baseline and a separate, unexecuted selective-prediction study. The useful result so far is a distinction: **an optimizer's stopping flag is not a measure of whether its answer is trustworthy**.
+
+```sh
+git clone https://github.com/topherchris420/triad.git
+cd triad
+git switch main
+cargo test --locked
+cargo run --locked -- --help
+cargo run --locked -- audit
+```
+
+The audit reads committed predictions and writes a derived report; no expensive FEM experiment is needed to inspect the baseline. Start with [research status](docs/research-status.md) for findings, [the physical model](docs/physical-model.md) for assumptions, or [the selective protocol](docs/selective-v3.md) to work on the next experiment.
+
+A built binary also accepts `--root /path/to/triad` so you can explicitly select a separate repository/data copy. Full baseline commands replace baseline outputs; preserve the committed evidence before running them.
 
 ## The question, in equations
 
@@ -106,29 +128,17 @@ It writes `results/optimizer-audit.json` and records the evaluated source-file h
 
 ## How the instrument works
 
-```text
-4 boundary electrodes
-        |
-        v
-2D dielectric electrostatics  ->  capacitance-per-length matrix
-        |                                   |
-        +----------------> target-induced 10-channel signal
-                                            |
-                   drift + gain + correlated noise
-                                            |
-                               empty-target calibration
-                                            |
-                            bounded joint inverse fit
-                                  /           \
-                           point estimate   residual / stop flag
-                                  |
-                           saved predictions
-                                  |
-                       isolated test-label evaluation
-                                  |
-                       error maps and ambiguity audit
-
-                    [NEW STUDY: C2 vs D; fresh test not yet evaluated]
+```mermaid
+flowchart TD
+    A["Four electrodes · 2D electrostatics"] --> B["Ten target-induced capacitance channels"]
+    B --> C["Drift, gain, correlated noise and calibration"]
+    C --> D["Shared bounded inverse estimator"]
+    D --> E["Frozen baseline: point errors and optimizer audit"]
+    D --> F["New study: posterior C2 and physics-informed D"]
+    F --> G["Development: probability calibration"]
+    F --> H["Calibration: acceptance thresholds"]
+    G --> I["Independent test: risk, coverage and reliability"]
+    H --> I
 ```
 
 The 2D world consists of four zero-thickness 8 mm electrode strips on the lower boundary of a grounded finite enclosure. A 4 mm radius dielectric disk represents a cylinder extending without end in the omitted direction. The model is *not* a physically complete finite 3D coplanar sensor and does not include substrates, real readout electronics, dispersive losses, or parasitic capacitances.
@@ -172,7 +182,7 @@ For the recorded Windows ARM64 environment, an x86-64 GNU Rust toolchain runs un
 .\target\release\triad.exe audit
 ```
 
-A local test log records **nine passing numerical tests**; the added audit tests and Linux CI have not been conflated with that historical result. GitHub Actions runs the locked Rust test suite on push. It does not re-run the complete expensive FEM experiment on each commit.
+The historical Windows log records nine numerical tests. The current suite additionally checks inference, statistical diagnostics, protocol drift, artifact preservation and CLI behavior. GitHub Actions runs the locked suite, checks formatting and recomputes derived audits while checking that frozen baseline files remain unchanged. It does not rerun the full expensive FEM experiment on each commit.
 
 ## Independent references, not dependencies
 
@@ -195,7 +205,7 @@ cargo run --release --locked -- geometry-screen
 
 **Run in this order.** `numerical` quantifies noise-normalized mesh, interpolation, and optimizer error on six development probes. `selective` creates independently seeded development, calibration, and test drift sequences, writes scores before test-truth evaluation, and compares C2 and D at exactly 80% retrospective test acceptance as well as independently calibrated deployment thresholds. It reports Brier/reliability/ECE and paired whole-sequence bootstrap intervals, including null or adverse findings. `geometry-screen` screens five equal-width, four-electrode layouts on an independent development and holdout split; **this is not proof of improved selective risk**.
 
-The old baseline is intentionally never rerun by these commands. Study artifacts use distinct, versioned paths and final reports refuse overwrite. Results will not be embedded into the README until verified.
+The old baseline is intentionally never rerun by these commands. Study artifacts use distinct, versioned paths. Every executable protocol setting is checked before running. An existing selective run directory—including an interrupted run—is preserved; numerical and geometry reports also refuse replacement. The selective summary is written last and records hashes of its score, evaluation and run files. Geometry screening checks those hashes before proceeding. See [research integrity and interrupted runs](docs/research-integrity.md). Results will not be embedded into the README until verified.
 
 See [the complete Milestone 3 research protocol, limitations and reproducible commands](docs/selective-v3.md), the [versioned machine-readable protocol](experiments/selective-v3.json), and [the original next-experiment gate](docs/next-experiment.md).
 
@@ -228,7 +238,7 @@ The first cached rerun exposed a floating-point JSON round-trip issue; it was co
 
 TRIAD is independent research by **Christopher Woodyard, Vers3Dynamics**.
 
-Contributions are welcome when permissions allow, but new inference results require reproducible experiments and honest provenance; see [contribution standards](CONTRIBUTING.md).
+TRIAD is released under the [MIT License](LICENSE). Contributions are welcome; new inference results require reproducible experiments and honest provenance. See [contribution standards](CONTRIBUTING.md). Third-party reference software retains its own licensing terms.
 
 ---
 

@@ -1,0 +1,24 @@
+use std::process::Command;
+
+#[test]
+fn help_and_version_are_successful_without_data_access() {
+    for flag in ["--help", "--version"] {
+        let output = Command::new(env!("CARGO_BIN_EXE_triad"))
+            .args(["--root", "/does-not-exist", flag])
+            .output()
+            .unwrap();
+        assert!(output.status.success());
+        assert!(!output.stdout.is_empty());
+    }
+}
+
+#[test]
+fn malformed_commands_fail_before_running_experiments() {
+    for args in [vec!["--root"], vec!["selective", "typo"], vec!["unknown"]] {
+        let output = Command::new(env!("CARGO_BIN_EXE_triad"))
+            .args(args)
+            .output()
+            .unwrap();
+        assert!(!output.status.success());
+    }
+}

@@ -3,11 +3,13 @@ pub mod diagnostics;
 pub mod evaluation;
 pub mod experiment;
 pub mod forward;
+pub mod geometry_search;
 pub mod inverse;
 pub mod measurements;
-pub mod observability;
 pub mod numerical_audit;
-pub mod selective;
-pub mod geometry_search;
+pub mod observability;
 pub mod plots;
+pub mod selective;
 pub mod validation;
+
+pub mod research_integrity;

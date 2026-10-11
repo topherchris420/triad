@@ -1,8 +1,4 @@
-use triad::{
-    forward::Model,
-    inverse::Dictionary,
-    observability::local_position_information,
-};
+use triad::{forward::Model, inverse::Dictionary, observability::local_position_information};
 
 fn dictionary(confound_material: bool) -> Dictionary {
     let axes = [
@@ -41,13 +37,15 @@ fn separate_material_channel_preserves_most_position_information_with_correlated
     let result = local_position_information(&d, [0.002, 0.016, 4.0], 24);
     assert!(result.material_eliminated);
     assert!(result.nuisance_adjusted_weakest_per_mm2 > 0.0);
-    let relative = (result.unadjusted_weakest_per_mm2
-        - result.nuisance_adjusted_weakest_per_mm2)
+    let relative = (result.unadjusted_weakest_per_mm2 - result.nuisance_adjusted_weakest_per_mm2)
         .abs()
         / result.unadjusted_weakest_per_mm2;
     // Correlated channel noise couples otherwise separate raw observables after
     // whitening, so eliminating dielectric uncertainty can modestly reduce information.
-    assert!(relative >= 0.0 && relative < 0.05, "unexpected nuisance penalty: {relative}");
+    assert!(
+        relative >= 0.0 && relative < 0.05,
+        "unexpected nuisance penalty: {relative}"
+    );
 }
 
 #[test]
@@ -56,8 +54,7 @@ fn dielectric_confounder_can_destroy_local_position_information() {
     let result = local_position_information(&d, [0.002, 0.016, 4.0], 24);
     assert!(result.unadjusted_weakest_per_mm2 > 1e-4);
     assert!(
-        result.nuisance_adjusted_weakest_per_mm2
-            < result.unadjusted_weakest_per_mm2 * 1e-6,
+        result.nuisance_adjusted_weakest_per_mm2 < result.unadjusted_weakest_per_mm2 * 1e-6,
         "material nuisance should eliminate x information: {result:?}"
     );
     assert!(result.nuisance_adjusted_condition.is_none());

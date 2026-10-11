@@ -4,6 +4,7 @@ use crate::{
     evaluation::hash,
     forward::{ElectrodeLayout, Model},
     measurements::{whiten, Channels},
+    research_integrity::{validate_selective_protocol, write_new_json},
 };
 use anyhow::{ensure, Result};
 use rand::{Rng, SeedableRng};
@@ -14,42 +15,76 @@ use std::path::Path;
 fn candidate_layouts() -> Vec<(&'static str, ElectrodeLayout)> {
     vec![
         ("frozen_baseline", ElectrodeLayout::default()),
-        ("compact", ElectrodeLayout { centers: [-0.024, -0.008, 0.008, 0.024], half_width:0.004 }),
-        ("wide", ElectrodeLayout { centers: [-0.030, -0.010, 0.010, 0.030], half_width:0.004 }),
-        ("split_outer", ElectrodeLayout { centers: [-0.030, -0.008, 0.008, 0.030], half_width:0.004 }),
-        ("split_inner", ElectrodeLayout { centers: [-0.024, -0.010, 0.010, 0.024], half_width:0.004 }),
+        (
+            "compact",
+            ElectrodeLayout {
+                centers: [-0.024, -0.008, 0.008, 0.024],
+                half_width: 0.004,
+            },
+        ),
+        (
+            "wide",
+            ElectrodeLayout {
+                centers: [-0.030, -0.010, 0.010, 0.030],
+                half_width: 0.004,
+            },
+        ),
+        (
+            "split_outer",
+            ElectrodeLayout {
+                centers: [-0.030, -0.008, 0.008, 0.030],
+                half_width: 0.004,
+            },
+        ),
+        (
+            "split_inner",
+            ElectrodeLayout {
+                centers: [-0.024, -0.010, 0.010, 0.024],
+                half_width: 0.004,
+            },
+        ),
     ]
 }
-fn sites(seed: u64) -> Vec<[f64;3]> {
+fn sites(seed: u64) -> Vec<[f64; 3]> {
     let mut rng = ChaCha8Rng::seed_from_u64(seed);
-    (0..24).map(|_| [
-        rng.gen_range(-0.023..0.023),
-        rng.gen_range(0.0085..0.0275),
-        rng.gen_range(2.1..7.9),
-    ]).collect()
+    (0..24)
+        .map(|_| {
+            [
+                rng.gen_range(-0.023..0.023),
+                rng.gen_range(0.0085..0.0275),
+                rng.gen_range(2.1..7.9),
+            ]
+        })
+        .collect()
 }
-fn profile(layout: ElectrodeLayout, states: &[[f64;3]]) -> Result<serde_json::Value> {
+fn profile(layout: ElectrodeLayout, states: &[[f64; 3]]) -> Result<serde_json::Value> {
     let model = Model::new(0.001);
     layout.validate(model.geometry)?;
-    let signals:Vec<Channels> = states.iter()
+    let signals: Vec<Channels> = states
+        .iter()
         .map(|s| model.solve_with_layout(Some(*s), layout))
         .collect::<Result<Vec<_>>>()?
-        .into_iter().map(|sol| sol.signal).collect();
+        .into_iter()
+        .map(|sol| sol.signal)
+        .collect();
     let mut distances = Vec::new();
     for i in 0..states.len() {
         for j in 0..i {
-            let separation = ((states[i][0]-states[j][0]).powi(2)
-                + (states[i][1]-states[j][1]).powi(2)).sqrt();
-            if separation <= 0.005 { continue; }
+            let separation = ((states[i][0] - states[j][0]).powi(2)
+                + (states[i][1] - states[j][1]).powi(2))
+            .sqrt();
+            if separation <= 0.005 {
+                continue;
+            }
             let diff = std::array::from_fn(|c| signals[i][c] - signals[j][c]);
             let w = whiten(&diff, 24);
-            let distance = w.iter().map(|x| x*x).sum::<f64>().sqrt();
+            let distance = w.iter().map(|x| x * x).sum::<f64>().sqrt();
             distances.push(distance);
         }
     }
     ensure!(!distances.is_empty(), "not enough spatial pairs");
     distances.sort_by(f64::total_cmp);
-    let low = (distances.len() / 10).min(distances.len()-1);
+    let low = (distances.len() / 10).min(distances.len() - 1);
     let within_two = distances.iter().filter(|d| **d < 2.0).count();
     Ok(json!({
         "site_count":states.len(),
@@ -62,10 +97,27 @@ fn profile(layout: ElectrodeLayout, states: &[[f64;3]]) -> Result<serde_json::Va
 pub fn run(root: &Path) -> Result<()> {
     let result_dir = root.join("results");
     let out = result_dir.join("geometry-screen-v1.json");
-    ensure!(!out.exists(), "geometry screen already exists; refuse overwrite");
+    ensure!(
+        !out.exists(),
+        "geometry screen already exists; refuse overwrite"
+    );
     // This gate enforces research ordering; it does NOT assert that inference succeeded.
-    let previous:serde_json::Value = serde_json::from_slice(
-        &std::fs::read(result_dir.join("selective-v3/summary.json"))?)?;
+    let previous: serde_json::Value = serde_json::from_slice(&std::fs::read(
+        result_dir.join("selective-v3/summary.json"),
+    )?)?;
+    let protocol = std::fs::read(root.join("experiments/selective-v3.json"))?;
+    validate_selective_protocol(&serde_json::from_slice(&protocol)?)?;
+    ensure!(
+        previous["experiment"] == "selective-v3" && previous["protocol_sha256"] == hash(&protocol),
+        "selective study does not match current protocol"
+    );
+    for name in ["run.json", "test-scores.json", "evaluation.json"] {
+        let bytes = std::fs::read(result_dir.join("selective-v3").join(name))?;
+        ensure!(
+            previous["artifact_sha256"][name] == hash(&bytes),
+            "selective study artifact missing or changed: {name}"
+        );
+    }
     let numerical_ready = previous["numerical_inspection_ready"] == true;
     let development = sites(9317001);
     let holdout = sites(9317002);
@@ -74,9 +126,16 @@ pub fn run(root: &Path) -> Result<()> {
         let score = profile(layout, &development)?;
         candidates.push((name, layout, score));
     }
-    candidates.sort_by(|a,b| b.2["p10_pairwise_distance_in_noise_units"]
-        .as_f64().unwrap().total_cmp(
-            &a.2["p10_pairwise_distance_in_noise_units"].as_f64().unwrap()));
+    candidates.sort_by(|a, b| {
+        b.2["p10_pairwise_distance_in_noise_units"]
+            .as_f64()
+            .unwrap()
+            .total_cmp(
+                &a.2["p10_pairwise_distance_in_noise_units"]
+                    .as_f64()
+                    .unwrap(),
+            )
+    });
     let selected = &candidates[0];
     // The holdout is evaluated only AFTER selecting on the development set.
     let selected_holdout = profile(selected.1, &holdout)?;
@@ -109,8 +168,8 @@ pub fn run(root: &Path) -> Result<()> {
             "No 3D or physical-device evidence, no manufacturing constraints, and no original sensor superiority claim."
         ]
     });
-    std::fs::write(&out, serde_json::to_vec_pretty(&report)?)?;
-    println!("Wrote preliminary electrode screen to {}",out.display());
+    write_new_json(&out, &report)?;
+    println!("Wrote preliminary electrode screen to {}", out.display());
     Ok(())
 }
 #[cfg(test)]
@@ -119,15 +178,18 @@ mod tests {
     #[test]
     fn candidate_layouts_preserve_channel_count_and_electrode_width() {
         let model = Model::new(0.001);
-        for (_,layout) in candidate_layouts() {
+        for (_, layout) in candidate_layouts() {
             layout.validate(model.geometry).unwrap();
-            assert_eq!(layout.half_width,0.004);
-            assert_eq!(layout.centers.len(),4);
+            assert_eq!(layout.half_width, 0.004);
+            assert_eq!(layout.centers.len(), 4);
         }
     }
     #[test]
     fn invalid_overlapping_electrodes_fail_closed() {
-        let layout = ElectrodeLayout { centers:[-0.02,-0.015,0.01,0.02],half_width:0.004 };
+        let layout = ElectrodeLayout {
+            centers: [-0.02, -0.015, 0.01, 0.02],
+            half_width: 0.004,
+        };
         assert!(layout.validate(Model::new(0.001).geometry).is_err());
     }
 }

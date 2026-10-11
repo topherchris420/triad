@@ -15,7 +15,7 @@ TRIAD is a research instrument, not a place to accumulate features without exper
 ## Software quality
 
 - Keep the Rust package lean. Add tests for new statistical and numerical behavior.
-- Run `cargo test --locked` and, when changing physics, the validated simulation on development inputs.
+- Run `cargo fmt --all -- --check` and `cargo test --locked` and, when changing physics, the validated simulation on development inputs.
 - Avoid making the full expensive FEM rerun a requirement for every code change.
 - Treat archived artifacts as evidence, not scratch files.
 
@@ -23,6 +23,8 @@ TRIAD is a research instrument, not a place to accumulate features without exper
 
 [Infineon CAPSENSE](https://github.com/Infineon/capsense) is a proprietary industrial reference. Reading its public source does not grant blanket rights to redistribute code or proprietary derivatives. REA analysis must be authorized and lawful. Do not submit copied or decompiled vendor code as a TRIAD contribution.
 
-**Project license:** Not yet selected. Until an appropriate license is added, do not infer permission to reuse TRIAD source simply from repository access. Contact the maintainer about contribution and redistribution permissions before submitting substantive code.
+**Project license:** [MIT](LICENSE), copyright Christopher Woodyard, Vers3Dynamics. This covers TRIAD source; external references retain their own licenses.
+
+Before changing study code, read [research integrity](docs/research-integrity.md). Preserve interrupted runs and frozen artifacts. Version scientific changes explicitly; do not alter seeds or decision rules after seeing test outcomes.
 
 Principal investigator: Christopher Woodyard, Vers3Dynamics.

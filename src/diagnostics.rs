@@ -50,7 +50,10 @@ pub fn audit(rows: &[EvaluationRow], evaluation_sha256: &str) -> Value {
             .collect();
         by_scenario.insert(scenario.to_owned(), partition(&subset));
     }
-    let missed_by_flag = rows.iter().filter(|r| r.error_mm > 5.0 && r.converged).count();
+    let missed_by_flag = rows
+        .iter()
+        .filter(|r| r.error_mm > 5.0 && r.converged)
+        .count();
     json!({
         "analysis_kind": "retrospective_exploratory_optimizer_flag_audit",
         "source": "results/evaluation.json",

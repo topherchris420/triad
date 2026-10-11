@@ -11,7 +11,7 @@ cargo run --release --locked -- selective
 cargo run --release --locked -- geometry-screen
 ```
 
-The first command tests numerical code, not scientific accuracy. The later commands are deliberately **not** part of `triad all`; they can require long CPU runs. They write fresh versioned artifacts and refuse to overwrite existing final reports.
+The first command tests numerical code, not scientific accuracy. The later commands are deliberately **not** part of `triad all`; they can require long CPU runs. They write fresh versioned artifacts and refuse to overwrite existing reports. The selective command also refuses an existing run directory, including incomplete runs. Read [research integrity](research-integrity.md) before running or recovering a study.
 
 ### 1. Numerical audit (`numerical`)
 
@@ -36,7 +36,7 @@ Why D might fail: a correctly specified posterior C2 is Bayes-optimal for this t
 
 ### 3. Electrode geometry screening (`geometry-screen`)
 
-Only available after a `selective-v3/summary.json` exists. The forward solver's **existing default electrode centers and strip width remain unchanged**. Alternate layouts are explicitly parameterized via `ElectrodeLayout`, validating strip ordering, boundary clearance and overlap.
+Only available after a completed `selective-v3/summary.json` exists, matches the current protocol, and its run, score and evaluation files pass SHA-256 checks. The forward solver's **existing default electrode centers and strip width remain unchanged**. Alternate layouts are explicitly parameterized via `ElectrodeLayout`, validating strip ordering, boundary clearance and overlap.
 
 Five equal-width, four-electrode candidates compete under identical synthetic 2D FEM discretization, channel count, noise covariance, material range and region of interest. Selection uses the 10th percentile of whitened pairwise signal separation for states more than 5 mm apart on development sites. Independently drawn holdout sites are used **only after** selecting the candidate. The outcome is a **screening surrogate**, not a demonstrated reduction in selective risk or a manufacturable sensor design.
 

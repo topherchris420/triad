@@ -63,7 +63,10 @@ pub struct ElectrodeLayout {
 }
 impl Default for ElectrodeLayout {
     fn default() -> Self {
-        Self { centers: [-0.027, -0.009, 0.009, 0.027], half_width: 0.004 }
+        Self {
+            centers: [-0.027, -0.009, 0.009, 0.027],
+            half_width: 0.004,
+        }
     }
 }
 impl ElectrodeLayout {
@@ -75,7 +78,7 @@ impl ElectrodeLayout {
             if !center.is_finite() || center.abs() + self.half_width >= g.half_width {
                 bail!("electrode outside domain");
             }
-            if i > 0 && *center - self.centers[i-1] <= 2.0 * self.half_width {
+            if i > 0 && *center - self.centers[i - 1] <= 2.0 * self.half_width {
                 bail!("electrode strips overlap or touch");
             }
         }
@@ -408,7 +411,12 @@ impl Model {
         }
         // Uniform permittivity uses exactly the same mesh as the empty target.
         let state = state.filter(|s| s[2] != self.geometry.background);
-        let (mesh, inside) = mesh_with_layout(self.spacing, self.geometry, state.map(|s| [s[0], s[1]]), layout)?;
+        let (mesh, inside) = mesh_with_layout(
+            self.spacing,
+            self.geometry,
+            state.map(|s| [s[0], s[1]]),
+            layout,
+        )?;
         let coefficients = inside
             .iter()
             .map(|b| {

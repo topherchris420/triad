@@ -57,7 +57,6 @@ pub fn position_sensitivity(dictionary: &Dictionary, state: [f64; 3]) -> f64 {
     sum.sqrt() / 1000.0 // pF/m per mm of position displacement
 }
 
-
 /// A LOCAL information diagnostic evaluated from the interpolated forward dictionary.
 /// Scores use the stated Gaussian measurement covariance, but exclude latent future
 /// drift. This is not a calibrated acceptance rule or a claim of identifiability.
@@ -109,19 +108,17 @@ pub fn local_position_information(
     }
     let eigen = |a: f64, b: f64, d: f64| {
         let disc = ((a - d).powi(2) + 4.0 * b * b).sqrt();
-        (((a + d - disc) / 2.0).max(0.0), ((a + d + disc) / 2.0).max(0.0))
+        (
+            ((a + d - disc) / 2.0).max(0.0),
+            ((a + d + disc) / 2.0).max(0.0),
+        )
     };
-    let (unadjusted_min, _) = eigen(
-        information[0][0],
-        information[0][1],
-        information[1][1],
-    );
+    let (unadjusted_min, _) = eigen(information[0][0], information[0][1], information[1][1]);
     let material_info = information[2][2];
     let material_eliminated = material_info > 1e-14;
     let adjusted = |i: usize, j: usize| {
         if material_eliminated {
-            information[i][j]
-                - information[i][2] * information[2][j] / material_info
+            information[i][j] - information[i][2] * information[2][j] / material_info
         } else {
             information[i][j]
         }
@@ -186,6 +183,10 @@ pub fn run_information_audit(root: &std::path::Path) -> anyhow::Result<()> {
     });
     let out = root.join("results/information-audit.json");
     std::fs::write(&out, serde_json::to_vec_pretty(&report)?)?;
-    println!("Wrote {} local observability diagnostics to {}", points.len(), out.display());
+    println!(
+        "Wrote {} local observability diagnostics to {}",
+        points.len(),
+        out.display()
+    );
     Ok(())
 }

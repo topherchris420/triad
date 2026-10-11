@@ -41,9 +41,9 @@ fn empty_partition_remains_explicitly_null_not_nan() {
 
 #[test]
 fn audit_is_deterministic_for_frozen_input() {
-    let rows = vec![
-        row("b", 1.0, 3.5, false),
-        row("a", 5.1, 4.0, true),
-    ];
-    assert_eq!(diagnostics::audit(&rows, "sha"), diagnostics::audit(&rows, "sha"));
+    let rows = vec![row("b", 1.0, 3.5, false), row("a", 5.1, 4.0, true)];
+    assert_eq!(
+        diagnostics::audit(&rows, "sha"),
+        diagnostics::audit(&rows, "sha")
+    );
 }

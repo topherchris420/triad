@@ -21,6 +21,30 @@ capability, not validity. This benchmark removes that circularity:
 | `protocol.json` | Datasets, periods, models, claim families, templates, endpoints, decision rule | Before any model, case or comparator existed |
 | `comparator-brief.md` | The only input given to the comparator author | Same commit |
 | `frozen-before-v8.json` | SHA-256 of the Milestone 7 evidence and the evidence-engine sources | Same commit; enforced by `tests/research_integrity.rs` |
+| `implementation-notes.md`, `data-audit.json` | Choices the protocol left open; eligibility counts (no model) | Before any model was fitted on real data |
+| `comparators/` | Blind comparators R and S, byte-identical to delivery | Before any real case |
 
-Generator, comparators, runner and results are added in later commits, in the
-order the protocol requires.
+## Result
+
+**Not established** (pre-registered verdict). Across 5,078 claims, TRIAD's
+family-balanced decision cost was 0.159. That is worse than the blind statistician
+S (0.121; Δ = +0.038 [+0.008, +0.070]), indistinguishable from the blind checklist
+R (0.160), and worse than never endorsing (0.125). TRIAD does beat standard checks
+C (0.331) and C+scope (0.209). Details, analyses and limitations are in
+[`docs/metrology/milestone8-results.md`](../../docs/metrology/milestone8-results.md).
+Archived outputs are in [`results/evidence-outcomes-v8/`](../../results/evidence-outcomes-v8/).
+
+## Reproduce
+
+```sh
+python -m pip install -r benchmarks/evidence-outcomes/requirements.txt
+python scripts/m8-generate.py --cache work/m8-cache --output work/m8
+cargo run --release --locked -- metrology evidence-batch --input work/m8/cases.json --output work/m8/batch
+cp work/m8/batch/classifications.json work/m8/
+python benchmarks/evidence-outcomes/comparators/m8_comparators.py --input work/m8/cases.json --output work/m8/comparators.json
+python scripts/m8-score.py --truth work/m8/truth.json --triad work/m8/classifications.json --comparators work/m8/comparators.json --output work/m8/score
+python scripts/verify-milestone8.py --run work/m8
+```
+
+The generator downloads the five UCI archives (about 40 MB) and verifies their
+SHA-256 against the protocol.

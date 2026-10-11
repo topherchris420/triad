@@ -10,8 +10,41 @@
 TRIAD is an open Rust research instrument from Vers3Dynamics (PI Christopher
 Woodyard). It measures when a predictive system's answers can be trusted, and it
 tests whether making the evidence behind reliability claims explicit adds anything
-to established methods. **So far, it has not improved predictions.** That negative
-result is documented, reproducible, and the main finding.
+to established methods. **So far, it has not improved predictions, and its
+evidence-sufficiency rules did not beat independently designed reviewers when
+tested against real outcomes.** These negative results are documented,
+reproducible, and the main findings.
+
+## Milestone 8: independent, outcome-grounded test (October 11, 2026)
+
+| Question | Result | Status |
+|---|---|---|
+| Do TRIAD's claim-relative evidence rules beat strong reviewers written **without seeing TRIAD**, with truth taken from real held-out outcomes? | **No.** Decision cost 0.159 versus 0.121 for a blind statistical reviewer (Δ = +0.038 [+0.008, +0.070], inferior) and 0.160 for a blind REFORMS-style checklist (Δ = −0.001, indistinguishable). Never endorsing anything costs 0.125 | **Not established** (pre-registered verdict) |
+| Does the Milestone 7 advantage over standard evidence checks survive world truth? | **Yes.** Δ = −0.172 versus standard checks and −0.050 versus checks with scope, both intervals excluding 0, but strong blind reviewers reproduce it | Replicated, not distinctive |
+| Where does TRIAD fail? | Next-week operational claims: it endorsed 7 of 19 false ones because its rules do not forecast. It also fails closed on raw dependent outcomes where a statistician can estimate the design effect | Specific repairs identified; they need a new frozen test |
+| Is anything ready for NIST? | The **established** selective-risk metric: a submission package that passes the official validators, with TRIAD as one implementation. The evidence-sufficiency method is **not** to be proposed | Prepared, **not submitted**; human gate documented |
+
+The test covered 5,078 claims on five public datasets new to TRIAD (Beijing air
+quality, I-94 traffic, household power, gas-sensor drift, bank marketing). The
+protocol, generator and comparators were all frozen in Git before any case existed.
+An independent verifier passes 109,685 checks, and regeneration from the archives
+is byte-identical. The comparator author was an AI agent of the same model family
+working from a brief alone; there has been no human adjudication.
+
+[Milestone 8 results](docs/metrology/milestone8-results.md) ·
+[Protocol](benchmarks/evidence-outcomes/protocol.json) ·
+[Blind comparators](benchmarks/evidence-outcomes/comparators/README.md) ·
+[NIST submission package](docs/metrology/nist-submission/README.md) ·
+[Selective-risk quickstart](docs/metrology/selective-risk-quickstart.md)
+
+```sh
+python -m pip install -r benchmarks/evidence-outcomes/requirements.txt
+python scripts/m8-generate.py --cache work/m8-cache --output work/m8
+cargo run --release --locked -- metrology evidence-batch --input work/m8/cases.json --output work/m8/batch
+```
+
+The full reproduction (comparators, scorer, verifier) is in the
+[results document](docs/metrology/milestone8-results.md#7-verification-and-reproduction).
 
 ## Milestone 7 status (October 11, 2026)
 
@@ -20,7 +53,7 @@ result is documented, reproducible, and the main finding.
 | Do evidence-qualified trust decisions beat standard monitoring on real data? | **No.** On UCI Bike Sharing, TRIAD's day decisions cost slightly *more* than standard monitoring at a matched budget for both models (Δ = +0.0049 and +0.0062 per hour) | Negative; replicates Milestone 6 (OpenML Electricity) |
 | Does any day-level gate beat plain selective prediction? | **No**, at the primary abstention cost; gating helped only when abstaining was cheap | Negative |
 | Do explicit claim-relative rules catch unsupported reliability claims that standard checks miss? | 43/47 versus 20/47, with no false rejections, **on an author-constructed suite**; all four misleading-input cases fooled both | Engineering capability only; not independently validated |
-| Is TRIAD ready for the NIST AI Metrology Center? | Engineering ready; partly scientifically reviewable; **not** a compelling catalog candidate | **Further scientific validation required.** Nothing submitted |
+| Is TRIAD ready for the NIST AI Metrology Center? | Engineering ready; partly scientifically reviewable; **not** a compelling catalog candidate | **Further scientific validation required.** Nothing submitted (superseded by Milestone 8 above) |
 
 [Milestone 7 results](docs/metrology/milestone7-results.md) ·
 [Manuscript (Markdown)](docs/metrology/milestone7-manuscript.md) / [PDF](docs/metrology/milestone7-manuscript.pdf) ·

@@ -17,9 +17,10 @@ implementation is claimed to be novel.
 
 Deliberately **excluded**:
 
-- TRIAD's claim-relative evidence-sufficiency method. It is under independent
-  validation (Milestone 8, [protocol](../../../benchmarks/evidence-outcomes/protocol.json))
-  and has no peer-reviewed reference. It will not be proposed until it has one.
+- TRIAD's claim-relative evidence-sufficiency method. Its independent,
+  outcome-grounded test ([Milestone 8](../milestone8-results.md)) found it no
+  better than blind strong comparators, and it has no peer-reviewed reference. It
+  is not to be proposed.
 - TRIAD's Milestone 6/7 research findings and validity annotations. A catalog entry
   describes a metric, not one implementation's research programme.
 

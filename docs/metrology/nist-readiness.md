@@ -1,119 +1,107 @@
-# NIST AI Metrology Center: readiness assessment (Milestone 7)
+# NIST AI Metrology Center: readiness assessment (Milestone 8)
 
-**Recommendation: further scientific validation required.** Nothing has been
-submitted to NIST. A separate human scientific review and an explicit submission
-decision are still required. Catalog inclusion, if it ever occurs, does not imply
-NIST endorsement.
+**Recommendation:**
+
+- **Submit the established selective-risk metric** after this branch is merged and a
+  person at Vers3Dynamics passes the [submission gate](nist-submission/README.md#submission-gate).
+  TRIAD appears only as one implementation.
+- **Do not propose TRIAD's evidence-sufficiency method.** An independent,
+  outcome-grounded test against blind strong comparators did not support it.
+
+Nothing has been submitted to NIST. Catalog inclusion, if it ever occurs, does not
+imply NIST endorsement.
 
 Assessed October 11, 2026 against the official sources:
 [AI Metrology Center](https://airc.nist.gov/metrology/),
 [how to submit](https://airc.nist.gov/metrology/how-to-submit/),
 [what reviewers look for](https://airc.nist.gov/metrology/how-to-submit/what-reviewers-look-for/),
 and the [submissions repository](https://github.com/usnistgov/ai-metrology-submissions)
-(`SUBMISSION_FORMAT.md` and `CONTENT_STANDARDS.md` at commit `7f06092`, schema v1.0,
-byte-identical to the vendored [`nist-schema-v1.json`](nist-schema-v1.json)).
+(`SUBMISSION_FORMAT.md`, `CONTENT_STANDARDS.md` and `validation/schemas/v1.json` at
+commit `7f06092`, re-fetched for Milestone 8 and unchanged; the schema is
+byte-identical to the vendored [`nist-schema-v1.json`](nist-schema-v1.json)). NIST's
+process is public and iterative: reviewers comment on the pull request and the
+submitter revises in place.
 
-## What TRIAD measures, precisely
+## Two candidates, two decisions
 
-1. **Selective excessive-error risk at calibration-fixed coverage**: the fraction of
-   accepted predictions whose loss exceeds a declared tolerance, with the
-   acceptance threshold fixed on calibration scores. It also reports coverage,
-   retrospective risk–coverage curves, event Brier/ECE and, for regression,
-   normalised conformal coverage. These are **established** quantities
-   (El-Yaniv & Wiener 2010; Geifman & El-Yaniv 2017; Brier 1950; Lei et al. 2018).
-   TRIAD contributes an implementation, not the metric.
-2. **Claim-relative evidence classification** (Milestone 7): a categorical
-   assessment of whether typed evidence supports a typed reliability claim. This
-   is a methodology, not a numeric metric. It is TRIAD's only candidate for a
-   distinctive contribution.
-
-## What Milestone 7 showed
-
-- **Predictive utility: none.** On UCI Bike Sharing, TRIAD's evidence-qualified
-  day decisions cost slightly more than standard monitoring at a matched
-  calibration budget for both models (Δ = +0.0049 and +0.0062 per hour; below the
-  practical threshold). This repeats the Milestone 6 Electricity finding.
-- **Audit utility: shown only on an author-constructed suite.** 43/47 versus 20/47
-  unsupported claims detected, with no false rejections. The rules, cases and
-  ground truth share one author, and all misleading inputs defeated it.
-- **Engineering: strong.** Frozen protocols, deterministic replay, an independent
-  NumPy/SciPy verifier (3,027 checks), retraining checks, hash-protected history,
-  Linux and Windows CI.
-
-## Three stages of readiness
-
-| Stage | Status | Basis |
+| | Selective risk at target coverage | Claim-relative evidence sufficiency |
 |---|---|---|
-| 1. Engineering ready | **Met** once the Milestone 7 pull request is merged with green CI | Working Rust implementation, 76 tests, deterministic replay, independent verification, reproduction package, schema-valid draft |
-| 2. Scientifically reviewable | **Partly met** | The measurements and their limits are characterised; protocols were frozen before results; negative findings are reported in full. The evidence-sufficiency validation is circular (single-author suite), and no unrelated investigator has reproduced anything |
-| 3. Compelling catalog candidate | **Not met** | No peer-reviewed reference about the evidence-sufficiency method itself (reviewers require 1–2 references about the metric); no demonstrated utility beyond existing methods; distinctness from assurance-case practice and checklists such as REFORMS not established |
+| What it is | The established metric (El-Yaniv & Wiener 2010; Geifman & El-Yaniv 2017): error rate among accepted predictions at a stated coverage, with the threshold fixed on calibration data | TRIAD's rule system classifying whether typed evidence supports a typed reliability claim |
+| Novelty claimed | None. TRIAD is one implementation, alongside TorchUncertainty | Would have been TRIAD's only distinctive contribution |
+| Scientific grounding | Peer-reviewed references about the metric itself | No peer-reviewed reference. Milestone 7 test was circular (single-author suite) |
+| Independent validation | Not needed for an established metric | **Milestone 8 failed it:** worse than a blind statistical reviewer (Δ cost +0.038 [+0.008, +0.070]), indistinguishable from a blind REFORMS checklist, and worse than never endorsing |
+| Catalog gap | Yes: no selective-risk, risk–coverage, abstention or conformal entry among the 147 published | — |
+| Official checks | `validate_submission.py inspect` and `check-jsonschema 0.38.2` pass | — |
+| Decision | **Prepared for submission** ([package](nist-submission/README.md)) | **Not to be proposed** |
 
-Passing the schema shows only that the YAML is well formed. It is **not** readiness.
+## What Milestone 8 showed about evidence sufficiency
 
-## Content standards self-check (official `CONTENT_STANDARDS.md`)
+[Full results](milestone8-results.md). The test covered 5,078 claims on five public
+datasets new to TRIAD, each about a finite real population (a period, month,
+batch or week). Truth came from held-out outcomes no classifier saw. The rules,
+protocol, generator and comparators were frozen before any case existed.
 
-| Standard | Current draft (selective risk) | Evidence-sufficiency methodology |
+- **No distinctive value.** A statistical reviewer and a REFORMS-style checklist,
+  both written by an agent that never saw TRIAD's rules, matched or beat it. Its
+  support decisions agree with each on 93% of claims.
+- **A replicated but generic advantage.** TRIAD beats plain standard checks
+  (Δ = −0.172) and checks with scope (Δ = −0.050) with world truth. That is the
+  Milestone 7 direction, but it is ordinary good practice that strong reviewers
+  also implement.
+- **A specific weakness.** For next-week operational claims TRIAD has no predictive
+  bound, and it endorsed 7 of 19 false ones.
+- **A protocol lesson.** The pre-registered "share of false claims endorsed ≤ 0.05"
+  criterion is not guaranteed by valid methods when bounds are derived from the
+  same sample. Future protocols should use P(endorsed and false). This does not
+  change the verdict.
+
+## Three stages of readiness (updated)
+
+| Stage | Selective-risk metric | Evidence-sufficiency method |
 |---|---|---|
-| 1–2 references about the metric itself | Yes (El-Yaniv & Wiener 2010; Geifman & El-Yaniv 2017) | **No** peer-reviewed source exists |
-| References are not governance frameworks | Yes | — |
-| Implementation usable today, merged | Yes after merge (`src/metrology.rs`, `src/metrology_temporal.rs`) | Yes after merge (`src/evidence.rs`) |
-| Implementation supports calculating the metric | Yes | Yes |
-| Every link confirmed | Must be re-checked after merge and before any submission | Same |
-| Required metadata, AI RMF characteristic, lifecycle stages | Yes (Valid & Reliable; Build, Operate & Monitor) | — |
-| Concise definition, actionable guidance, scope boundaries | Yes, revised in Milestone 7 | Method document is long and research-stage |
-| Adds value beyond the Metrology Center | Possibly: the visible catalog has Refusal Rate, Partial Refusal Rate and Test Fairness (Well-Calibration), but no selective-risk, conformal-coverage or shift entries. The value would be the established metric, not a TRIAD invention | Unestablished |
+| 1. Engineering ready | **Met**: implementation on `master`, deterministic replay, independent verifiers, Linux and Windows CI | Met |
+| 2. Scientifically reviewable | **Met**: established, peer-reviewed metric; TRIAD's real-data use is documented (Milestones 6–7) | Met as an object of study: frozen protocols and fully reported negative results |
+| 3. Compelling catalog candidate | **Likely, after merge**: one fixable item (the quickstart link resolves only after merge) | **Not met**, and Milestone 8 is evidence against it |
 
-The draft was narrowed in Milestone 7 to the single quantity TRIAD measures
-reliably. The earlier name, "validity-qualified selective error risk", implied an
-added value that two real-data studies did not find. Evidence qualification is now
-described as optional documentation with no demonstrated predictive value.
+## Remaining steps for the selective-risk submission
 
-## Mechanical checks performed
+1. Merge this branch with green CI.
+2. Run `python scripts/check-nist-links.py`; all six links must return 200 without
+   redirect.
+3. Re-fetch the official repository and re-run both official checks if anything
+   changed.
+4. A person at Vers3Dynamics reviews the YAML, confirms the public contact
+   **ciao_chris@proton.me**, and opens the pull request from their own fork with the
+   [prepared body](nist-submission/README.md#pull-request-body-pre-filled-from-the-official-template).
+5. Answer reviewer comments on the pull request. Revision in place is the normal path.
 
-Recorded in [`nist-schema-validation-v7.json`](nist-schema-validation-v7.json):
+## If evidence sufficiency is ever to be reconsidered
 
-- Local validator (`scripts/validate-nist-draft.py`) and four negative cases: passed.
-- `check-jsonschema 0.37.0` against the freshly fetched official schema: passed.
-- Official `validation/validate_submission.py inspect` in a local copy of the
-  `submissions/` directory: passed.
-- A first wording was rejected by the official placeholder pattern
-  (`<…>` text); the definition was rewritten in LaTeX.
+Any repaired rule set must be frozen and then tested on **new** data and **new**
+claims. Re-scoring Milestone 8 after changing rules would be tuning to the test.
+The repairs to test would be:
 
-```sh
-python -m pip install "PyYAML==6.0.2" "jsonschema==4.23.0"
-python scripts/validate-nist-draft.py
-python scripts/validate-nist-draft.py --self-test
-```
+- a predictive bound for operational claims;
+- design-effect estimation from raw ordered outcomes;
+- re-examining the completeness and representativeness gates.
 
-## Blockers and remediation
+It would also need:
 
-1. **Independent validation of evidence sufficiency.** Build a claim suite from real
-   published reliability claims, with ground truth adjudicated by reviewers who did
-   not write the rules (blinded to TRIAD's output), and pre-register the comparison
-   against a strong checklist baseline (REFORMS-style) that is allowed to encode
-   explicit scope and dependence rules.
-2. **Decision utility.** Run a pre-specified study in which TRIAD's classifications
-   change an outcome that matters, for example reviewer accuracy or time in auditing
-   reliability claims, against an equally informed checklist.
-3. **Peer review.** Publish the method; NIST reviewers expect references about the
-   method itself.
-4. **Unrelated-team replication** of the Bike Sharing and Electricity results with
-   the reproduction package.
-5. **Scope decision.** Either submit the established selective-risk metric with
-   TRIAD as an implementation resource, which would need no TRIAD novelty claim, or
-   wait until items 1–3 support a separate evidence-sufficiency methodology. One
-   metric per submission.
-6. **At submission time:** re-fetch the official schema and standards, re-run
-   `check-jsonschema` and `validate_submission.py inspect`, confirm every link,
-   remove research-stage wording from the YAML, and obtain explicit human approval.
+- a human-adjudicated suite of real published claims (leakage, provenance and
+  attestation rules remain untested against the world);
+- a reviewer-utility study;
+- unrelated-team replication;
+- a peer-reviewed publication about the method itself.
 
 ## Public contact and process
 
-Submitter: **Vers3Dynamics**. Contact: **ciao_chris@proton.me**. The address becomes
-public if the draft is submitted. Submissions and review discussions on GitHub are
-public and non-confidential. No NIST-facing pull request has been opened, and none
-is authorised by this repository's ordinary development workflow.
+Submitter: **Vers3Dynamics**. Contact: **ciao_chris@proton.me**, which becomes
+public on submission. Submissions and review discussions on GitHub are public and
+non-confidential. No NIST-facing pull request has been opened, and none is
+authorised by this repository's ordinary development workflow.
 
-Earlier assessments (Milestones 5 and 6) are preserved in the Git history of this
-file and in [`nist-schema-validation.json`](nist-schema-validation.json) and
-[`nist-schema-validation-v6.json`](nist-schema-validation-v6.json).
+Earlier assessments (Milestones 5–7) are preserved in the Git history of this file,
+in [`nist-schema-validation.json`](nist-schema-validation.json),
+[`nist-schema-validation-v6.json`](nist-schema-validation-v6.json) and
+[`nist-schema-validation-v7.json`](nist-schema-validation-v7.json), and in the
+historical [Milestone 7 draft](nist-submission-draft.yml).

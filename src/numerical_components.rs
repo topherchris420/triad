@@ -38,10 +38,12 @@ fn whitened_distance(a: &Channels, b: &Channels) -> f64 {
 
 fn local_bracket(axis: &[f64], value: f64, subdivisions: usize) -> Result<[f64; 3]> {
     ensure!(subdivisions > 0, "at least one subdivision required");
-    ensure!(axis.len() >= 2 && value.is_finite(), "invalid interpolation axis/value");
     ensure!(
-        axis.iter().all(|v| v.is_finite())
-            && axis.windows(2).all(|v| v[1] > v[0]),
+        axis.len() >= 2 && value.is_finite(),
+        "invalid interpolation axis/value"
+    );
+    ensure!(
+        axis.iter().all(|v| v.is_finite()) && axis.windows(2).all(|v| v[1] > v[0]),
         "non-finite or non-increasing interpolation axis"
     );
     ensure!(
@@ -57,7 +59,11 @@ fn local_bracket(axis: &[f64], value: f64, subdivisions: usize) -> Result<[f64; 
     let slice = (((value - x0) / step).floor() as usize).min(subdivisions - 1);
     let lower = x0 + slice as f64 * step;
     let upper = x0 + (slice + 1) as f64 * step;
-    Ok([lower, upper, ((value - lower) / (upper - lower)).clamp(0.0, 1.0)])
+    Ok([
+        lower,
+        upper,
+        ((value - lower) / (upper - lower)).clamp(0.0, 1.0),
+    ])
 }
 
 /// Trilinear interpolation of an *independent* locally sampled physical stencil.
@@ -83,7 +89,13 @@ where
                 let bits = [a, b, c];
                 let at = std::array::from_fn(|d| brackets[d][bits[d]]);
                 let weight: f64 = (0..3)
-                    .map(|d| if bits[d] == 0 { 1.0 - brackets[d][2] } else { brackets[d][2] })
+                    .map(|d| {
+                        if bits[d] == 0 {
+                            1.0 - brackets[d][2]
+                        } else {
+                            brackets[d][2]
+                        }
+                    })
                     .product();
                 let signal = sample(at)?;
                 for k in 0..10 {
@@ -97,7 +109,10 @@ where
 
 pub fn run(root: &Path) -> Result<()> {
     let output = root.join("results/numerical-components-v4.json");
-    ensure!(!output.exists(), "development diagnostic already exists; refuse overwrite");
+    ensure!(
+        !output.exists(),
+        "development diagnostic already exists; refuse overwrite"
+    );
 
     // Read the original dictionary without modifying its cache or the v3 evidence.
     let dictionary: Dictionary = read_dictionary(root)?;
@@ -128,7 +143,8 @@ pub fn run(root: &Path) -> Result<()> {
             "the whitened-distance decomposition must obey triangle inequality"
         );
         largest_mesh = largest_mesh.max(mesh_error);
-        largest_original_interpolation = largest_original_interpolation.max(dictionary_interpolation);
+        largest_original_interpolation =
+            largest_original_interpolation.max(dictionary_interpolation);
         largest_candidate_interpolation = largest_candidate_interpolation.max(patch_interpolation);
         largest_candidate_total = largest_candidate_total.max(patch_total);
         rows.push(json!({
@@ -164,6 +180,9 @@ pub fn run(root: &Path) -> Result<()> {
     });
     write_new_json(&output, &report)?;
     println!("Numerical components report: {}", output.display());
-    println!("Ready for independent selective claims: {}", report["readiness_for_new_selective_claims"]);
+    println!(
+        "Ready for independent selective claims: {}",
+        report["readiness_for_new_selective_claims"]
+    );
     Ok(())
 }

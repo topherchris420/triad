@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TRIAD selective-risk input v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "model_id",
+    "experiment_id",
+    "loss",
+    "tolerance",
+    "target_coverage",
+    "calibration_scenario",
+    "bootstrap_replicates",
+    "bootstrap_seed",
+    "reliability_bins",
+    "evidence",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "triad-metrology-1"
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "loss": {
+      "enum": [
+        "euclidean",
+        "classification"
+      ]
+    },
+    "tolerance": {
+      "type": "number",
+      "minimum": 0
+    },
+    "target_coverage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "calibration_scenario": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bootstrap_replicates": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 100000
+    },
+    "bootstrap_seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reliability_bins": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "numerical_required",
+        "checks",
+        "evidence_resources",
+        "evaluated_scenarios",
+        "prospective_power_supported",
+        "independent_replication"
+      ],
+      "properties": {
+        "numerical_required": {
+          "type": "boolean"
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "evidence_resources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evaluated_scenarios": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "prospective_power_supported": {
+          "type": "boolean"
+        },
+        "independent_replication": {
+          "type": "boolean"
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "prediction",
+          "uncertainty",
+          "sequence",
+          "split",
+          "scenario"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prediction": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "number"
+            }
+          },
+          "truth": {
+            "anyOf": [
+              {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "number"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "uncertainty": {
+            "type": "number"
+          },
+          "error_probability": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "sequence": {
+            "type": "string",
+            "minLength": 1
+          },
+          "spatial_cluster": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "split": {
+            "enum": [
+              "training",
+              "development",
+              "calibration",
+              "test"
+            ]
+          },
+          "scenario": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

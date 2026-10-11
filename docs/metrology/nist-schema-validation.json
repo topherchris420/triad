@@ -1,0 +1,18 @@
+{
+  "schema_repository_revision": "7f0609217621aa905973ad0cc03f5e6a8c97e345",
+  "valid": false,
+  "errors": [
+    {
+      "path": [
+        "contact_email"
+      ],
+      "message": "'<PUBLIC PROFESSIONAL CONTACT REQUIRED>' does not match '^[^@\\\\s]+@[^@\\\\s]+\\\\.[^@\\\\s]+$'"
+    },
+    {
+      "path": [
+        "contact_email"
+      ],
+      "message": "'<PUBLIC PROFESSIONAL CONTACT REQUIRED>' should not be valid under {'pattern': '[<>]'}"
+    }
+  ]
+}

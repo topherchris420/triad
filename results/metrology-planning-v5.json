@@ -1,0 +1,679 @@
+{
+  "assumed_power": 0.8,
+  "independent_pilot": {
+    "experiment": "synthetic-transfer-demo-v5",
+    "pilot_scenarios": [
+      {
+        "errors": 79,
+        "illustrative_required_predictions": 7001,
+        "pilot_unselected_error_rate": 0.1975,
+        "records": 400,
+        "scenario": "in_distribution",
+        "warning": "Unselected pilot rate is not accepted C2 risk; effect/dependence assumptions need independent justification. Extreme event counts cannot support the normal approximation."
+      }
+    ],
+    "status": "pilot_planning_only",
+    "test_labels_used": false
+  },
+  "limitations": [
+    "Illustrative rates and effects, not independent pilot estimates.",
+    "Normal approximation may fail for rare events.",
+    "Simulation models nested shared pools and paired errors; crossed pools and actual selector pairing remain unvalidated.",
+    "No final practical effect selected without scientific utility and independent pilot.",
+    "No final test data accessed or generated; confirmatory study blocked by numerical readiness."
+  ],
+  "rows": [
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 19540,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 19540,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 41033,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 111375,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 127006,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 478713,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.00075,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 160592,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.00075,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 160592,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.00075,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 337242,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.00075,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 915370,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.00075,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 1043843,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.00075,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 3934482,
+      "risk": 0.005
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 91432,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 91432,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 192008,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 521163,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 594308,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 2240084,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.003,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 39585,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.003,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 39585,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.003,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 83128,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.003,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 225632,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.003,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 257299,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.003,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 969819,
+      "risk": 0.02
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 228595,
+      "risk": 0.05
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 228595,
+      "risk": 0.05
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 480049,
+      "risk": 0.05
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 1302990,
+      "risk": 0.05
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 1485866,
+      "risk": 0.05
+    },
+    {
+      "absolute_improvement": 0.002,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 5600569,
+      "risk": 0.05
+    },
+    {
+      "absolute_improvement": 0.0075,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 15384,
+      "risk": 0.05
+    },
+    {
+      "absolute_improvement": 0.0075,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.0,
+      "required_predictions_per_arm": 15384,
+      "risk": 0.05
+    },
+    {
+      "absolute_improvement": 0.0075,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 32305,
+      "risk": 0.05
+    },
+    {
+      "absolute_improvement": 0.0075,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.1,
+      "required_predictions_per_arm": 87684,
+      "risk": 0.05
+    },
+    {
+      "absolute_improvement": 0.0075,
+      "cluster_size": 12,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 99991,
+      "risk": 0.05
+    },
+    {
+      "absolute_improvement": 0.0075,
+      "cluster_size": 48,
+      "coverage": 0.8,
+      "intracluster_correlation": 0.5,
+      "required_predictions_per_arm": 376887,
+      "risk": 0.05
+    }
+  ],
+  "simulations": [
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.265,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.031206970375222264,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 53,
+      "replicates": 200,
+      "seed": 52001,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.22,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.02929163703175362,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 44,
+      "replicates": 200,
+      "seed": 52002,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.155,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.02559052559053839,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 31,
+      "replicates": 200,
+      "seed": 52003,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.11,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.022124646889837587,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 22,
+      "replicates": 200,
+      "seed": 52001,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.14,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.024535688292770596,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 28,
+      "replicates": 200,
+      "seed": 52002,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.105,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.021676600286945368,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 21,
+      "replicates": 200,
+      "seed": 52003,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.96,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.013856406460551024,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 192,
+      "replicates": 200,
+      "seed": 52001,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.955,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.014658615214269054,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 191,
+      "replicates": 200,
+      "seed": 52002,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.955,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.014658615214269054,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 191,
+      "replicates": 200,
+      "seed": 52003,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.845,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.02559052559053839,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 169,
+      "replicates": 200,
+      "seed": 52001,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.845,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.02559052559053839,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 169,
+      "replicates": 200,
+      "seed": 52002,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.0015,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.01,
+      "estimated_power": 0.835,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.02624642832844119,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 167,
+      "replicates": 200,
+      "seed": 52003,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 0.945,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.016120638945153514,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 189,
+      "replicates": 200,
+      "seed": 52001,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 0.96,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.013856406460551024,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 192,
+      "replicates": 200,
+      "seed": 52002,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 0.985,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.008595056718835545,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 197,
+      "replicates": 200,
+      "seed": 52003,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 0.815,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.027456784225396828,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 163,
+      "replicates": 200,
+      "seed": 52001,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 0.755,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.030411757594719844,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 151,
+      "replicates": 200,
+      "seed": 52002,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 0.79,
+      "independent_pools": 50,
+      "monte_carlo_standard_error": 0.028801041647829335,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 158,
+      "replicates": 200,
+      "seed": 52003,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 1.0,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.0,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 200,
+      "replicates": 200,
+      "seed": 52001,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 1.0,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.0,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 200,
+      "replicates": 200,
+      "seed": 52002,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 1.0,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.0,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 200,
+      "replicates": 200,
+      "seed": 52003,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": false,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 1.0,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.0,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 200,
+      "replicates": 200,
+      "seed": 52001,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 1.0,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.0,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 200,
+      "replicates": 200,
+      "seed": 52002,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    },
+    {
+      "absolute_effect": 0.006,
+      "accepted_frames_per_sequence": 12,
+      "baseline_risk": 0.04,
+      "estimated_power": 1.0,
+      "independent_pools": 200,
+      "monte_carlo_standard_error": 0.0,
+      "pairing": "monotone shared uniform; optimistic, not empirical",
+      "rejections": 200,
+      "replicates": 200,
+      "seed": 52003,
+      "sequences_per_pool": 4,
+      "shared_pool_dependence": true,
+      "test": "positive paired pool mean exceeds 1.96 pool standard errors; approximate"
+    }
+  ],
+  "status": "planning_only_not_frozen_confirmatory_design",
+  "two_sided_alpha": 0.05
+}

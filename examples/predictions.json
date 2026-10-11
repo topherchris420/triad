@@ -1,0 +1,144 @@
+{
+  "schema_version": "triad-metrology-1",
+  "model_id": "hand-example",
+  "experiment_id": "metric-fixture",
+  "loss": "classification",
+  "tolerance": 0,
+  "target_coverage": 0.5,
+  "calibration_scenario": "iid",
+  "bootstrap_replicates": 100,
+  "bootstrap_seed": 5,
+  "reliability_bins": 2,
+  "evidence": {
+    "numerical_required": false,
+    "checks": {},
+    "evidence_resources": [],
+    "evaluated_scenarios": [
+      "iid"
+    ],
+    "prospective_power_supported": false,
+    "independent_replication": false
+  },
+  "records": [
+    {
+      "id": "calibration-0",
+      "prediction": [
+        0
+      ],
+      "truth": [
+        0
+      ],
+      "uncertainty": 0.1,
+      "error_probability": 0.1,
+      "sequence": "calibration-0",
+      "spatial_cluster": null,
+      "split": "calibration",
+      "scenario": "iid"
+    },
+    {
+      "id": "calibration-1",
+      "prediction": [
+        0
+      ],
+      "truth": [
+        1
+      ],
+      "uncertainty": 0.2,
+      "error_probability": 0.2,
+      "sequence": "calibration-1",
+      "spatial_cluster": null,
+      "split": "calibration",
+      "scenario": "iid"
+    },
+    {
+      "id": "calibration-2",
+      "prediction": [
+        0
+      ],
+      "truth": [
+        0
+      ],
+      "uncertainty": 0.3,
+      "error_probability": 0.3,
+      "sequence": "calibration-2",
+      "spatial_cluster": null,
+      "split": "calibration",
+      "scenario": "iid"
+    },
+    {
+      "id": "calibration-3",
+      "prediction": [
+        0
+      ],
+      "truth": [
+        1
+      ],
+      "uncertainty": 0.4,
+      "error_probability": 0.4,
+      "sequence": "calibration-3",
+      "spatial_cluster": null,
+      "split": "calibration",
+      "scenario": "iid"
+    },
+    {
+      "id": "test-0",
+      "prediction": [
+        0
+      ],
+      "truth": [
+        0
+      ],
+      "uncertainty": 0.1,
+      "error_probability": 0.1,
+      "sequence": "test-0",
+      "spatial_cluster": null,
+      "split": "test",
+      "scenario": "iid"
+    },
+    {
+      "id": "test-1",
+      "prediction": [
+        0
+      ],
+      "truth": [
+        1
+      ],
+      "uncertainty": 0.2,
+      "error_probability": 0.2,
+      "sequence": "test-1",
+      "spatial_cluster": null,
+      "split": "test",
+      "scenario": "iid"
+    },
+    {
+      "id": "test-2",
+      "prediction": [
+        0
+      ],
+      "truth": [
+        0
+      ],
+      "uncertainty": 0.3,
+      "error_probability": 0.3,
+      "sequence": "test-2",
+      "spatial_cluster": null,
+      "split": "test",
+      "scenario": "iid"
+    },
+    {
+      "id": "test-3",
+      "prediction": [
+        0
+      ],
+      "truth": [
+        1
+      ],
+      "uncertainty": 0.4,
+      "error_probability": 0.4,
+      "sequence": "test-3",
+      "spatial_cluster": null,
+      "split": "test",
+      "scenario": "iid"
+    }
+  ]
+}

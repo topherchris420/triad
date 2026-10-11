@@ -1,5 +1,42 @@
 # TRIAD
 
+**When should a sensor refuse to answer?**
+
+Milestone 5 extends the question: **When should any predictive system refuse to
+answer because the evidence is insufficient?** The new generic evaluator measures
+selective error risk, calibration and distribution-shift behavior while reporting
+numerical and statistical limitations separately. This is engineering progress;
+physical confidence and a confirmatory C2/D advantage remain unvalidated.
+
+```mermaid
+flowchart LR
+    A[Physical or AI Model] --> B[Prediction]
+    B --> C[Uncertainty Estimate]
+    C --> D[Numerical / Model Validity]
+    D --> E[Calibration]
+    E --> F[Selective-Risk Evaluation]
+    F --> G[Evidence-Qualified Decision]
+```
+
+Implemented: JSON evaluation, calibration-fixed thresholds, retrospective ranking,
+risk/coverage curves, ECE/Brier diagnostics, whole-cluster bootstrap, explicit
+validity reports, a trained logistic demo and bounded measurement-only refinement.
+The refinement candidate still abstains; sampling candidate regions does not prove
+physical adequacy. See [Milestone 5 results](docs/metrology/experimental-results.md),
+[method definition](docs/metrology/method-definition.md),
+[reproduction](docs/metrology/reproducibility.md), and
+[NIST draft limitations](docs/metrology/nist-readiness.md).
+
+```sh
+cargo run --release --locked -- metrology --help
+cargo run --release --locked -- metrology evaluate --input examples/predictions.json --output results/my-evaluation.json
+cargo run --release --locked -- metrology validate --input results/my-evaluation.json
+cargo run --release --locked -- metrology demo --output results/my-demo
+```
+
+Existing output paths are never overwritten. The original Milestones 2–4 evidence
+and negative findings remain visible below and are protected by SHA-256 tests.
+
 **When Physics-Informed Confidence Fails: Numerical Model Error in Sparse Capacitive Localization**
 
 [![Rust verification](https://github.com/topherchris420/triad/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/topherchris420/triad/actions/workflows/ci.yml)

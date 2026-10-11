@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "model.json": true,
+    "predictions.json": true,
+    "deterministic_report_payload": true
+  },
+  "platform": "Windows x86_64 GNU executable on ARM64 Windows host",
+  "timing_excluded": true,
+  "artifact_sha256": {
+    "model.json": "7eb7798b727b6dee9e666cd39ef09b942053f967aed0ab48e7a5ee3a4d6174b0",
+    "predictions.json": "1c6d31711d4f8a2252e8ace6eaf4ecb1cf0106869c8e991bae08c7827b34b6ea",
+    "report.json": "c69076e872abe3df5d9faf777b106bd668ba600f6a8c882393f242582261d857",
+    "report.md": "cdf753cfa2918e4bf863ebdb21001908e950fec124ef89acc94d91a369e3faeb"
+  }
+}

@@ -1,4 +1,5 @@
 //! Independent Rust research, Vers3Dynamics, PI Christopher Woodyard.
+pub mod adaptive;
 pub mod diagnostics;
 pub mod evaluation;
 pub mod experiment;
@@ -6,6 +7,12 @@ pub mod forward;
 pub mod geometry_search;
 pub mod inverse;
 pub mod measurements;
+pub mod metrology;
+pub mod metrology_adaptive_study;
+pub mod metrology_cli;
+pub mod metrology_demo;
+pub mod metrology_numerical;
+pub mod metrology_planning;
 pub mod numerical_audit;
 pub mod numerical_components;
 pub mod observability;

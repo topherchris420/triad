@@ -1,12 +1,12 @@
 # Milestone 4: Numerical reliability before renewed selective inference
 
-**Status: exploratory engineering plan, not a preregistered new test or scientific result.**
+**Status: the first numerical development diagnostic has been executed; a renewed selective scientific test is NOT yet authorized or preregistered.** Read the [numerical results](milestone4-development-results-2026-10-11.md). They show substantial local interpolation improvement but a failed noise-normalized mesh readiness gate.
 
 This plan follows the [executed and archived v3 experiment](milestone3-results-2026-10-11.md). No v3 observations, fitted predictions, experimental outputs, protocol constants or evaluation labels are overwritten. The numerical v3 gate failed; physics-informed D showed only a small unvalidated ranking advantage.
 
 ## Workstream A: isolate the numerical error budget
 
-The new `numerical-components` command creates `results/numerical-components-v4.json` using ten declared **development-only** probes. Six were already examined in v3 and four are additional engineering probes. These cannot serve as untouched final confirmation.
+The new `numerical-components` command has created and archived `results/numerical-components-v4.json` using ten declared **development-only** probes. Six were already examined in v3 and four are additional engineering probes. These cannot serve as untouched final confirmation.
 
 For each state, compare three independent quantities under the **full covariance-whitened metric** used by the inference model:
 

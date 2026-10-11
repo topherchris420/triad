@@ -1,4 +1,4 @@
-# Milestone 5 executed results — October 11, 2026
+# Milestone 5 executed results â€” October 11, 2026
 
 **Engineering progress; numerical readiness failed; no confirmatory scientific
 claim.** All experiments below were actually executed locally with Rust release
@@ -51,10 +51,10 @@ from validated physical confidence. No superiority claim is supported.
 
 ## Trained non-capacitive AI demonstration
 
-[Model](../../results/metrology-demo-v5/model.json),
-[predictions](../../results/metrology-demo-v5/predictions.json),
-[machine report](../../results/metrology-demo-v5/report.json),
-[readable report](../../results/metrology-demo-v5/report.md).
+[Model](../../results/metrology-demo-v5-canonical/model.json),
+[predictions](../../results/metrology-demo-v5-canonical/predictions.json),
+[machine report](../../results/metrology-demo-v5-canonical/report.json),
+[readable report](../../results/metrology-demo-v5-canonical/report.md).
 Logistic regression was actually trained on 800 independent synthetic samples.
 Development, calibration and two evaluation streams use separate fixed seeds.
 The calibration-only threshold is 0.3549937151721641 for nominal 80% coverage.
@@ -96,3 +96,9 @@ Next independent experiment: freeze new near-edge probes, independently vary
 edge-node density and interface polygon resolution, and repeat the expanded-domain
 comparison with matched discretization. Establish a defensible numerical error
 budget before collecting an independent physical C2/D pilot or final test set.
+
+Portability note: the initial `metrology-demo-v5` snapshot preserves the first
+Windows run with CRLF source bytes. The canonical snapshot uses Git LF source
+bytes and is the published reproduction target; scientific metrics and predictions
+are identical. The evaluator source hash correctly distinguishes these byte
+representations. Use the canonical report with code checked out from Git.

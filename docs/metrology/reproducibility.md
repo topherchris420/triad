@@ -66,3 +66,9 @@ cargo run --release --locked -- metrology adaptive --output results/metrology-ad
 The direct refined comparator uses the same measurement-selected cell shortlist,
 not a global fine-FEM optimizer. Both grids sample up to 54 candidates and retain
 all residuals; physical confidence is withheld.
+
+For the committed demonstration, validate
+`results/metrology-demo-v5-canonical/report.json`. The earlier local Windows
+snapshot records different source line endings and is retained for provenance;
+its source hash will not match a canonical Git checkout. Newly generated demos
+from a Git checkout use the canonical source bytes.

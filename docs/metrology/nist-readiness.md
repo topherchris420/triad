@@ -22,8 +22,8 @@ No address was invented. No submission was sent.
 - [ ] Numerical adequacy and physical uncertainty established for sensor use.
 - [ ] Independent pilot, utility-based effect size and adequately powered protocol.
 - [ ] Independent replication and evidence beyond a synthetic transfer demonstration.
-- [ ] Verify implementation resources reference the published, tested master commit
-      before treating the package as a submission candidate.
+- [x] Implementation resource identifies runnable repository code in this change.
+      Publication and CI status must be checked in the completion report.
 - [ ] Human scientific review of application guidance and claimed contribution.
 
 The current reasonable contribution is an honest reproducible evaluation

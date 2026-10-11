@@ -1,0 +1,13 @@
+{
+  "canonical_source_sha256": "ec3272d3323f822ed7b7aa26610d1b726d6154881ccf9eedfb704d0a28ced24c",
+  "initial_windows_source_sha256": "4e11bf1ae9bf6be87087afbe18542be066c608e89dd006008b2debd3d889287e",
+  "predictions_identical": true,
+  "trained_model_identical": true,
+  "all_scientific_report_fields_identical": true,
+  "artifact_sha256": {
+    "model.json": "7eb7798b727b6dee9e666cd39ef09b942053f967aed0ab48e7a5ee3a4d6174b0",
+    "predictions.json": "1c6d31711d4f8a2252e8ace6eaf4ecb1cf0106869c8e991bae08c7827b34b6ea",
+    "report.json": "04bb3a29d96d63679c43b697cc3f4dbd96dec5d6cf05583576cafa089c1db3e5",
+    "report.md": "69ade9af1e7cd703c141324f06bb3ac36603acc80107da15e289ca505e943742"
+  }
+}

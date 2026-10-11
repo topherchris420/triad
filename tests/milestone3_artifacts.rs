@@ -21,7 +21,10 @@ fn committed_selective_artifacts_match_recorded_sha256() {
     for name in ["run.json", "test-scores.json", "evaluation.json"] {
         let expected = summary["artifact_sha256"][name].as_str().unwrap();
         let actual = hash(&fs::read(dir.join(name)).unwrap());
-        assert_eq!(expected, actual, "archived selective artifact changed: {name}");
+        assert_eq!(
+            expected, actual,
+            "archived selective artifact changed: {name}"
+        );
     }
 }
 
@@ -32,20 +35,32 @@ fn reported_readiness_and_decision_remain_faithful_to_recorded_results() {
     let selective = read_json(&root.join("results/selective-v3/summary.json"));
     let geometry = read_json(&root.join("results/geometry-screen-v1.json"));
 
-    assert_eq!(numerical["likelihood_ready_for_claims"].as_bool(), Some(false));
+    assert_eq!(
+        numerical["likelihood_ready_for_claims"].as_bool(),
+        Some(false)
+    );
     assert_eq!(
         numerical["baseline_config_sha256"].as_str().unwrap(),
         hash(&fs::read(root.join("experiments/config.json")).unwrap())
     );
-    assert_eq!(selective["numerical_inspection_ready"].as_bool(), Some(false));
+    assert_eq!(
+        selective["numerical_inspection_ready"].as_bool(),
+        Some(false)
+    );
     assert_eq!(
         selective["supports_declared_primary_hypothesis"].as_bool(),
         Some(false)
     );
     assert_eq!(selective["test_frames"].as_u64(), Some(3_600));
     assert_eq!(selective["test_errors_above_5mm"].as_u64(), Some(132));
-    assert_eq!(geometry["status"].as_str(), Some("exploratory_surrogate_not_optimized_selective_risk"));
-    assert_eq!(geometry["numerical_inspection_ready"].as_bool(), Some(false));
+    assert_eq!(
+        geometry["status"].as_str(),
+        Some("exploratory_surrogate_not_optimized_selective_risk")
+    );
+    assert_eq!(
+        geometry["numerical_inspection_ready"].as_bool(),
+        Some(false)
+    );
     assert_eq!(
         geometry["protocol_dependency_sha256"].as_str(),
         selective["protocol_sha256"].as_str()

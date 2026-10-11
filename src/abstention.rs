@@ -48,7 +48,7 @@ pub struct FitRequest {
     pub sequences: Vec<CalibrationSequence>,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum PolicyStatus {
     Ready,

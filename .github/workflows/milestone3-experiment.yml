@@ -1,0 +1,110 @@
+name: TRIAD Milestone 3 experimental run
+
+on:
+  push:
+    branches: ['research/milestone3-run-20261011']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Record frozen baseline hashes
+        run: |
+          mkdir -p milestone3-logs
+          sha256sum experiments/config.json results/summary.json results/evaluation.json results/validation.json results/dataset.json results/predictions.json > milestone3-logs/baseline-before.sha256
+
+      - name: Validate Rust suite
+        run: cargo test --release --locked
+
+      - name: Run numerical reliability audit
+        id: numerical
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          cargo run --release --locked -- numerical 2>&1 | tee milestone3-logs/numerical.log
+
+      - name: Print numerical gate evidence
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          p=pathlib.Path("results/numerical-audit-v3.json")
+          if p.exists():
+              a=json.loads(p.read_text())
+              for key in ("likelihood_ready_for_claims", "max_mesh_error_noise_units", "max_surrogate_error_noise_units", "max_optimization_objective_gap"):
+                  print(f"{key}: {a.get(key)}")
+          else:
+              print("Numerical audit output not produced.")
+          PY
+
+      - name: Run preregistered selective C2 vs D study
+        id: selective
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          cargo run --release --locked -- selective 2>&1 | tee milestone3-logs/selective.log
+
+      - name: Print selective study evidence
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          p=pathlib.Path("results/selective-v3/summary.json")
+          if p.exists():
+              a=json.loads(p.read_text())
+              for key in ("numerical_inspection_ready","test_errors_above_5mm","supports_declared_primary_hypothesis"):
+                  print(f"{key}: {a.get(key)}")
+              print("primary_matched_80_percent:",json.dumps(a.get("primary_matched_80_percent"),sort_keys=True))
+              print("deployment_thresholds_calibration_only:",json.dumps(a.get("deployment_thresholds_calibration_only"),sort_keys=True))
+          else:
+              print("Selective study summary not produced (interrupted or failed).")
+          PY
+
+      - name: Run exploratory electrode geometry screen
+        id: geometry
+        if: steps.selective.outcome == 'success'
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          cargo run --release --locked -- geometry-screen 2>&1 | tee milestone3-logs/geometry.log
+
+      - name: Print geometry screen evidence
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path("results/geometry-screen-v1.json")
+          if p.exists():
+              a=json.loads(p.read_text())
+              print(json.dumps(a,indent=2)[:12000])
+          else:
+              print("Geometry output not produced (skipped or failed).")
+          PY
+
+      - name: Confirm frozen baseline unchanged
+        if: always()
+        run: |
+          sha256sum -c milestone3-logs/baseline-before.sha256
+          git diff --exit-code -- experiments/config.json results/cache results/dataset.json results/predictions.json results/evaluation.json results/summary.json results/validation.json results/reproducibility-check.json results/plots
+
+      - name: Upload immutable experiment outputs and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: triad-milestone3-research-${{ github.run_id }}
+          path: |
+            milestone3-logs/
+            results/numerical-audit-v3.json
+            results/selective-v3/
+            results/geometry-screen-v1.json
+          if-no-files-found: warn
+          retention-days: 30

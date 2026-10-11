@@ -7,6 +7,7 @@
 Use newly generated development states, without reading future final labels, to evaluate:
 - The 100-iteration projected damped Gauss–Newton termination path, including active box constraints and interpolation knots.
 - The best discrete grid candidate and a stronger independent search as optimization-quality references; report both objective gaps and stopping flags.
+- Inspect the new `triad information` diagnostic (noise-weighted Jacobian and material-nuisance Schur complement at dictionary cell midpoints) while noting that it does not model latent future drift or global alternatives.
 - Mesh-refinement errors in target-induced measurements using the *whitened Mahalanobis metric*, not solely Euclidean signal norm divided by sigma.
 - The error between the continuous refined-FEM signal and the coarse dictionary's trilinear interpolation at the *same* target state.
 - Whether numerical/interpolation errors dominate the nominal 0.003 pF/m channel noise in important regions.

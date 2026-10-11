@@ -58,6 +58,7 @@ A reduction in risk caused merely by refusing more predictions is not a discover
 | Simulated observations | Unknown material, baseline calibration, correlated noise and drift | **Implemented**, synthetic only |
 | Inverse estimation | Bounded multistart generalized least squares over x, y, and permittivity | **Implemented**, convergence limitations recorded |
 | Ambiguity diagnostics | Finite dictionary alternative search and position sensitivity | **Implemented**, not global identifiability proof |
+| Nuisance-adjusted local information | Noise-whitened position Jacobian, dielectric Schur complement | **Implemented as a diagnostic**, not an abstention rule |
 | Frozen evidence | Saved datasets, predictions, metrics, plots, protocol amendments | **Recorded** and reproducible on the tested host |
 | Retrospective optimizer audit | Dedicated read-only analytical command | **Implemented**, generated report is exploratory |
 | Bayesian rejection / nuisance-aware Fisher information / Method D | Proposed future experiments | **Not implemented** |
@@ -145,11 +146,13 @@ cargo test --release --locked
 cargo run --release --locked -- validate
 cargo run --release --locked -- baseline
 cargo run --release --locked -- audit
+cargo run --release --locked -- information
 ```
 
 - `validate`: performs the **numerical physics gates** and records `results/validation.json`.
 - `baseline`: generates the locked dataset, fits the conventional estimator, and writes results. Refuses to run without matching validation.
 - `audit`: performs a **retrospective descriptive analysis** of the already recorded evaluation, without rerunning estimation.
+- `information`: computes a **local Fisher-information diagnostic** with unknown dielectric treated as a nuisance parameter, using saved dictionary-cell midpoints. It does not test a selector or read true test locations.
 - `all`: validation, baseline, then optimizer audit. This may be compute-intensive without cached FEM dictionaries.
 
 **Preserve the committed outputs before rerunning**. The pilot already has observed test labels, so any optimizer changes or new hypothesis tests require a **new protocol and fresh untouched test sequences**, not a quiet replacement of the saved evidence.

@@ -7,6 +7,7 @@ fn main() -> Result<()> {
             triad::validation::run(&root)?;
         }
         Some("baseline") => triad::experiment::run(&root)?,
+        Some("information") => triad::observability::run_information_audit(&root)?,
         Some("audit") => {
             triad::diagnostics::run(&root)?;
         }
@@ -15,7 +16,7 @@ fn main() -> Result<()> {
             triad::experiment::run(&root)?;
             triad::diagnostics::run(&root)?;
         }
-        _ => bail!("Usage: triad validate | baseline | audit | all"),
+        _ => bail!("Usage: triad validate | baseline | audit | information | all"),
     }
     Ok(())
 }

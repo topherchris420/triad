@@ -147,13 +147,13 @@ pub fn fit(spec: &FitSpecification, sequences: &[CalibrationSequence]) -> Result
         !spec.candidate_thresholds.is_empty()
             && spec.candidate_thresholds.len() <= 1024
             && spec.candidate_thresholds.iter().all(|x| x.is_finite())
-            && spec
-                .candidate_thresholds
-                .windows(2)
-                .all(|w| w[0] < w[1]),
+            && spec.candidate_thresholds.windows(2).all(|w| w[0] < w[1]),
         "candidate thresholds must be predeclared, finite and strictly increasing"
     );
-    ensure!(!sequences.is_empty(), "no independent calibration sequences");
+    ensure!(
+        !sequences.is_empty(),
+        "no independent calibration sequences"
+    );
     let frames_per_sequence = sequences[0].frames.len();
     ensure!(frames_per_sequence > 0, "empty calibration sequence");
     let mut ids = HashSet::new();

@@ -2,10 +2,10 @@
 
 **When should a sensor refuse to answer?**
 
-[![Rust verification](https://github.com/topherchris420/triad/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/topherchris420/triad/actions/workflows/ci.yml)
+[![Rust verification](https://github.com/topherchris420/triad/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/topherchris420/triad/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0B5D63.svg)](LICENSE)
 
-[Start here](#start-with-the-evidence) · [Recorded results](#baseline-results-the-system-is-accurate-in-some-places-and-fragile-in-others) · [New study](#new-research-code-test-before-claiming) · [Evidence map](#evidence-map)
+[Start here](#start-with-the-evidence) · [Milestone 3 findings](docs/milestone3-results-2026-10-11.md) · [Original baseline](#baseline-results-the-system-is-accurate-in-some-places-and-fragile-in-others) · [Research code](#new-research-code-test-before-claiming) · [Evidence map](#evidence-map)
 
 *An independent Vers3Dynamics research instrument for sparse capacitive localization, physical observability, and the limits of confident inference.*
 
@@ -22,14 +22,20 @@ The research is deliberately staged. First model the field. Then invert the meas
 
 *Plot generated from the frozen conventional-estimator simulation. These are localization errors, not improvements from selective prediction.*
 
+### Milestone 3: the experiment has been run
+
+**First executable study completed October 11, 2026. Scientific hypothesis not supported.** The six-probe numerical audit **failed** its readiness gate (worst interpolated-surrogate discrepancy **37.78 covariance-whitened noise units**). At matched 80% acceptance on 3,600 simulated test observations, the physics-informed selector D accepted **37** errors above 5 mm versus **42** for posterior C2, a **0.174-percentage-point** exploratory risk reduction. This did **not** reach the preregistered **2-percentage-point** practical threshold. In geometry screening, the development-selected layout did **not** beat the original on the independent holdout metric.
+
+Read the [complete results and limitations](docs/milestone3-results-2026-10-11.md). The [numerical](results/numerical-audit-v3.json), [selective](results/selective-v3/summary.json), and [geometry](results/geometry-screen-v1.json) reports are committed with provenance. **Passing CI or a successful experimental command is not proof that the physical or statistical hypothesis holds.**
+
 ## Start with the evidence
 
-TRIAD is a **Rust research instrument**, with a frozen simulation baseline and a separate, unexecuted selective-prediction study. The useful result so far is a distinction: **an optimizer's stopping flag is not a measure of whether its answer is trustworthy**.
+TRIAD is a **Rust research instrument**, with a frozen simulation baseline and an archived first selective-prediction study that did not pass its numerical readiness or declared primary hypothesis gates. The useful result so far is a distinction: **an optimizer's stopping flag is not a measure of whether its answer is trustworthy**.
 
 ```sh
 git clone https://github.com/topherchris420/triad.git
 cd triad
-git switch main
+git switch master
 cargo test --locked
 cargo run --locked -- --help
 cargo run --locked -- audit
@@ -89,8 +95,8 @@ A reduction in risk caused merely by refusing more predictions is not a discover
 | Nuisance-adjusted local information | Noise-whitened position Jacobian, dielectric Schur complement | **Implemented as a diagnostic**, not an abstention rule |
 | Frozen evidence | Saved datasets, predictions, metrics, plots, protocol amendments | **Recorded** and reproducible on the tested host |
 | Retrospective optimizer audit | Dedicated read-only analytical command | **Implemented**, generated report is exploratory |
-| Posterior C2 / physics-informed D / probability calibration | Versioned new Rust study | **Implemented, not yet executed or validated** |
-| Electrode geometry screening | Same four-channel-array width and 10 observable entries; new independent holdout | **Implemented as exploratory code; no result claimed** |
+| Posterior C2 / physics-informed D / probability calibration | Versioned Rust study | **Executed and archived; numerical gate failed, primary hypothesis not supported** |
+| Electrode geometry screening | Equal-width four-electrode alternatives with independent holdout | **Executed; selected alternative underperformed original on holdout screening metric** |
 | 3D fields, fabricated sensors, hardware trials | Outside the current study | **Not performed** |
 
 ### Baseline results: the system is accurate in some places and fragile in others
@@ -194,7 +200,7 @@ References and limits: [commercial source audit](docs/commercial-reference-analy
 
 ## New research code: test before claiming
 
-The experimental Milestone 3 code now provides numerical auditing, posterior C2, a preregistered physics-informed D score, probability calibration, drift-only selective risk evaluation, independent sequence-level bootstrap intervals, and exploratory electrode-layout screening. **These are implementations, not findings.** No new outcome is claimed until commands are executed, numerical discrepancies are addressed, and a fresh test has enough failure events.
+The experimental Milestone 3 code now provides numerical auditing, posterior C2, a preregistered physics-informed D score, probability calibration, drift-only selective risk evaluation, independent sequence-level bootstrap intervals, and exploratory electrode-layout screening. **The first run is now archived.** It did not satisfy the numerical readiness gate or establish the predeclared primary scientific hypothesis; see [recorded results](docs/milestone3-results-2026-10-11.md).
 
 ```sh
 cargo test --locked
@@ -203,9 +209,9 @@ cargo run --release --locked -- selective
 cargo run --release --locked -- geometry-screen
 ```
 
-**Run in this order.** `numerical` quantifies noise-normalized mesh, interpolation, and optimizer error on six development probes. `selective` creates independently seeded development, calibration, and test drift sequences, writes scores before test-truth evaluation, and compares C2 and D at exactly 80% retrospective test acceptance as well as independently calibrated deployment thresholds. It reports Brier/reliability/ECE and paired whole-sequence bootstrap intervals, including null or adverse findings. `geometry-screen` screens five equal-width, four-electrode layouts on an independent development and holdout split; **this is not proof of improved selective risk**.
+**The first study ran these commands in order. Do not rerun against the committed repository root:** the archived, versioned output paths now exist and the commands refuse overwrites. Reproducing the same seeds in an isolated copy is a replay, not a new independent scientific test. For scientific revisions, freeze a new protocol, output version, and fresh test seeds. `numerical` quantifies noise-normalized mesh, interpolation, and optimizer error on six development probes. `selective` creates independently seeded development, calibration, and test drift sequences, writes scores before test-truth evaluation, and compares C2 and D at exactly 80% retrospective test acceptance as well as independently calibrated deployment thresholds. It reports Brier/reliability/ECE and paired whole-sequence bootstrap intervals, including null or adverse findings. `geometry-screen` screens five equal-width, four-electrode layouts on an independent development and holdout split; **this is not proof of improved selective risk**.
 
-The old baseline is intentionally never rerun by these commands. Study artifacts use distinct, versioned paths. Every executable protocol setting is checked before running. An existing selective run directory—including an interrupted run—is preserved; numerical and geometry reports also refuse replacement. The selective summary is written last and records hashes of its score, evaluation and run files. Geometry screening checks those hashes before proceeding. See [research integrity and interrupted runs](docs/research-integrity.md). Results will not be embedded into the README until verified.
+The old baseline is intentionally never rerun by these commands. Study artifacts use distinct, versioned paths. Every executable protocol setting is checked before running. An existing selective run directory—including an interrupted run—is preserved; numerical and geometry reports also refuse replacement. The selective summary is written last and records hashes of its score, evaluation and run files. Geometry screening checks those hashes before proceeding. See [research integrity and interrupted runs](docs/research-integrity.md). The first study results, including failed scientific gates, are permanently archived and summarized above.
 
 See [the complete Milestone 3 research protocol, limitations and reproducible commands](docs/selective-v3.md), the [versioned machine-readable protocol](experiments/selective-v3.json), and [the original next-experiment gate](docs/next-experiment.md).
 

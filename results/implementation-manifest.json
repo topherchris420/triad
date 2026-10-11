@@ -1,0 +1,65 @@
+﻿{
+    "rust":  "1.99.0",
+    "fenris":  "0.0.33",
+    "spade":  "2.15.1",
+    "faer":  "0.24.4",
+    "serde_json_float_roundtrip":  true,
+    "files":  [
+                  {
+                      "path":  "src/evaluation.rs",
+                      "sha256":  "6bf17c52375e2ead1ff89e9eedcf7b16c1acbbfbeae341cd573dc18c0e1fe98a"
+                  },
+                  {
+                      "path":  "src/experiment.rs",
+                      "sha256":  "89331ee294842149138986df0e6ed44d775c521b550976b34ae9ae08a9b8efa7"
+                  },
+                  {
+                      "path":  "src/forward.rs",
+                      "sha256":  "75a3ecadda1595190111dba4ba6e609498b8381c67609a6ad85d38e49715e14a"
+                  },
+                  {
+                      "path":  "src/inverse.rs",
+                      "sha256":  "ea32c2abccacecf23539811d2bf91ff9db27b4537a45b6fed47333ecdc560808"
+                  },
+                  {
+                      "path":  "src/lib.rs",
+                      "sha256":  "e8d3fbcc1e46e2a971405232505f5d8b7dade7c4bb335ece87278e64a0d67fcf"
+                  },
+                  {
+                      "path":  "src/main.rs",
+                      "sha256":  "c61a59d48bf7847fc03a4df796b2938036dc2b1d5a4c571d629f383f9c576ccf"
+                  },
+                  {
+                      "path":  "src/measurements.rs",
+                      "sha256":  "54dd7cf371936c96cce58b91f08ab92630076fda0f9e17ee452d90268be012cf"
+                  },
+                  {
+                      "path":  "src/observability.rs",
+                      "sha256":  "a4b11f4915c8fae2d3709ee1ec05426eda2d29ae82f471fc988833301d511745"
+                  },
+                  {
+                      "path":  "src/plots.rs",
+                      "sha256":  "cc743fe6a17ccb022bf536180f9a312c55f6cf78cf3940be8f82fee5c62a3503"
+                  },
+                  {
+                      "path":  "src/validation.rs",
+                      "sha256":  "828724424bd90c6ab1f7a3f49457b7822ae2327f7b58e3e522e863f61baa7db1"
+                  },
+                  {
+                      "path":  "tests/numerics.rs",
+                      "sha256":  "838db2ededf595b23c421383b8a0bf83ffb18ea1f8211e88b401a8f0d98833e3"
+                  },
+                  {
+                      "path":  "Cargo.toml",
+                      "sha256":  "b033a51e9d5a67a6b8c9b552409a2d6c40f29aec9ecf79b1d413529b868f4992"
+                  },
+                  {
+                      "path":  "Cargo.lock",
+                      "sha256":  "3dd3d6ed4f97b166bb0510731d2d634ad1dc14d2b80757754a442c278db6d97a"
+                  },
+                  {
+                      "path":  "experiments/config.json",
+                      "sha256":  "dfa96dab7da944361ba8b9fe39b6f81a60df8e3511cb1e1f53c39292dbad10a1"
+                  }
+              ]
+}

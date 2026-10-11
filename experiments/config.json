@@ -1,0 +1,37 @@
+{
+  "protocol_version": "2.0-rust-conforming",
+  "implementation": "Rust Fenris 0.0.33 / Spade 2.15.1 / faer 0.24.4",
+  "domain_half_width_m": 0.09,
+  "domain_height_m": 0.09,
+  "extended_domain_m": 0.12,
+  "design_pool": "Fixed 54 off-grid spatial sites shared across independent noise/drift sequences; scenario-specific physical pools. Seeds control complete sequences. No labeled fitting.",
+  "seeds": [104729, 130363, 155921],
+  "dictionary_spacing_m": 0.001,
+  "observation_spacing_m": 0.0005,
+  "x_grid_m": [-0.024, -0.018, -0.012, -0.006, 0.0, 0.006, 0.012, 0.018, 0.024],
+  "y_grid_m": [0.008, 0.012, 0.016, 0.020, 0.024, 0.028],
+  "permittivity_grid": [2.0, 3.5, 5.0, 6.5, 8.0],
+  "sequences_per_seed": {"training": 2, "calibration": 2, "test": 3},
+  "frames_per_sequence": 12,
+  "calibration_frames": 24,
+  "acceptable_position_error_m": 0.005,
+  "scenarios": ["clean", "mild_drift", "strong_drift", "wide_dielectric", "combined_mismatch", "poor_observability", "global_ambiguity", "correlated_disturbance", "channel_disturbance", "forward_mismatch"],
+  "validation": {
+    "mesh_total_relative_limit": 0.04,
+    "mesh_signal_relative_limit": 0.08,
+    "fine_mesh_signal_relative_limit": 0.04,
+    "charge_relative_limit": 1e-9,
+    "reciprocity_relative_limit": 1e-10,
+    "reaction_energy_relative_limit": 1e-9,
+    "domain_signal_relative_limit": 0.20,
+    "benchmark_relative_limit": 1e-9
+  },
+  "future_selective_protocol": {
+    "primary_scenario": "strong_drift",
+    "primary_comparator": "posterior_expected_error",
+    "primary_coverage": 0.8,
+    "additional_coverages": [0.6, 0.9],
+    "bootstrap_unit": "complete_drift_sequence",
+    "practical_risk_improvement_absolute": 0.02
+  }
+}

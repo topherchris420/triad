@@ -1,0 +1,20 @@
+[package]
+name = "triad"
+version = "0.1.0"
+edition = "2021"
+description = "Vers3Dynamics independent 2D capacitive localization research"
+
+[dependencies]
+fenris = "=0.0.33"
+faer = { version = "=0.24.4", default-features = false, features = ["std", "sparse-linalg"] }
+spade = "=2.15.1"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["float_roundtrip"] }
+rand = "=0.8.5"
+rand_chacha = "=0.3.1"
+rand_distr = "=0.4.3"
+sha2 = "0.10"
+anyhow = "1"
+
+[profile.release]
+opt-level = 3

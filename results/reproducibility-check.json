@@ -1,0 +1,11 @@
+﻿{
+    "dataset_byte_identical":  true,
+    "localization_csv_byte_identical":  true,
+    "dataset_sha256":  "cf3a2b5d9c7beabbdf877bcb637552ee6ba7d9c27c7743049f7710439a821617",
+    "localization_csv_sha256":  "2c1be23d8b12cd7f2cdc5238e612abc2c09e913f5917be324b3800701d42f88d",
+    "command":  "triad baseline",
+    "cache_parser":  "serde_json float_roundtrip",
+    "excludes":  "Variable inference runtime_us and generation runtime/memory",
+    "prior_failed_replay":  "cache-replay-before-roundtrip-summary.json",
+    "tested_host":  "Windows ARM64, x86_64 GNU Rust 1.99.0 execution"
+}

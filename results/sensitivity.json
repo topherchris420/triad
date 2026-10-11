@@ -1,0 +1,326 @@
+[
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.1657621763813356,
+    "x_m": -0.024,
+    "y_m": 0.008
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.10380849452288972,
+    "x_m": -0.024,
+    "y_m": 0.012
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.03745109506943322,
+    "x_m": -0.024,
+    "y_m": 0.016
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.016422461895629986,
+    "x_m": -0.024,
+    "y_m": 0.02
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.00830925027151702,
+    "x_m": -0.024,
+    "y_m": 0.024
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.005757873721914679,
+    "x_m": -0.024,
+    "y_m": 0.028
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.17098962710288892,
+    "x_m": -0.018,
+    "y_m": 0.008
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.10646067256886699,
+    "x_m": -0.018,
+    "y_m": 0.012
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.03839927435900372,
+    "x_m": -0.018,
+    "y_m": 0.016
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.016610260958301065,
+    "x_m": -0.018,
+    "y_m": 0.02
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.008366631704026515,
+    "x_m": -0.018,
+    "y_m": 0.024
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.005794098941376724,
+    "x_m": -0.018,
+    "y_m": 0.028
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.18396350902721587,
+    "x_m": -0.012,
+    "y_m": 0.008
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.11427637795036347,
+    "x_m": -0.012,
+    "y_m": 0.012
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.03918227080146404,
+    "x_m": -0.012,
+    "y_m": 0.016
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.016745380348108303,
+    "x_m": -0.012,
+    "y_m": 0.02
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.008423179160278037,
+    "x_m": -0.012,
+    "y_m": 0.024
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.005838687961080109,
+    "x_m": -0.012,
+    "y_m": 0.028
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.1828238373749469,
+    "x_m": -0.006,
+    "y_m": 0.008
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.1135458307146517,
+    "x_m": -0.006,
+    "y_m": 0.012
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.039062281096949994,
+    "x_m": -0.006,
+    "y_m": 0.016
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.016775211409180563,
+    "x_m": -0.006,
+    "y_m": 0.02
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.008450694495799977,
+    "x_m": -0.006,
+    "y_m": 0.024
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.00586005237756796,
+    "x_m": -0.006,
+    "y_m": 0.028
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.17283763502442936,
+    "x_m": 0.0,
+    "y_m": 0.008
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.10545755092510842,
+    "x_m": 0.0,
+    "y_m": 0.012
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.038016227054659804,
+    "x_m": 0.0,
+    "y_m": 0.016
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.016595448148055976,
+    "x_m": 0.0,
+    "y_m": 0.02
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.008414313253525336,
+    "x_m": 0.0,
+    "y_m": 0.024
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.005837442624923039,
+    "x_m": 0.0,
+    "y_m": 0.028
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.1828238373749306,
+    "x_m": 0.006,
+    "y_m": 0.008
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.11354583071464674,
+    "x_m": 0.006,
+    "y_m": 0.012
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.03906228109695703,
+    "x_m": 0.006,
+    "y_m": 0.016
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.016775211409177836,
+    "x_m": 0.006,
+    "y_m": 0.02
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.008450694495798966,
+    "x_m": 0.006,
+    "y_m": 0.024
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.005860052377570177,
+    "x_m": 0.006,
+    "y_m": 0.028
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.18396350902723224,
+    "x_m": 0.012,
+    "y_m": 0.008
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.11427637795036488,
+    "x_m": 0.012,
+    "y_m": 0.012
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.03918227080146114,
+    "x_m": 0.012,
+    "y_m": 0.016
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.016745380348110236,
+    "x_m": 0.012,
+    "y_m": 0.02
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.008423179160270279,
+    "x_m": 0.012,
+    "y_m": 0.024
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.005838687961071144,
+    "x_m": 0.012,
+    "y_m": 0.028
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.17098962710289647,
+    "x_m": 0.018,
+    "y_m": 0.008
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.106460672568868,
+    "x_m": 0.018,
+    "y_m": 0.012
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.03839927435900563,
+    "x_m": 0.018,
+    "y_m": 0.016
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.016610260958304614,
+    "x_m": 0.018,
+    "y_m": 0.02
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.008366631704023799,
+    "x_m": 0.018,
+    "y_m": 0.024
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.005794098941375473,
+    "x_m": 0.018,
+    "y_m": 0.028
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.16576217638133353,
+    "x_m": 0.024,
+    "y_m": 0.008
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.10380849452289309,
+    "x_m": 0.024,
+    "y_m": 0.012
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.03745109506943515,
+    "x_m": 0.024,
+    "y_m": 0.016
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.01642246189563181,
+    "x_m": 0.024,
+    "y_m": 0.02
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.00830925027151664,
+    "x_m": 0.024,
+    "y_m": 0.024
+  },
+  {
+    "er": 5.0,
+    "sensitivity_pf_per_m_per_mm": 0.005757873721908994,
+    "x_m": 0.024,
+    "y_m": 0.028
+  }
+]

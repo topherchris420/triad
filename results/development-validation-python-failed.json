@@ -1,0 +1,114 @@
+{
+  "benchmarks": {
+    "affine_max_error": 1.709743457922741e-14,
+    "layered_capacitance_pf_per_m": 26.56256343840202,
+    "layered_analytic_pf_per_m": 26.562563438400005,
+    "layered_relative_error": 7.593925488436071e-14
+  },
+  "mesh_probes": [
+    {
+      "state": [
+        0.0,
+        0.016,
+        5.0
+      ],
+      "total_1mm_to_half_relative": 0.017763600682223348,
+      "signal_1mm_to_half_relative": 0.05958491584218002,
+      "signal_half_to_quarter_relative": 0.04249655110836238,
+      "signal_1mm_to_half_noise_units": 3.897184564639271,
+      "signal_norm_pf_per_m": 0.18832231571443367
+    },
+    {
+      "state": [
+        -0.018,
+        0.008,
+        8.0
+      ],
+      "total_1mm_to_half_relative": 0.020168391441503813,
+      "signal_1mm_to_half_relative": 0.10239418950201565,
+      "signal_half_to_quarter_relative": 0.06903041041008369,
+      "signal_1mm_to_half_noise_units": 42.00004300101818,
+      "signal_norm_pf_per_m": 1.1513496963817558
+    },
+    {
+      "state": [
+        0.012,
+        0.028,
+        2.0
+      ],
+      "total_1mm_to_half_relative": 0.017607753455916687,
+      "signal_1mm_to_half_relative": 0.025166326964720962,
+      "signal_half_to_quarter_relative": 0.019885215039614258,
+      "signal_1mm_to_half_noise_units": 0.20669628594862638,
+      "signal_norm_pf_per_m": 0.024162377757517894
+    },
+    {
+      "state": [
+        0.024,
+        0.02,
+        6.5
+      ],
+      "total_1mm_to_half_relative": 0.017730484127696223,
+      "signal_1mm_to_half_relative": 0.05650627346570467,
+      "signal_half_to_quarter_relative": 0.04149420358842063,
+      "signal_1mm_to_half_noise_units": 2.4761433794339984,
+      "signal_norm_pf_per_m": 0.12624292071315465
+    }
+  ],
+  "checks": {
+    "mesh_total": true,
+    "mesh_signal": false,
+    "fine_mesh_signal": false,
+    "charge_conservation": true,
+    "reciprocity": true,
+    "reaction_energy": true,
+    "free_residual": true,
+    "domain_sensitivity": false,
+    "analytical_benchmarks": true,
+    "background_equality": true,
+    "physical_signs": true,
+    "positive_semidefinite": true,
+    "partition_of_unity": true,
+    "measurement_consistency": true
+  },
+  "config_sha256": "f91841df3c5b8558f5f0454f761f5fa72fd1a853ec29fdee2b4ef5ae1efefd2a",
+  "domain_probes": [
+    {
+      "state": [
+        0.0,
+        0.016,
+        5.0
+      ],
+      "relative_signal_change": 0.0954848993013751
+    },
+    {
+      "state": [
+        -0.018,
+        0.008,
+        8.0
+      ],
+      "relative_signal_change": 0.03207646667402022
+    },
+    {
+      "state": [
+        0.012,
+        0.028,
+        2.0
+      ],
+      "relative_signal_change": 0.22967814529275327
+    },
+    {
+      "state": [
+        0.024,
+        0.02,
+        6.5
+      ],
+      "relative_signal_change": 0.1502242209852647
+    }
+  ],
+  "maximum_charge_relative": 1.0740548127839013e-12,
+  "maximum_reciprocity_relative": 1.2326469658647018e-14,
+  "maximum_reaction_energy_relative": 9.57649666756582e-13,
+  "maximum_free_residual_relative": 5.1287416020152335e-14,
+  "passed": false
+}

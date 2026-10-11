@@ -1,0 +1,179 @@
+{
+  "audit_date": "2026-10-11",
+  "operation": "binary_session",
+  "arguments": {},
+  "record_type": "compact_projection_of_actual_MCP_result",
+  "projection_notice": "Only session identity and provider readiness are retained here; this is not target analysis Evidence.",
+  "open": false,
+  "analysis_provider_binding": null,
+  "analysis_activity": {
+    "status": "not_observed",
+    "providers": []
+  },
+  "server_identity": {
+    "package": {
+      "name": "rea-agents",
+      "version": "6.4.0",
+      "root_path": "C:\\Users\\chris\\AppData\\Roaming\\npm\\node_modules\\rea-agents",
+      "build_commit": null
+    },
+    "server": {
+      "name": "rea",
+      "version": "6.4.0",
+      "started_at": "2026-10-11T11:04:07.940Z",
+      "command_path": "C:\\Users\\chris\\AppData\\Roaming\\npm\\node_modules\\rea-agents\\scripts\\rea.mjs"
+    },
+    "negotiated_protocol_version": "2025-06-18",
+    "client": {
+      "name": "codex-mcp-client",
+      "version": "0.159.2"
+    },
+    "skill": {
+      "name": "reverse-engineer-anything",
+      "expected_version": "37"
+    },
+    "catalog": {
+      "counts": {
+        "cli_commands": 127,
+        "mcp_tools": 170,
+        "mcp_prompts": 6
+      },
+      "digests": {
+        "tools_sha256": "25802f6de8c14ba736dc61ff1cbc7c5cd738fd74426aa01338f2dd03e0911166",
+        "prompts_sha256": "5296f0301566cadaf89243e774512011f11045af36d48405f76a3ff9a8947ac2",
+        "combined_sha256": "85d80276ecacf937bf3e803b7a31748ae1a8286f556fa5cf734eef768cc7d72a"
+      }
+    }
+  },
+  "analysis_provider_candidates": [
+    {
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": null
+      },
+      "availability": {
+        "status": "unavailable",
+        "code": "not_configured",
+        "reason": "Set GHIDRA_INSTALL_DIR to an extracted Ghidra 12.1.x release directory.",
+        "diagnostics": {
+          "install_dir": null,
+          "analyze_headless_path": null,
+          "native_decompiler_path": null,
+          "application_properties_path": null,
+          "provider_version": null,
+          "java_command": "java.exe",
+          "java_home": null,
+          "java_version": null,
+          "platform": "win32",
+          "architecture": "arm64",
+          "checks": [
+            {
+              "name": "configuration",
+              "ok": false,
+              "code": "not_configured",
+              "detail": "GHIDRA_INSTALL_DIR is not set"
+            },
+            {
+              "name": "platform",
+              "ok": true,
+              "code": null,
+              "detail": "win32"
+            },
+            {
+              "name": "architecture",
+              "ok": false,
+              "code": "unsupported_host",
+              "detail": "arm64"
+            },
+            {
+              "name": "installation",
+              "ok": false,
+              "code": "executable_missing",
+              "detail": "Ghidra application properties unavailable"
+            },
+            {
+              "name": "version",
+              "ok": false,
+              "code": "version_unresolved",
+              "detail": "unknown"
+            },
+            {
+              "name": "headless",
+              "ok": false,
+              "code": "executable_missing",
+              "detail": "analyzeHeadless unavailable"
+            },
+            {
+              "name": "native_decompiler",
+              "ok": false,
+              "code": "executable_missing",
+              "detail": "Matching native decompiler for win32/arm64 was not found"
+            },
+            {
+              "name": "java",
+              "ok": false,
+              "code": "runtime_missing",
+              "detail": "java.exe"
+            }
+          ]
+        }
+      },
+      "target_support": {
+        "status": "unknown",
+        "code": null,
+        "reason": "No target is open.",
+        "diagnostics": {}
+      },
+      "selected": false
+    },
+    {
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": null
+      },
+      "availability": {
+        "status": "unavailable",
+        "code": "unsupported_host",
+        "reason": "Hopper integration is not supported on win32.",
+        "diagnostics": {
+          "launcher_path": "/Applications/Hopper Disassembler.app/Contents/MacOS/hopper",
+          "platform": "win32"
+        }
+      },
+      "target_support": {
+        "status": "unknown",
+        "code": null,
+        "reason": "No target is open.",
+        "diagnostics": {}
+      },
+      "selected": false
+    },
+    {
+      "provider": {
+        "id": "ida",
+        "name": "IDA Pro MCP adapter",
+        "version": "1"
+      },
+      "availability": {
+        "status": "unavailable",
+        "code": "not_configured",
+        "reason": "Set REA_IDA_MCP_CONFIG to an upstream IDA MCP JSON registration; see docs/ida-provider.md.",
+        "diagnostics": {
+          "configured": false,
+          "live_connection_probed": false
+        }
+      },
+      "target_support": {
+        "status": "unknown",
+        "code": null,
+        "reason": "No target is open.",
+        "diagnostics": {}
+      },
+      "selected": false
+    }
+  ],
+  "binary_analysis_performed": false,
+  "infineon_target_opened": false
+}

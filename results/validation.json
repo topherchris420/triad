@@ -1,0 +1,132 @@
+{
+  "benchmarks": {
+    "affine_max_error": 8.215650382226158e-15,
+    "layered_analytic_pf_per_m": 26.562563438399998,
+    "layered_capacitance_pf_per_m": 26.56256343840114,
+    "layered_relative_error": 4.285460875053104e-14
+  },
+  "checks": {
+    "analytical_benchmarks": true,
+    "background_equality": true,
+    "charge_conservation": true,
+    "domain_sensitivity": true,
+    "fine_mesh_signal": true,
+    "free_residual": true,
+    "measurement_consistency": true,
+    "mesh_signal": true,
+    "mesh_total": true,
+    "physical_signs": true,
+    "reaction_energy": true,
+    "reciprocity": true
+  },
+  "config_sha256": "dfa96dab7da944361ba8b9fe39b6f81a60df8e3511cb1e1f53c39292dbad10a1",
+  "domain_probes": [
+    {
+      "relative_signal_change": 0.05672415328455869,
+      "state": [
+        0.0,
+        0.016,
+        5.0
+      ]
+    },
+    {
+      "relative_signal_change": 0.017308226735391685,
+      "state": [
+        -0.018,
+        0.008,
+        8.0
+      ]
+    },
+    {
+      "relative_signal_change": 0.13233279028460257,
+      "state": [
+        0.012,
+        0.028,
+        2.0
+      ]
+    },
+    {
+      "relative_signal_change": 0.08989938007353808,
+      "state": [
+        0.024,
+        0.02,
+        6.5
+      ]
+    }
+  ],
+  "maximum_charge_relative": 1.3079748833791442e-12,
+  "maximum_free_residual_relative": 1.1847540959680662e-13,
+  "maximum_reaction_energy_relative": 1.9094528503360847e-12,
+  "maximum_reciprocity_relative": 2.2061898361278417e-14,
+  "mesh_probes": [
+    {
+      "nodes_1mm_half_quarter": [
+        5792,
+        18744,
+        65390
+      ],
+      "signal_1mm_to_half_noise_units": 1.3928173774996848,
+      "signal_1mm_to_half_relative": 0.023339236069140762,
+      "signal_half_to_quarter_relative": 0.011642439380810393,
+      "signal_norm_pf_per_m": 0.17700560654841332,
+      "state": [
+        0.0,
+        0.016,
+        5.0
+      ],
+      "total_1mm_to_half_relative": 0.018970468473214118
+    },
+    {
+      "nodes_1mm_half_quarter": [
+        5792,
+        18744,
+        65390
+      ],
+      "signal_1mm_to_half_noise_units": 14.469732454522456,
+      "signal_1mm_to_half_relative": 0.038511438485796363,
+      "signal_half_to_quarter_relative": 0.019234216123329484,
+      "signal_norm_pf_per_m": 1.105982518796537,
+      "state": [
+        -0.018,
+        0.008,
+        8.0
+      ],
+      "total_1mm_to_half_relative": 0.01956165548724713
+    },
+    {
+      "nodes_1mm_half_quarter": [
+        5792,
+        18744,
+        65390
+      ],
+      "signal_1mm_to_half_noise_units": 0.10048114229667454,
+      "signal_1mm_to_half_relative": 0.01432353044869407,
+      "signal_half_to_quarter_relative": 0.008083627791555909,
+      "signal_norm_pf_per_m": 0.0208846745047731,
+      "state": [
+        0.012,
+        0.028,
+        2.0
+      ],
+      "total_1mm_to_half_relative": 0.0189731525680434
+    },
+    {
+      "nodes_1mm_half_quarter": [
+        5792,
+        18744,
+        65390
+      ],
+      "signal_1mm_to_half_noise_units": 0.8838054821946248,
+      "signal_1mm_to_half_relative": 0.02346232594263907,
+      "signal_half_to_quarter_relative": 0.011553401071388372,
+      "signal_norm_pf_per_m": 0.1117515985572059,
+      "state": [
+        0.024,
+        0.02,
+        6.5
+      ],
+      "total_1mm_to_half_relative": 0.01894874473425293
+    }
+  ],
+  "passed": true
+}

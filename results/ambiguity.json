@@ -1,0 +1,3782 @@
+[
+  {
+    "state": [
+      -0.024,
+      0.008,
+      2.0
+    ],
+    "alternative": [
+      -0.018,
+      0.012,
+      8.0
+    ],
+    "distance_noise_units": 74.1144273527953,
+    "separation_mm": 7.21110255092798
+  },
+  {
+    "state": [
+      -0.024,
+      0.008,
+      3.5
+    ],
+    "alternative": [
+      -0.018,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 136.81945862842426,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.008,
+      5.0
+    ],
+    "alternative": [
+      -0.018,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 163.87591395232948,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.008,
+      6.5
+    ],
+    "alternative": [
+      -0.018,
+      0.008,
+      5.0
+    ],
+    "distance_noise_units": 178.55032988792934,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.008,
+      8.0
+    ],
+    "alternative": [
+      -0.018,
+      0.008,
+      6.5
+    ],
+    "distance_noise_units": 190.9928466078601,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.012,
+      2.0
+    ],
+    "alternative": [
+      -0.018,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 28.34967365325673,
+    "separation_mm": 7.21110255092798
+  },
+  {
+    "state": [
+      -0.024,
+      0.012,
+      3.5
+    ],
+    "alternative": [
+      -0.018,
+      0.012,
+      3.5
+    ],
+    "distance_noise_units": 48.523524549436985,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.012,
+      5.0
+    ],
+    "alternative": [
+      -0.018,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 58.552117093125254,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.012,
+      6.5
+    ],
+    "alternative": [
+      -0.018,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 63.33057273910674,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.012,
+      8.0
+    ],
+    "alternative": [
+      -0.018,
+      0.012,
+      6.5
+    ],
+    "distance_noise_units": 67.36209519167687,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.016,
+      2.0
+    ],
+    "alternative": [
+      -0.024,
+      0.024,
+      8.0
+    ],
+    "distance_noise_units": 11.072510076115996,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      -0.024,
+      0.016,
+      3.5
+    ],
+    "alternative": [
+      -0.018,
+      0.016,
+      3.5
+    ],
+    "distance_noise_units": 20.594714626963167,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.016,
+      5.0
+    ],
+    "alternative": [
+      -0.018,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 24.812391857724148,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.016,
+      6.5
+    ],
+    "alternative": [
+      -0.018,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 27.234618068498573,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.016,
+      8.0
+    ],
+    "alternative": [
+      -0.018,
+      0.016,
+      6.5
+    ],
+    "distance_noise_units": 28.74080171711923,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.02,
+      2.0
+    ],
+    "alternative": [
+      -0.024,
+      0.028,
+      8.0
+    ],
+    "distance_noise_units": 4.285611526031921,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      -0.024,
+      0.02,
+      3.5
+    ],
+    "alternative": [
+      -0.018,
+      0.02,
+      3.5
+    ],
+    "distance_noise_units": 10.089221375660253,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.02,
+      5.0
+    ],
+    "alternative": [
+      -0.018,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 12.146168897624081,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.02,
+      6.5
+    ],
+    "alternative": [
+      -0.018,
+      0.02,
+      6.5
+    ],
+    "distance_noise_units": 13.386726529443008,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.02,
+      8.0
+    ],
+    "alternative": [
+      -0.018,
+      0.02,
+      6.5
+    ],
+    "distance_noise_units": 14.169317282634017,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.024,
+      2.0
+    ],
+    "alternative": [
+      -0.018,
+      0.024,
+      2.0
+    ],
+    "distance_noise_units": 3.27715772441293,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.024,
+      3.5
+    ],
+    "alternative": [
+      -0.018,
+      0.024,
+      3.5
+    ],
+    "distance_noise_units": 5.492386590859478,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.024,
+      5.0
+    ],
+    "alternative": [
+      -0.018,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 6.609294331719048,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.024,
+      6.5
+    ],
+    "alternative": [
+      -0.018,
+      0.024,
+      6.5
+    ],
+    "distance_noise_units": 7.282443439378447,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.024,
+      8.0
+    ],
+    "alternative": [
+      -0.018,
+      0.024,
+      8.0
+    ],
+    "distance_noise_units": 7.732468543970057,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.028,
+      2.0
+    ],
+    "alternative": [
+      -0.018,
+      0.028,
+      2.0
+    ],
+    "distance_noise_units": 1.9348360309586052,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.028,
+      3.5
+    ],
+    "alternative": [
+      -0.018,
+      0.028,
+      3.5
+    ],
+    "distance_noise_units": 3.2410768320012466,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.028,
+      5.0
+    ],
+    "alternative": [
+      -0.018,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 3.8991797541989777,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.028,
+      6.5
+    ],
+    "alternative": [
+      -0.018,
+      0.028,
+      6.5
+    ],
+    "distance_noise_units": 4.2956510827820304,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.024,
+      0.028,
+      8.0
+    ],
+    "alternative": [
+      -0.024,
+      0.02,
+      2.0
+    ],
+    "distance_noise_units": 4.285611526031921,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      -0.018,
+      0.008,
+      2.0
+    ],
+    "alternative": [
+      -0.024,
+      0.008,
+      2.0
+    ],
+    "distance_noise_units": 80.47927441786818,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.008,
+      3.5
+    ],
+    "alternative": [
+      -0.024,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 136.81945862842426,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.008,
+      5.0
+    ],
+    "alternative": [
+      -0.024,
+      0.008,
+      5.0
+    ],
+    "distance_noise_units": 165.84563146757088,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.008,
+      6.5
+    ],
+    "alternative": [
+      -0.024,
+      0.008,
+      5.0
+    ],
+    "distance_noise_units": 180.09396577091238,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.008,
+      8.0
+    ],
+    "alternative": [
+      -0.024,
+      0.008,
+      6.5
+    ],
+    "distance_noise_units": 191.9064950985142,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.012,
+      2.0
+    ],
+    "alternative": [
+      -0.024,
+      0.012,
+      2.0
+    ],
+    "distance_noise_units": 28.795352789156382,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.012,
+      3.5
+    ],
+    "alternative": [
+      -0.024,
+      0.012,
+      3.5
+    ],
+    "distance_noise_units": 48.523524549436985,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.012,
+      5.0
+    ],
+    "alternative": [
+      -0.024,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 58.552117093125254,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.012,
+      6.5
+    ],
+    "alternative": [
+      -0.024,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 63.60298866020356,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.012,
+      8.0
+    ],
+    "alternative": [
+      -0.024,
+      0.012,
+      6.5
+    ],
+    "distance_noise_units": 67.52504449427732,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.016,
+      2.0
+    ],
+    "alternative": [
+      -0.024,
+      0.016,
+      2.0
+    ],
+    "distance_noise_units": 12.259219721584763,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.016,
+      3.5
+    ],
+    "alternative": [
+      -0.024,
+      0.016,
+      3.5
+    ],
+    "distance_noise_units": 20.594714626963167,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.016,
+      5.0
+    ],
+    "alternative": [
+      -0.024,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 24.812391857724148,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.016,
+      6.5
+    ],
+    "alternative": [
+      -0.024,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 26.885530351485496,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.016,
+      8.0
+    ],
+    "alternative": [
+      -0.024,
+      0.016,
+      6.5
+    ],
+    "distance_noise_units": 28.49706684010809,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.02,
+      2.0
+    ],
+    "alternative": [
+      -0.018,
+      0.028,
+      8.0
+    ],
+    "distance_noise_units": 4.882807581818178,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      -0.018,
+      0.02,
+      3.5
+    ],
+    "alternative": [
+      -0.024,
+      0.02,
+      3.5
+    ],
+    "distance_noise_units": 10.089221375660253,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.02,
+      5.0
+    ],
+    "alternative": [
+      -0.024,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 12.146168897624081,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.02,
+      6.5
+    ],
+    "alternative": [
+      -0.024,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 13.180737015271935,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.02,
+      8.0
+    ],
+    "alternative": [
+      -0.024,
+      0.02,
+      6.5
+    ],
+    "distance_noise_units": 13.927658995205359,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.024,
+      2.0
+    ],
+    "alternative": [
+      -0.024,
+      0.024,
+      2.0
+    ],
+    "distance_noise_units": 3.27715772441293,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.024,
+      3.5
+    ],
+    "alternative": [
+      -0.024,
+      0.024,
+      3.5
+    ],
+    "distance_noise_units": 5.492386590859478,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.024,
+      5.0
+    ],
+    "alternative": [
+      -0.024,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 6.609294331719048,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.024,
+      6.5
+    ],
+    "alternative": [
+      -0.024,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 7.172372644066087,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.024,
+      8.0
+    ],
+    "alternative": [
+      -0.024,
+      0.024,
+      6.5
+    ],
+    "distance_noise_units": 7.557567208040822,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.028,
+      2.0
+    ],
+    "alternative": [
+      -0.024,
+      0.028,
+      2.0
+    ],
+    "distance_noise_units": 1.9348360309586052,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.028,
+      3.5
+    ],
+    "alternative": [
+      -0.024,
+      0.028,
+      3.5
+    ],
+    "distance_noise_units": 3.2410768320012466,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.028,
+      5.0
+    ],
+    "alternative": [
+      -0.024,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 3.8991797541989777,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.028,
+      6.5
+    ],
+    "alternative": [
+      -0.024,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.205450195736884,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.018,
+      0.028,
+      8.0
+    ],
+    "alternative": [
+      -0.024,
+      0.028,
+      6.5
+    ],
+    "distance_noise_units": 4.427532303540827,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      -0.012,
+      0.008,
+      2.0
+    ],
+    "alternative": [
+      -0.006,
+      0.008,
+      2.0
+    ],
+    "distance_noise_units": 87.78352713224288,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.008,
+      3.5
+    ],
+    "alternative": [
+      -0.006,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 148.63616449122932,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.008,
+      5.0
+    ],
+    "alternative": [
+      -0.006,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 179.60680342712763,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.008,
+      6.5
+    ],
+    "alternative": [
+      -0.006,
+      0.008,
+      5.0
+    ],
+    "distance_noise_units": 194.59018141296582,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.008,
+      8.0
+    ],
+    "alternative": [
+      -0.006,
+      0.008,
+      6.5
+    ],
+    "distance_noise_units": 207.4580976089551,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.012,
+      2.0
+    ],
+    "alternative": [
+      -0.006,
+      0.012,
+      2.0
+    ],
+    "distance_noise_units": 30.130795448186383,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.012,
+      3.5
+    ],
+    "alternative": [
+      -0.006,
+      0.012,
+      3.5
+    ],
+    "distance_noise_units": 50.64297155261798,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.012,
+      5.0
+    ],
+    "alternative": [
+      -0.006,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 61.03014004392205,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.012,
+      6.5
+    ],
+    "alternative": [
+      -0.006,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 66.05071065572022,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.012,
+      8.0
+    ],
+    "alternative": [
+      -0.006,
+      0.012,
+      6.5
+    ],
+    "distance_noise_units": 70.20085675780213,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.016,
+      2.0
+    ],
+    "alternative": [
+      -0.006,
+      0.016,
+      2.0
+    ],
+    "distance_noise_units": 12.588478285857175,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.016,
+      3.5
+    ],
+    "alternative": [
+      -0.006,
+      0.016,
+      3.5
+    ],
+    "distance_noise_units": 21.09827286885281,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.016,
+      5.0
+    ],
+    "alternative": [
+      -0.006,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 25.389074944637475,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.016,
+      6.5
+    ],
+    "alternative": [
+      -0.006,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 27.62380654983945,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.016,
+      8.0
+    ],
+    "alternative": [
+      -0.006,
+      0.016,
+      6.5
+    ],
+    "distance_noise_units": 29.233099629591678,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.02,
+      2.0
+    ],
+    "alternative": [
+      -0.012,
+      0.028,
+      8.0
+    ],
+    "distance_noise_units": 5.364783950408964,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.02,
+      3.5
+    ],
+    "alternative": [
+      -0.006,
+      0.02,
+      3.5
+    ],
+    "distance_noise_units": 10.360609269811473,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.02,
+      5.0
+    ],
+    "alternative": [
+      -0.006,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 12.46265886228642,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.02,
+      6.5
+    ],
+    "alternative": [
+      -0.006,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 13.699258575604738,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.02,
+      8.0
+    ],
+    "alternative": [
+      -0.006,
+      0.02,
+      6.5
+    ],
+    "distance_noise_units": 14.417340154535347,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.024,
+      2.0
+    ],
+    "alternative": [
+      -0.006,
+      0.024,
+      2.0
+    ],
+    "distance_noise_units": 3.4404259571021023,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.024,
+      3.5
+    ],
+    "alternative": [
+      -0.006,
+      0.024,
+      3.5
+    ],
+    "distance_noise_units": 5.760543916265681,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.024,
+      5.0
+    ],
+    "alternative": [
+      -0.006,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 6.9286784881661365,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.024,
+      6.5
+    ],
+    "alternative": [
+      -0.006,
+      0.024,
+      6.5
+    ],
+    "distance_noise_units": 7.63216806896016,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.024,
+      8.0
+    ],
+    "alternative": [
+      -0.006,
+      0.024,
+      6.5
+    ],
+    "distance_noise_units": 8.070951271067054,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.028,
+      2.0
+    ],
+    "alternative": [
+      -0.006,
+      0.028,
+      2.0
+    ],
+    "distance_noise_units": 2.096255391600695,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.028,
+      3.5
+    ],
+    "alternative": [
+      -0.006,
+      0.028,
+      3.5
+    ],
+    "distance_noise_units": 3.5097603482769824,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.028,
+      5.0
+    ],
+    "alternative": [
+      -0.006,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.221386808573124,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.012,
+      0.028,
+      6.5
+    ],
+    "alternative": [
+      -0.018,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.600133374465174,
+    "separation_mm": 5.999999999999998
+  },
+  {
+    "state": [
+      -0.012,
+      0.028,
+      8.0
+    ],
+    "alternative": [
+      -0.018,
+      0.028,
+      6.5
+    ],
+    "distance_noise_units": 4.87074205000128,
+    "separation_mm": 5.999999999999998
+  },
+  {
+    "state": [
+      -0.006,
+      0.008,
+      2.0
+    ],
+    "alternative": [
+      -0.012,
+      0.008,
+      2.0
+    ],
+    "distance_noise_units": 87.78352713224288,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.008,
+      3.5
+    ],
+    "alternative": [
+      -0.012,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 148.63616449122932,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.008,
+      5.0
+    ],
+    "alternative": [
+      -0.012,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 178.15331304864714,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.008,
+      6.5
+    ],
+    "alternative": [
+      -0.012,
+      0.008,
+      5.0
+    ],
+    "distance_noise_units": 193.6909999012358,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.008,
+      8.0
+    ],
+    "alternative": [
+      -0.012,
+      0.008,
+      6.5
+    ],
+    "distance_noise_units": 206.861523588895,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.012,
+      2.0
+    ],
+    "alternative": [
+      -0.012,
+      0.012,
+      2.0
+    ],
+    "distance_noise_units": 30.130795448186383,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.012,
+      3.5
+    ],
+    "alternative": [
+      -0.012,
+      0.012,
+      3.5
+    ],
+    "distance_noise_units": 50.64297155261798,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.012,
+      5.0
+    ],
+    "alternative": [
+      -0.012,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 61.03014004392205,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.012,
+      6.5
+    ],
+    "alternative": [
+      -0.012,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 65.97708027094325,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.012,
+      8.0
+    ],
+    "alternative": [
+      -0.012,
+      0.012,
+      6.5
+    ],
+    "distance_noise_units": 70.15546955382263,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.016,
+      2.0
+    ],
+    "alternative": [
+      -0.012,
+      0.016,
+      2.0
+    ],
+    "distance_noise_units": 12.588478285857175,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.016,
+      3.5
+    ],
+    "alternative": [
+      -0.012,
+      0.016,
+      3.5
+    ],
+    "distance_noise_units": 21.09827286885281,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.016,
+      5.0
+    ],
+    "alternative": [
+      -0.012,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 25.389074944637475,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.016,
+      6.5
+    ],
+    "alternative": [
+      -0.012,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 27.621713818353175,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.016,
+      8.0
+    ],
+    "alternative": [
+      -0.012,
+      0.016,
+      6.5
+    ],
+    "distance_noise_units": 29.233142573984228,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.02,
+      2.0
+    ],
+    "alternative": [
+      -0.006,
+      0.028,
+      8.0
+    ],
+    "distance_noise_units": 5.6206767126582555,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.02,
+      3.5
+    ],
+    "alternative": [
+      -0.012,
+      0.02,
+      3.5
+    ],
+    "distance_noise_units": 10.360609269811473,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.02,
+      5.0
+    ],
+    "alternative": [
+      -0.012,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 12.46265886228642,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.02,
+      6.5
+    ],
+    "alternative": [
+      -0.012,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 13.601898230094012,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.02,
+      8.0
+    ],
+    "alternative": [
+      -0.012,
+      0.02,
+      6.5
+    ],
+    "distance_noise_units": 14.351066762697975,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.024,
+      2.0
+    ],
+    "alternative": [
+      -0.012,
+      0.024,
+      2.0
+    ],
+    "distance_noise_units": 3.4404259571021023,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.024,
+      3.5
+    ],
+    "alternative": [
+      -0.012,
+      0.024,
+      3.5
+    ],
+    "distance_noise_units": 5.760543916265681,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.024,
+      5.0
+    ],
+    "alternative": [
+      -0.012,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 6.9286784881661365,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.024,
+      6.5
+    ],
+    "alternative": [
+      -0.012,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 7.549370778461327,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.024,
+      8.0
+    ],
+    "alternative": [
+      -0.012,
+      0.024,
+      6.5
+    ],
+    "distance_noise_units": 7.957979654307464,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.028,
+      2.0
+    ],
+    "alternative": [
+      -0.012,
+      0.028,
+      2.0
+    ],
+    "distance_noise_units": 2.096255391600695,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.028,
+      3.5
+    ],
+    "alternative": [
+      -0.012,
+      0.028,
+      3.5
+    ],
+    "distance_noise_units": 3.5097603482769824,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.028,
+      5.0
+    ],
+    "alternative": [
+      -0.012,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.221386808573124,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.028,
+      6.5
+    ],
+    "alternative": [
+      -0.012,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.570462904950218,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      -0.006,
+      0.028,
+      8.0
+    ],
+    "alternative": [
+      -0.012,
+      0.028,
+      6.5
+    ],
+    "distance_noise_units": 4.823751300103263,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.008,
+      2.0
+    ],
+    "alternative": [
+      0.006,
+      0.012,
+      6.5
+    ],
+    "distance_noise_units": 94.09178092891021,
+    "separation_mm": 7.211102550927979
+  },
+  {
+    "state": [
+      0.0,
+      0.008,
+      3.5
+    ],
+    "alternative": [
+      0.006,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 168.07952212683085,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.008,
+      5.0
+    ],
+    "alternative": [
+      0.006,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 188.24883898300328,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.008,
+      6.5
+    ],
+    "alternative": [
+      0.006,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 210.16223185295308,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.008,
+      8.0
+    ],
+    "alternative": [
+      0.006,
+      0.008,
+      5.0
+    ],
+    "distance_noise_units": 222.45262504529148,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.012,
+      2.0
+    ],
+    "alternative": [
+      -0.006,
+      0.012,
+      2.0
+    ],
+    "distance_noise_units": 32.99755608827565,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.012,
+      3.5
+    ],
+    "alternative": [
+      -0.006,
+      0.012,
+      3.5
+    ],
+    "distance_noise_units": 55.58724752124264,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.012,
+      5.0
+    ],
+    "alternative": [
+      -0.006,
+      0.012,
+      3.5
+    ],
+    "distance_noise_units": 64.75554835160122,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.012,
+      6.5
+    ],
+    "alternative": [
+      -0.006,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 71.17440010666796,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.012,
+      8.0
+    ],
+    "alternative": [
+      -0.006,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 75.55865220130823,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.016,
+      2.0
+    ],
+    "alternative": [
+      0.006,
+      0.016,
+      2.0
+    ],
+    "distance_noise_units": 13.418585868737058,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.016,
+      3.5
+    ],
+    "alternative": [
+      0.006,
+      0.016,
+      3.5
+    ],
+    "distance_noise_units": 22.525905437088603,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.016,
+      5.0
+    ],
+    "alternative": [
+      0.006,
+      0.016,
+      3.5
+    ],
+    "distance_noise_units": 27.074896891091363,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.016,
+      6.5
+    ],
+    "alternative": [
+      0.006,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 29.130715939030402,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.016,
+      8.0
+    ],
+    "alternative": [
+      -0.006,
+      0.016,
+      6.5
+    ],
+    "distance_noise_units": 31.024741926532638,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.02,
+      2.0
+    ],
+    "alternative": [
+      0.0,
+      0.028,
+      8.0
+    ],
+    "distance_noise_units": 5.6091137684570205,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      0.0,
+      0.02,
+      3.5
+    ],
+    "alternative": [
+      0.006,
+      0.02,
+      3.5
+    ],
+    "distance_noise_units": 10.845970999254444,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.02,
+      5.0
+    ],
+    "alternative": [
+      0.006,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 13.05322887003452,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.02,
+      6.5
+    ],
+    "alternative": [
+      0.006,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 14.143211345194352,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.02,
+      8.0
+    ],
+    "alternative": [
+      0.006,
+      0.02,
+      6.5
+    ],
+    "distance_noise_units": 14.980070203324868,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.024,
+      2.0
+    ],
+    "alternative": [
+      -0.006,
+      0.024,
+      2.0
+    ],
+    "distance_noise_units": 3.546409634960124,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.024,
+      3.5
+    ],
+    "alternative": [
+      -0.006,
+      0.024,
+      3.5
+    ],
+    "distance_noise_units": 5.941095588850213,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.024,
+      5.0
+    ],
+    "alternative": [
+      -0.006,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 7.147716090606615,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.024,
+      6.5
+    ],
+    "alternative": [
+      -0.006,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 7.789037159260799,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.024,
+      8.0
+    ],
+    "alternative": [
+      -0.006,
+      0.024,
+      6.5
+    ],
+    "distance_noise_units": 8.21890079200833,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.028,
+      2.0
+    ],
+    "alternative": [
+      0.006,
+      0.028,
+      2.0
+    ],
+    "distance_noise_units": 2.137760637081136,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.028,
+      3.5
+    ],
+    "alternative": [
+      0.006,
+      0.028,
+      3.5
+    ],
+    "distance_noise_units": 3.58000573765669,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.028,
+      5.0
+    ],
+    "alternative": [
+      0.006,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.306330416566318,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.028,
+      6.5
+    ],
+    "alternative": [
+      0.006,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.703260876984241,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.0,
+      0.028,
+      8.0
+    ],
+    "alternative": [
+      0.006,
+      0.028,
+      6.5
+    ],
+    "distance_noise_units": 4.953262153698166,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.008,
+      2.0
+    ],
+    "alternative": [
+      0.012,
+      0.008,
+      2.0
+    ],
+    "distance_noise_units": 87.78352713224412,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.008,
+      3.5
+    ],
+    "alternative": [
+      0.012,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 148.63616449122307,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.008,
+      5.0
+    ],
+    "alternative": [
+      0.012,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 178.153313048637,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.008,
+      6.5
+    ],
+    "alternative": [
+      0.012,
+      0.008,
+      5.0
+    ],
+    "distance_noise_units": 193.6909999012317,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.008,
+      8.0
+    ],
+    "alternative": [
+      0.012,
+      0.008,
+      6.5
+    ],
+    "distance_noise_units": 206.86152358890007,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.012,
+      2.0
+    ],
+    "alternative": [
+      0.012,
+      0.012,
+      2.0
+    ],
+    "distance_noise_units": 30.13079544819068,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.012,
+      3.5
+    ],
+    "alternative": [
+      0.012,
+      0.012,
+      3.5
+    ],
+    "distance_noise_units": 50.642971552615215,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.012,
+      5.0
+    ],
+    "alternative": [
+      0.012,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 61.03014004391764,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.012,
+      6.5
+    ],
+    "alternative": [
+      0.012,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 65.97708027095126,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.012,
+      8.0
+    ],
+    "alternative": [
+      0.012,
+      0.012,
+      6.5
+    ],
+    "distance_noise_units": 70.15546955383154,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.016,
+      2.0
+    ],
+    "alternative": [
+      0.012,
+      0.016,
+      2.0
+    ],
+    "distance_noise_units": 12.588478285861843,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.016,
+      3.5
+    ],
+    "alternative": [
+      0.012,
+      0.016,
+      3.5
+    ],
+    "distance_noise_units": 21.09827286885865,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.016,
+      5.0
+    ],
+    "alternative": [
+      0.012,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 25.38907494463512,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.016,
+      6.5
+    ],
+    "alternative": [
+      0.012,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 27.62171381835088,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.016,
+      8.0
+    ],
+    "alternative": [
+      0.012,
+      0.016,
+      6.5
+    ],
+    "distance_noise_units": 29.23314257398596,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.02,
+      2.0
+    ],
+    "alternative": [
+      0.006,
+      0.028,
+      8.0
+    ],
+    "distance_noise_units": 5.620676712656878,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      0.006,
+      0.02,
+      3.5
+    ],
+    "alternative": [
+      0.012,
+      0.02,
+      3.5
+    ],
+    "distance_noise_units": 10.360609269810094,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.02,
+      5.0
+    ],
+    "alternative": [
+      0.012,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 12.462658862264238,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.02,
+      6.5
+    ],
+    "alternative": [
+      0.012,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 13.601898230081078,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.02,
+      8.0
+    ],
+    "alternative": [
+      0.012,
+      0.02,
+      6.5
+    ],
+    "distance_noise_units": 14.35106676268728,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.024,
+      2.0
+    ],
+    "alternative": [
+      0.012,
+      0.024,
+      2.0
+    ],
+    "distance_noise_units": 3.440425957119607,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.024,
+      3.5
+    ],
+    "alternative": [
+      0.012,
+      0.024,
+      3.5
+    ],
+    "distance_noise_units": 5.760543916285718,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.024,
+      5.0
+    ],
+    "alternative": [
+      0.012,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 6.928678488156918,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.024,
+      6.5
+    ],
+    "alternative": [
+      0.012,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 7.549370778470895,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.024,
+      8.0
+    ],
+    "alternative": [
+      0.012,
+      0.024,
+      6.5
+    ],
+    "distance_noise_units": 7.957979654315962,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.028,
+      2.0
+    ],
+    "alternative": [
+      0.012,
+      0.028,
+      2.0
+    ],
+    "distance_noise_units": 2.0962553916126327,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.028,
+      3.5
+    ],
+    "alternative": [
+      0.012,
+      0.028,
+      3.5
+    ],
+    "distance_noise_units": 3.5097603482774358,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.028,
+      5.0
+    ],
+    "alternative": [
+      0.012,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.221386808583248,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.028,
+      6.5
+    ],
+    "alternative": [
+      0.012,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.570462904949001,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.006,
+      0.028,
+      8.0
+    ],
+    "alternative": [
+      0.012,
+      0.028,
+      6.5
+    ],
+    "distance_noise_units": 4.8237513001196435,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.008,
+      2.0
+    ],
+    "alternative": [
+      0.006,
+      0.008,
+      2.0
+    ],
+    "distance_noise_units": 87.78352713224412,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.008,
+      3.5
+    ],
+    "alternative": [
+      0.006,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 148.63616449122307,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.008,
+      5.0
+    ],
+    "alternative": [
+      0.006,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 179.6068034271411,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.008,
+      6.5
+    ],
+    "alternative": [
+      0.006,
+      0.008,
+      5.0
+    ],
+    "distance_noise_units": 194.59018141296613,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.008,
+      8.0
+    ],
+    "alternative": [
+      0.006,
+      0.008,
+      6.5
+    ],
+    "distance_noise_units": 207.45809760895892,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.012,
+      2.0
+    ],
+    "alternative": [
+      0.006,
+      0.012,
+      2.0
+    ],
+    "distance_noise_units": 30.13079544819068,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.012,
+      3.5
+    ],
+    "alternative": [
+      0.006,
+      0.012,
+      3.5
+    ],
+    "distance_noise_units": 50.642971552615215,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.012,
+      5.0
+    ],
+    "alternative": [
+      0.006,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 61.03014004391764,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.012,
+      6.5
+    ],
+    "alternative": [
+      0.006,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 66.050710655712,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.012,
+      8.0
+    ],
+    "alternative": [
+      0.006,
+      0.012,
+      6.5
+    ],
+    "distance_noise_units": 70.20085675780082,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.016,
+      2.0
+    ],
+    "alternative": [
+      0.006,
+      0.016,
+      2.0
+    ],
+    "distance_noise_units": 12.588478285861843,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.016,
+      3.5
+    ],
+    "alternative": [
+      0.006,
+      0.016,
+      3.5
+    ],
+    "distance_noise_units": 21.09827286885865,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.016,
+      5.0
+    ],
+    "alternative": [
+      0.006,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 25.38907494463512,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.016,
+      6.5
+    ],
+    "alternative": [
+      0.006,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 27.62380654983808,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.016,
+      8.0
+    ],
+    "alternative": [
+      0.006,
+      0.016,
+      6.5
+    ],
+    "distance_noise_units": 29.233099629584235,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.02,
+      2.0
+    ],
+    "alternative": [
+      0.012,
+      0.028,
+      8.0
+    ],
+    "distance_noise_units": 5.3647839503972214,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      0.012,
+      0.02,
+      3.5
+    ],
+    "alternative": [
+      0.006,
+      0.02,
+      3.5
+    ],
+    "distance_noise_units": 10.360609269810094,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.02,
+      5.0
+    ],
+    "alternative": [
+      0.006,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 12.462658862264238,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.02,
+      6.5
+    ],
+    "alternative": [
+      0.006,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 13.699258575586631,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.02,
+      8.0
+    ],
+    "alternative": [
+      0.006,
+      0.02,
+      6.5
+    ],
+    "distance_noise_units": 14.41734015453833,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.024,
+      2.0
+    ],
+    "alternative": [
+      0.006,
+      0.024,
+      2.0
+    ],
+    "distance_noise_units": 3.440425957119607,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.024,
+      3.5
+    ],
+    "alternative": [
+      0.006,
+      0.024,
+      3.5
+    ],
+    "distance_noise_units": 5.760543916285718,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.024,
+      5.0
+    ],
+    "alternative": [
+      0.006,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 6.928678488156918,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.024,
+      6.5
+    ],
+    "alternative": [
+      0.006,
+      0.024,
+      6.5
+    ],
+    "distance_noise_units": 7.6321680689649565,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.024,
+      8.0
+    ],
+    "alternative": [
+      0.006,
+      0.024,
+      6.5
+    ],
+    "distance_noise_units": 8.070951271059958,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.028,
+      2.0
+    ],
+    "alternative": [
+      0.006,
+      0.028,
+      2.0
+    ],
+    "distance_noise_units": 2.0962553916126327,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.028,
+      3.5
+    ],
+    "alternative": [
+      0.006,
+      0.028,
+      3.5
+    ],
+    "distance_noise_units": 3.5097603482774358,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.028,
+      5.0
+    ],
+    "alternative": [
+      0.006,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.221386808583248,
+    "separation_mm": 6.0
+  },
+  {
+    "state": [
+      0.012,
+      0.028,
+      6.5
+    ],
+    "alternative": [
+      0.018,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.60013337445688,
+    "separation_mm": 5.999999999999998
+  },
+  {
+    "state": [
+      0.012,
+      0.028,
+      8.0
+    ],
+    "alternative": [
+      0.018,
+      0.028,
+      6.5
+    ],
+    "distance_noise_units": 4.8707420499888885,
+    "separation_mm": 5.999999999999998
+  },
+  {
+    "state": [
+      0.018,
+      0.008,
+      2.0
+    ],
+    "alternative": [
+      0.024,
+      0.008,
+      2.0
+    ],
+    "distance_noise_units": 80.47927441786166,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.008,
+      3.5
+    ],
+    "alternative": [
+      0.024,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 136.81945862843025,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.008,
+      5.0
+    ],
+    "alternative": [
+      0.024,
+      0.008,
+      5.0
+    ],
+    "distance_noise_units": 165.84563146756824,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.008,
+      6.5
+    ],
+    "alternative": [
+      0.024,
+      0.008,
+      5.0
+    ],
+    "distance_noise_units": 180.09396577091493,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.008,
+      8.0
+    ],
+    "alternative": [
+      0.024,
+      0.008,
+      6.5
+    ],
+    "distance_noise_units": 191.90649509850394,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.012,
+      2.0
+    ],
+    "alternative": [
+      0.024,
+      0.012,
+      2.0
+    ],
+    "distance_noise_units": 28.795352789159722,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.012,
+      3.5
+    ],
+    "alternative": [
+      0.024,
+      0.012,
+      3.5
+    ],
+    "distance_noise_units": 48.523524549437276,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.012,
+      5.0
+    ],
+    "alternative": [
+      0.024,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 58.55211709313402,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.012,
+      6.5
+    ],
+    "alternative": [
+      0.024,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 63.60298866020862,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.012,
+      8.0
+    ],
+    "alternative": [
+      0.024,
+      0.012,
+      6.5
+    ],
+    "distance_noise_units": 67.52504449427681,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.016,
+      2.0
+    ],
+    "alternative": [
+      0.024,
+      0.016,
+      2.0
+    ],
+    "distance_noise_units": 12.259219721593439,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.016,
+      3.5
+    ],
+    "alternative": [
+      0.024,
+      0.016,
+      3.5
+    ],
+    "distance_noise_units": 20.594714626964997,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.016,
+      5.0
+    ],
+    "alternative": [
+      0.024,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 24.8123918577074,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.016,
+      6.5
+    ],
+    "alternative": [
+      0.024,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 26.885530351490008,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.016,
+      8.0
+    ],
+    "alternative": [
+      0.024,
+      0.016,
+      6.5
+    ],
+    "distance_noise_units": 28.497066840104615,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.02,
+      2.0
+    ],
+    "alternative": [
+      0.018,
+      0.028,
+      8.0
+    ],
+    "distance_noise_units": 4.882807581820847,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      0.018,
+      0.02,
+      3.5
+    ],
+    "alternative": [
+      0.024,
+      0.02,
+      3.5
+    ],
+    "distance_noise_units": 10.089221375655997,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.02,
+      5.0
+    ],
+    "alternative": [
+      0.024,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 12.146168897624765,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.02,
+      6.5
+    ],
+    "alternative": [
+      0.024,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 13.180737015274927,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.02,
+      8.0
+    ],
+    "alternative": [
+      0.024,
+      0.02,
+      6.5
+    ],
+    "distance_noise_units": 13.927658995212175,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.024,
+      2.0
+    ],
+    "alternative": [
+      0.024,
+      0.024,
+      2.0
+    ],
+    "distance_noise_units": 3.2771577244141543,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.024,
+      3.5
+    ],
+    "alternative": [
+      0.024,
+      0.024,
+      3.5
+    ],
+    "distance_noise_units": 5.492386590841327,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.024,
+      5.0
+    ],
+    "alternative": [
+      0.024,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 6.609294331728663,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.024,
+      6.5
+    ],
+    "alternative": [
+      0.024,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 7.172372644068075,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.024,
+      8.0
+    ],
+    "alternative": [
+      0.024,
+      0.024,
+      6.5
+    ],
+    "distance_noise_units": 7.5575672080462954,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.028,
+      2.0
+    ],
+    "alternative": [
+      0.024,
+      0.028,
+      2.0
+    ],
+    "distance_noise_units": 1.9348360309663852,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.028,
+      3.5
+    ],
+    "alternative": [
+      0.024,
+      0.028,
+      3.5
+    ],
+    "distance_noise_units": 3.2410768320068897,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.028,
+      5.0
+    ],
+    "alternative": [
+      0.024,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 3.899179754208082,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.028,
+      6.5
+    ],
+    "alternative": [
+      0.024,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 4.205450195749928,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.018,
+      0.028,
+      8.0
+    ],
+    "alternative": [
+      0.024,
+      0.028,
+      6.5
+    ],
+    "distance_noise_units": 4.427532303538849,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.008,
+      2.0
+    ],
+    "alternative": [
+      0.018,
+      0.012,
+      8.0
+    ],
+    "distance_noise_units": 74.11442735279057,
+    "separation_mm": 7.21110255092798
+  },
+  {
+    "state": [
+      0.024,
+      0.008,
+      3.5
+    ],
+    "alternative": [
+      0.018,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 136.81945862843025,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.008,
+      5.0
+    ],
+    "alternative": [
+      0.018,
+      0.008,
+      3.5
+    ],
+    "distance_noise_units": 163.87591395233372,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.008,
+      6.5
+    ],
+    "alternative": [
+      0.018,
+      0.008,
+      5.0
+    ],
+    "distance_noise_units": 178.55032988790975,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.008,
+      8.0
+    ],
+    "alternative": [
+      0.018,
+      0.008,
+      6.5
+    ],
+    "distance_noise_units": 190.99284660786546,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.012,
+      2.0
+    ],
+    "alternative": [
+      0.018,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 28.349673653248846,
+    "separation_mm": 7.21110255092798
+  },
+  {
+    "state": [
+      0.024,
+      0.012,
+      3.5
+    ],
+    "alternative": [
+      0.018,
+      0.012,
+      3.5
+    ],
+    "distance_noise_units": 48.523524549437276,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.012,
+      5.0
+    ],
+    "alternative": [
+      0.018,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 58.55211709313402,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.012,
+      6.5
+    ],
+    "alternative": [
+      0.018,
+      0.012,
+      5.0
+    ],
+    "distance_noise_units": 63.33057273912363,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.012,
+      8.0
+    ],
+    "alternative": [
+      0.018,
+      0.012,
+      6.5
+    ],
+    "distance_noise_units": 67.36209519166962,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.016,
+      2.0
+    ],
+    "alternative": [
+      0.024,
+      0.024,
+      8.0
+    ],
+    "distance_noise_units": 11.072510076115769,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      0.024,
+      0.016,
+      3.5
+    ],
+    "alternative": [
+      0.018,
+      0.016,
+      3.5
+    ],
+    "distance_noise_units": 20.594714626964997,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.016,
+      5.0
+    ],
+    "alternative": [
+      0.018,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 24.8123918577074,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.016,
+      6.5
+    ],
+    "alternative": [
+      0.018,
+      0.016,
+      5.0
+    ],
+    "distance_noise_units": 27.234618068484963,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.016,
+      8.0
+    ],
+    "alternative": [
+      0.018,
+      0.016,
+      6.5
+    ],
+    "distance_noise_units": 28.74080171711716,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.02,
+      2.0
+    ],
+    "alternative": [
+      0.024,
+      0.028,
+      8.0
+    ],
+    "distance_noise_units": 4.285611526027037,
+    "separation_mm": 8.0
+  },
+  {
+    "state": [
+      0.024,
+      0.02,
+      3.5
+    ],
+    "alternative": [
+      0.018,
+      0.02,
+      3.5
+    ],
+    "distance_noise_units": 10.089221375655997,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.02,
+      5.0
+    ],
+    "alternative": [
+      0.018,
+      0.02,
+      5.0
+    ],
+    "distance_noise_units": 12.146168897624765,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.02,
+      6.5
+    ],
+    "alternative": [
+      0.018,
+      0.02,
+      6.5
+    ],
+    "distance_noise_units": 13.386726529447408,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.02,
+      8.0
+    ],
+    "alternative": [
+      0.018,
+      0.02,
+      6.5
+    ],
+    "distance_noise_units": 14.169317282636277,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.024,
+      2.0
+    ],
+    "alternative": [
+      0.018,
+      0.024,
+      2.0
+    ],
+    "distance_noise_units": 3.2771577244141543,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.024,
+      3.5
+    ],
+    "alternative": [
+      0.018,
+      0.024,
+      3.5
+    ],
+    "distance_noise_units": 5.492386590841327,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.024,
+      5.0
+    ],
+    "alternative": [
+      0.018,
+      0.024,
+      5.0
+    ],
+    "distance_noise_units": 6.609294331728663,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.024,
+      6.5
+    ],
+    "alternative": [
+      0.018,
+      0.024,
+      6.5
+    ],
+    "distance_noise_units": 7.282443439380507,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.024,
+      8.0
+    ],
+    "alternative": [
+      0.018,
+      0.024,
+      8.0
+    ],
+    "distance_noise_units": 7.732468543980066,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.028,
+      2.0
+    ],
+    "alternative": [
+      0.018,
+      0.028,
+      2.0
+    ],
+    "distance_noise_units": 1.9348360309663852,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.028,
+      3.5
+    ],
+    "alternative": [
+      0.018,
+      0.028,
+      3.5
+    ],
+    "distance_noise_units": 3.2410768320068897,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.028,
+      5.0
+    ],
+    "alternative": [
+      0.018,
+      0.028,
+      5.0
+    ],
+    "distance_noise_units": 3.899179754208082,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.028,
+      6.5
+    ],
+    "alternative": [
+      0.018,
+      0.028,
+      6.5
+    ],
+    "distance_noise_units": 4.295651082795065,
+    "separation_mm": 6.000000000000002
+  },
+  {
+    "state": [
+      0.024,
+      0.028,
+      8.0
+    ],
+    "alternative": [
+      0.024,
+      0.02,
+      2.0
+    ],
+    "distance_noise_units": 4.285611526027037,
+    "separation_mm": 8.0
+  }
+]

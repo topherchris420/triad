@@ -1458,25 +1458,31 @@ pub fn validate_report(report: &Value) -> Result<()> {
 }
 
 pub fn markdown(report: &Value) -> String {
-    let mut md = String::from("# Bike Sharing temporal benchmark\n\nExploratory; hours and days are dependent. See report.json for every count, curve, interval and day.\n\n| Model | Test MAE | Material-error rate | Selective coverage | Selective risk | Conformal 90% coverage | Primary delta (triad - std) | Decision |\n|---|---:|---:|---:|---:|---:|---:|---|\n");
+    let f = |v: &Value, digits: usize| match v.as_f64() {
+        Some(x) => format!("{x:.digits$}"),
+        None => "null".into(),
+    };
+    let mut md = String::from("# Bike Sharing temporal benchmark (Milestone 7)\n\nExploratory external-data evaluation; hours and days are dependent, not independent trials. Every count, curve, interval and test day is in report.json.\n\n| Model | Test MAE (bikes) | Material-error rate | Selective coverage | Selective risk | Conformal 90% coverage | Primary delta cost (TRIAD - std) | 97.5% interval (7-day blocks) | Decision |\n|---|---:|---:|---:|---:|---:|---:|---|---|\n");
     for r in report["models"].as_array().unwrap() {
         let op = &r["selective_generic"]["overall"]["operational"];
+        let p = &r["monitoring"]["primary"];
+        let iv = &p["comparison"]["bootstrap"][0]["intervals"][0]["interval"];
         md.push_str(&format!(
-            "| {} | {} | {} | {} | {} | {} | {} | {} |\n",
+            "| {} | {} | {} | {} | {} | {} | {} | [{}, {}] | {} |\n",
             r["model_id"].as_str().unwrap_or(""),
-            r["conventional"]["test"]["mae"],
-            r["conventional"]["test"]["material_error_rate"],
-            op["coverage"],
-            op["selective_error_risk"],
-            r["conformal"]["test"]["coverage"],
-            r["monitoring"]["primary"]["comparison"]["delta_mean_cost_a_minus_b"],
-            r["monitoring"]["primary"]["decision"]
-                .as_str()
-                .unwrap_or("")
+            f(&r["conventional"]["test"]["mae"], 2),
+            f(&r["conventional"]["test"]["material_error_rate"], 4),
+            f(&op["coverage"], 4),
+            f(&op["selective_error_risk"], 4),
+            f(&r["conformal"]["test"]["coverage"], 4),
+            f(&p["comparison"]["delta_mean_cost_a_minus_b"], 5),
+            f(&iv[0], 5),
+            f(&iv[1], 5),
+            p["decision"].as_str().unwrap_or("")
         ));
     }
     md.push_str(&format!(
-        "\nAdded predictive utility established (both models): {}.\nNull values mean insufficient information, never zero risk.\n",
+        "\nAdded predictive utility established for both models: {}.\nPositive delta means TRIAD's day-level decisions cost more than standard monitoring at the matched calibration budget. Null means insufficient information, never zero risk.\n",
         report["confirmatory"]["added_predictive_utility_established"]
     ));
     md

@@ -609,11 +609,10 @@ impl Evidence {
                     ensure!(d.is_finite() && *d >= 1.0, "design_effect must be >= 1");
                 }
             }
-            Evidence::OutcomeRecords { design_effect, .. } => {
-                if let Some(d) = design_effect {
-                    ensure!(d.is_finite() && *d >= 1.0, "design_effect must be >= 1");
-                }
-            }
+            Evidence::OutcomeRecords {
+                design_effect: Some(d),
+                ..
+            } => ensure!(d.is_finite() && *d >= 1.0, "design_effect must be >= 1"),
             Evidence::ShiftDiagnostic {
                 value, threshold, ..
             } => {
@@ -906,6 +905,16 @@ impl Rate {
         }
         let k = self.events?;
         if k > self.n || self.n <= 0.0 {
+            return None;
+        }
+        // Axiom A5: dependent or unknown units yield no i.i.d. bound in either direction.
+        if honour_dependence
+            && (self.dependence == Dependence::Unknown
+                || (matches!(
+                    self.dependence,
+                    Dependence::Temporal | Dependence::Clustered
+                ) && self.design_effect.is_none()))
+        {
             return None;
         }
         let d = if honour_dependence {

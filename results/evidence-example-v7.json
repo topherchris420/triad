@@ -1,0 +1,780 @@
+{
+  "report": {
+    "classification_counts": {
+      "contradicted": 1,
+      "insufficient_evidence": 3,
+      "not_applicable": 1,
+      "supported_within_scope": 5
+    },
+    "evaluator_source_sha256": "f886691b4aeb07b3d605464dd81bf472e5edbc8c198f1ab40154056893a41026",
+    "findings": [
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "realised-error-rate",
+        "claim_type": "metric_value",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "supplied",
+            "detail": "realised 0.09693513898788311 Equals claimed 0.0969 (tolerance 0.0001)",
+            "dimension": "numerical_validity",
+            "evidence": [
+              "ridge-test-errors"
+            ],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "realised_value"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "future-error-rate",
+        "claim_type": "metric_value",
+        "classification": "insufficient_evidence",
+        "reasons": [
+          {
+            "basis": "supplied",
+            "detail": "claimed conditions not evaluated: [\"2013\"]",
+            "dimension": "population_scope",
+            "evidence": [
+              "ridge-test-errors"
+            ],
+            "family": "scope",
+            "outcome": "insufficient",
+            "rule": "A4_scope"
+          },
+          {
+            "basis": "supplied",
+            "detail": "realised 0.09693513898788311 Equals claimed 0.0969 (tolerance 0.0001)",
+            "dimension": "numerical_validity",
+            "evidence": [
+              "ridge-test-errors"
+            ],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "realised_value"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "error-rate-bound",
+        "claim_type": "metric_bound",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "supplied",
+            "detail": "Clopper-Pearson, design effect 1.5146358780720062, effective n 1852.5904744655745: one-sided bounds [0.085837, 0.108990] versus 0.12 at 0.95",
+            "dimension": "statistical_sample",
+            "evidence": [
+              "ridge-test-errors"
+            ],
+            "family": "statistical",
+            "outcome": "support",
+            "rule": "bound"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "realised-coverage",
+        "claim_type": "metric_value",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "supplied",
+            "detail": "realised 0.879543834640057 Equals claimed 0.8795 (tolerance 0.0005)",
+            "dimension": "numerical_validity",
+            "evidence": [
+              "ridge-conformal-test"
+            ],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "realised_value"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "coverage-guarantee",
+        "claim_type": "coverage_guarantee",
+        "classification": "insufficient_evidence",
+        "reasons": [
+          {
+            "basis": "supplied",
+            "detail": "split-conformal marginal coverage holds under exchangeability of calibration and target",
+            "dimension": "calibration_applicability",
+            "evidence": [
+              "ridge-conformal-calibration"
+            ],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "conformal_marginal_guarantee"
+          },
+          {
+            "basis": "supplied",
+            "detail": "claimed conditions absent from calibration: [\"2012-09..2012-12 eligible hours\"]",
+            "dimension": "calibration_applicability",
+            "evidence": [
+              "ridge-conformal-calibration"
+            ],
+            "family": "calibration_applicability",
+            "outcome": "insufficient",
+            "rule": "calibration_conditions"
+          },
+          {
+            "basis": "supplied",
+            "detail": "calibration units are Temporal; exchangeability is not established",
+            "dimension": "temporal_dependence",
+            "evidence": [
+              "ridge-conformal-calibration"
+            ],
+            "family": "dependence",
+            "outcome": "insufficient",
+            "rule": "exchangeability"
+          },
+          {
+            "basis": "supplied",
+            "detail": "no usable interval or counts",
+            "dimension": "statistical_sample",
+            "evidence": [
+              "ridge-conformal-test"
+            ],
+            "family": "statistical",
+            "outcome": "note",
+            "rule": "realised_coverage"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "hourly-independence",
+        "claim_type": "independence",
+        "classification": "contradicted",
+        "reasons": [
+          {
+            "basis": "supplied",
+            "detail": "lag-1 autocorrelation 0.20465622182507878 versus band 0.036080 (n = 2951)",
+            "dimension": "temporal_dependence",
+            "evidence": [
+              "ridge-event-dependence"
+            ],
+            "family": "dependence",
+            "outcome": "contradict",
+            "rule": "lag1_band"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [
+          "analyst"
+        ],
+        "claim_id": "no-leakage",
+        "claim_type": "no_leakage",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "supplied",
+            "detail": "predictors available after the origin: []",
+            "dimension": "leakage",
+            "evidence": [
+              "timing"
+            ],
+            "family": "leakage_mechanics",
+            "outcome": "support",
+            "rule": "feature_availability"
+          },
+          {
+            "basis": "supplied",
+            "detail": "[]",
+            "dimension": "leakage",
+            "evidence": [
+              "partition"
+            ],
+            "family": "leakage_mechanics",
+            "outcome": "support",
+            "rule": "partition_integrity"
+          },
+          {
+            "basis": "supplied",
+            "detail": "predictor sets reconstructing the target exactly: []",
+            "dimension": "leakage",
+            "evidence": [
+              "construction"
+            ],
+            "family": "leakage_mechanics",
+            "outcome": "support",
+            "rule": "target_reconstruction"
+          },
+          {
+            "basis": "attested",
+            "detail": "attestation reported but not relied upon",
+            "dimension": "leakage",
+            "evidence": [
+              "analyst"
+            ],
+            "family": "attestation_policy",
+            "outcome": "note",
+            "rule": "A2_attestation"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "numerical",
+        "claim_type": "numerical_adequacy",
+        "classification": "not_applicable",
+        "reasons": [
+          {
+            "basis": "supplied",
+            "detail": "the described system has no numerical solver",
+            "dimension": "numerical_adequacy",
+            "evidence": [
+              "ridge-system"
+            ],
+            "family": "applicability",
+            "outcome": "not_applicable",
+            "rule": "has_numerical_component"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "protocol-provenance",
+        "claim_type": "provenance",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "computed",
+            "detail": "computed SHA-256 equals the recorded value (byte consistency only)",
+            "dimension": "provenance",
+            "evidence": [
+              "protocol-file"
+            ],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "hash_match"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "all-shifts",
+        "claim_type": "universal_reliability",
+        "classification": "insufficient_evidence",
+        "reasons": [
+          {
+            "basis": "none",
+            "detail": "universal quantification over unobserved distributions exceeds any finite evaluation",
+            "dimension": "population_scope",
+            "evidence": [],
+            "family": "universality",
+            "outcome": "insufficient",
+            "rule": "universal_scope"
+          }
+        ]
+      }
+    ],
+    "input": {
+      "assessment_id": "bike-sharing-v7-1-ridge-example",
+      "claims": [
+        {
+          "claimed_value": 0.0969,
+          "comparator": "equals",
+          "conditions": [
+            "2012-09..2012-12 eligible hours"
+          ],
+          "evidence": [
+            "ridge-test-errors"
+          ],
+          "id": "realised-error-rate",
+          "metric": "material_error_rate",
+          "population": "bike-sharing-v7-1 ridge test",
+          "statement": "9.69% of eligible autumn-2012 test hours had a material error (ridge).",
+          "tolerance": 0.0001,
+          "type": "metric_value"
+        },
+        {
+          "claimed_value": 0.0969,
+          "comparator": "equals",
+          "conditions": [
+            "2013"
+          ],
+          "evidence": [
+            "ridge-test-errors"
+          ],
+          "id": "future-error-rate",
+          "metric": "material_error_rate",
+          "population": "bike-sharing-v7-1 ridge test",
+          "statement": "The ridge model will have a 9.69% material-error rate in 2013.",
+          "tolerance": 0.0001,
+          "type": "metric_value"
+        },
+        {
+          "bound": 0.12,
+          "claimed_value": null,
+          "comparator": "at_most",
+          "conditions": [
+            "2012-09..2012-12 eligible hours"
+          ],
+          "confidence": 0.95,
+          "evidence": [
+            "ridge-test-errors"
+          ],
+          "id": "error-rate-bound",
+          "metric": "material_error_rate",
+          "population": "bike-sharing-v7-1 ridge test",
+          "statement": "The autumn-2012 material-error rate is at most 12% (95% confidence, design-effect adjusted).",
+          "tolerance": 0.0,
+          "type": "metric_bound"
+        },
+        {
+          "claimed_value": 0.8795,
+          "comparator": "equals",
+          "conditions": [
+            "2012-09..2012-12 eligible hours"
+          ],
+          "evidence": [
+            "ridge-conformal-test"
+          ],
+          "id": "realised-coverage",
+          "metric": "interval_coverage",
+          "population": "bike-sharing-v7-1 ridge test",
+          "statement": "Normalised conformal intervals covered 88.0% of autumn test hours.",
+          "tolerance": 0.0005,
+          "type": "metric_value"
+        },
+        {
+          "conditions": [
+            "2012-09..2012-12 eligible hours"
+          ],
+          "evidence": [
+            "ridge-conformal-calibration",
+            "ridge-conformal-test"
+          ],
+          "id": "coverage-guarantee",
+          "level": 0.9,
+          "population": "bike-sharing-v7-1 ridge test",
+          "statement": "The 90% conformal intervals are guaranteed to cover at least 90% of autumn test hours.",
+          "type": "coverage_guarantee"
+        },
+        {
+          "evidence": [
+            "ridge-event-dependence"
+          ],
+          "id": "hourly-independence",
+          "statement": "Hourly material-error indicators are serially independent.",
+          "type": "independence",
+          "unit": "hour"
+        },
+        {
+          "evidence": [
+            "timing",
+            "partition",
+            "construction",
+            "analyst"
+          ],
+          "id": "no-leakage",
+          "statement": "The forecasting pipeline is free of target leakage.",
+          "task": "forecast",
+          "type": "no_leakage"
+        },
+        {
+          "component": "bike ridge regression",
+          "evidence": [
+            "ridge-system"
+          ],
+          "id": "numerical",
+          "required_checks": [
+            "mesh",
+            "solver",
+            "interpolation"
+          ],
+          "statement": "The ridge model is numerically adequate (mesh, solver, interpolation).",
+          "type": "numerical_adequacy"
+        },
+        {
+          "artifact": "benchmarks/bike-sharing/protocol.json",
+          "authority_required": "repository_record",
+          "evidence": [
+            "protocol-file"
+          ],
+          "id": "protocol-provenance",
+          "statement": "benchmarks/bike-sharing/protocol.json is the protocol recorded in the manifest.",
+          "type": "provenance"
+        },
+        {
+          "confidence": 0.95,
+          "evidence": [
+            "ridge-test-errors"
+          ],
+          "id": "all-shifts",
+          "metric": "material_error_rate",
+          "reliability_bound": 0.25,
+          "statement": "The ridge model is reliable under all future distribution shifts.",
+          "type": "universal_reliability"
+        }
+      ],
+      "evidence": [
+        {
+          "conditions": [
+            "2012-09..2012-12 eligible hours"
+          ],
+          "dependence": "temporal",
+          "design_effect": 1.5146358780720062,
+          "events": 272,
+          "id": "ridge-test-errors",
+          "interval": null,
+          "kind": "metric_report",
+          "metric": "material_error_rate",
+          "n": 2806,
+          "population": "bike-sharing-v7-1 ridge test",
+          "source": "results/bike-sharing-v7/report.json models[ridge].conventional.test; design effect from calibration lag-1 autocorrelation 0.2047 (an assumption carried into the test period)",
+          "unit": "hour",
+          "value": null
+        },
+        {
+          "conditions": [
+            "2012-09..2012-12 eligible hours"
+          ],
+          "dependence": "temporal",
+          "design_effect": null,
+          "events": 2468,
+          "id": "ridge-conformal-test",
+          "interval": null,
+          "kind": "metric_report",
+          "metric": "interval_coverage",
+          "n": 2806,
+          "population": "bike-sharing-v7-1 ridge test",
+          "source": "results/bike-sharing-v7/report.json models[ridge].conformal.test",
+          "unit": "hour",
+          "value": null
+        },
+        {
+          "condition_counts": {
+            "2012-05..2012-08": 2952
+          },
+          "conditions": [
+            "2012-05..2012-08"
+          ],
+          "dependence": "temporal",
+          "id": "ridge-conformal-calibration",
+          "kind": "calibration",
+          "method": "normalised split conformal, alpha 0.10",
+          "n": 2952,
+          "population": "bike-sharing-v7-1 calibration hours",
+          "unit": "hour"
+        },
+        {
+          "id": "ridge-event-dependence",
+          "kind": "dependence_diagnostic",
+          "lag1_autocorrelation": 0.20465622182507878,
+          "n": 2951,
+          "unit": "hour"
+        },
+        {
+          "features": [
+            {
+              "available_offset_hours": 0.0,
+              "name": "local hour of T"
+            },
+            {
+              "available_offset_hours": 0.0,
+              "name": "workingday of T"
+            },
+            {
+              "available_offset_hours": 0.0,
+              "name": "holiday of T"
+            },
+            {
+              "available_offset_hours": 0.0,
+              "name": "weekday of T"
+            },
+            {
+              "available_offset_hours": 0.0,
+              "name": "day-of-year of T"
+            },
+            {
+              "available_offset_hours": 0.0,
+              "name": "cnt(T-1)"
+            },
+            {
+              "available_offset_hours": 0.0,
+              "name": "cnt(T-2)"
+            },
+            {
+              "available_offset_hours": 0.0,
+              "name": "cnt(T-3)"
+            },
+            {
+              "available_offset_hours": 0.0,
+              "name": "cnt(T-24)"
+            },
+            {
+              "available_offset_hours": 0.0,
+              "name": "cnt(T-168)"
+            }
+          ],
+          "id": "timing",
+          "kind": "feature_timing",
+          "origin": "end of elapsed hour T-1; target cnt at hour T"
+        },
+        {
+          "evaluation_split": "test",
+          "id": "partition",
+          "kind": "partition",
+          "ordering": "temporal",
+          "preprocessing_fit_splits": [
+            "training"
+          ],
+          "splits": [
+            {
+              "end": "2011-12-31",
+              "name": "training",
+              "start": "2011-01-01"
+            },
+            {
+              "end": "2012-04-30",
+              "name": "development",
+              "start": "2012-01-01"
+            },
+            {
+              "end": "2012-08-31",
+              "name": "calibration",
+              "start": "2012-05-01"
+            },
+            {
+              "end": "2012-12-31",
+              "name": "test",
+              "start": "2012-09-01"
+            }
+          ],
+          "training_split": "training"
+        },
+        {
+          "id": "construction",
+          "identities": [
+            {
+              "features": [
+                "casual(T)",
+                "registered(T)"
+              ],
+              "max_abs_residual": 0.0,
+              "relation": "sum",
+              "rows": 17379
+            }
+          ],
+          "kind": "target_construction",
+          "target": "cnt"
+        },
+        {
+          "component": "bike ridge regression",
+          "id": "ridge-system",
+          "kind": "system_description",
+          "numerical_solver": false
+        },
+        {
+          "authority": "repository_record",
+          "expected_sha256": "c4d491fade7debe334b092806bff7c180af49b370759048f56686d985d6bd1c2",
+          "id": "protocol-file",
+          "kind": "file_hash",
+          "path": "benchmarks/bike-sharing/protocol.json"
+        },
+        {
+          "attester": "example analyst",
+          "id": "analyst",
+          "kind": "attestation",
+          "statement": "The analyst believes the model is leakage-free.",
+          "value": true
+        }
+      ],
+      "schema_version": "triad-evidence-1"
+    },
+    "input_sha256": "da893317bd70211238d360e0affed2fae622ab5389cd39580a3fe48f6c018a2c",
+    "interpretation": "Rule-based, claim-relative classification. Supported within scope means every requirement for this claim type was met by computed or supplied structured evidence and nothing contradicted it; it is not proof that the claim is true. Supplied data and attestations are not verified against the world. A matching hash establishes byte consistency only.",
+    "schema_version": "triad-evidence-report-1",
+    "software_version": "0.1.0",
+    "standard_checks_baseline": [
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "realised-error-rate",
+        "claim_type": "metric_value",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "none",
+            "detail": "0.09693513898788311",
+            "dimension": "numerical_validity",
+            "evidence": [],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "standard_check"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "future-error-rate",
+        "claim_type": "metric_value",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "none",
+            "detail": "0.09693513898788311",
+            "dimension": "numerical_validity",
+            "evidence": [],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "standard_check"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "error-rate-bound",
+        "claim_type": "metric_bound",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "none",
+            "detail": "[0.087884, 0.106615] versus 0.12",
+            "dimension": "statistical_sample",
+            "evidence": [],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "standard_check"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "realised-coverage",
+        "claim_type": "metric_value",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "none",
+            "detail": "0.879543834640057",
+            "dimension": "numerical_validity",
+            "evidence": [],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "standard_check"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "coverage-guarantee",
+        "claim_type": "coverage_guarantee",
+        "classification": "contradicted",
+        "reasons": [
+          {
+            "basis": "none",
+            "detail": "calibration present",
+            "dimension": "calibration_applicability",
+            "evidence": [],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "standard_check"
+          },
+          {
+            "basis": "none",
+            "detail": "realised coverage below level",
+            "dimension": "statistical_sample",
+            "evidence": [],
+            "family": "evidence",
+            "outcome": "contradict",
+            "rule": "standard_check"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "hourly-independence",
+        "claim_type": "independence",
+        "classification": "insufficient_evidence",
+        "reasons": [
+          {
+            "basis": "none",
+            "detail": "checklist item not answered",
+            "dimension": "temporal_dependence",
+            "evidence": [],
+            "family": "evidence",
+            "outcome": "insufficient",
+            "rule": "standard_check"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "no-leakage",
+        "claim_type": "no_leakage",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "none",
+            "detail": "checklist attestation",
+            "dimension": "leakage",
+            "evidence": [],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "standard_check"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "numerical",
+        "claim_type": "numerical_adequacy",
+        "classification": "insufficient_evidence",
+        "reasons": [
+          {
+            "basis": "none",
+            "detail": "missing numerical checks",
+            "dimension": "missing_evidence",
+            "evidence": [],
+            "family": "evidence",
+            "outcome": "insufficient",
+            "rule": "standard_check"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "protocol-provenance",
+        "claim_type": "provenance",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "none",
+            "detail": "hash matches",
+            "dimension": "provenance",
+            "evidence": [],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "standard_check"
+          }
+        ]
+      },
+      {
+        "attestations_not_relied_upon": [],
+        "claim_id": "all-shifts",
+        "claim_type": "universal_reliability",
+        "classification": "supported_within_scope",
+        "reasons": [
+          {
+            "basis": "none",
+            "detail": "[0.087884, 0.106615] versus 0.25",
+            "dimension": "statistical_sample",
+            "evidence": [],
+            "family": "evidence",
+            "outcome": "support",
+            "rule": "standard_check"
+          }
+        ]
+      }
+    ]
+  }
+}

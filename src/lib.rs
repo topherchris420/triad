@@ -1,4 +1,6 @@
 //! Independent Rust research, Vers3Dynamics, PI Christopher Woodyard.
+pub mod abstention;
+pub mod capture;
 pub mod diagnostics;
 pub mod evaluation;
 pub mod experiment;

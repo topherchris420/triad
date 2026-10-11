@@ -19,7 +19,7 @@ jobs:
 
       - name: Download the original completed research artifact
         env:
-          GH_TOKEN: \${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh run download 38154107523 \
             --repo "$GITHUB_REPOSITORY" \

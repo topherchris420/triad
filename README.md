@@ -4,6 +4,107 @@
 
 **When should an intelligent system recognize that its evidence is insufficient?**
 
+[![Rust verification](https://github.com/topherchris420/triad/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/topherchris420/triad/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-0B5D63.svg)](LICENSE)
+
+TRIAD is an open Rust research instrument from Vers3Dynamics (PI Christopher
+Woodyard). It measures when a predictive system's answers can be trusted, and it
+tests whether making the evidence behind reliability claims explicit adds anything
+to established methods. **So far, it has not improved predictions.** That negative
+result is documented, reproducible, and the main finding.
+
+## Milestone 7 status (October 11, 2026)
+
+| Question | Result | Status |
+|---|---|---|
+| Do evidence-qualified trust decisions beat standard monitoring on real data? | **No.** On UCI Bike Sharing, TRIAD's day decisions cost slightly *more* than standard monitoring at a matched budget for both models (Δ = +0.0049 and +0.0062 per hour) | Negative; replicates Milestone 6 (OpenML Electricity) |
+| Does any day-level gate beat plain selective prediction? | **No**, at the primary abstention cost; gating helped only when abstaining was cheap | Negative |
+| Do explicit claim-relative rules catch unsupported reliability claims that standard checks miss? | 43/47 versus 20/47, with no false rejections, **on an author-constructed suite**; all four misleading-input cases fooled both | Engineering capability only; not independently validated |
+| Is TRIAD ready for the NIST AI Metrology Center? | Engineering ready; partly scientifically reviewable; **not** a compelling catalog candidate | **Further scientific validation required.** Nothing submitted |
+
+[Milestone 7 results](docs/metrology/milestone7-results.md) ·
+[Manuscript (Markdown)](docs/metrology/milestone7-manuscript.md) / [PDF](docs/metrology/milestone7-manuscript.pdf) ·
+[Evidence-sufficiency method](docs/metrology/evidence-sufficiency-method.md) ·
+[Research audit](docs/metrology/milestone7-research-audit.md) ·
+[Literature review](docs/metrology/milestone7-literature-review.md) ·
+[Reproduction package](docs/metrology/milestone7-reproduction.md) ·
+[NIST readiness](docs/metrology/nist-readiness.md)
+
+![Bike Sharing results: risk–coverage, reliability, conformal coverage, prospective day decisions, primary effect](results/milestone7-plots/bike-sharing.png)
+
+### Real-world validation summary
+
+| UCI Bike Sharing, 2,806 eligible test hours (Sep–Dec 2012) | Ridge | Gradient boosting |
+|---|---:|---:|
+| Test MAE (persistence baseline 83.1) | 32.8 bikes | 51.2 bikes |
+| Material-error rate, \|ŷ − y\| > max(25, 0.25y) | 9.7% | 21.0% |
+| Selective coverage / risk at calibrated 80% | 82.4% / 9.9% | 81.9% / 14.9% |
+| Normalised conformal 90% coverage | 88.0% | 90.0% (83–97% by month) |
+| Primary Δ cost, TRIAD − standard monitoring [97.5% interval] | +0.0049 [+0.0006, +0.0105] | +0.0062 [+0.0014, +0.0122] |
+| Pre-specified decision | evidence insufficient to establish a practical advantage | same |
+
+The protocol, the 64-case claim suite with ground truth, and the models were
+committed before any outcome was computed. An independent NumPy/SciPy
+implementation reproduces every number and classification (3,027 checks). Linux and
+Windows CI replay everything and retrain the models from the public archive. This
+is independent *code*; no unrelated investigator has replicated it yet.
+
+### Evidence-sufficiency architecture
+
+```mermaid
+flowchart LR
+    A[Frozen predictions + labels as they arrive] --> B[Established metrics:<br/>selective risk, calibration, conformal]
+    A --> C[Typed evidence:<br/>computed / supplied / attested]
+    D[Typed claim with scope] --> E{Explicit fail-closed rules}
+    C --> E
+    B --> C
+    E --> F[supported within scope]
+    E --> G[insufficient evidence]
+    E --> H[contradicted]
+    E --> I[not applicable]
+```
+
+Unknown evidence never passes. Attestations are reported but never relied upon. A
+matching hash shows byte consistency only. No confidence score is produced. The
+same evidence can support "coverage was 88% in autumn 2012" and fail to support
+"coverage will be 90% next year".
+
+### Implemented, measured, validated: kept separate
+
+- **Implemented and tested:** selective-risk evaluation (classification and
+  regression), conformal coverage, temporal benchmarks with DST-aware eligibility,
+  claim-relative evidence engine, standard-checks baseline, deterministic replay,
+  append-only artifacts.
+- **Measured on real data:** Electricity (Milestone 6) and Bike Sharing
+  (Milestone 7). Both show **no added predictive utility** from validity or
+  evidence qualification.
+- **Validated:** nothing beyond computational reproducibility. Claim-validity
+  detection was tested only on an author-constructed suite. Physical sensor
+  confidence remains unvalidated, with failed numerical gates.
+
+### Reproduce Milestone 7
+
+```sh
+python -m pip install -r benchmarks/bike-sharing/requirements.txt
+cargo run --release --locked -- metrology benchmark --input benchmarks/bike-sharing/manifest.json --output results/my-bike-sharing
+cargo run --release --locked -- metrology validate --input results/my-bike-sharing/report.json
+cargo run --release --locked -- metrology evidence-suite --input benchmarks/evidence-validation/suite.json --output results/my-evidence-suite
+cargo run --release --locked -- metrology evidence --help
+cargo run --release --locked -- metrology evidence --input examples/evidence-assessment.json --output results/my-evidence-assessment.json
+python scripts/verify-milestone7.py --bike results/my-bike-sharing/report.json --suite results/my-evidence-suite/report.json --evidence results/my-evidence-assessment.json
+```
+
+### Remaining scientific limitations
+
+One city and one autumn for the new benchmark. Conventional tolerance and
+abstention costs. Simple models. No weather inputs, so storms such as Hurricane
+Sandy cannot be anticipated. Dependent hours and days, analysed with block
+bootstraps that assume local stationarity. The claim suite is single-author.
+Supplied evidence is not verified against the world. There has been no user study,
+no unrelated-team replication, no peer review, and no NIST review.
+
+## Milestone 6: OpenML Electricity
+
 Milestone 6 evaluates two frozen models on real OpenML Electricity data. **No added
 warning utility was detected:** combined TRIAD warnings caught the same degraded
 windows as a simpler covariate warning and produced more false alarms. Gating
@@ -69,9 +170,6 @@ Existing output paths are never overwritten. The original Milestones 2–4 evide
 and negative findings remain visible below and are protected by SHA-256 tests.
 
 **When Physics-Informed Confidence Fails: Numerical Model Error in Sparse Capacitive Localization**
-
-[![Rust verification](https://github.com/topherchris420/triad/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/topherchris420/triad/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-0B5D63.svg)](LICENSE)
 
 [Portable research components](docs/portable-adoption.md) · [Start here](#start-with-the-evidence) · [Milestone 3 findings](docs/milestone3-results-2026-10-11.md) · [Milestone 4 findings](docs/milestone4-development-results-2026-10-11.md) · [Milestone 4 plan](docs/milestone4-plan.md) · [Original baseline](#baseline-results-the-system-is-accurate-in-some-places-and-fragile-in-others) · [Research code](#new-research-code-test-before-claiming) · [Evidence map](#evidence-map)
 

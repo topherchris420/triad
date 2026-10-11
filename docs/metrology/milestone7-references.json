@@ -1,0 +1,452 @@
+{
+ "note": "Every reference cited by the Milestone 7 documents. scripts/check-references.py resolves each DOI (DOI handle API, then Crossref/DataCite title) or URL. Entries without a DOI or URL are not machine-verifiable and are flagged as such.",
+ "references": [
+  {
+   "key": "chow1970",
+   "citation": "C. K. Chow. On optimum recognition error and reject tradeoff. IEEE Transactions on Information Theory 16(1):41-46, 1970.",
+   "doi": "10.1109/TIT.1970.1054406",
+   "url": null,
+   "expected_title_words": [
+    "optimum",
+    "recognition",
+    "error",
+    "reject",
+    "tradeoff"
+   ]
+  },
+  {
+   "key": "elyaniv2010",
+   "citation": "R. El-Yaniv and Y. Wiener. On the foundations of noise-free selective classification. Journal of Machine Learning Research 11:1605-1641, 2010.",
+   "doi": null,
+   "url": "https://www.jmlr.org/papers/volume11/el-yaniv10a/el-yaniv10a.pdf",
+   "expected_title_words": null
+  },
+  {
+   "key": "geifman2017",
+   "citation": "Y. Geifman and R. El-Yaniv. Selective classification for deep neural networks. NeurIPS 30, 2017.",
+   "doi": null,
+   "url": "https://papers.nips.cc/paper_files/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html",
+   "expected_title_words": [
+    "selective",
+    "classification",
+    "deep",
+    "neural",
+    "networks"
+   ]
+  },
+  {
+   "key": "brier1950",
+   "citation": "G. W. Brier. Verification of forecasts expressed in terms of probability. Monthly Weather Review 78(1):1-3, 1950.",
+   "doi": "10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2",
+   "url": null,
+   "expected_title_words": [
+    "verification",
+    "forecasts",
+    "probability"
+   ]
+  },
+  {
+   "key": "guo2017",
+   "citation": "C. Guo, G. Pleiss, Y. Sun and K. Q. Weinberger. On calibration of modern neural networks. ICML, PMLR 70:1321-1330, 2017.",
+   "doi": null,
+   "url": "https://proceedings.mlr.press/v70/guo17a.html",
+   "expected_title_words": [
+    "calibration",
+    "modern",
+    "neural",
+    "networks"
+   ]
+  },
+  {
+   "key": "vovk2005",
+   "citation": "V. Vovk, A. Gammerman and G. Shafer. Algorithmic Learning in a Random World. Springer, 2005.",
+   "doi": "10.1007/b106715",
+   "url": null,
+   "expected_title_words": [
+    "algorithmic",
+    "learning",
+    "random",
+    "world"
+   ]
+  },
+  {
+   "key": "papadopoulos2002",
+   "citation": "H. Papadopoulos, K. Proedrou, V. Vovk and A. Gammerman. Inductive confidence machines for regression. ECML 2002, LNCS 2430:345-356.",
+   "doi": "10.1007/3-540-36755-1_29",
+   "url": null,
+   "expected_title_words": [
+    "inductive",
+    "confidence",
+    "machines",
+    "regression"
+   ]
+  },
+  {
+   "key": "lei2018",
+   "citation": "J. Lei, M. G'Sell, A. Rinaldo, R. J. Tibshirani and L. Wasserman. Distribution-free predictive inference for regression. Journal of the American Statistical Association 113(523):1094-1111, 2018.",
+   "doi": "10.1080/01621459.2017.1307116",
+   "url": null,
+   "expected_title_words": [
+    "distribution-free",
+    "predictive",
+    "inference",
+    "regression"
+   ]
+  },
+  {
+   "key": "angelopoulos2023",
+   "citation": "A. N. Angelopoulos and S. Bates. Conformal prediction: a gentle introduction. Foundations and Trends in Machine Learning 16(4):494-591, 2023.",
+   "doi": "10.1561/2200000101",
+   "url": null,
+   "expected_title_words": [
+    "conformal",
+    "prediction",
+    "gentle",
+    "introduction"
+   ]
+  },
+  {
+   "key": "barber2023",
+   "citation": "R. F. Barber, E. J. Candes, A. Ramdas and R. J. Tibshirani. Conformal prediction beyond exchangeability. Annals of Statistics 51(2):816-845, 2023.",
+   "doi": "10.1214/23-AOS2276",
+   "url": null,
+   "expected_title_words": [
+    "conformal",
+    "prediction",
+    "beyond",
+    "exchangeability"
+   ]
+  },
+  {
+   "key": "gibbs2021",
+   "citation": "I. Gibbs and E. Candes. Adaptive conformal inference under distribution shift. NeurIPS 34, 2021. arXiv:2106.00170.",
+   "doi": null,
+   "url": "https://arxiv.org/abs/2106.00170",
+   "expected_title_words": [
+    "adaptive",
+    "conformal",
+    "inference",
+    "under",
+    "distribution",
+    "shift"
+   ]
+  },
+  {
+   "key": "angelopoulos2024",
+   "citation": "A. N. Angelopoulos, S. Bates, A. Fisch, L. Lei and T. Schuster. Conformal risk control. ICLR 2024. arXiv:2208.02814.",
+   "doi": null,
+   "url": "https://arxiv.org/abs/2208.02814",
+   "expected_title_words": [
+    "conformal",
+    "risk",
+    "control"
+   ]
+  },
+  {
+   "key": "quinonero2009",
+   "citation": "J. Quinonero-Candela, M. Sugiyama, A. Schwaighofer and N. D. Lawrence (eds.). Dataset Shift in Machine Learning. MIT Press, 2009.",
+   "doi": "10.7551/mitpress/9780262170055.001.0001",
+   "url": null,
+   "expected_title_words": [
+    "dataset",
+    "shift",
+    "machine",
+    "learning"
+   ]
+  },
+  {
+   "key": "lipton2018",
+   "citation": "Z. C. Lipton, Y.-X. Wang and A. J. Smola. Detecting and correcting for label shift with black box predictors. ICML, PMLR 80:3122-3130, 2018.",
+   "doi": null,
+   "url": "https://proceedings.mlr.press/v80/lipton18a.html",
+   "expected_title_words": [
+    "detecting",
+    "correcting",
+    "label",
+    "shift"
+   ]
+  },
+  {
+   "key": "rabanser2019",
+   "citation": "S. Rabanser, S. Gunnemann and Z. C. Lipton. Failing loudly: an empirical study of methods for detecting dataset shift. NeurIPS 32, 2019. arXiv:1810.11953.",
+   "doi": null,
+   "url": "https://arxiv.org/abs/1810.11953",
+   "expected_title_words": [
+    "failing",
+    "loudly",
+    "detecting",
+    "dataset",
+    "shift"
+   ]
+  },
+  {
+   "key": "massey1951",
+   "citation": "F. J. Massey. The Kolmogorov-Smirnov test for goodness of fit. Journal of the American Statistical Association 46(253):68-78, 1951.",
+   "doi": "10.1080/01621459.1951.10500769",
+   "url": null,
+   "expected_title_words": [
+    "kolmogorov-smirnov",
+    "test",
+    "goodness",
+    "fit"
+   ]
+  },
+  {
+   "key": "page1954",
+   "citation": "E. S. Page. Continuous inspection schemes. Biometrika 41(1-2):100-115, 1954.",
+   "doi": "10.1093/biomet/41.1-2.100",
+   "url": null,
+   "expected_title_words": [
+    "continuous",
+    "inspection",
+    "schemes"
+   ]
+  },
+  {
+   "key": "gama2004",
+   "citation": "J. Gama, P. Medas, G. Castillo and P. Rodrigues. Learning with drift detection. SBIA 2004, LNCS 3171:286-295.",
+   "doi": "10.1007/978-3-540-28645-5_29",
+   "url": null,
+   "expected_title_words": [
+    "learning",
+    "drift",
+    "detection"
+   ]
+  },
+  {
+   "key": "bifet2007",
+   "citation": "A. Bifet and R. Gavalda. Learning from time-changing data with adaptive windowing. SIAM International Conference on Data Mining, 2007.",
+   "doi": "10.1137/1.9781611972771.42",
+   "url": null,
+   "expected_title_words": [
+    "time-changing",
+    "data",
+    "adaptive",
+    "windowing"
+   ]
+  },
+  {
+   "key": "gama2014",
+   "citation": "J. Gama, I. Zliobaite, A. Bifet, M. Pechenizkiy and A. Bouchachia. A survey on concept drift adaptation. ACM Computing Surveys 46(4):44, 2014.",
+   "doi": "10.1145/2523813",
+   "url": null,
+   "expected_title_words": [
+    "survey",
+    "concept",
+    "drift",
+    "adaptation"
+   ]
+  },
+  {
+   "key": "clopper1934",
+   "citation": "C. J. Clopper and E. S. Pearson. The use of confidence or fiducial limits illustrated in the case of the binomial. Biometrika 26(4):404-413, 1934.",
+   "doi": "10.1093/biomet/26.4.404",
+   "url": null,
+   "expected_title_words": [
+    "confidence",
+    "fiducial",
+    "limits",
+    "binomial"
+   ]
+  },
+  {
+   "key": "hanley1983",
+   "citation": "J. A. Hanley and A. Lippman-Hand. If nothing goes wrong, is everything all right? Interpreting zero numerators. JAMA 249(13):1743-1745, 1983.",
+   "doi": "10.1001/jama.1983.03330370053031",
+   "url": null,
+   "expected_title_words": [
+    "nothing",
+    "goes",
+    "wrong",
+    "everything",
+    "all",
+    "right"
+   ]
+  },
+  {
+   "key": "bartlett1946",
+   "citation": "M. S. Bartlett. On the theoretical specification and sampling properties of autocorrelated time-series. Supplement to the Journal of the Royal Statistical Society 8(1):27-41, 1946.",
+   "doi": "10.2307/2983611",
+   "url": null,
+   "expected_title_words": [
+    "autocorrelated",
+    "time-series"
+   ]
+  },
+  {
+   "key": "kunsch1989",
+   "citation": "H. R. Kunsch. The jackknife and the bootstrap for general stationary observations. Annals of Statistics 17(3):1217-1241, 1989.",
+   "doi": "10.1214/aos/1176347265",
+   "url": null,
+   "expected_title_words": [
+    "jackknife",
+    "bootstrap",
+    "general",
+    "stationary",
+    "observations"
+   ]
+  },
+  {
+   "key": "politis1994",
+   "citation": "D. N. Politis and J. P. Romano. The stationary bootstrap. Journal of the American Statistical Association 89(428):1303-1313, 1994.",
+   "doi": "10.1080/01621459.1994.10476870",
+   "url": null,
+   "expected_title_words": [
+    "stationary",
+    "bootstrap"
+   ]
+  },
+  {
+   "key": "hyndman2006",
+   "citation": "R. J. Hyndman and A. B. Koehler. Another look at measures of forecast accuracy. International Journal of Forecasting 22(4):679-688, 2006.",
+   "doi": "10.1016/j.ijforecast.2006.03.001",
+   "url": null,
+   "expected_title_words": [
+    "another",
+    "look",
+    "measures",
+    "forecast",
+    "accuracy"
+   ]
+  },
+  {
+   "key": "kaufman2012",
+   "citation": "S. Kaufman, S. Rosset, C. Perlich and O. Stitelman. Leakage in data mining: formulation, detection, and avoidance. ACM Transactions on Knowledge Discovery from Data 6(4):15, 2012.",
+   "doi": "10.1145/2382577.2382579",
+   "url": null,
+   "expected_title_words": [
+    "leakage",
+    "data",
+    "mining"
+   ]
+  },
+  {
+   "key": "kapoor2023",
+   "citation": "S. Kapoor and A. Narayanan. Leakage and the reproducibility crisis in machine-learning-based science. Patterns 4(9):100804, 2023.",
+   "doi": "10.1016/j.patter.2023.100804",
+   "url": null,
+   "expected_title_words": [
+    "leakage",
+    "reproducibility",
+    "crisis"
+   ]
+  },
+  {
+   "key": "kapoor2024",
+   "citation": "S. Kapoor et al. REFORMS: consensus-based recommendations for machine-learning-based science. Science Advances 10(18):eadk3452, 2024.",
+   "doi": "10.1126/sciadv.adk3452",
+   "url": null,
+   "expected_title_words": [
+    "reforms",
+    "consensus-based",
+    "recommendations"
+   ]
+  },
+  {
+   "key": "collins2024",
+   "citation": "G. S. Collins et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. BMJ 385:e078378, 2024.",
+   "doi": "10.1136/bmj-2023-078378",
+   "url": null,
+   "expected_title_words": [
+    "tripod+ai",
+    "statement"
+   ]
+  },
+  {
+   "key": "mitchell2019",
+   "citation": "M. Mitchell et al. Model cards for model reporting. FAT* 2019:220-229.",
+   "doi": "10.1145/3287560.3287596",
+   "url": null,
+   "expected_title_words": [
+    "model",
+    "cards",
+    "model",
+    "reporting"
+   ]
+  },
+  {
+   "key": "gebru2021",
+   "citation": "T. Gebru et al. Datasheets for datasets. Communications of the ACM 64(12):86-92, 2021.",
+   "doi": "10.1145/3458723",
+   "url": null,
+   "expected_title_words": [
+    "datasheets",
+    "datasets"
+   ]
+  },
+  {
+   "key": "nist2023",
+   "citation": "National Institute of Standards and Technology. Artificial Intelligence Risk Management Framework (AI RMF 1.0). NIST AI 100-1, 2023.",
+   "doi": "10.6028/NIST.AI.100-1",
+   "url": null,
+   "expected_title_words": [
+    "artificial",
+    "intelligence",
+    "risk",
+    "management",
+    "framework"
+   ]
+  },
+  {
+   "key": "fips180",
+   "citation": "National Institute of Standards and Technology. Secure Hash Standard (SHS). FIPS PUB 180-4, 2015.",
+   "doi": "10.6028/NIST.FIPS.180-4",
+   "url": null,
+   "expected_title_words": [
+    "secure",
+    "hash",
+    "standard"
+   ]
+  },
+  {
+   "key": "jcgm2008",
+   "citation": "JCGM 100:2008. Evaluation of measurement data - Guide to the expression of uncertainty in measurement (GUM). BIPM, 2008.",
+   "doi": "10.59161/JCGM100-2008E",
+   "url": null,
+   "expected_title_words": null
+  },
+  {
+   "key": "kelly2004",
+   "citation": "T. Kelly and R. Weaver. The Goal Structuring Notation - a safety argument notation. Proceedings of the DSN 2004 Workshop on Assurance Cases, 2004.",
+   "doi": null,
+   "url": null,
+   "expected_title_words": null
+  },
+  {
+   "key": "pedregosa2011",
+   "citation": "F. Pedregosa et al. Scikit-learn: machine learning in Python. Journal of Machine Learning Research 12:2825-2830, 2011.",
+   "doi": null,
+   "url": "https://www.jmlr.org/papers/v12/pedregosa11a.html",
+   "expected_title_words": [
+    "scikit-learn",
+    "machine",
+    "learning",
+    "python"
+   ]
+  },
+  {
+   "key": "fanaee2014",
+   "citation": "H. Fanaee-T and J. Gama. Event labeling combining ensemble detectors and background knowledge. Progress in Artificial Intelligence 2(2-3):113-127, 2014 (online 2013).",
+   "doi": "10.1007/s13748-013-0040-3",
+   "url": null,
+   "expected_title_words": [
+    "event",
+    "labeling",
+    "ensemble",
+    "detectors",
+    "background",
+    "knowledge"
+   ]
+  },
+  {
+   "key": "uci275",
+   "citation": "H. Fanaee-T. Bike Sharing [Dataset]. UCI Machine Learning Repository, 2013.",
+   "doi": "10.24432/C5W894",
+   "url": null,
+   "expected_title_words": [
+    "bike",
+    "sharing"
+   ]
+  }
+ ]
+}

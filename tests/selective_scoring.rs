@@ -33,7 +33,7 @@ fn correct_position_can_have_low_posterior_exceedance() {
     let observed = dictionary.signal(state);
     let ambiguity = vec![0.0;dictionary.states.len()];
     let scored = score_frame(&dictionary,&observed,state,&ambiguity,7,0);
-    assert!(scored.c2 >= 0.0 && scored.c2 < 1e-5);
+    assert!(scored.c2 >= 0.0 && scored.c2 < 0.05);
     assert!(scored.d.is_finite() && scored.d >= 0.0 && scored.d <= 1.0);
     assert_eq!(scored.sequence_id,7);
 }

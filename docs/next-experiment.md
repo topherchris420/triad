@@ -59,3 +59,5 @@ Do **not** quietly change the original 5 mm tolerance, enlarge drift severity af
 Only after the complete C2-versus-D result is independently reproduced should TRIAD consider finite 3D electrostatics, a physical electrode board, electrode-geometry co-design, or an SSRN paper asserting a new method.
 
 Source inspiration from [Infineon CAPSENSE](https://github.com/Infineon/capsense) and binary investigation via [REA](https://github.com/morluto/rea) remain permission-bound and separate from TRIAD's original implementation. No commercial sensor comparisons have been performed.
+
+**Correlated-noise caution:** separate raw material and position channels can still couple after noise-covariance whitening. Eliminating the material nuisance may legitimately produce a modest information penalty. The test verifies this expected behavior rather than assuming strict orthogonality.

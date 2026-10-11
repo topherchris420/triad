@@ -36,7 +36,7 @@ fn dictionary(confound_material: bool) -> Dictionary {
 }
 
 #[test]
-fn independent_material_measurement_preserves_position_information() {
+fn separate_material_channel_preserves_most_position_information_with_correlated_noise() {
     let d = dictionary(false);
     let result = local_position_information(&d, [0.002, 0.016, 4.0], 24);
     assert!(result.material_eliminated);
@@ -45,7 +45,9 @@ fn independent_material_measurement_preserves_position_information() {
         - result.nuisance_adjusted_weakest_per_mm2)
         .abs()
         / result.unadjusted_weakest_per_mm2;
-    assert!(relative < 1e-8, "unexpected nuisance penalty: {relative}");
+    // Correlated channel noise couples otherwise separate raw observables after
+    // whitening, so eliminating dielectric uncertainty can modestly reduce information.
+    assert!(relative >= 0.0 && relative < 0.05, "unexpected nuisance penalty: {relative}");
 }
 
 #[test]

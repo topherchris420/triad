@@ -2,6 +2,13 @@
 
 **Status: mechanically checkable prototype draft, not a NIST submission and not an independently validated methodology.**
 
+Milestone 6 now supplies an executed external-data benchmark with independent
+metric calculations. **It did not demonstrate added warning utility.** Combined
+TRIAD warnings added no true degraded-window detections over covariate-only
+warnings and increased false alarms. An identical simple warning gate produces
+identical decisions. Read the [full real-world results](milestone6-real-world-results.md).
+Distinctive scientific utility and unrelated-team replication remain unresolved.
+
 Prepared October 11, 2026. The proposed contribution is **validity-qualified selective error risk at calibrated coverage**, not the invention of selective prediction or proof of physics-informed superiority. The correct comparison is established risk-coverage evaluation plus clearly separated applicability and numerical-evidence reporting. Reviewers should decide whether that integration is useful and sufficiently distinct.
 
 ## Official requirements and reproducible format check
@@ -36,7 +43,7 @@ The [schema validation record](nist-schema-validation.json) indicates what has a
 - [x] Relevant published selective prediction and calibration references identified.
 - [x] Merged repository contains a working Rust evaluator and demonstration fixtures.
 - [ ] Clean CI on the current master commit and separately confirmed links.
-- [ ] Fresh official-schema and NIST native validation before submission.
+- [x] Fresh official-schema and local NIST native validation for the M6 draft (repeat before any future submission).
 
 ## Scientific and review readiness
 
@@ -44,7 +51,8 @@ The [schema validation record](nist-schema-validation.json) indicates what has a
 - [x] Known failure modes include false confidence under shift, dependence, missing truth and numerical inadequacy.
 - [x] Negative Milestone 3 and 4 physics outcomes remain intact.
 - [ ] Independent analysis of overlap with the current NIST catalog, and a concrete argument for added value relative to existing risk-coverage tools.
-- [ ] Independent real-world or externally collected-model benchmark and reproduction by a separate researcher.
+- [x] External real-world OpenML Electricity benchmark with two frozen models and independent NumPy computational checks.
+- [ ] Reproduction and scientific assessment by a separate researcher.
 - [ ] Scientifically justified use case and interpretation; uncertainty assumptions checked with the intended sampling population.
 - [ ] Numerical adequacy and physical validation if claims about sensor-based confidence are pursued.
 - [ ] Prospective adequately powered C2-versus-D confirmatory study **if** claiming superiority; no such study is required merely to describe a standard metric, but no physical superiority claim may be made without it.
@@ -55,3 +63,32 @@ The [schema validation record](nist-schema-validation.json) indicates what has a
 Submit **one measurement method**, not an umbrella claim about trustworthy AI. The draft concerns evaluation of fixed predictors using labeled scores. It can report limitations of sensor-derived predictions, but it does not measure numerical adequacy automatically or certify devices. The NIST schema is a mechanical check; independent replication, distinctiveness and scientific quality remain open.
 
 **No submission to NIST has been made.** Catalog inclusion, if it occurs in the future, does not imply endorsement, validation or fitness for a particular application.
+
+## October 11, 2026 requirements and overlap review
+
+The authoritative submissions repository was freshly fetched at
+`7f0609217621aa905973ad0cc03f5e6a8c97e345`. Its v1 schema remains semantically and
+LF-normalized byte-identical to the vendored schema (SHA-256
+`f815015db4489f4c1a5de5d8f3b5a9913eeef1a8e65d2f36e8614be2ccd2da7c`).
+Schema validation and the official local inspection procedure are recorded in
+[the M6 format-check record](nist-schema-validation-v6.json). These checks only
+evaluate submission format, not scientific acceptance.
+
+The current [reviewer standards](https://airc.nist.gov/metrology/how-to-submit/what-reviewers-look-for/)
+require metric-specific references, a usable merged implementation, accurate
+metadata, practical interpretation and value beyond the catalog. Human review of
+the evidence remains essential. The [catalog](https://airc.nist.gov/metrology/)
+already includes Refusal Rate (fraction of refused prompts) and Test Fairness
+(Well-Calibration, group-conditional positive-label probabilities), alongside
+standard accuracy methods. These overlap in abstention/calibration concepts but
+have different operational scopes. Established selective-prediction literature
+already defines risk-coverage; TRIAD does not claim its invention. The candidate
+contribution is an auditable evidence qualification workflow. M6 supports its
+implementation and disclosure function, **not added predictive utility or
+catalog-level novelty**. This is an internal comparison, not an independent
+expert novelty review.
+
+The public contact remains `ciao_chris@proton.me`. All changes remain a local
+repository draft. No NIST-facing pull request or other submission is authorized
+by the project's ordinary GitHub publication. A separate human scientific review
+and explicit submission decision are required.

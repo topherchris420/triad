@@ -77,7 +77,7 @@ jobs:
           cp work/m8/batch/classifications.json work/m8/
           python -m pytest -q benchmarks/evidence-outcomes/comparators/test_m8_comparators.py
           python benchmarks/evidence-outcomes/comparators/m8_comparators.py --input work/m8/cases.json --output work/m8/comparators.json
-          cmp work/m8/comparators.json results/evidence-outcomes-v8/comparators.json
+          python -c "import json; a, b = (json.load(open(p, encoding='utf-8')) for p in ('work/m8/comparators.json', 'results/evidence-outcomes-v8/comparators.json')); assert a == b, 'comparator replay differs'"
           python scripts/m8-score.py --truth work/m8/truth.json --triad work/m8/classifications.json --comparators work/m8/comparators.json --output work/m8/score
           cmp work/m8/score/report.json results/evidence-outcomes-v8/score/report.json
           python scripts/m8-generate.py --cache work/m8-cache --output work/m8-regenerated

@@ -1,0 +1,86 @@
+{
+  "version": "bike-sharing-v7-1",
+  "status": "Frozen before fitting any model, before computing any prediction, and before reading any 2012 target value. Exploratory local prespecification committed to Git; not third-party registration.",
+  "investigator": "Christopher Woodyard, Vers3Dynamics",
+  "dataset": {
+    "uci_id": 275,
+    "doi": "10.24432/C5W894",
+    "archive_url": "https://archive.ics.uci.edu/static/public/275/bike+sharing+dataset.zip",
+    "archive_sha256_observed_2026_10_11": "b70182d0d0508e9abbb79306ce5c0cec34869000f8220175ac83d11dbe845401",
+    "hour_csv_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+    "license": "CC BY 4.0 as stated on the UCI dataset page",
+    "citation": "Fanaee-T, H. (2013). Bike Sharing [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5W894",
+    "integrity_rule": "Refuse any hour.csv whose SHA-256 differs; a different archive byte stream is reported but accepted only if hour.csv matches."
+  },
+  "time_axis": {
+    "labels": "dteday and hr are America/New_York wall-clock labels.",
+    "elapsed": "Each label maps to elapsed hours since 2011-01-01 00:00 EST under IANA America/New_York rules; ambiguous fall-back 01:00 maps to the first (EDT) occurrence.",
+    "lags": "All lags are elapsed-hour differences, never row-adjacency.",
+    "daily_unit": "Local calendar date of the target hour."
+  },
+  "task": {
+    "target": "cnt at target hour T (total rentals).",
+    "origin": "Prediction made at elapsed hour T-1 after cnt(T-1) is observed: one-hour-ahead.",
+    "excluded_predictors": ["casual and registered (they sum exactly to cnt)", "weathersit, temp, atemp, hum, windspeed (observed weather; real-time availability unverified and contemporaneous values unavailable at the origin)", "season, yr, mnth, instant (redundant or trend identifiers; yr is constant in training)"],
+    "known_ahead_calendar_features_of_T": ["local hour", "workingday", "holiday", "weekday", "day-of-year sine and cosine with period 365.25 days"],
+    "history_features": ["log1p cnt at elapsed T-1, T-2, T-3, T-24, T-168"],
+    "eligibility": "Target T is eligible iff elapsed hours T, T-1, T-2, T-3, T-24 and T-168 are all present in hour.csv. Ineligible targets are counted by reason; nothing is imputed and absent hours are never treated as zero demand."
+  },
+  "partitions_by_local_date_of_T_inclusive": {
+    "training": ["2011-01-01", "2011-12-31"],
+    "development": ["2012-01-01", "2012-04-30"],
+    "calibration": ["2012-05-01", "2012-08-31"],
+    "test": ["2012-09-01", "2012-12-31"],
+    "rules": "Models and feature scalers fit on eligible training targets only. The error-scale and error-probability models fit on development residuals only. Thresholds, conformal quantiles and calibrated alert thresholds use calibration (and, for score normalisation, development) only. Earlier periods may supply lagged features to later periods; no later observation ever supplies an earlier feature. Test labels never enter any fitted quantity, threshold or warning."
+  },
+  "models": {
+    "ridge": {"library": "scikit-learn Ridge", "alpha": 1.0, "solver": "cholesky", "target": "log1p(cnt)", "encoding": "standardised one-hot(local hour) x workingday (48 columns), holiday, one-hot weekday (7), day-of-year sine/cosine, five log1p history features; scaler fit on training"},
+    "hgb": {"library": "scikit-learn HistGradientBoostingRegressor", "loss": "squared_error", "target": "log1p(cnt)", "max_iter": 300, "learning_rate": 0.05, "max_leaf_nodes": 31, "min_samples_leaf": 20, "l2_regularization": 0.0, "max_bins": 255, "early_stopping": false, "random_state": 71002, "encoding": "local hour, workingday, holiday, weekday, day-of-year sine/cosine, five log1p history features", "threads": "OMP_NUM_THREADS=1 for platform-stable summation"},
+    "prediction": "max(0, expm1(f(x))) bikes",
+    "selection": "No hyperparameter search. Both models use identical partitions and the identical information set; encodings differ by model class."
+  },
+  "uncertainty": {
+    "error_scale_s": "Per model: Ridge(alpha=1, cholesky) on development residuals, target log1p|y-yhat|, standardised features [log1p yhat, sin/cos(2 pi h/24), sin/cos(4 pi h/24), workingday, holiday, |log1p cnt(T-1) - log1p cnt(T-2)|]; s = max(1, expm1(prediction)) bikes.",
+    "error_probability_p": "Per model: unpenalised logistic regression (lbfgs, max_iter 1000) of the development material-error indicator on [log s, log1p yhat]. p is used both as error probability and as the selective ranking score (smaller is safer).",
+    "conformal": "Normalised split conformal on calibration: q = ceil((n+1)(1-alpha))-th smallest |y-yhat|/s, alpha = 0.10; interval yhat +/- q s. Exchangeability between calibration (May-Aug) and test (Sep-Dec) is NOT assumed to hold; test coverage measures the consequence."
+  },
+  "loss": {
+    "material_error": "|yhat - y| > max(a, r*y) with a = 25 bikes and r = 0.25.",
+    "justification": "Chosen before fitting as an operational convention, not a domain standard: errors above 25% of realised hourly demand are treated as material for provisioning decisions; the 25-bike floor (about one sixth of the 2011 training mean of 143.8 rentals/hour) prevents trivially small night-time deviations from counting.",
+    "sensitivity": [[15, 0.15], [40, 0.40]],
+    "continuous": "MAE, RMSE and mean bias in bikes are reported independently of the tolerance.",
+    "generic_encoding": "The generic TRIAD evaluator receives the normalised error u = (yhat - y)/max(a, r*y) with truth 0 and Euclidean tolerance 1, so its risk is exactly the material-error frequency."
+  },
+  "selective": {"target_coverage": 0.8, "threshold": "TRIAD generic rule: ceil(n c)-th smallest calibration p, accept ties", "reliability_bins": 10},
+  "reference_forecasts": ["persistence cnt(T-1)", "daily seasonal naive cnt(T-24)", "weekly seasonal naive cnt(T-168)"],
+  "experiment_a": {
+    "question": "Does TRIAD's claim-relative evidence assessment improve prospective day-level trust decisions beyond strong established monitoring under natural temporal change?",
+    "decision": "At 00:00 local of day d, each policy decides whether to withhold every otherwise-accepted prediction for day d, using only data through the end of day d-1 and the known calendar of d. Labels arrive one hour after each target, so all day d-1 labels are available. Delay 0 is therefore a genuine prospective warning.",
+    "degraded_day": "Retrospective: accepted material-error frequency on day d exceeds the model's calibration accepted risk r_cal by more than delta = 0.05. Fewer than 5 accepted eligible hours makes the day unknown, never non-degraded.",
+    "policies": {
+      "none": "No day-level gate (conventional calibrated selective prediction).",
+      "cov": "Established label-free covariate monitoring: maximum two-sample Kolmogorov-Smirnov statistic over the five log1p history features, day d-1 eligible rows versus all development eligible rows.",
+      "conf": "Label-free confidence monitoring: mean p over day d-1 eligible rows.",
+      "perf": "Established delayed-label performance monitoring: accepted material-error frequency over day d-1 (0 when nothing was accepted).",
+      "std": "Standard evidence checks: max(cov/scale_cov, perf/scale_perf), scales = 80th percentile over development days (floor 1e-12), plus a completeness warning when day d-1 has fewer than 22 eligible targets.",
+      "triad": "Evidence-qualified: operational_risk claim 'accepted risk on day d <= r_cal + delta' assessed by the generic TRIAD evidence engine. R1 calibration applicability: day type (holiday / non-holiday weekend / working day) must have at least 5 calibration days. R2 representativeness: day d-1 cov score must not exceed its maximum over calibration days. R3 completeness: day d-1 must have at least 22 eligible targets. R4 recent outcomes: if the one-sided 95% Clopper-Pearson lower bound of day d-1 accepted risk, computed with design-effect-adjusted counts n/deff and k/deff where deff = (1+rho)/(1-rho) and rho is the lag-1 autocorrelation of the hourly material-error indicator over consecutive eligible calibration hours clipped to [0, 0.95], exceeds r_cal + delta, the claim is contradicted. Any contradicted or insufficient claim withholds day d."
+    },
+    "scores_use_development_days": "Development days whose previous day is also a development day (2012-01-02 to 2012-04-30).",
+    "budgets": {
+      "native": "cov, conf, perf, std alert strictly above the linear-interpolated 80th percentile of their calibration-day scores (std completeness warnings added); triad uses its rules without tuning.",
+      "matched_calibration": "Primary fairness adjustment: K = triad's calibration-day alert count. Each comparator's threshold is the smallest calibration-day score v such that its calibration alerts (score strictly above v, plus std's completeness warnings) number at most K; if std's completeness warnings alone exceed K its score threshold is the maximum and the excess budget is reported.",
+      "matched_test_descriptive": "Each comparator alerts on its k highest-scoring test days (label-free ranking), k = triad's test alert count; descriptive only."
+    },
+    "cost": "Per eligible test hour: 1 if accepted and a material error, c if withheld (by the calibrated selective threshold or by a day gate), else 0. Primary c = 0.25; sensitivity c = 0.10 and 0.50.",
+    "primary_endpoint": "Per model, Delta = mean cost(triad) - mean cost(std at matched calibration budget) over all eligible test hours.",
+    "practical_threshold": 0.01,
+    "decision_rule": "Advantage established for a model iff Delta <= -0.01 and the upper limit of the Bonferroni-adjusted (two models) two-sided 95% interval, i.e. the 97.5% percentile interval of a paired circular moving-block bootstrap of test days with block length 7, 2000 replicates, seed 71003, is below 0. Disadvantage established iff Delta >= +0.01 and the lower limit is above 0. Otherwise: evidence insufficient to establish a practical advantage. Added predictive utility is claimed only if advantage is established for both models.",
+    "operational_equivalence": "If triad and a comparator make identical decisions on at least 95% of test days, they are reported as operationally equivalent on this benchmark.",
+    "block_sensitivity": [1, 7, 14],
+    "secondary_descriptive": ["Delta versus none, cov, conf, perf at native and matched budgets", "costs at c = 0.10 and 0.50", "degraded-day recall, false alarms, unknown days, prospective detection delay per degraded episode", "gated coverage and selective risk, and per-hour threshold tightening to the same test coverage (retrospective matched-coverage comparator)", "triad ablations removing R1, R2, R3 or R4", "decision agreement and Cohen's kappa between triad and std", "tolerance sensitivity", "conformal coverage by month and day type", "MAE, RMSE, bias, material-error rate, AURC, Brier, ECE"],
+    "power_and_precision": "No prospective power claim. Achieved precision is the interval half-width. If either model has fewer than 10 degraded test days, detection metrics are descriptive only. Hours and days are dependent; no independent-trial interval is computed for detection rates.",
+    "multiplicity": "Confirmatory family: two primary comparisons (one per model), Bonferroni alpha 0.05/2. Everything else is descriptive and is reported in full regardless of direction."
+  },
+  "seeds": {"hgb": 71002, "bootstrap": 71003},
+  "prohibitions": ["No model, encoding, tolerance, threshold, policy rule or endpoint may change after fitting.", "No test-label-dependent selection, tuning, exclusion or reporting choice.", "Failures, null results and adverse results are reported."]
+}

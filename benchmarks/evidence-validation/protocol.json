@@ -1,0 +1,25 @@
+{
+  "version": "evidence-validation-v7-1",
+  "status": "Frozen together with suite.json and docs/metrology/evidence-sufficiency-method.md before any classifier was implemented or run. Exploratory local prespecification.",
+  "question": "Does TRIAD's claim-relative evidence assessment identify unsupported reliability claims more reliably than standard evidence checks, without rejecting valid claims more often?",
+  "suite": "benchmarks/evidence-validation/suite.json (64 cases: 13 repository-record cases with ground truth fixed by earlier milestones, 47 constructed cases, 4 misleading-input cases).",
+  "methods": {
+    "triad": "Rules of docs/metrology/evidence-sufficiency-method.md sections 2-4.",
+    "standard_checks_c": "Baseline C of section 5: schema validation, missing-evidence warnings, provenance hash checks, established metric reporting with supplied or i.i.d. Clopper-Pearson intervals, attestations accepted.",
+    "c_plus_scope": "Pre-declared sensitivity variant: C plus the scope rule A4."
+  },
+  "information_budget": "Each method receives the identical case JSON and the identical repository file tree; neither sees ground truth.",
+  "definitions": {
+    "unsupported": "ground truth insufficient_evidence or contradicted",
+    "detected": "classified insufficient_evidence or contradicted",
+    "false_rejection": "ground truth supported_within_scope but classified insufficient_evidence or contradicted",
+    "indeterminate": "classified insufficient_evidence",
+    "audit_complete": "for a detected unsupported case, at least one insufficient or contradict reason names the ground-truth dimension (baseline C reports no dimensions beyond its check names and is scored on its check names mapped to dimensions)"
+  },
+  "primary_endpoint": "Difference in unsupported-claim detection rate, TRIAD minus C, over all unsupported cases.",
+  "practical_threshold": 0.2,
+  "decision_rule": "Audit advantage on this suite iff the detection-rate difference is at least 0.20 AND TRIAD's false-rejection rate is at most C's plus 0.05. The exact two-sided McNemar test on discordant detection pairs is reported as a suite-internal descriptive statistic; cases are not a random sample of real-world claims, so no population inference is drawn.",
+  "secondary": ["four-class accuracy with Wilson 95% intervals (suite-internal)", "confusion matrices", "false-rejection rate", "indeterminate frequency", "audit completeness", "results by category and by source (repository-record, constructed, misleading-input)", "ablations removing each TRIAD rule family", "C+scope sensitivity", "attribution of every TRIAD-C discordant case to the rule family responsible", "reviewer effort: not objectively measured; only the count of findings that depend on supplied (unverified) evidence is reported as a proxy"],
+  "interpretation_limits": "A result on this suite demonstrates engineering detection capability on author-constructed cases, not general real-world scientific validity. Misleading-input cases are expected to defeat both methods and are counted.",
+  "prohibitions": ["No case, ground truth, rule or threshold may change after the first classifier run.", "All cases are reported."]
+}

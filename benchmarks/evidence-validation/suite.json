@@ -1,0 +1,3696 @@
+{
+ "schema_version": "triad-evidence-suite-1",
+ "suite_id": "evidence-validation-v7-1",
+ "status": "Frozen with ground truth before any classifier (TRIAD or baseline) was implemented or run.",
+ "author_disclosure": "Cases, ground truth and the TRIAD rules were all written by the same author. Categories follow the Milestone 7 specification; criteria cite external statistical and leakage literature. This is an author-constructed suite, not an independent benchmark.",
+ "cases": [
+  {
+   "case_id": "H01",
+   "category": "valid_claim",
+   "source": "repository_record",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "Milestone 6 recorded 3,206 errors in 9,312 logistic test predictions (results/benchmark-electricity/report.json). 6,106/9,312 = 0.655713; a descriptive claim about the realised sample does not depend on independence.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H01",
+    "evidence": [
+     {
+      "id": "m6-logistic-accuracy",
+      "kind": "metric_report",
+      "metric": "accuracy",
+      "population": "electricity-v6-1 logistic test",
+      "conditions": [
+       "published-order days 750-943"
+      ],
+      "unit": "half-hour",
+      "n": 9312,
+      "events": 6106,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": null,
+      "source": "results/benchmark-electricity/report.json"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "Logistic accuracy on the M6 test period was 65.57%.",
+      "metric": "accuracy",
+      "population": "electricity-v6-1 logistic test",
+      "conditions": [
+       "published-order days 750-943"
+      ],
+      "comparator": "equals",
+      "claimed_value": 0.6557,
+      "tolerance": 0.0001,
+      "id": "claim",
+      "evidence": [
+       "m6-logistic-accuracy"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H02",
+   "category": "invalid_numerical",
+   "source": "repository_record",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "numerical_validity",
+   "rationale": "M6 forest combined warnings: 16 false positives among 27 non-degraded test windows (0.593). A claim that the realised false-alarm rate was at most 0.25 is false for that sample.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H02",
+    "evidence": [
+     {
+      "id": "m6-forest-far",
+      "kind": "metric_report",
+      "metric": "false_alarm_rate",
+      "population": "electricity-v6-1 forest combined warning",
+      "conditions": [
+       "published-order days 750-943"
+      ],
+      "unit": "window",
+      "n": 27,
+      "events": 16,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": null,
+      "source": "results/benchmark-electricity/report.json"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "The forest combined warning raised false alarms on at most 25% of non-degraded test windows.",
+      "metric": "false_alarm_rate",
+      "population": "electricity-v6-1 forest combined warning",
+      "conditions": [
+       "published-order days 750-943"
+      ],
+      "comparator": "at_most",
+      "claimed_value": 0.25,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "m6-forest-far"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H03",
+   "category": "rare_event",
+   "source": "repository_record",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "temporal_dependence",
+   "rationale": "M6 logistic: 3 degraded windows from one dependent stream, 2 detected. An inferential claim of at least 90% recall cannot be supported: dependent windows, no dependence-aware interval, and even an i.i.d. interval is far too wide.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H03",
+    "evidence": [
+     {
+      "id": "m6-recall",
+      "kind": "metric_report",
+      "metric": "degraded_window_recall",
+      "population": "electricity-v6-1 logistic combined warning",
+      "conditions": [
+       "published-order days 750-943"
+      ],
+      "unit": "window",
+      "n": 3,
+      "events": 2,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Combined warnings detect at least 90% of degraded windows (95% confidence).",
+      "metric": "degraded_window_recall",
+      "population": "electricity-v6-1 logistic combined warning",
+      "conditions": [
+       "published-order days 750-943"
+      ],
+      "comparator": "at_least",
+      "bound": 0.9,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "m6-recall"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H04",
+   "category": "invalid_numerical",
+   "source": "repository_record",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "statistical_sample",
+   "rationale": "M3 selective-v3 summary: paired whole-sequence bootstrap 95% interval for C2-minus-D matched-coverage risk is [0.000347, 0.003819] over 300 independent sequences; the preregistered 0.02 improvement is excluded.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H04",
+    "evidence": [
+     {
+      "id": "m3-risk-reduction",
+      "kind": "metric_report",
+      "metric": "risk_reduction_c2_minus_d",
+      "population": "selective-v3 strong_drift test",
+      "conditions": [
+       "strong_drift",
+       "80% matched coverage"
+      ],
+      "unit": "sequence",
+      "n": 300,
+      "events": null,
+      "value": 0.0017361111111111119,
+      "dependence": "independent",
+      "interval": {
+       "method": "cluster_bootstrap",
+       "level": 0.95,
+       "lower": 0.000347222222222221,
+       "upper": 0.0038194444444444448
+      },
+      "design_effect": null,
+      "source": "results/selective-v3/summary.json"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Physics-informed D reduces matched-coverage risk by at least 2 percentage points versus C2.",
+      "metric": "risk_reduction_c2_minus_d",
+      "population": "selective-v3 strong_drift test",
+      "conditions": [
+       "strong_drift",
+       "80% matched coverage"
+      ],
+      "comparator": "at_least",
+      "bound": 0.02,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "m3-risk-reduction"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H05",
+   "category": "invalid_numerical",
+   "source": "repository_record",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "numerical_adequacy",
+   "rationale": "M3 numerical audit: maximum mesh discrepancy 8.14 and surrogate discrepancy 37.78 covariance-whitened noise units against a 1-unit inspection level; likelihood_ready_for_claims=false. Solver residual checks passed.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H05",
+    "evidence": [
+     {
+      "id": "m3-checks",
+      "kind": "numerical_checks",
+      "component": "2d-capacitive-forward-model",
+      "checks": {
+       "mesh": false,
+       "interpolation": false,
+       "solver": true
+      }
+     },
+     {
+      "id": "m3-system",
+      "kind": "system_description",
+      "component": "2d-capacitive-forward-model",
+      "numerical_solver": true
+     }
+    ],
+    "claims": [
+     {
+      "type": "numerical_adequacy",
+      "statement": "The 2D forward model is numerically adequate for likelihood-based confidence.",
+      "component": "2d-capacitive-forward-model",
+      "required_checks": [
+       "mesh",
+       "interpolation",
+       "solver"
+      ],
+      "id": "claim",
+      "evidence": [
+       "m3-checks",
+       "m3-system"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H06",
+   "category": "invalid_numerical",
+   "source": "repository_record",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "numerical_validity",
+   "rationale": "Baseline pilot: only 10 of 20 errors above 5 mm carried a nonconvergence flag (README / results/evaluation.json). The realised fraction 0.5 contradicts \"all\".",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H06",
+    "evidence": [
+     {
+      "id": "opt-flag",
+      "kind": "metric_report",
+      "metric": "flagged_fraction_of_large_errors",
+      "population": "baseline pilot test",
+      "conditions": [
+       "all scenarios"
+      ],
+      "unit": "observation",
+      "n": 20,
+      "events": 10,
+      "value": null,
+      "dependence": "clustered",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "The optimizer nonconvergence flag identified every error above 5 mm.",
+      "metric": "flagged_fraction_of_large_errors",
+      "population": "baseline pilot test",
+      "conditions": [
+       "all scenarios"
+      ],
+      "comparator": "at_least",
+      "claimed_value": 1.0,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "opt-flag"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H07",
+   "category": "physical_generalization",
+   "source": "repository_record",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "population_scope",
+   "rationale": "TRIAD has no 3D or hardware validation (README, limitations). Failed 2D numerical gates further weaken, but do not test, a hardware claim.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H07",
+    "evidence": [
+     {
+      "id": "m3-checks",
+      "kind": "numerical_checks",
+      "component": "2d-capacitive-forward-model",
+      "checks": {
+       "mesh": false,
+       "interpolation": false,
+       "solver": true
+      }
+     }
+    ],
+    "claims": [
+     {
+      "type": "physical_generalization",
+      "statement": "TRIAD 2D simulation results establish 3D hardware sensor accuracy.",
+      "from_domain": "2d-simulation",
+      "to_domain": "3d-hardware",
+      "id": "claim",
+      "evidence": [
+       "m3-checks"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H08",
+   "category": "extrapolation",
+   "source": "repository_record",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "population_scope",
+   "rationale": "M6 explicitly records that Electricity calendar chronology is unresolved and published row order was used; recall was measured in published order, not calendar time.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H08",
+    "evidence": [
+     {
+      "id": "m6-recall-order",
+      "kind": "metric_report",
+      "metric": "degraded_window_recall",
+      "population": "electricity-v6-1 logistic combined warning",
+      "conditions": [
+       "published row order"
+      ],
+      "unit": "window",
+      "n": 3,
+      "events": 2,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     },
+     {
+      "id": "m6-chronology",
+      "kind": "limitation",
+      "statement": "Normalised dates move backwards five times; calendar chronology unresolved.",
+      "affects_claim_types": [
+       "metric_value",
+       "metric_bound"
+      ],
+      "effect": "invalidates"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "M6 detected 2 of 3 degraded windows of calendar-time concept drift.",
+      "metric": "degraded_window_recall",
+      "population": "electricity-v6-1 logistic combined warning",
+      "conditions": [
+       "calendar-time order"
+      ],
+      "comparator": "equals",
+      "claimed_value": 0.6667,
+      "tolerance": 0.0001,
+      "id": "claim",
+      "evidence": [
+       "m6-recall-order",
+       "m6-chronology"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H09",
+   "category": "extrapolation",
+   "source": "repository_record",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "population_scope",
+   "rationale": "M6 forest-minus-logistic risk difference -5.34 pp, 7-day block interval [-7.15, -3.67] pp, compares each model at its own coverage (60.5% vs 77.3%). The M6 report states this is not a matched-coverage result.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H09",
+    "evidence": [
+     {
+      "id": "m6-diff",
+      "kind": "metric_report",
+      "metric": "risk_difference_forest_minus_logistic",
+      "population": "electricity-v6-1 test",
+      "conditions": [
+       "own calibrated coverage"
+      ],
+      "unit": "day",
+      "n": 194,
+      "events": null,
+      "value": -0.053421,
+      "dependence": "temporal",
+      "interval": {
+       "method": "block_bootstrap",
+       "level": 0.95,
+       "lower": -0.0715168969611678,
+       "upper": -0.036689806705694564
+      },
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Forest has lower selective risk than logistic at matched coverage.",
+      "metric": "risk_difference_forest_minus_logistic",
+      "population": "electricity-v6-1 test",
+      "conditions": [
+       "matched coverage"
+      ],
+      "comparator": "at_most",
+      "bound": 0.0,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "m6-diff"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H10",
+   "category": "extrapolation",
+   "source": "repository_record",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "statistical_sample",
+   "rationale": "M5 canonical demo: concept_shift accepted 481 predictions with 405 errors (84.2%) from independently seeded synthetic samples. A claim of at most 20% risk under that shift is excluded.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H10",
+    "evidence": [
+     {
+      "id": "m5-shift",
+      "kind": "metric_report",
+      "metric": "selective_risk",
+      "population": "metrology-demo-v5 logistic",
+      "conditions": [
+       "concept_shift"
+      ],
+      "unit": "sample",
+      "n": 481,
+      "events": 405,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "results/metrology-demo-v5-canonical/report.json"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Under the concept shift, the demo model's selective risk is at most 20%.",
+      "metric": "selective_risk",
+      "population": "metrology-demo-v5 logistic",
+      "conditions": [
+       "concept_shift"
+      ],
+      "comparator": "at_most",
+      "bound": 0.2,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "m5-shift"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H11",
+   "category": "valid_claim",
+   "source": "repository_record",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "M5 canonical demo in_distribution: 86 errors among 494 accepted = 0.174089.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H11",
+    "evidence": [
+     {
+      "id": "m5-iid",
+      "kind": "metric_report",
+      "metric": "selective_risk",
+      "population": "metrology-demo-v5 logistic",
+      "conditions": [
+       "in_distribution"
+      ],
+      "unit": "sample",
+      "n": 494,
+      "events": 86,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "results/metrology-demo-v5-canonical/report.json"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "In distribution, the demo model's accepted selective risk was 17.41%.",
+      "metric": "selective_risk",
+      "population": "metrology-demo-v5 logistic",
+      "conditions": [
+       "in_distribution"
+      ],
+      "comparator": "equals",
+      "claimed_value": 0.1741,
+      "tolerance": 0.0001,
+      "id": "claim",
+      "evidence": [
+       "m5-iid"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H12",
+   "category": "valid_claim",
+   "source": "repository_record",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "The vendored NIST schema was compared byte-for-byte with usnistgov/ai-metrology-submissions commit 7f06092 on 2026-10-11; SHA-256 f815015d...a7c is the externally recorded value.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H12",
+    "evidence": [
+     {
+      "id": "nist-schema",
+      "kind": "file_hash",
+      "path": "docs/metrology/nist-schema-v1.json",
+      "expected_sha256": "f815015db4489f4c1a5de5d8f3b5a9913eeef1a8e65d2f36e8614be2ccd2da7c",
+      "authority": "external_source"
+     }
+    ],
+    "claims": [
+     {
+      "type": "provenance",
+      "statement": "The vendored schema is the official NIST v1.0 submission schema.",
+      "artifact": "docs/metrology/nist-schema-v1.json",
+      "authority_required": "external_source",
+      "id": "claim",
+      "evidence": [
+       "nist-schema"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "H13",
+   "category": "insufficient_precision",
+   "source": "repository_record",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "statistical_sample",
+   "rationale": "M6 forest TRIAD-gate risk change +2.32 pp with 7-day block interval [-0.54, +5.15] pp: the interval includes zero, so a reduction is not established.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "H13",
+    "evidence": [
+     {
+      "id": "m6-gate",
+      "kind": "metric_report",
+      "metric": "gated_risk_change",
+      "population": "electricity-v6-1 forest combined gate",
+      "conditions": [
+       "published-order days 750-943"
+      ],
+      "unit": "day",
+      "n": 194,
+      "events": null,
+      "value": 0.023168,
+      "dependence": "temporal",
+      "interval": {
+       "method": "block_bootstrap",
+       "level": 0.95,
+       "lower": -0.005369738473903671,
+       "upper": 0.05152918251769072
+      },
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "TRIAD gating reduced the forest model's accepted risk.",
+      "metric": "gated_risk_change",
+      "population": "electricity-v6-1 forest combined gate",
+      "conditions": [
+       "published-order days 750-943"
+      ],
+      "comparator": "at_most",
+      "bound": 0.0,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "m6-gate"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B01",
+   "category": "leakage",
+   "source": "constructed",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "leakage",
+   "rationale": "Real dataset fact: cnt = casual + registered on all 17,379 rows (data audit). Using same-hour casual and registered reconstructs the target (Kapoor & Narayanan 2023, illegitimate features).",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B01",
+    "evidence": [
+     {
+      "id": "timing",
+      "kind": "feature_timing",
+      "origin": "end of elapsed hour T-1; target cnt at hour T",
+      "features": [
+       {
+        "name": "local_hour_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "workingday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "holiday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "weekday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "day_of_year_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-1",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-2",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-3",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-24",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-168",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "casual_T",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "registered_T",
+        "available_offset_hours": 0.0
+       }
+      ]
+     },
+     {
+      "id": "part",
+      "kind": "partition",
+      "ordering": "temporal",
+      "splits": [
+       {
+        "name": "training",
+        "start": "2011-01-01",
+        "end": "2011-12-31"
+       },
+       {
+        "name": "development",
+        "start": "2012-01-01",
+        "end": "2012-04-30"
+       },
+       {
+        "name": "calibration",
+        "start": "2012-05-01",
+        "end": "2012-08-31"
+       },
+       {
+        "name": "test",
+        "start": "2012-09-01",
+        "end": "2012-12-31"
+       }
+      ],
+      "training_split": "training",
+      "evaluation_split": "test",
+      "preprocessing_fit_splits": [
+       "training"
+      ]
+     },
+     {
+      "id": "construct",
+      "kind": "target_construction",
+      "target": "cnt",
+      "identities": [
+       {
+        "features": [
+         "casual_T",
+         "registered_T"
+        ],
+        "relation": "sum",
+        "rows": 17379,
+        "max_abs_residual": 0.0
+       }
+      ]
+     },
+     {
+      "id": "att",
+      "kind": "attestation",
+      "statement": "Data scientist confirms no leakage.",
+      "value": true,
+      "attester": "claimant"
+     }
+    ],
+    "claims": [
+     {
+      "type": "no_leakage",
+      "statement": "The bike demand model is free of target leakage.",
+      "task": "forecast",
+      "id": "claim",
+      "evidence": [
+       "timing",
+       "part",
+       "construct",
+       "att"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B02",
+   "category": "leakage",
+   "source": "constructed",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "leakage",
+   "rationale": "Same-hour temperature is observed during hour T, after the T-1 origin; its timing offset is +1 h.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B02",
+    "evidence": [
+     {
+      "id": "timing",
+      "kind": "feature_timing",
+      "origin": "end of elapsed hour T-1; target cnt at hour T",
+      "features": [
+       {
+        "name": "local_hour_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "workingday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "holiday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "weekday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "day_of_year_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-1",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-2",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-3",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-24",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-168",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "temp_T",
+        "available_offset_hours": 1.0
+       }
+      ]
+     },
+     {
+      "id": "part",
+      "kind": "partition",
+      "ordering": "temporal",
+      "splits": [
+       {
+        "name": "training",
+        "start": "2011-01-01",
+        "end": "2011-12-31"
+       },
+       {
+        "name": "development",
+        "start": "2012-01-01",
+        "end": "2012-04-30"
+       },
+       {
+        "name": "calibration",
+        "start": "2012-05-01",
+        "end": "2012-08-31"
+       },
+       {
+        "name": "test",
+        "start": "2012-09-01",
+        "end": "2012-12-31"
+       }
+      ],
+      "training_split": "training",
+      "evaluation_split": "test",
+      "preprocessing_fit_splits": [
+       "training"
+      ]
+     },
+     {
+      "id": "construct",
+      "kind": "target_construction",
+      "target": "cnt",
+      "identities": []
+     },
+     {
+      "id": "att",
+      "kind": "attestation",
+      "statement": "Data scientist confirms no leakage.",
+      "value": true,
+      "attester": "claimant"
+     }
+    ],
+    "claims": [
+     {
+      "type": "no_leakage",
+      "statement": "The bike demand model is free of target leakage.",
+      "task": "forecast",
+      "id": "claim",
+      "evidence": [
+       "timing",
+       "part",
+       "construct",
+       "att"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B03",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "Protocol information set: all predictors available at the origin, chronological disjoint partitions, train-only preprocessing, no exact target identity among predictors.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B03",
+    "evidence": [
+     {
+      "id": "timing",
+      "kind": "feature_timing",
+      "origin": "end of elapsed hour T-1; target cnt at hour T",
+      "features": [
+       {
+        "name": "local_hour_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "workingday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "holiday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "weekday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "day_of_year_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-1",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-2",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-3",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-24",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-168",
+        "available_offset_hours": 0.0
+       }
+      ]
+     },
+     {
+      "id": "part",
+      "kind": "partition",
+      "ordering": "temporal",
+      "splits": [
+       {
+        "name": "training",
+        "start": "2011-01-01",
+        "end": "2011-12-31"
+       },
+       {
+        "name": "development",
+        "start": "2012-01-01",
+        "end": "2012-04-30"
+       },
+       {
+        "name": "calibration",
+        "start": "2012-05-01",
+        "end": "2012-08-31"
+       },
+       {
+        "name": "test",
+        "start": "2012-09-01",
+        "end": "2012-12-31"
+       }
+      ],
+      "training_split": "training",
+      "evaluation_split": "test",
+      "preprocessing_fit_splits": [
+       "training"
+      ]
+     },
+     {
+      "id": "construct",
+      "kind": "target_construction",
+      "target": "cnt",
+      "identities": []
+     },
+     {
+      "id": "att",
+      "kind": "attestation",
+      "statement": "Data scientist confirms no leakage.",
+      "value": true,
+      "attester": "claimant"
+     }
+    ],
+    "claims": [
+     {
+      "type": "no_leakage",
+      "statement": "The bike demand model is free of target leakage.",
+      "task": "forecast",
+      "id": "claim",
+      "evidence": [
+       "timing",
+       "part",
+       "construct",
+       "att"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B04",
+   "category": "leakage",
+   "source": "constructed",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "leakage",
+   "rationale": "Scaler fitted on training and test rows (Kapoor & Narayanan 2023, preprocessing on training and test).",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B04",
+    "evidence": [
+     {
+      "id": "timing",
+      "kind": "feature_timing",
+      "origin": "end of elapsed hour T-1; target cnt at hour T",
+      "features": [
+       {
+        "name": "local_hour_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "workingday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "holiday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "weekday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "day_of_year_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-1",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-2",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-3",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-24",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-168",
+        "available_offset_hours": 0.0
+       }
+      ]
+     },
+     {
+      "id": "part",
+      "kind": "partition",
+      "ordering": "temporal",
+      "splits": [
+       {
+        "name": "training",
+        "start": "2011-01-01",
+        "end": "2011-12-31"
+       },
+       {
+        "name": "development",
+        "start": "2012-01-01",
+        "end": "2012-04-30"
+       },
+       {
+        "name": "calibration",
+        "start": "2012-05-01",
+        "end": "2012-08-31"
+       },
+       {
+        "name": "test",
+        "start": "2012-09-01",
+        "end": "2012-12-31"
+       }
+      ],
+      "training_split": "training",
+      "evaluation_split": "test",
+      "preprocessing_fit_splits": [
+       "training",
+       "test"
+      ]
+     },
+     {
+      "id": "construct",
+      "kind": "target_construction",
+      "target": "cnt",
+      "identities": []
+     },
+     {
+      "id": "att",
+      "kind": "attestation",
+      "statement": "Data scientist confirms no leakage.",
+      "value": true,
+      "attester": "claimant"
+     }
+    ],
+    "claims": [
+     {
+      "type": "no_leakage",
+      "statement": "The bike demand model is free of target leakage.",
+      "task": "forecast",
+      "id": "claim",
+      "evidence": [
+       "timing",
+       "part",
+       "construct",
+       "att"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B05",
+   "category": "leakage",
+   "source": "constructed",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "leakage",
+   "rationale": "Random row split for a forecasting task: training and test date ranges overlap, so later observations inform earlier predictions (temporal leakage).",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B05",
+    "evidence": [
+     {
+      "id": "timing",
+      "kind": "feature_timing",
+      "origin": "end of elapsed hour T-1; target cnt at hour T",
+      "features": [
+       {
+        "name": "local_hour_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "workingday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "holiday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "weekday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "day_of_year_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-1",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-2",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-3",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-24",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-168",
+        "available_offset_hours": 0.0
+       }
+      ]
+     },
+     {
+      "id": "part",
+      "kind": "partition",
+      "ordering": "random",
+      "splits": [
+       {
+        "name": "training",
+        "start": "2011-01-01",
+        "end": "2012-12-31"
+       },
+       {
+        "name": "test",
+        "start": "2011-01-01",
+        "end": "2012-12-31"
+       }
+      ],
+      "training_split": "training",
+      "evaluation_split": "test",
+      "preprocessing_fit_splits": [
+       "training"
+      ]
+     },
+     {
+      "id": "construct",
+      "kind": "target_construction",
+      "target": "cnt",
+      "identities": []
+     },
+     {
+      "id": "att",
+      "kind": "attestation",
+      "statement": "Data scientist confirms no leakage.",
+      "value": true,
+      "attester": "claimant"
+     }
+    ],
+    "claims": [
+     {
+      "type": "no_leakage",
+      "statement": "The bike demand model is free of target leakage.",
+      "task": "forecast",
+      "id": "claim",
+      "evidence": [
+       "timing",
+       "part",
+       "construct",
+       "att"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B06",
+   "category": "leakage",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "leakage",
+   "rationale": "Only an attestation is available; no feature timing, partition or construction evidence can be checked.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B06",
+    "evidence": [
+     {
+      "id": "att",
+      "kind": "attestation",
+      "statement": "Data scientist confirms no leakage.",
+      "value": true,
+      "attester": "claimant"
+     }
+    ],
+    "claims": [
+     {
+      "type": "no_leakage",
+      "statement": "The bike demand model is free of target leakage.",
+      "task": "forecast",
+      "id": "claim",
+      "evidence": [
+       "att"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B07",
+   "category": "provenance",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "provenance",
+   "rationale": "The hash was recorded by the claimant from its own copy; consistency with oneself does not establish that the bytes are the authoritative UCI release (FIPS 180-4 establishes integrity, not origin).",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B07",
+    "evidence": [
+     {
+      "id": "emb",
+      "kind": "embedded_artifact",
+      "content": "instant,dteday,season,yr,mnth,hr,holiday,weekday,workingday,weathersit,temp,atemp,hum,windspeed,casual,registered,cnt\n",
+      "expected_sha256": "9456293989c6259e12cbec19777df379bd708eba72d607c345e1aca12a614d0e",
+      "authority": "self_reported"
+     }
+    ],
+    "claims": [
+     {
+      "type": "provenance",
+      "statement": "This header is from the authoritative UCI hour.csv release.",
+      "artifact": "hour.csv header",
+      "authority_required": "external_source",
+      "id": "claim",
+      "evidence": [
+       "emb"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B08",
+   "category": "provenance",
+   "source": "constructed",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "provenance",
+   "rationale": "Recorded protocol hash ccb0542e... with one hex digit altered; the file bytes cannot match it.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B08",
+    "evidence": [
+     {
+      "id": "fh",
+      "kind": "file_hash",
+      "path": "benchmarks/electricity/protocol.json",
+      "expected_sha256": "ccb0542e7e140725d1fb64cc63dd521057e0351697207b231616b39fcc3e1a7d",
+      "authority": "repository_record"
+     }
+    ],
+    "claims": [
+     {
+      "type": "provenance",
+      "statement": "benchmarks/electricity/protocol.json is the frozen M6 protocol.",
+      "artifact": "benchmarks/electricity/protocol.json",
+      "authority_required": "repository_record",
+      "id": "claim",
+      "evidence": [
+       "fh"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B09",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "The M6 provenance record lists protocol_sha256 ccb0542e...a7c; the committed file must hash to it.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B09",
+    "evidence": [
+     {
+      "id": "fh",
+      "kind": "file_hash",
+      "path": "benchmarks/electricity/protocol.json",
+      "expected_sha256": "ccb0542e7e140725d1fb64cc63dd521057e0351697207b231616b39fcc3e1a7c",
+      "authority": "repository_record"
+     }
+    ],
+    "claims": [
+     {
+      "type": "provenance",
+      "statement": "benchmarks/electricity/protocol.json is the frozen M6 protocol.",
+      "artifact": "benchmarks/electricity/protocol.json",
+      "authority_required": "repository_record",
+      "id": "claim",
+      "evidence": [
+       "fh"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B10",
+   "category": "provenance",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "provenance",
+   "rationale": "Raw hour.csv is not committed; a hash for a file that is not available cannot be verified.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B10",
+    "evidence": [
+     {
+      "id": "fh",
+      "kind": "file_hash",
+      "path": "benchmarks/bike-sharing/hour.csv",
+      "expected_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+      "authority": "external_source"
+     }
+    ],
+    "claims": [
+     {
+      "type": "provenance",
+      "statement": "The repository contains the authoritative hour.csv.",
+      "artifact": "benchmarks/bike-sharing/hour.csv",
+      "authority_required": "external_source",
+      "id": "claim",
+      "evidence": [
+       "fh"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B11",
+   "category": "provenance",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "integrity",
+   "rationale": "The metric report is tied to an artifact whose recorded hash does not match; the numbers cannot be relied upon in either direction.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B11",
+    "evidence": [
+     {
+      "id": "mae",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12"
+      ],
+      "unit": "hour",
+      "n": 2900,
+      "events": 580,
+      "value": null,
+      "dependence": "temporal",
+      "interval": {
+       "method": "block_bootstrap",
+       "level": 0.95,
+       "lower": 0.17,
+       "upper": 0.23
+      },
+      "design_effect": null,
+      "source": "suite"
+     },
+     {
+      "id": "fh",
+      "kind": "file_hash",
+      "path": "benchmarks/electricity/protocol.json",
+      "expected_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "authority": "repository_record"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "Ridge material-error rate on the test period was 20%.",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12"
+      ],
+      "comparator": "equals",
+      "claimed_value": 0.2,
+      "tolerance": 0.0001,
+      "id": "claim",
+      "evidence": [
+       "mae",
+       "fh"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B12",
+   "category": "rare_event",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "statistical_sample",
+   "rationale": "Zero events in 40 independent audits: one-sided 95% Clopper-Pearson upper bound 0.072 > 0.01 (rule of three: about 3/40).",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B12",
+    "evidence": [
+     {
+      "id": "audit",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "independent holiday audit sample",
+      "conditions": [
+       "holiday hours"
+      ],
+      "unit": "audit",
+      "n": 40,
+      "events": 0,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Holiday material-error rate is at most 1% (95% confidence).",
+      "metric": "material_error_rate",
+      "population": "independent holiday audit sample",
+      "conditions": [
+       "holiday hours"
+      ],
+      "comparator": "at_most",
+      "bound": 0.01,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "audit"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B13",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "Zero events in 400 independent audits: upper bound 1-0.05^(1/400) = 0.0075 <= 0.01.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B13",
+    "evidence": [
+     {
+      "id": "audit",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "independent audit sample",
+      "conditions": [
+       "night hours"
+      ],
+      "unit": "audit",
+      "n": 400,
+      "events": 0,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Night material-error rate is at most 1% (95% confidence).",
+      "metric": "material_error_rate",
+      "population": "independent audit sample",
+      "conditions": [
+       "night hours"
+      ],
+      "comparator": "at_most",
+      "bound": 0.01,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "audit"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B14",
+   "category": "rare_event",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "temporal_dependence",
+   "rationale": "Zero events in 400 consecutive hours of one series. Training-period lag-1 autocorrelation of log demand is 0.89 (data audit); i.i.d. counting overstates information and no design effect or dependence-aware interval is supplied.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B14",
+    "evidence": [
+     {
+      "id": "hours",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "bike ridge night hours",
+      "conditions": [
+       "night hours"
+      ],
+      "unit": "hour",
+      "n": 400,
+      "events": 0,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Night material-error rate is at most 1% (95% confidence).",
+      "metric": "material_error_rate",
+      "population": "bike ridge night hours",
+      "conditions": [
+       "night hours"
+      ],
+      "comparator": "at_most",
+      "bound": 0.01,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "hours"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B15",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "Two events in 2,000 dependent hours with an explicit design effect of 2: effective n=1,000, k=1, one-sided 95% upper bound about 0.0047 <= 0.01.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B15",
+    "evidence": [
+     {
+      "id": "hours",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "bike ridge night hours",
+      "conditions": [
+       "night hours"
+      ],
+      "unit": "hour",
+      "n": 2000,
+      "events": 2,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": 2.0,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Night material-error rate is at most 1% (95% confidence).",
+      "metric": "material_error_rate",
+      "population": "bike ridge night hours",
+      "conditions": [
+       "night hours"
+      ],
+      "comparator": "at_most",
+      "bound": 0.01,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "hours"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B16",
+   "category": "independence",
+   "source": "constructed",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "temporal_dependence",
+   "rationale": "Lag-1 autocorrelation 0.42 over 2,900 hourly indicators exceeds the white-noise band 1.96/sqrt(2900)=0.036 (Bartlett 1946).",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B16",
+    "evidence": [
+     {
+      "id": "diag",
+      "kind": "dependence_diagnostic",
+      "unit": "hour",
+      "n": 2900,
+      "lag1_autocorrelation": 0.42
+     },
+     {
+      "id": "att",
+      "kind": "attestation",
+      "statement": "Hours are independent.",
+      "value": true,
+      "attester": "claimant"
+     }
+    ],
+    "claims": [
+     {
+      "type": "independence",
+      "statement": "Hourly material-error indicators show no lag-1 dependence.",
+      "unit": "hour",
+      "id": "claim",
+      "evidence": [
+       "diag",
+       "att"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B17",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "Lag-1 autocorrelation 0.01 over 400 randomly sampled audits is inside the band 0.098; the claim is limited to no detectable lag-1 dependence.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B17",
+    "evidence": [
+     {
+      "id": "diag",
+      "kind": "dependence_diagnostic",
+      "unit": "audit",
+      "n": 400,
+      "lag1_autocorrelation": 0.01
+     },
+     {
+      "id": "att",
+      "kind": "attestation",
+      "statement": "Audits are independent.",
+      "value": true,
+      "attester": "claimant"
+     }
+    ],
+    "claims": [
+     {
+      "type": "independence",
+      "statement": "Audit outcomes show no detectable lag-1 dependence.",
+      "unit": "audit",
+      "id": "claim",
+      "evidence": [
+       "diag",
+       "att"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B18",
+   "category": "uncertainty_assumption",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "temporal_dependence",
+   "rationale": "An i.i.d. normal interval on 2,900 consecutive hours ignores serial dependence; the bound is not established.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B18",
+    "evidence": [
+     {
+      "id": "hours",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12"
+      ],
+      "unit": "hour",
+      "n": 2900,
+      "events": 600,
+      "value": null,
+      "dependence": "temporal",
+      "interval": {
+       "method": "normal_iid",
+       "level": 0.95,
+       "lower": 0.1921,
+       "upper": 0.2217
+      },
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Test material-error rate is at most 25% (95% confidence).",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12"
+      ],
+      "comparator": "at_most",
+      "bound": 0.25,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "hours"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B19",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "Same data with a moving-block bootstrap interval [0.18, 0.235]: the upper limit is below 0.25.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B19",
+    "evidence": [
+     {
+      "id": "hours",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12"
+      ],
+      "unit": "hour",
+      "n": 2900,
+      "events": 600,
+      "value": null,
+      "dependence": "temporal",
+      "interval": {
+       "method": "block_bootstrap",
+       "level": 0.95,
+       "lower": 0.18,
+       "upper": 0.235
+      },
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Test material-error rate is at most 25% (95% confidence).",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12"
+      ],
+      "comparator": "at_most",
+      "bound": 0.25,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "hours"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B20",
+   "category": "independence",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "temporal_dependence",
+   "rationale": "Windows of one ordered stream declared independent; the window-level indicator has lag-1 autocorrelation 0.45 over 28 windows (band 0.37). Treating windows as independent episodes is not supported.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B20",
+    "evidence": [
+     {
+      "id": "rec",
+      "kind": "metric_report",
+      "metric": "degraded_window_recall",
+      "population": "single-stream warning",
+      "conditions": [
+       "test windows"
+      ],
+      "unit": "window",
+      "n": 14,
+      "events": 13,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     },
+     {
+      "id": "diag",
+      "kind": "dependence_diagnostic",
+      "unit": "window",
+      "n": 28,
+      "lag1_autocorrelation": 0.45
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "The warning detects at least half of degraded windows (95% confidence).",
+      "metric": "degraded_window_recall",
+      "population": "single-stream warning",
+      "conditions": [
+       "test windows"
+      ],
+      "comparator": "at_least",
+      "bound": 0.5,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "rec",
+       "diag"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B21",
+   "category": "missing_calibration",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "missing_evidence",
+   "rationale": "A conformal coverage guarantee needs calibration evidence; none is linked.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B21",
+    "evidence": [
+     {
+      "id": "att",
+      "kind": "attestation",
+      "statement": "Intervals are calibrated.",
+      "value": true,
+      "attester": "claimant"
+     }
+    ],
+    "claims": [
+     {
+      "type": "coverage_guarantee",
+      "statement": "90% prediction intervals cover at least 90% of test hours.",
+      "population": "bike test hours",
+      "conditions": [
+       "autumn 2012"
+      ],
+      "level": 0.9,
+      "id": "claim",
+      "evidence": [
+       "att"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B22",
+   "category": "missing_calibration",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "calibration_applicability",
+   "rationale": "Calibration was performed only on summer conditions; the claim concerns winter, where exchangeability with calibration is not established.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B22",
+    "evidence": [
+     {
+      "id": "cal",
+      "kind": "calibration",
+      "population": "bike calibration hours",
+      "conditions": [
+       "summer 2012"
+      ],
+      "condition_counts": {
+       "summer 2012": 2900
+      },
+      "n": 2900,
+      "unit": "hour",
+      "dependence": "independent",
+      "method": "split_conformal"
+     }
+    ],
+    "claims": [
+     {
+      "type": "coverage_guarantee",
+      "statement": "90% prediction intervals cover at least 90% of winter hours.",
+      "population": "bike winter hours",
+      "conditions": [
+       "winter 2012"
+      ],
+      "level": 0.9,
+      "id": "claim",
+      "evidence": [
+       "cal"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B23",
+   "category": "missing_calibration",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "distribution_representativeness",
+   "rationale": "Calibration covers the claimed condition, but a shift diagnostic between calibration and target exceeds its threshold.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B23",
+    "evidence": [
+     {
+      "id": "cal",
+      "kind": "calibration",
+      "population": "bike calibration hours",
+      "conditions": [
+       "summer 2012",
+       "autumn 2012"
+      ],
+      "condition_counts": {
+       "summer 2012": 2000,
+       "autumn 2012": 900
+      },
+      "n": 2900,
+      "unit": "hour",
+      "dependence": "independent",
+      "method": "split_conformal"
+     },
+     {
+      "id": "shift",
+      "kind": "shift_diagnostic",
+      "reference": "calibration",
+      "target": "autumn test",
+      "statistic": "max KS",
+      "value": 0.31,
+      "threshold": 0.12
+     }
+    ],
+    "claims": [
+     {
+      "type": "coverage_guarantee",
+      "statement": "90% prediction intervals cover at least 90% of autumn test hours.",
+      "population": "bike autumn test hours",
+      "conditions": [
+       "autumn 2012"
+      ],
+      "level": 0.9,
+      "id": "claim",
+      "evidence": [
+       "cal",
+       "shift"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B24",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "Exchangeable i.i.d. calibration sample of 1,000 drawn from the claimed condition, no detected shift; split conformal gives marginal coverage at least 1-alpha (Vovk et al. 2005).",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B24",
+    "evidence": [
+     {
+      "id": "cal",
+      "kind": "calibration",
+      "population": "iid audit pool",
+      "conditions": [
+       "audit pool"
+      ],
+      "condition_counts": {
+       "audit pool": 1000
+      },
+      "n": 1000,
+      "unit": "audit",
+      "dependence": "independent",
+      "method": "split_conformal"
+     },
+     {
+      "id": "shift",
+      "kind": "shift_diagnostic",
+      "reference": "calibration",
+      "target": "audit pool test",
+      "statistic": "max KS",
+      "value": 0.03,
+      "threshold": 0.12
+     }
+    ],
+    "claims": [
+     {
+      "type": "coverage_guarantee",
+      "statement": "90% prediction intervals cover at least 90% of audit-pool cases (marginally).",
+      "population": "iid audit pool test",
+      "conditions": [
+       "audit pool"
+      ],
+      "level": 0.9,
+      "id": "claim",
+      "evidence": [
+       "cal",
+       "shift"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B25",
+   "category": "invalid_numerical",
+   "source": "constructed",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "statistical_sample",
+   "rationale": "Realised coverage 400/500 independent cases; one-sided 95% upper bound about 0.83 < 0.90.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B25",
+    "evidence": [
+     {
+      "id": "cal",
+      "kind": "calibration",
+      "population": "iid audit pool",
+      "conditions": [
+       "audit pool"
+      ],
+      "condition_counts": {
+       "audit pool": 1000
+      },
+      "n": 1000,
+      "unit": "audit",
+      "dependence": "independent",
+      "method": "split_conformal"
+     },
+     {
+      "id": "cov",
+      "kind": "metric_report",
+      "metric": "interval_coverage",
+      "population": "iid audit pool test",
+      "conditions": [
+       "audit pool"
+      ],
+      "unit": "audit",
+      "n": 500,
+      "events": 400,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "coverage_guarantee",
+      "statement": "90% prediction intervals cover at least 90% of audit-pool cases.",
+      "population": "iid audit pool test",
+      "conditions": [
+       "audit pool"
+      ],
+      "level": 0.9,
+      "id": "claim",
+      "evidence": [
+       "cal",
+       "cov"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B26",
+   "category": "uncertainty_assumption",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "temporal_dependence",
+   "rationale": "Conformal calibration on consecutive hours of one series: exchangeability is not established for dependent data (Barber et al. 2023).",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B26",
+    "evidence": [
+     {
+      "id": "cal",
+      "kind": "calibration",
+      "population": "bike calibration hours",
+      "conditions": [
+       "summer 2012"
+      ],
+      "condition_counts": {
+       "summer 2012": 2900
+      },
+      "n": 2900,
+      "unit": "hour",
+      "dependence": "temporal",
+      "method": "split_conformal"
+     }
+    ],
+    "claims": [
+     {
+      "type": "coverage_guarantee",
+      "statement": "90% prediction intervals cover at least 90% of summer hours.",
+      "population": "bike summer hours",
+      "conditions": [
+       "summer 2012"
+      ],
+      "level": 0.9,
+      "id": "claim",
+      "evidence": [
+       "cal"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B27",
+   "category": "extrapolation",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "population_scope",
+   "rationale": "Evidence is from September-December 2012; 2013 was never evaluated.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B27",
+    "evidence": [
+     {
+      "id": "hours",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12"
+      ],
+      "unit": "hour",
+      "n": 2900,
+      "events": 600,
+      "value": null,
+      "dependence": "temporal",
+      "interval": {
+       "method": "block_bootstrap",
+       "level": 0.95,
+       "lower": 0.18,
+       "upper": 0.235
+      },
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Material-error rate in 2013 will be at most 25% (95% confidence).",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "2013"
+      ],
+      "comparator": "at_most",
+      "bound": 0.25,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "hours"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B28",
+   "category": "extrapolation",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "population_scope",
+   "rationale": "Hurricane hours were missing and ineligible; the condition was never evaluated.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B28",
+    "evidence": [
+     {
+      "id": "hours",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12 eligible hours"
+      ],
+      "unit": "hour",
+      "n": 2900,
+      "events": 600,
+      "value": null,
+      "dependence": "temporal",
+      "interval": {
+       "method": "block_bootstrap",
+       "level": 0.95,
+       "lower": 0.18,
+       "upper": 0.235
+      },
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Material-error rate during hurricanes is at most 25%.",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "hurricane hours"
+      ],
+      "comparator": "at_most",
+      "bound": 0.25,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "hours"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B29",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "Claim conditions are among the evaluated ones and the dependence-aware upper limit is below the bound.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B29",
+    "evidence": [
+     {
+      "id": "hours",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12",
+       "working days"
+      ],
+      "unit": "hour",
+      "n": 2000,
+      "events": 380,
+      "value": null,
+      "dependence": "temporal",
+      "interval": {
+       "method": "block_bootstrap",
+       "level": 0.95,
+       "lower": 0.16,
+       "upper": 0.22
+      },
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Working-day material-error rate in autumn 2012 was at most 25%.",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "working days"
+      ],
+      "comparator": "at_most",
+      "bound": 0.25,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "hours"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B30",
+   "category": "invalid_numerical",
+   "source": "constructed",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "numerical_validity",
+   "rationale": "Claimed accuracy 0.95 but the evidence computes 900/1000 = 0.90.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B30",
+    "evidence": [
+     {
+      "id": "acc",
+      "kind": "metric_report",
+      "metric": "accuracy",
+      "population": "audit pool",
+      "conditions": [
+       "audit pool"
+      ],
+      "unit": "audit",
+      "n": 1000,
+      "events": 900,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "Accuracy was 95%.",
+      "metric": "accuracy",
+      "population": "audit pool",
+      "conditions": [
+       "audit pool"
+      ],
+      "comparator": "equals",
+      "claimed_value": 0.95,
+      "tolerance": 0.001,
+      "id": "claim",
+      "evidence": [
+       "acc"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B31",
+   "category": "invalid_numerical",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "integrity",
+   "rationale": "Evidence reports 1,200 events among 1,000 units, which is impossible; nothing can be concluded from it.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B31",
+    "evidence": [
+     {
+      "id": "acc",
+      "kind": "metric_report",
+      "metric": "accuracy",
+      "population": "audit pool",
+      "conditions": [
+       "audit pool"
+      ],
+      "unit": "audit",
+      "n": 1000,
+      "events": 1200,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "Accuracy was at least 90%.",
+      "metric": "accuracy",
+      "population": "audit pool",
+      "conditions": [
+       "audit pool"
+      ],
+      "comparator": "at_least",
+      "claimed_value": 0.9,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "acc"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B32",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "not_applicable",
+   "ground_truth_dimension": null,
+   "rationale": "A ridge regression on tabular features has no mesh, solver or interpolation component.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B32",
+    "evidence": [
+     {
+      "id": "sys",
+      "kind": "system_description",
+      "component": "bike ridge model",
+      "numerical_solver": false
+     }
+    ],
+    "claims": [
+     {
+      "type": "numerical_adequacy",
+      "statement": "The ridge model is numerically adequate (mesh, solver, interpolation).",
+      "component": "bike ridge model",
+      "required_checks": [
+       "mesh",
+       "solver",
+       "interpolation"
+      ],
+      "id": "claim",
+      "evidence": [
+       "sys"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B33",
+   "category": "invalid_numerical",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "numerical_adequacy",
+   "rationale": "One required numerical check is null (not performed).",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B33",
+    "evidence": [
+     {
+      "id": "chk",
+      "kind": "numerical_checks",
+      "component": "fem",
+      "checks": {
+       "mesh": true,
+       "solver": true,
+       "interpolation": null
+      }
+     },
+     {
+      "id": "sys",
+      "kind": "system_description",
+      "component": "fem",
+      "numerical_solver": true
+     }
+    ],
+    "claims": [
+     {
+      "type": "numerical_adequacy",
+      "statement": "The FEM component is numerically adequate.",
+      "component": "fem",
+      "required_checks": [
+       "mesh",
+       "solver",
+       "interpolation"
+      ],
+      "id": "claim",
+      "evidence": [
+       "chk",
+       "sys"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B34",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "All required numerical checks passed and are present.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B34",
+    "evidence": [
+     {
+      "id": "chk",
+      "kind": "numerical_checks",
+      "component": "fem",
+      "checks": {
+       "mesh": true,
+       "solver": true,
+       "interpolation": true
+      }
+     },
+     {
+      "id": "sys",
+      "kind": "system_description",
+      "component": "fem",
+      "numerical_solver": true
+     }
+    ],
+    "claims": [
+     {
+      "type": "numerical_adequacy",
+      "statement": "The FEM component passes its declared numerical checks.",
+      "component": "fem",
+      "required_checks": [
+       "mesh",
+       "solver",
+       "interpolation"
+      ],
+      "id": "claim",
+      "evidence": [
+       "chk",
+       "sys"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B35",
+   "category": "extrapolation",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "population_scope",
+   "rationale": "Excellent performance on evaluated conditions cannot establish reliability under all future distribution shifts.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B35",
+    "evidence": [
+     {
+      "id": "hours",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12"
+      ],
+      "unit": "hour",
+      "n": 2900,
+      "events": 58,
+      "value": null,
+      "dependence": "temporal",
+      "interval": {
+       "method": "block_bootstrap",
+       "level": 0.95,
+       "lower": 0.012,
+       "upper": 0.03
+      },
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "universal_reliability",
+      "statement": "The model is reliable under all future distribution shifts.",
+      "metric": "material_error_rate",
+      "reliability_bound": 0.25,
+      "confidence": 0.95,
+      "id": "claim",
+      "evidence": [
+       "hours"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B36",
+   "category": "extrapolation",
+   "source": "constructed",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "statistical_sample",
+   "rationale": "Under an evaluated shift the error rate is 70/100 independent cases (lower bound about 0.62 > 0.25), which already contradicts universal reliability.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B36",
+    "evidence": [
+     {
+      "id": "shifted",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "shifted audit",
+      "conditions": [
+       "observed shift"
+      ],
+      "unit": "audit",
+      "n": 100,
+      "events": 70,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "universal_reliability",
+      "statement": "The model is reliable under all future distribution shifts.",
+      "metric": "material_error_rate",
+      "reliability_bound": 0.25,
+      "confidence": 0.95,
+      "id": "claim",
+      "evidence": [
+       "shifted"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B37",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "Descriptive: 2,326/2,900 = 0.8021, within 0.005 of 0.80 on the evaluated period.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B37",
+    "evidence": [
+     {
+      "id": "cov",
+      "kind": "metric_report",
+      "metric": "interval_coverage",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12"
+      ],
+      "unit": "hour",
+      "n": 2900,
+      "events": 2326,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "Model A achieved 80% calibration coverage on the 2012 test period.",
+      "metric": "interval_coverage",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12"
+      ],
+      "comparator": "equals",
+      "claimed_value": 0.8,
+      "tolerance": 0.005,
+      "id": "claim",
+      "evidence": [
+       "cov"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B38",
+   "category": "extrapolation",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "population_scope",
+   "rationale": "Same evidence as B37 but the claim concerns 2013, which was not evaluated (claim-relative counterpart).",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B38",
+    "evidence": [
+     {
+      "id": "cov",
+      "kind": "metric_report",
+      "metric": "interval_coverage",
+      "population": "bike ridge test",
+      "conditions": [
+       "2012-09..2012-12"
+      ],
+      "unit": "hour",
+      "n": 2900,
+      "events": 2326,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "Model A will achieve 80% calibration coverage in 2013.",
+      "metric": "interval_coverage",
+      "population": "bike ridge test",
+      "conditions": [
+       "2013"
+      ],
+      "comparator": "equals",
+      "claimed_value": 0.8,
+      "tolerance": 0.005,
+      "id": "claim",
+      "evidence": [
+       "cov"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B39",
+   "category": "extrapolation",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "known_limitation",
+   "rationale": "A documented limitation invalidates the timing interpretation the claim depends on.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B39",
+    "evidence": [
+     {
+      "id": "rec",
+      "kind": "metric_report",
+      "metric": "degraded_window_recall",
+      "population": "stream warning",
+      "conditions": [
+       "published order"
+      ],
+      "unit": "window",
+      "n": 6,
+      "events": 4,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     },
+     {
+      "id": "lim",
+      "kind": "limitation",
+      "statement": "Row order is not verified calendar order.",
+      "affects_claim_types": [
+       "metric_value"
+      ],
+      "effect": "invalidates"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "Warnings detected 4 of 6 degraded windows.",
+      "metric": "degraded_window_recall",
+      "population": "stream warning",
+      "conditions": [
+       "published order"
+      ],
+      "comparator": "equals",
+      "claimed_value": 0.6667,
+      "tolerance": 0.0001,
+      "id": "claim",
+      "evidence": [
+       "rec",
+       "lim"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B40",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "A qualifying (not invalidating) limitation does not undermine an accurate descriptive claim.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B40",
+    "evidence": [
+     {
+      "id": "acc",
+      "kind": "metric_report",
+      "metric": "accuracy",
+      "population": "audit pool",
+      "conditions": [
+       "audit pool"
+      ],
+      "unit": "audit",
+      "n": 1000,
+      "events": 900,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     },
+     {
+      "id": "lim",
+      "kind": "limitation",
+      "statement": "Labels were double-entered by one annotator team.",
+      "affects_claim_types": [
+       "metric_value"
+      ],
+      "effect": "qualifies"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "Accuracy was 90%.",
+      "metric": "accuracy",
+      "population": "audit pool",
+      "conditions": [
+       "audit pool"
+      ],
+      "comparator": "equals",
+      "claimed_value": 0.9,
+      "tolerance": 0.001,
+      "id": "claim",
+      "evidence": [
+       "acc",
+       "lim"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B41",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "Condition well represented in calibration (86 days), recent statistic inside calibration support, complete data, recent outcomes consistent with the bound.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B41",
+    "evidence": [
+     {
+      "id": "cal",
+      "kind": "calibration",
+      "population": "bike calibration days",
+      "conditions": [
+       "working day",
+       "weekend",
+       "holiday"
+      ],
+      "condition_counts": {
+       "working day": 86,
+       "weekend": 35,
+       "holiday": 2
+      },
+      "n": 123,
+      "unit": "day",
+      "dependence": "temporal",
+      "method": "quantile threshold"
+     },
+     {
+      "id": "sup",
+      "kind": "support_check",
+      "statistic": "max KS previous day",
+      "value": 0.2,
+      "support_max": 0.5
+     },
+     {
+      "id": "comp",
+      "kind": "completeness",
+      "required": 22,
+      "available": 24
+     },
+     {
+      "id": "recent",
+      "kind": "metric_report",
+      "metric": "accepted_risk",
+      "population": "previous day",
+      "conditions": [
+       "previous day"
+      ],
+      "unit": "hour",
+      "n": 19,
+      "events": 3,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": 1.5,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "operational_risk",
+      "statement": "Accepted risk today (working day) is at most 0.25.",
+      "population": "today accepted predictions",
+      "recent_population": "previous day",
+      "condition": "working day",
+      "bound": 0.25,
+      "confidence": 0.95,
+      "min_condition_support": 5,
+      "id": "claim",
+      "evidence": [
+       "cal",
+       "sup",
+       "comp",
+       "recent"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B42",
+   "category": "missing_calibration",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "calibration_applicability",
+   "rationale": "Only 2 calibration holidays (< 5): the calibrated risk is not established for holidays.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B42",
+    "evidence": [
+     {
+      "id": "cal",
+      "kind": "calibration",
+      "population": "bike calibration days",
+      "conditions": [
+       "working day",
+       "weekend",
+       "holiday"
+      ],
+      "condition_counts": {
+       "working day": 86,
+       "weekend": 35,
+       "holiday": 2
+      },
+      "n": 123,
+      "unit": "day",
+      "dependence": "temporal",
+      "method": "quantile threshold"
+     },
+     {
+      "id": "sup",
+      "kind": "support_check",
+      "statistic": "max KS previous day",
+      "value": 0.2,
+      "support_max": 0.5
+     },
+     {
+      "id": "comp",
+      "kind": "completeness",
+      "required": 22,
+      "available": 24
+     },
+     {
+      "id": "recent",
+      "kind": "metric_report",
+      "metric": "accepted_risk",
+      "population": "previous day",
+      "conditions": [
+       "previous day"
+      ],
+      "unit": "hour",
+      "n": 19,
+      "events": 3,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": 1.5,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "operational_risk",
+      "statement": "Accepted risk today (holiday) is at most 0.25.",
+      "population": "today accepted predictions",
+      "recent_population": "previous day",
+      "condition": "holiday",
+      "bound": 0.25,
+      "confidence": 0.95,
+      "min_condition_support": 5,
+      "id": "claim",
+      "evidence": [
+       "cal",
+       "sup",
+       "comp",
+       "recent"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B43",
+   "category": "invalid_numerical",
+   "source": "constructed",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "statistical_sample",
+   "rationale": "Previous day 15/20 accepted errors; design-effect-adjusted one-sided 95% lower bound about 0.55 > 0.25.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B43",
+    "evidence": [
+     {
+      "id": "cal",
+      "kind": "calibration",
+      "population": "bike calibration days",
+      "conditions": [
+       "working day",
+       "weekend",
+       "holiday"
+      ],
+      "condition_counts": {
+       "working day": 86,
+       "weekend": 35,
+       "holiday": 2
+      },
+      "n": 123,
+      "unit": "day",
+      "dependence": "temporal",
+      "method": "quantile threshold"
+     },
+     {
+      "id": "sup",
+      "kind": "support_check",
+      "statistic": "max KS previous day",
+      "value": 0.2,
+      "support_max": 0.5
+     },
+     {
+      "id": "comp",
+      "kind": "completeness",
+      "required": 22,
+      "available": 24
+     },
+     {
+      "id": "recent",
+      "kind": "metric_report",
+      "metric": "accepted_risk",
+      "population": "previous day",
+      "conditions": [
+       "previous day"
+      ],
+      "unit": "hour",
+      "n": 20,
+      "events": 15,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": 1.2,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "operational_risk",
+      "statement": "Accepted risk today (working day) is at most 0.25.",
+      "population": "today accepted predictions",
+      "recent_population": "previous day",
+      "condition": "working day",
+      "bound": 0.25,
+      "confidence": 0.95,
+      "min_condition_support": 5,
+      "id": "claim",
+      "evidence": [
+       "cal",
+       "sup",
+       "comp",
+       "recent"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B44",
+   "category": "uncertainty_assumption",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "distribution_representativeness",
+   "rationale": "Recent monitoring statistic 0.8 exceeds the calibration maximum 0.5: outside calibrated support.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B44",
+    "evidence": [
+     {
+      "id": "cal",
+      "kind": "calibration",
+      "population": "bike calibration days",
+      "conditions": [
+       "working day",
+       "weekend",
+       "holiday"
+      ],
+      "condition_counts": {
+       "working day": 86,
+       "weekend": 35,
+       "holiday": 2
+      },
+      "n": 123,
+      "unit": "day",
+      "dependence": "temporal",
+      "method": "quantile threshold"
+     },
+     {
+      "id": "sup",
+      "kind": "support_check",
+      "statistic": "max KS previous day",
+      "value": 0.8,
+      "support_max": 0.5
+     },
+     {
+      "id": "comp",
+      "kind": "completeness",
+      "required": 22,
+      "available": 24
+     },
+     {
+      "id": "recent",
+      "kind": "metric_report",
+      "metric": "accepted_risk",
+      "population": "previous day",
+      "conditions": [
+       "previous day"
+      ],
+      "unit": "hour",
+      "n": 19,
+      "events": 3,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": 1.5,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "operational_risk",
+      "statement": "Accepted risk today (working day) is at most 0.25.",
+      "population": "today accepted predictions",
+      "recent_population": "previous day",
+      "condition": "working day",
+      "bound": 0.25,
+      "confidence": 0.95,
+      "min_condition_support": 5,
+      "id": "claim",
+      "evidence": [
+       "cal",
+       "sup",
+       "comp",
+       "recent"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B45",
+   "category": "missing_evidence",
+   "source": "constructed",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "missing_evidence",
+   "rationale": "Only 12 of the required 22 recent hours are available (data outage); recent evidence is incomplete.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B45",
+    "evidence": [
+     {
+      "id": "cal",
+      "kind": "calibration",
+      "population": "bike calibration days",
+      "conditions": [
+       "working day",
+       "weekend",
+       "holiday"
+      ],
+      "condition_counts": {
+       "working day": 86,
+       "weekend": 35,
+       "holiday": 2
+      },
+      "n": 123,
+      "unit": "day",
+      "dependence": "temporal",
+      "method": "quantile threshold"
+     },
+     {
+      "id": "sup",
+      "kind": "support_check",
+      "statistic": "max KS previous day",
+      "value": 0.2,
+      "support_max": 0.5
+     },
+     {
+      "id": "comp",
+      "kind": "completeness",
+      "required": 22,
+      "available": 12
+     },
+     {
+      "id": "recent",
+      "kind": "metric_report",
+      "metric": "accepted_risk",
+      "population": "previous day",
+      "conditions": [
+       "previous day"
+      ],
+      "unit": "hour",
+      "n": 10,
+      "events": 1,
+      "value": null,
+      "dependence": "temporal",
+      "interval": null,
+      "design_effect": 1.5,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "operational_risk",
+      "statement": "Accepted risk today (working day) is at most 0.25.",
+      "population": "today accepted predictions",
+      "recent_population": "previous day",
+      "condition": "working day",
+      "bound": 0.25,
+      "confidence": 0.95,
+      "min_condition_support": 5,
+      "id": "claim",
+      "evidence": [
+       "cal",
+       "sup",
+       "comp",
+       "recent"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B46",
+   "category": "physical_generalization",
+   "source": "constructed",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "population_scope",
+   "rationale": "A bench trial in the target domain failed its declared acceptance criterion; the generalisation is contradicted for that domain.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B46",
+    "evidence": [
+     {
+      "id": "hw",
+      "kind": "physical_validation",
+      "domain": "3d-hardware",
+      "trials": 12,
+      "passed": false
+     }
+    ],
+    "claims": [
+     {
+      "type": "physical_generalization",
+      "statement": "Simulation-derived abstention thresholds transfer to the 3D hardware sensor.",
+      "from_domain": "2d-simulation",
+      "to_domain": "3d-hardware",
+      "id": "claim",
+      "evidence": [
+       "hw"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "B47",
+   "category": "valid_claim",
+   "source": "constructed",
+   "ground_truth": "supported_within_scope",
+   "ground_truth_dimension": null,
+   "rationale": "A physical validation in the claimed target domain passed its declared criterion; the claim is limited to that validated domain.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "B47",
+    "evidence": [
+     {
+      "id": "hw",
+      "kind": "physical_validation",
+      "domain": "3d-hardware",
+      "trials": 40,
+      "passed": true
+     }
+    ],
+    "claims": [
+     {
+      "type": "physical_generalization",
+      "statement": "Thresholds transfer to the validated 3D hardware configuration.",
+      "from_domain": "2d-simulation",
+      "to_domain": "3d-hardware",
+      "id": "claim",
+      "evidence": [
+       "hw"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "M01",
+   "category": "misleading_input",
+   "source": "misleading_input",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "leakage",
+   "rationale": "The timing table falsely labels same-hour temperature as available at the origin (offset 0). In reality temp_T is observed during hour T. Expected failure mode: supplied tables are not verified against the world.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "M01",
+    "evidence": [
+     {
+      "id": "timing",
+      "kind": "feature_timing",
+      "origin": "end of elapsed hour T-1; target cnt at hour T",
+      "features": [
+       {
+        "name": "local_hour_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "workingday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "holiday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "weekday_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "day_of_year_of_target",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-1",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-2",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-3",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-24",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "cnt_T-168",
+        "available_offset_hours": 0.0
+       },
+       {
+        "name": "temp_T",
+        "available_offset_hours": 0.0
+       }
+      ]
+     },
+     {
+      "id": "part",
+      "kind": "partition",
+      "ordering": "temporal",
+      "splits": [
+       {
+        "name": "training",
+        "start": "2011-01-01",
+        "end": "2011-12-31"
+       },
+       {
+        "name": "development",
+        "start": "2012-01-01",
+        "end": "2012-04-30"
+       },
+       {
+        "name": "calibration",
+        "start": "2012-05-01",
+        "end": "2012-08-31"
+       },
+       {
+        "name": "test",
+        "start": "2012-09-01",
+        "end": "2012-12-31"
+       }
+      ],
+      "training_split": "training",
+      "evaluation_split": "test",
+      "preprocessing_fit_splits": [
+       "training"
+      ]
+     },
+     {
+      "id": "construct",
+      "kind": "target_construction",
+      "target": "cnt",
+      "identities": []
+     },
+     {
+      "id": "att",
+      "kind": "attestation",
+      "statement": "No leakage.",
+      "value": true,
+      "attester": "claimant"
+     }
+    ],
+    "claims": [
+     {
+      "type": "no_leakage",
+      "statement": "The bike demand model is free of target leakage.",
+      "task": "forecast",
+      "id": "claim",
+      "evidence": [
+       "timing",
+       "part",
+       "construct",
+       "att"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "M02",
+   "category": "misleading_input",
+   "source": "misleading_input",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "temporal_dependence",
+   "rationale": "The diagnostic was computed after shuffling rows, giving lag-1 0.002; the true ordered hourly series has strong serial dependence (training log-demand lag-1 0.89). Expected failure mode.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "M02",
+    "evidence": [
+     {
+      "id": "diag",
+      "kind": "dependence_diagnostic",
+      "unit": "hour",
+      "n": 2900,
+      "lag1_autocorrelation": 0.002
+     },
+     {
+      "id": "att",
+      "kind": "attestation",
+      "statement": "Independent.",
+      "value": true,
+      "attester": "claimant"
+     }
+    ],
+    "claims": [
+     {
+      "type": "independence",
+      "statement": "Hourly material-error indicators show no lag-1 dependence.",
+      "unit": "hour",
+      "id": "claim",
+      "evidence": [
+       "diag",
+       "att"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "M03",
+   "category": "misleading_input",
+   "source": "misleading_input",
+   "ground_truth": "contradicted",
+   "ground_truth_dimension": "numerical_validity",
+   "rationale": "The supplied report says 10/1000 errors, but the linked, hash-intact export records 100/1000. TRIAD hashes but does not parse artifacts. Expected failure mode.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "M03",
+    "evidence": [
+     {
+      "id": "rate",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "audit pool",
+      "conditions": [
+       "audit pool"
+      ],
+      "unit": "audit",
+      "n": 1000,
+      "events": 10,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     },
+     {
+      "id": "export",
+      "kind": "embedded_artifact",
+      "content": "audit export: n=1000 errors=100",
+      "expected_sha256": "01b7d2e9edba5e97f07ab9d4c48978b3497f51c1303d43a802db02cc4b35ca57",
+      "authority": "repository_record"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_value",
+      "statement": "Material-error rate was 1%.",
+      "metric": "material_error_rate",
+      "population": "audit pool",
+      "conditions": [
+       "audit pool"
+      ],
+      "comparator": "equals",
+      "claimed_value": 0.01,
+      "tolerance": 0.0001,
+      "id": "claim",
+      "evidence": [
+       "rate",
+       "export"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "case_id": "M04",
+   "category": "misleading_input",
+   "source": "misleading_input",
+   "ground_truth": "insufficient_evidence",
+   "ground_truth_dimension": "temporal_dependence",
+   "rationale": "Consecutive hours are mislabelled as independent. The bound is unsupported because the units are dependent. Expected failure mode.",
+   "assessment": {
+    "schema_version": "triad-evidence-1",
+    "assessment_id": "M04",
+    "evidence": [
+     {
+      "id": "hours",
+      "kind": "metric_report",
+      "metric": "material_error_rate",
+      "population": "bike ridge night hours",
+      "conditions": [
+       "night hours"
+      ],
+      "unit": "hour",
+      "n": 400,
+      "events": 0,
+      "value": null,
+      "dependence": "independent",
+      "interval": null,
+      "design_effect": null,
+      "source": "suite"
+     }
+    ],
+    "claims": [
+     {
+      "type": "metric_bound",
+      "statement": "Night material-error rate is at most 1% (95% confidence).",
+      "metric": "material_error_rate",
+      "population": "bike ridge night hours",
+      "conditions": [
+       "night hours"
+      ],
+      "comparator": "at_most",
+      "bound": 0.01,
+      "confidence": 0.95,
+      "claimed_value": null,
+      "tolerance": 0.0,
+      "id": "claim",
+      "evidence": [
+       "hours"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,236 @@
+{
+ "status": "pre-fitting audit; 2012 targets not read",
+ "source": {
+  "uci_id": 275,
+  "doi": "10.24432/C5W894",
+  "repository_url": "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset",
+  "archive_url": "https://archive.ics.uci.edu/static/public/275/bike+sharing+dataset.zip",
+  "archive_sha256_observed": "b70182d0d0508e9abbb79306ce5c0cec34869000f8220175ac83d11dbe845401",
+  "archive_sha256_recorded_2026_10_11": "b70182d0d0508e9abbb79306ce5c0cec34869000f8220175ac83d11dbe845401",
+  "archive_matches_recorded": true,
+  "member_sha256": {
+   "Readme.txt": "b92c8628622948bf0828c43a1b315d1517c3d7fd63654730d0dea379b8e88175",
+   "day.csv": "a6bcf826782d3c0fbfdcbeead17cd0884185a0dafe8ff10cd48a874ee7ba18be",
+   "hour.csv": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f"
+  },
+  "license": "CC BY 4.0 (stated on the UCI dataset page; the API response has no licence field)",
+  "citation": "Fanaee-T, H. (2013). Bike Sharing [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5W894",
+  "metadata_num_instances": 17389,
+  "metadata_has_missing_values": "no",
+  "metadata_season_coding": "1:winter, 2:spring, 3:summer, 4:fall"
+ },
+ "rows": 17379,
+ "discrepancies": [
+  "UCI metadata lists 17389 instances; hour.csv has 17379 rows (Readme.txt states 17379).",
+  "Readme.txt codes season as 1 spring..4 winter; the UCI page codes 1 winter..4 fall. January rows carry season 1, matching the UCI page. Season is not used as a predictor.",
+  "'No missing values' refers to cells. Elapsed-hour gaps exist and are reported below."
+ ],
+ "chronology": {
+  "timestamp_semantics": "dteday + hr are local wall-clock labels (America/New_York); the 02:00 label is absent on both spring-forward days",
+  "instant_consecutive": true,
+  "strictly_increasing_elapsed": true,
+  "duplicate_local_labels": 0,
+  "duplicate_elapsed_hours": 0,
+  "first_local": "2011-01-01T00",
+  "last_local": "2012-12-31T23",
+  "elapsed_span_hours": 17544,
+  "missing_elapsed_hours": 165,
+  "missing_runs": 75,
+  "missing_run_length_counts": {
+   "1": 64,
+   "2": 6,
+   "6": 1,
+   "12": 1,
+   "13": 1,
+   "22": 1,
+   "36": 1
+  },
+  "missing_runs_of_6_or_more": [
+   {
+    "first": "2011-01-18T00:00-0500",
+    "last": "2011-01-18T11:00-0500",
+    "hours": 12
+   },
+   {
+    "first": "2011-01-26T18:00-0500",
+    "last": "2011-01-27T15:00-0500",
+    "hours": 22
+   },
+   {
+    "first": "2011-02-22T00:00-0500",
+    "last": "2011-02-22T05:00-0500",
+    "hours": 6
+   },
+   {
+    "first": "2011-08-27T18:00-0400",
+    "last": "2011-08-28T06:00-0400",
+    "hours": 13
+   },
+   {
+    "first": "2012-10-29T01:00-0400",
+    "last": "2012-10-30T12:00-0400",
+    "hours": 36
+   }
+  ],
+  "missing_by_local_hour": {
+   "0": 5,
+   "1": 9,
+   "2": 14,
+   "3": 34,
+   "4": 34,
+   "5": 14,
+   "6": 6,
+   "7": 4,
+   "8": 4,
+   "9": 4,
+   "10": 4,
+   "11": 4,
+   "12": 3,
+   "13": 2,
+   "14": 2,
+   "15": 2,
+   "16": 1,
+   "17": 1,
+   "18": 3,
+   "19": 3,
+   "20": 3,
+   "21": 3,
+   "22": 3,
+   "23": 3
+  },
+  "missing_local_labels": 165,
+  "nonexistent_local_labels_spring_forward": [
+   "2011-03-13T02",
+   "2012-03-11T02"
+  ],
+  "fall_back_note": "Fall-back days have 24 labels; the repeated 01:00 hour cannot be separated, so it is mapped to the first (EDT) occurrence and the second appears as one missing elapsed hour.",
+  "interpretation": "An absent hour may be zero rentals, an outage or a recording gap; it is unknown, never imputed as zero."
+ },
+ "calendar_consistency_errors": {
+  "weekday": 0,
+  "yr_mnth": 0,
+  "workingday": 0,
+  "hour_range": 0
+ },
+ "holidays": [
+  "2011-01-17",
+  "2011-02-21",
+  "2011-04-15",
+  "2011-05-30",
+  "2011-07-04",
+  "2011-09-05",
+  "2011-10-10",
+  "2011-11-11",
+  "2011-11-24",
+  "2011-12-26",
+  "2012-01-02",
+  "2012-01-16",
+  "2012-02-20",
+  "2012-04-16",
+  "2012-05-28",
+  "2012-07-04",
+  "2012-09-03",
+  "2012-10-08",
+  "2012-11-12",
+  "2012-11-22",
+  "2012-12-25"
+ ],
+ "training_2011_targets_only": {
+  "rows": 8645,
+  "cnt_equals_casual_plus_registered": true,
+  "mean": 143.794,
+  "median": 109,
+  "p90": 346,
+  "p99": 554,
+  "max": 651,
+  "min": 1,
+  "monthly_mean": {
+   "1": 55.5,
+   "2": 74.3,
+   "3": 87.7,
+   "4": 131.9,
+   "5": 182.6,
+   "6": 199.3,
+   "7": 190.0,
+   "8": 187.0,
+   "9": 177.7,
+   "10": 166.2,
+   "11": 142.1,
+   "12": 117.8
+  },
+  "mean_profile_working_day": [
+   29,
+   14,
+   8,
+   4,
+   5,
+   18,
+   77,
+   215,
+   350,
+   181,
+   101,
+   118,
+   148,
+   146,
+   137,
+   147,
+   215,
+   395,
+   367,
+   259,
+   188,
+   144,
+   108,
+   69
+  ],
+  "mean_profile_non_working_day": [
+   73,
+   54,
+   43,
+   22,
+   7,
+   7,
+   14,
+   32,
+   76,
+   128,
+   194,
+   238,
+   281,
+   286,
+   281,
+   279,
+   277,
+   251,
+   224,
+   187,
+   141,
+   115,
+   95,
+   71
+  ],
+  "autocorrelation": [
+   {
+    "lag_hours": 1,
+    "pairs": 8584,
+    "pearson_log1p": 0.8897
+   },
+   {
+    "lag_hours": 2,
+    "pairs": 8574,
+    "pearson_log1p": 0.6826
+   },
+   {
+    "lag_hours": 24,
+    "pairs": 8523,
+    "pearson_log1p": 0.8518
+   },
+   {
+    "lag_hours": 168,
+    "pairs": 8390,
+    "pearson_log1p": 0.8974
+   }
+  ]
+ }
+}

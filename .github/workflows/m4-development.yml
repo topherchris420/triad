@@ -1,0 +1,53 @@
+name: TRIAD Milestone 4 development diagnostic
+
+on:
+  push:
+    branches: ['research/m4-numerical-readiness-20261011']
+    paths:
+      - '.github/workflows/m4-development.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  numerical-components:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - uses: Swatinem/rust-cache@v2
+      - name: Format and test Rust
+        run: |
+          cargo fmt --all
+          cargo test --release --locked
+      - name: Run isolated development diagnostic
+        run: |
+          cargo run --release --locked -- numerical-components
+      - name: Verify and archive diagnostic
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('results/numerical-components-v4.json')
+          r=json.loads(p.read_text())
+          assert r['kind']=='numerical_components_v4_development_only'
+          assert r['development_probe_count']==10
+          assert len(r['rows'])==10
+          print('Readiness:',r['readiness_for_new_selective_claims'])
+          for k in ('max_mesh_discrepancy_noise_units','max_original_interpolation_noise_units','max_local_patch_interpolation_noise_units','max_local_patch_total_noise_units'): print(k, r[k])
+          PY
+          git diff --exit-code -- experiments/config.json results/cache results/dataset.json results/predictions.json results/evaluation.json results/summary.json results/validation.json results/reproducibility-check.json results/plots results/numerical-audit-v3.json results/selective-v3 results/geometry-screen-v1.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src tests results/numerical-components-v4.json
+          git commit -m 'Record reproducible Milestone 4 diagnostic and apply rustfmt'
+          git push origin HEAD:research/m4-numerical-readiness-20261011
+      - name: Upload separate diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m4-numerical-components-${{ github.run_id }}
+          path: results/numerical-components-v4.json
+          if-no-files-found: warn

@@ -1,0 +1,127 @@
+{
+  "artifact_sha256": {
+    "evaluation.json": "aa1f31f684258d3dbe786897c06631ed6fa06442148abcbf9d08f3a7e1562296",
+    "run.json": "ec67f2f4123e1117c6e7fa9e7e21c2592b77439a16b874871c33f9e123d44829",
+    "test-scores.json": "ac8e832a37ec0e1dab7ee98e5e747b0fbbf750a989a134eaaa822437a8275d4d"
+  },
+  "deployment_thresholds_calibration_only": {
+    "c2": {
+      "accepted_error_over_5mm": 34,
+      "accepted_mean_error_mm": 1.2839098316735904,
+      "accepted_risk": 0.012147195426938193,
+      "brier_calibrated": 0.0348129947715873,
+      "coverage": 0.7775,
+      "ece_10_equal_width_bins": 0.004531909654082324,
+      "incorrect_acceptance_frequency": 0.009444444444444445,
+      "reliability_bins": [
+        {
+          "n": 3589,
+          "observed": 0.03677904708832544,
+          "predicted": 0.03255363067310582
+        },
+        {
+          "n": 11,
+          "observed": 0.0,
+          "predicted": 0.10453229458846881
+        }
+      ]
+    },
+    "c2_threshold": 0.05342653228978809,
+    "d": {
+      "accepted_error_over_5mm": 29,
+      "accepted_mean_error_mm": 1.2624989727073326,
+      "accepted_risk": 0.010450450450450451,
+      "brier_calibrated": 0.03467225194023174,
+      "coverage": 0.7708333333333334,
+      "ece_10_equal_width_bins": 0.0035843725424200487,
+      "incorrect_acceptance_frequency": 0.008055555555555555,
+      "reliability_bins": [
+        {
+          "n": 3600,
+          "observed": 0.03666666666666667,
+          "predicted": 0.03308229412424662
+        }
+      ]
+    },
+    "d_threshold": 0.1279792276744035
+  },
+  "dictionary_key": "e4fac601b7d133f018e84cd2439997f61119edde234ae7da549f7a5c087dddb7",
+  "experiment": "selective-v3",
+  "independent_sequence_counts": {
+    "calibration": 64,
+    "development": 64,
+    "test": 300
+  },
+  "interpretation": "Exploratory synthetic study. Do not claim reliable calibration, physical sensing, or improvement without checking numerical likelihood error, event power, and independent reproduction.",
+  "limitations": [
+    "Finite, discrete position/material posterior with an explicitly tempered Gaussian likelihood; C2 is optimal only under its approximate model.",
+    "D is a preregistered untrained blend of C2 and independently computable local/global observability indicators.",
+    "Test frames share spatial pools within each split; sequence bootstrap addresses temporal clustering, not all model misspecification.",
+    "No hardware or 3D validation, and no nested cross-validation of the prescribed physics weight.",
+    "Calibration thresholds come exclusively from disjoint calibration sequences.",
+    "Both selectors share the same measurement channels, posterior, priors, calibration history, and point estimator."
+  ],
+  "numerical_inspection_ready": false,
+  "primary_matched_80_percent": {
+    "c2": {
+      "accepted_error_over_5mm": 42,
+      "accepted_mean_error_mm": 1.3202276885530848,
+      "accepted_risk": 0.014583333333333334,
+      "brier_calibrated": 0.0348129947715873,
+      "coverage": 0.8,
+      "ece_10_equal_width_bins": 0.004531909654082324,
+      "incorrect_acceptance_frequency": 0.011666666666666667,
+      "reliability_bins": [
+        {
+          "n": 3589,
+          "observed": 0.03677904708832544,
+          "predicted": 0.03255363067310582
+        },
+        {
+          "n": 11,
+          "observed": 0.0,
+          "predicted": 0.10453229458846881
+        }
+      ]
+    },
+    "d": {
+      "accepted_error_over_5mm": 37,
+      "accepted_mean_error_mm": 1.3135640155755957,
+      "accepted_risk": 0.012847222222222222,
+      "brier_calibrated": 0.03467225194023174,
+      "coverage": 0.8,
+      "ece_10_equal_width_bins": 0.0035843725424200487,
+      "incorrect_acceptance_frequency": 0.010277777777777778,
+      "reliability_bins": [
+        {
+          "n": 3600,
+          "observed": 0.03666666666666667,
+          "predicted": 0.03308229412424662
+        }
+      ]
+    },
+    "paired_whole_sequence_bootstrap_95_percent": [
+      0.000347222222222221,
+      0.0038194444444444448
+    ],
+    "retrospective_ranking_not_deployment_calibration": true,
+    "risk_reduction_c2_minus_d": 0.0017361111111111119
+  },
+  "probability_calibration_development_only": {
+    "c2": {
+      "intercept": -3.491374086802394,
+      "slope": 1.453582534774271
+    },
+    "d": {
+      "intercept": -3.5509250325263153,
+      "slope": 1.6321263149945322
+    },
+    "warning": "These logistic calibrators were trained on development labels; reliability is measured on untouched independent test sequences."
+  },
+  "protocol_sha256": "40137978dfefda624d1c193764cf0c48962b563438fe5b0b7101a113fcbcd4c7",
+  "scenario": "strong_drift",
+  "sufficient_failure_events": true,
+  "supports_declared_primary_hypothesis": false,
+  "test_errors_above_5mm": 132,
+  "test_frames": 3600
+}

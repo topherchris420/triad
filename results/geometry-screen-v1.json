@@ -1,0 +1,148 @@
+{
+  "all_development_candidates": [
+    {
+      "layout": {
+        "centers": [
+          -0.03,
+          -0.008,
+          0.008,
+          0.03
+        ],
+        "half_width": 0.004
+      },
+      "metrics": {
+        "fraction_pairs_within_two_noise_units": 0.0,
+        "minimum_distance_in_noise_units": 5.421009578530657,
+        "p10_pairwise_distance_in_noise_units": 23.41000127119736,
+        "pairs_at_least_5mm_apart": 256,
+        "site_count": 24
+      },
+      "name": "split_outer"
+    },
+    {
+      "layout": {
+        "centers": [
+          -0.027,
+          -0.009,
+          0.009,
+          0.027
+        ],
+        "half_width": 0.004
+      },
+      "metrics": {
+        "fraction_pairs_within_two_noise_units": 0.0,
+        "minimum_distance_in_noise_units": 5.3707279826102505,
+        "p10_pairwise_distance_in_noise_units": 23.312201832590333,
+        "pairs_at_least_5mm_apart": 256,
+        "site_count": 24
+      },
+      "name": "frozen_baseline"
+    },
+    {
+      "layout": {
+        "centers": [
+          -0.03,
+          -0.01,
+          0.01,
+          0.03
+        ],
+        "half_width": 0.004
+      },
+      "metrics": {
+        "fraction_pairs_within_two_noise_units": 0.0,
+        "minimum_distance_in_noise_units": 5.336620915422534,
+        "p10_pairwise_distance_in_noise_units": 23.227795345748625,
+        "pairs_at_least_5mm_apart": 256,
+        "site_count": 24
+      },
+      "name": "wide"
+    },
+    {
+      "layout": {
+        "centers": [
+          -0.024,
+          -0.008,
+          0.008,
+          0.024
+        ],
+        "half_width": 0.004
+      },
+      "metrics": {
+        "fraction_pairs_within_two_noise_units": 0.0,
+        "minimum_distance_in_noise_units": 5.126194381201017,
+        "p10_pairwise_distance_in_noise_units": 22.754241700498095,
+        "pairs_at_least_5mm_apart": 256,
+        "site_count": 24
+      },
+      "name": "compact"
+    },
+    {
+      "layout": {
+        "centers": [
+          -0.024,
+          -0.01,
+          0.01,
+          0.024
+        ],
+        "half_width": 0.004
+      },
+      "metrics": {
+        "fraction_pairs_within_two_noise_units": 0.0,
+        "minimum_distance_in_noise_units": 5.008010346971686,
+        "p10_pairwise_distance_in_noise_units": 22.25185434450341,
+        "pairs_at_least_5mm_apart": 256,
+        "site_count": 24
+      },
+      "name": "split_inner"
+    }
+  ],
+  "default_holdout": {
+    "fraction_pairs_within_two_noise_units": 0.0,
+    "minimum_distance_in_noise_units": 5.922781808593087,
+    "p10_pairwise_distance_in_noise_units": 17.99016959439989,
+    "pairs_at_least_5mm_apart": 262,
+    "site_count": 24
+  },
+  "independent_site_seeds": [
+    9317001,
+    9317002
+  ],
+  "kind": "geometry_screen_v1",
+  "limits": [
+    "Screening is NOT a validated geometry improvement in selective risk.",
+    "All layouts have four strips and ten theoretical channels, but capacitance readout parasitics are omitted.",
+    "The pair-distance metric is an incomplete surrogate for globally reliable localization.",
+    "The same synthetic area, material range and covariance are used for all candidates.",
+    "The selected layout needs its own inverse dictionary, C2/D calibration and fresh independent final test sequences.",
+    "No 3D or physical-device evidence, no manufacturing constraints, and no original sensor superiority claim."
+  ],
+  "numerical_inspection_ready": false,
+  "protocol_dependency_sha256": "40137978dfefda624d1c193764cf0c48962b563438fe5b0b7101a113fcbcd4c7",
+  "same_region_channels_width_noise_and_fem_mesh": true,
+  "selection": {
+    "centers_m": [
+      -0.03,
+      -0.008,
+      0.008,
+      0.03
+    ],
+    "development": {
+      "fraction_pairs_within_two_noise_units": 0.0,
+      "minimum_distance_in_noise_units": 5.421009578530657,
+      "p10_pairwise_distance_in_noise_units": 23.41000127119736,
+      "pairs_at_least_5mm_apart": 256,
+      "site_count": 24
+    },
+    "half_width_m": 0.004,
+    "layout": "split_outer",
+    "untouched_holdout": {
+      "fraction_pairs_within_two_noise_units": 0.0,
+      "minimum_distance_in_noise_units": 5.920992500277563,
+      "p10_pairwise_distance_in_noise_units": 17.20152107717228,
+      "pairs_at_least_5mm_apart": 262,
+      "site_count": 24
+    }
+  },
+  "selection_objective": "maximize 10th-percentile whitened pairwise distance of states separated over 5 mm",
+  "status": "exploratory_surrogate_not_optimized_selective_risk"
+}

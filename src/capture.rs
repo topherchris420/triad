@@ -68,7 +68,10 @@ pub struct CaptureAudit {
 }
 impl Capture {
     pub fn validate(&self) -> Result<()> {
-        ensure!(self.schema_version == 1, "unsupported capture schema version");
+        ensure!(
+            self.schema_version == 1,
+            "unsupported capture schema version"
+        );
         ensure!(
             !self.capture_id.trim().is_empty()
                 && !self.device_class.trim().is_empty()
@@ -161,7 +164,10 @@ impl Capture {
 }
 pub fn inspect_file(path: &Path) -> Result<CaptureAudit> {
     let bytes = std::fs::read(path).with_context(|| format!("read {}", path.display()))?;
-    ensure!(bytes.len() <= 50_000_000, "capture exceeds 50 MB inspection limit");
+    ensure!(
+        bytes.len() <= 50_000_000,
+        "capture exceeds 50 MB inspection limit"
+    );
     let capture: Capture = serde_json::from_slice(&bytes).context("parse TRIAD capture v1 JSON")?;
     capture.audit()
 }

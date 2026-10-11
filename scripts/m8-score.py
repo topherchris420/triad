@@ -277,7 +277,9 @@ def main():
     args.output.mkdir(parents=False, exist_ok=False)
     (args.output / "report.json").write_text(json.dumps(report, indent=1) + "\n", encoding="utf-8", newline="\n")
     (args.output / "report.md").write_text(markdown(report), encoding="utf-8", newline="\n")
-    print(markdown(report))
+    # UTF-8 regardless of console encoding (the summary contains Greek letters; cp1252 on Windows cannot encode them).
+    sys.stdout.buffer.write(markdown(report).encode("utf-8"))
+    sys.stdout.flush()
     return 0
 
 

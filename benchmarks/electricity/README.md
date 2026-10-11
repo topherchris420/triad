@@ -4,6 +4,8 @@ The Rust evaluator consumes `manifest.json`; Python is needed only for dataset r
 
 The committed protocol precedes fitting in commit `3f3046f`. This is local exploratory prespecification, not third-party registration. `provenance.json` records data and feature hashes, exact split counts, scaler parameters, software versions and source preprocessing. `metadata.json` and `features.json` preserve OpenML's authoritative responses. Raw ARFF data are not included. The metadata calls its license **Public**, without naming a specific legal license; do not reinterpret that as CC0 or MIT. The repository's MIT license covers our code, not a relicensing of source observations.
 
+Both original local and canonical Git hashes of the 73 older artifacts are retained. Two pre-existing M5 JSON files differ only in CRLF/LF endings; the portable verifier accepts either recorded byte form and rejects other content changes. The canonical manifest is derived from the pre-M6 revision, not new experimental outputs.
+
 ## Reproduce the recorded measurements
 
 ```sh

@@ -150,9 +150,13 @@ def main():
         rows,e,a,inp=results[0]; _,f,b,_=results[j]
         days=np.column_stack([np.ones(len(rows)),a,e*a,b,f*b,e]).reshape(-1,size,6).sum(axis=1)
         verify_intervals(days,comparison['intervals'],inp['bootstrap_replicates'],inp['bootstrap_seed'])
-    # Every older artifact protected before this milestone must remain byte-identical.
-    for name, sha in json.loads(Path('benchmarks/electricity/frozen-before-v6.json').read_bytes()).items():
-        assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==sha, name
+    # Preserve original local hashes and separately verify published Git bytes.
+    # Two historical local JSON files have CRLF; their committed blobs have LF.
+    original=json.loads(Path('benchmarks/electricity/frozen-before-v6.json').read_bytes())
+    canonical=json.loads(Path('benchmarks/electricity/frozen-before-v6-git.json').read_bytes())['sha256']
+    assert original.keys()==canonical.keys()
+    for name, sha in canonical.items():
+        assert hashlib.sha256(Path(name).read_bytes()).hexdigest() in (sha,original[name]), name
     print('PASS: independent metrics, curves, bins, policies, ablations, paired temporal intervals and 73 frozen artifacts (tolerance 1e-11 relative / 1e-12 absolute).')
     if args.plots:
         import matplotlib

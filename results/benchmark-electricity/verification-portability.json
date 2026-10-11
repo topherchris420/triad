@@ -1,0 +1,16 @@
+{
+  "status": "passed_locally_after_ci_identified_historical_line_endings",
+  "prior_record": "verification.json",
+  "original_record_preserved": true,
+  "canonical_baseline_revision": "ea15d409555f1bc836b06d9ac0325bc451476618",
+  "canonical_git_artifacts_verified": 73,
+  "line_ending_only_files": [
+    "results/metrology-gates-v5.json",
+    "results/metrology-reproducibility-v5.json"
+  ],
+  "historical_artifacts_modified": false,
+  "benchmark_metrics_changed": false,
+  "current_verifier_sha256": "3b2d7433f5014bf4edd26242d25be6b735fa76c0946066d74354a9ae5a10464d",
+  "initial_ci_run": "https://github.com/topherchris420/triad/actions/runs/38175379946",
+  "initial_ci_finding": "Rust metric replay passed on Linux; local-only historical hash manifest rejected two existing CRLF/LF differences. Original hashes retained alongside canonical pre-M6 Git hashes."
+}

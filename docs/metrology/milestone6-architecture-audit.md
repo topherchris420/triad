@@ -17,3 +17,5 @@ Dataset feature-only audit: 45,312 rows, 944 consecutive 48-period blocks, unint
 The protocol is written before fitting models or summarizing final labels. This is local exploratory prespecification, not independent registration. A separate hash manifest protects all previously tracked results and experiment files, including Milestone 5.
 
 The GitHub connection returned HTTP 403 for the branch-protection administration endpoint. Protection settings therefore could not be confirmed. The publication workflow still explicitly waits for both platform checks and uses the expected PR head SHA when merging; no protection bypass is attempted.
+
+Cross-platform CI exposed two pre-existing local CRLF files (`metrology-gates-v5.json` and `metrology-reproducibility-v5.json`) whose published Git blobs use LF. The original local hash manifest is preserved. `frozen-before-v6-git.json` separately records all canonical blobs from the starting revision and names these two line-ending-only differences. Verification accepts only the recorded original or canonical bytes, never arbitrary edited content. No historical file was rewritten or scientifically rebaselined.

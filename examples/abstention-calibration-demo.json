@@ -1,0 +1,84 @@
+{
+  "spec": {
+    "method_id": "illustration.not_a_real_estimator",
+    "maximum_accepted_error_rate": 0.1,
+    "minimum_coverage": 0.8,
+    "delta": 0.05,
+    "candidate_thresholds": [
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ]
+  },
+  "sequences": [
+    {
+      "id": "synthetic-independent-sequence-1",
+      "frames": [
+        {
+          "score": 0.05,
+          "incorrect": false
+        },
+        {
+          "score": 0.15,
+          "incorrect": false
+        },
+        {
+          "score": 0.25,
+          "incorrect": false
+        }
+      ]
+    },
+    {
+      "id": "synthetic-independent-sequence-2",
+      "frames": [
+        {
+          "score": 0.05,
+          "incorrect": false
+        },
+        {
+          "score": 0.15,
+          "incorrect": false
+        },
+        {
+          "score": 0.25,
+          "incorrect": false
+        }
+      ]
+    },
+    {
+      "id": "synthetic-independent-sequence-3",
+      "frames": [
+        {
+          "score": 0.05,
+          "incorrect": false
+        },
+        {
+          "score": 0.15,
+          "incorrect": true
+        },
+        {
+          "score": 0.25,
+          "incorrect": false
+        }
+      ]
+    },
+    {
+      "id": "synthetic-independent-sequence-4",
+      "frames": [
+        {
+          "score": 0.05,
+          "incorrect": false
+        },
+        {
+          "score": 0.15,
+          "incorrect": false
+        },
+        {
+          "score": 0.25,
+          "incorrect": false
+        }
+      ]
+    }
+  ]
+}

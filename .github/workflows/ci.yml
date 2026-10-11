@@ -47,6 +47,24 @@ jobs:
           python scripts/verify-benchmark.py results/ci-electricity/report.json
           python scripts/prepare-electricity.py --cache work/electricity-cache --output work/electricity-retrained
           python scripts/check-electricity-reproduction.py work/electricity-retrained
+      - name: Reproduce and independently verify Milestone 7 (Bike Sharing and claim suite)
+        run: |
+          python -m pip install --disable-pip-version-check -r benchmarks/bike-sharing/requirements.txt
+          cargo run --release --locked -- metrology evidence --help
+          cargo run --release --locked -- metrology benchmark --input benchmarks/bike-sharing/manifest.json --output results/ci-bike-sharing
+          cargo run --release --locked -- metrology validate --input results/ci-bike-sharing/report.json
+          cargo run --release --locked -- metrology validate --input results/bike-sharing-v7/report.json
+          cmp results/ci-bike-sharing/report.json results/bike-sharing-v7/report.json
+          cargo run --release --locked -- metrology evidence-suite --input benchmarks/evidence-validation/suite.json --output results/ci-evidence-suite
+          cargo run --release --locked -- metrology validate --input results/ci-evidence-suite/report.json
+          cargo run --release --locked -- metrology validate --input results/evidence-suite-v7/report.json
+          cargo run --release --locked -- metrology evidence --input examples/evidence-assessment.json --output results/ci-evidence-example.json
+          cargo run --release --locked -- metrology validate --input results/evidence-example-v7.json
+          python scripts/audit-bike-sharing.py --cache work/bike-cache --output work/bike-data-audit.json
+          python -c "import json; a, b = (json.load(open(p)) for p in ('work/bike-data-audit.json', 'benchmarks/bike-sharing/data-audit.json')); [x.pop('source') for x in (a, b)]; assert a == b, 'data audit changed'"
+          python scripts/verify-milestone7.py --bike results/ci-bike-sharing/report.json --suite results/ci-evidence-suite/report.json --evidence results/ci-evidence-example.json --data work/bike-cache
+          python scripts/prepare-bike-sharing.py --cache work/bike-cache --output work/bike-retrained
+          python scripts/check-bike-reproduction.py work/bike-retrained
       - name: Train and independently verify the generic demonstration
         run: |
           cargo run --locked -- metrology demo --output results/ci-metrology-demo
@@ -76,3 +94,4 @@ jobs:
       - name: Verify audits did not alter frozen evidence
         run: |
           git diff --exit-code -- experiments/config.json results/cache results/dataset.json results/predictions.json results/evaluation.json results/summary.json results/validation.json results/reproducibility-check.json results/plots
+          git diff --exit-code -- results benchmarks experiments docs

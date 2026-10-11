@@ -40,6 +40,11 @@ usage_details: |
   fixed calibrated threshold and interpret risk alongside coverage, event
   counts and shift conditions. The repository includes a trained synthetic
   classification example and an exact-metric verification script.
+  An external OpenML Electricity benchmark adds frozen logistic/forest models,
+  temporal block sensitivity and independent NumPy metric checks. Combined
+  applicability/confidence warnings did not improve degraded-window recall over
+  a simpler covariate warning and increased false alarms. Identical simple
+  warning gates reproduce TRIAD decisions; added predictive utility is unproven.
   Treat the numerical-evidence fields as input attestations, not as externally
   verified certificates. No confidence guarantee under new conditions follows.
 known_failure_modes: |
@@ -51,12 +56,17 @@ known_failure_modes: |
   account for crossed clustering. Reported physical model credibility can fail
   despite solver convergence. TRIAD's 2D capacitive model still fails its
   numerical readiness gate; no hardware or 3D validation exists.
+  Electricity's calendar chronology and upstream normalization/imputation are
+  unresolved. Few dependent degraded windows cannot establish warning utility
+  or concept drift. Computational cross-checks are not unrelated-team replication.
 references:
   - "Yonatan Geifman and Ran El-Yaniv. Selective Classification for Deep Neural Networks. NeurIPS 30, 2017. https://papers.nips.cc/paper_files/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html"
   - "Chuan Guo, Geoff Pleiss, Yu Sun and Kilian Q. Weinberger. On Calibration of Modern Neural Networks. ICML, PMLR 70:1321-1330, 2017. https://proceedings.mlr.press/v70/guo17a.html"
 implementation_resources:
   - https://github.com/topherchris420/triad/blob/master/src/metrology.rs
   - https://github.com/topherchris420/triad/blob/master/docs/metrology/reproducibility.md
+  - https://github.com/topherchris420/triad/blob/master/docs/metrology/milestone6-real-world-results.md
+  - https://github.com/topherchris420/triad/blob/master/benchmarks/electricity/README.md
 common_variants:
   - Retrospective risk-coverage ranking at fixed test coverage (descriptive only)
 related_metrics:

@@ -14,6 +14,7 @@ jobs:
   test:
     name: Locked Rust tests
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
@@ -36,6 +37,16 @@ jobs:
         run: cargo test --locked
       - name: Lint Rust
         run: cargo clippy --locked --all-targets
+      - name: Reproduce and independently verify the external Electricity benchmark
+        run: |
+          python -m pip install --disable-pip-version-check -r benchmarks/electricity/requirements.txt
+          cargo run --release --locked -- metrology benchmark --help
+          cargo run --release --locked -- metrology benchmark --input benchmarks/electricity/manifest.json --output results/ci-electricity
+          cargo run --release --locked -- metrology validate --input results/ci-electricity/report.json
+          cargo run --release --locked -- metrology validate --input results/benchmark-electricity/report.json
+          python scripts/verify-benchmark.py results/ci-electricity/report.json
+          python scripts/prepare-electricity.py --cache work/electricity-cache --output work/electricity-retrained
+          python scripts/check-electricity-reproduction.py work/electricity-retrained
       - name: Train and independently verify the generic demonstration
         run: |
           cargo run --locked -- metrology demo --output results/ci-metrology-demo

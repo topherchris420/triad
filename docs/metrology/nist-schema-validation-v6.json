@@ -1,0 +1,20 @@
+{
+  "checked_on": "2026-10-11",
+  "official_repository": "https://github.com/usnistgov/ai-metrology-submissions",
+  "official_commit": "7f0609217621aa905973ad0cc03f5e6a8c97e345",
+  "schema_version": "1.0",
+  "official_schema_lf_sha256": "f815015db4489f4c1a5de5d8f3b5a9913eeef1a8e65d2f36e8614be2ccd2da7c",
+  "vendored_schema_semantically_and_lf_byte_equal": true,
+  "draft": "docs/metrology/nist-submission-draft.yml",
+  "public_contact": "ciao_chris@proton.me",
+  "checks": {
+    "local_schema_validator": "passed",
+    "four_negative_schema_cases": "passed",
+    "check_jsonschema_0_37_0_against_fetched_official_schema": "passed",
+    "official_validate_submission_inspect_in_local_submissions_directory": "passed"
+  },
+  "scientific_readiness": "added utility and unrelated-team replication unestablished",
+  "submitted_to_nist": false,
+  "human_scientific_review_still_required": true,
+  "draft_sha256": "378fae99eee6b90e70747eb091060aab74176a26c622464ebf0ce2f51647808c"
+}

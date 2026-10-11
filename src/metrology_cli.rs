@@ -11,7 +11,7 @@ use std::{
     time::Instant,
 };
 
-const HELP: &str="TRIAD metrology (exploratory measurement)\n\n  metrology evaluate --input predictions.json --output report.json\n  metrology validate --input report.json\n  metrology demo --output NEW_DIRECTORY\n  metrology numerical --output NEW_DIRECTORY\n  metrology adaptive --output NEW_DIRECTORY\n  metrology plan --output planning.json\n\nOutputs are never overwritten. Numerical runs are expensive; demo does not run FEM.";
+const HELP: &str="TRIAD metrology (exploratory measurement)\n\n  metrology benchmark --input manifest.json --output NEW_DIRECTORY\n  metrology evaluate --input predictions.json --output report.json\n  metrology validate --input report.json\n  metrology demo --output NEW_DIRECTORY\n  metrology numerical --output NEW_DIRECTORY\n  metrology adaptive --output NEW_DIRECTORY\n  metrology plan --output planning.json\n\nOutputs are never overwritten. Numerical runs are expensive; demo does not run FEM.";
 
 fn write_report(input: &Input, output: &Path, raw_hash: &str) -> Result<()> {
     let markdown = output.with_extension("md");
@@ -41,6 +41,10 @@ fn write_report(input: &Input, output: &Path, raw_hash: &str) -> Result<()> {
     Ok(())
 }
 pub fn run(args: &[String]) -> Result<()> {
+    if args == ["benchmark", "--help"] {
+        println!("metrology benchmark --input benchmarks/electricity/manifest.json --output NEW_DIRECTORY\nStrict ordered-stream manifest; calibration-only thresholds, paired temporal blocks.\nOutputs report.json and report.md. Run metrology validate --input NEW_DIRECTORY/report.json to replay.");
+        return Ok(());
+    }
     if args.is_empty() || args == ["--help"] || args == ["-h"] {
         println!("{HELP}");
         return Ok(());
@@ -62,6 +66,10 @@ pub fn run(args: &[String]) -> Result<()> {
         }
     }
     match args[0].as_str() {
+        "benchmark" => crate::metrology_benchmark::run(
+            &input.context("benchmark requires --input")?,
+            &output.context("benchmark requires --output")?,
+        )?,
         "adaptive" => {
             ensure!(
                 input.is_none(),
@@ -86,7 +94,12 @@ pub fn run(args: &[String]) -> Result<()> {
             ensure!(output.is_none(), "validate does not accept --output");
             let envelope: Value =
                 serde_json::from_slice(&fs::read(input.context("validate requires --input")?)?)?;
-            metrology::validate_report(envelope.get("report").context("missing report payload")?)?;
+            let report = envelope.get("report").context("missing report payload")?;
+            if report["schema_version"] == "triad-benchmark-report-1" {
+                crate::metrology_benchmark::validate_report(report)?;
+            } else {
+                metrology::validate_report(report)?;
+            }
             println!("Report metrics and configuration hash reproduce; scientific validity is not certified.");
         }
         "demo" => {

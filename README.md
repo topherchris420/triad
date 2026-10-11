@@ -2,6 +2,34 @@
 
 **When should a sensor refuse to answer?**
 
+**When should an intelligent system recognize that its evidence is insufficient?**
+
+Milestone 6 evaluates two frozen models on real OpenML Electricity data. **No added
+warning utility was detected:** combined TRIAD warnings caught the same degraded
+windows as a simpler covariate warning and produced more false alarms. Gating
+reduced coverage and did not establish a reduction in accepted error risk.
+
+| Final 9,312 observations | Accuracy | Selective coverage | Accepted error risk | TRIAD gated coverage / risk |
+|---|---:|---:|---:|---:|
+| Logistic regression | 65.57% | 77.34% | 31.19% | 55.55% / 30.39% |
+| Random forest | 66.00% | 60.46% | 25.84% | 26.50% / 28.16% |
+
+This is an external-data experiment and independent computational cross-check,
+not replication by an unrelated research team. Calendar dates are inconsistent,
+upstream preprocessing cannot be reversed, and the few dependent degraded windows
+cannot support a superiority claim. Numerical sensor readiness remains failed.
+
+[Executed Milestone 6 study](docs/metrology/milestone6-real-world-results.md) ·
+[Dataset, frozen protocol and reproduction](benchmarks/electricity/README.md) ·
+[Machine-readable results](results/benchmark-electricity/report.json)
+
+![Electricity risk, reliability and ordered-window results](results/benchmark-electricity/plots/electricity.png)
+
+```sh
+cargo run --release --locked -- metrology benchmark --input benchmarks/electricity/manifest.json --output results/my-electricity
+cargo run --release --locked -- metrology validate --input results/my-electricity/report.json
+```
+
 Milestone 5 extends the question: **When should any predictive system refuse to
 answer because the evidence is insufficient?** The new generic evaluator measures
 selective error risk, calibration and distribution-shift behavior while reporting
@@ -10,12 +38,13 @@ physical confidence and a confirmatory C2/D advantage remain unvalidated.
 
 ```mermaid
 flowchart LR
-    A[Physical or AI Model] --> B[Prediction]
-    B --> C[Uncertainty Estimate]
-    C --> D[Numerical / Model Validity]
-    D --> E[Calibration]
-    E --> F[Selective-Risk Evaluation]
-    F --> G[Evidence-Qualified Decision]
+    A[Data] --> B[Prediction]
+    B --> C[Confidence]
+    C --> D[Calibration]
+    D --> E[Shift / Applicability]
+    E --> F[Selective Risk]
+    F --> G[Validity-Qualified Evaluation]
+    G --> H[Decision]
 ```
 
 Implemented: JSON evaluation, calibration-fixed thresholds, retrospective ranking,

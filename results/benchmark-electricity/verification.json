@@ -1,0 +1,21 @@
+{
+  "status": "local_checks_passed",
+  "date": "2026-10-11",
+  "rust_tests_passed": 64,
+  "new_benchmark_tests": 4,
+  "clippy": "passed; four pre-existing style warnings",
+  "independent_metrics": "passed; relative 1e-11 / absolute 1e-12",
+  "clean_retraining": "passed; coefficients, trees, predictions, diagnostics and separate model hashes",
+  "deterministic_rust_replay": "passed",
+  "pre_m6_artifacts_unchanged": 73,
+  "post_review_scientific_results_unchanged": true,
+  "linux_windows_ci": "See PR workflow records; not inferred from this local run",
+  "nist_submission": false,
+  "hashes": {
+    "results\\benchmark-electricity\\report.json": "9e658c051c835b2d0168ef22873655e07325b0e98bfdd6d94aa777bd241beedc",
+    "benchmarks\\electricity\\manifest.json": "ab4e81fc78e4ff905bd073f5d76a6083bb5ef3a45297f3e945b71769232c3ee1",
+    "scripts\\verify-benchmark.py": "9626c99accd55cede46ae099ed946fc2e2969510331410cfae58625995ca5e12",
+    "scripts\\prepare-electricity.py": "3091bc09e24f6017ad081767a0e31e70dd48d1ed2d3e6539459cbdc4afc5bb83",
+    "scripts\\check-electricity-reproduction.py": "17c3e89852f9000e4a47d113ee8aa2e3db7e46a3051617c26aaff2939be3e760"
+  }
+}

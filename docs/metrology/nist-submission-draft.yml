@@ -1,15 +1,24 @@
-# NON-SUBMITTABLE DRAFT. Contact and scientific readiness remain incomplete.
+# Prototype draft for independent scientific review. NOT submitted to NIST.
+# This contact address will be public if the file is submitted.
 schema_version: "1.0"
-name: Selective-risk evaluation with explicit validity qualifications
+name: Validity-qualified selective error risk at calibrated coverage
 applied_definition: |
-  Measure excessive-loss frequency among accepted predictions and acceptance
-  coverage, with a score threshold fixed on disjoint calibration data. Report
-  retrospective ranking separately, alongside calibration diagnostics,
-  cluster-sampling uncertainty, and numerical/model applicability limitations.
-  This implementation provides descriptive metrics, not certified risk bounds.
+  Evaluate a fixed model on labeled observations under a predeclared loss L,
+  unacceptable-error threshold epsilon, and uncertainty score s (smaller is
+  safer). At threshold t, report acceptance coverage C(t) = P(s at most t) and
+  conditional excessive-error risk R(t) = P(L(prediction, truth) > epsilon
+  | s at most t). Select t using disjoint calibration scores; evaluate on held-out
+  records, reporting actual test coverage, error counts, and scenario-specific
+  risk. R is undefined if no predictions are accepted.
+
+  Separately show test-set matched-coverage risk-coverage ranking as descriptive
+  analysis, never a deployed threshold. Accompany both with event counts,
+  calibration diagnostics where probabilities exist, cluster-aware intervals,
+  distribution-shift breakdowns, and explicit numerical/model validity status.
+  Validity flags describe available evidence; they do not certify reliability.
 submitter_organizations:
   - Vers3Dynamics
-contact_email: "<PUBLIC PROFESSIONAL CONTACT REQUIRED>"
+contact_email: ciao_chris@proton.me
 ai_rmf_characteristics:
   - Valid & Reliable
   - Accountable & Transparent
@@ -21,22 +30,38 @@ ai_lifecycle_stages:
 object_of_measurement:
   - model
 model_specificity: model agnostic
-domain_specificity: domain agnostic calculations; adequacy evidence is domain specific
+domain_specificity: domain agnostic metric calculations; domain-specific validation needed
 modality:
   - structured data
-  - physical
 usage_details: |
-  Compare fixed uncertainty-aware predictors under a declared loss and tolerance.
-  Preserve numerical and statistical failure status when reporting descriptive
-  results. No endorsement or validation by NIST is asserted.
+  Supply a frozen predictor's scored records with disjoint calibration/test
+  splits, independent sequence IDs, selected loss and error tolerance, and
+  documented uncertainty-score direction. Run the Rust CLI to evaluate the
+  fixed calibrated threshold and interpret risk alongside coverage, event
+  counts and shift conditions. The repository includes a trained synthetic
+  classification example and an exact-metric verification script.
+  Treat the numerical-evidence fields as input attestations, not as externally
+  verified certificates. No confidence guarantee under new conditions follows.
 known_failure_modes: |
-  Rare failures, dependent sampling pools, missing labels, unverified evidence,
-  and distribution shift can invalidate population interpretations. Capacitive
-  physical confidence remains unresolved. Synthetic logistic transfer is only
-  a demonstration that a non-capacitive trained model can be evaluated.
+  Calibration/test population shift can preserve coverage while collapsing
+  accuracy. Rare error events, tied scores, empty acceptance, missing labels,
+  score/probability confusion, unverifiable provenance, repeated observations,
+  dependent spatial pools and unrepresentative validation samples can undermine
+  interpretation. Separate sequence and spatial bootstrap intervals do not
+  account for crossed clustering. Reported physical model credibility can fail
+  despite solver convergence. TRIAD's 2D capacitive model still fails its
+  numerical readiness gate; no hardware or 3D validation exists.
 references:
-  - "Geifman, Yonatan and Ran El-Yaniv. Selective Classification for Deep Neural Networks. NeurIPS 30, 2017. https://papers.nips.cc/paper_files/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html"
-  - "Guo, Chuan, Geoff Pleiss, Yu Sun and Kilian Q. Weinberger. On Calibration of Modern Neural Networks. ICML, PMLR 70:1321-1330, 2017. https://proceedings.mlr.press/v70/guo17a.html"
+  - "Yonatan Geifman and Ran El-Yaniv. Selective Classification for Deep Neural Networks. NeurIPS 30, 2017. https://papers.nips.cc/paper_files/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html"
+  - "Chuan Guo, Geoff Pleiss, Yu Sun and Kilian Q. Weinberger. On Calibration of Modern Neural Networks. ICML, PMLR 70:1321-1330, 2017. https://proceedings.mlr.press/v70/guo17a.html"
 implementation_resources:
-  - https://github.com/topherchris420/triad
+  - https://github.com/topherchris420/triad/blob/master/src/metrology.rs
+  - https://github.com/topherchris420/triad/blob/master/docs/metrology/reproducibility.md
+common_variants:
+  - Retrospective risk-coverage ranking at fixed test coverage (descriptive only)
+related_metrics:
+  - Coverage and abstention frequency
+  - Area under the risk-coverage curve (AURC)
+  - Brier score and expected calibration error for excessive-error probabilities
+computational_requirements: Rust toolchain with Cargo; CPU for the generic evaluator; FEM experiments are optional and expensive.
 usage_rights: MIT

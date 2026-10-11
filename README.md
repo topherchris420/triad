@@ -22,7 +22,9 @@ Implemented: JSON evaluation, calibration-fixed thresholds, retrospective rankin
 risk/coverage curves, ECE/Brier diagnostics, whole-cluster bootstrap, explicit
 validity reports, a trained logistic demo and bounded measurement-only refinement.
 The refinement candidate still abstains; sampling candidate regions does not prove
-physical adequacy. See [Milestone 5 results](docs/metrology/experimental-results.md),
+physical adequacy.
+
+**NIST preparation:** a mechanically checkable [AI Metrology Center methodology draft](docs/metrology/nist-submission-draft.yml) and [readiness checklist](docs/metrology/nist-readiness.md) are included. These are **not** a NIST submission or proof of scientific validity. Run `python scripts/validate-nist-draft.py` after installing the documented Python dependencies. See [Milestone 5 results](docs/metrology/experimental-results.md),
 [method definition](docs/metrology/method-definition.md),
 [reproduction](docs/metrology/reproducibility.md), and
 [NIST draft limitations](docs/metrology/nist-readiness.md).

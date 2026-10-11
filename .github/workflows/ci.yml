@@ -27,6 +27,9 @@ jobs:
         with:
           components: rustfmt, clippy
       - uses: Swatinem/rust-cache@v2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Check Rust formatting
         run: cargo fmt --all -- --check
       - name: Build and run numerical and research-integrity tests
@@ -38,24 +41,21 @@ jobs:
           cargo run --locked -- metrology demo --output results/ci-metrology-demo
           cargo run --locked -- metrology validate --input results/ci-metrology-demo/report.json
           python scripts/verify-metrology.py results/ci-metrology-demo/report.json
+      - name: Validate NIST prototype draft against pinned official schema
+        run: |
+          python -m pip install --disable-pip-version-check 'PyYAML==6.0.2' 'jsonschema==4.23.0'
+          python scripts/validate-nist-draft.py
+          python scripts/validate-nist-draft.py --self-test
       - name: Recompute read-only audits from frozen artifacts
         run: |
           cargo run --locked -- audit
           cargo run --locked -- information
       - name: Smoke-test portable experimental JSON contracts
         run: |
-          cargo run --locked -- calibrate-abstention --input examples/abstention-calibration-demo.json > /tmp/triad-abstention.json
-          cargo run --locked -- inspect-capture --input examples/synthetic-capture.json > /tmp/triad-capture.json
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          policy = json.loads(Path("/tmp/triad-abstention.json").read_text())
-          capture = json.loads(Path("/tmp/triad-capture.json").read_text())
-          assert policy["status"] == "refused"
-          assert policy["threshold"] is None
-          assert capture["empty_reference_frames"] == 4
-          assert capture["space"] == "synthetic2d"
-          PY
+          mkdir -p results/ci-portable
+          cargo run --locked -- calibrate-abstention --input examples/abstention-calibration-demo.json > results/ci-portable/abstention.json
+          cargo run --locked -- inspect-capture --input examples/synthetic-capture.json > results/ci-portable/capture.json
+          python scripts/verify-portable.py results/ci-portable/abstention.json results/ci-portable/capture.json
       - name: Verify frozen baseline artifacts remain present
         run: |
           test -f results/validation.json

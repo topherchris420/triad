@@ -1,18 +1,19 @@
 {
-  "schema_repository_revision": "7f0609217621aa905973ad0cc03f5e6a8c97e345",
-  "valid": false,
-  "errors": [
-    {
-      "path": [
-        "contact_email"
-      ],
-      "message": "'<PUBLIC PROFESSIONAL CONTACT REQUIRED>' does not match '^[^@\\\\s]+@[^@\\\\s]+\\\\.[^@\\\\s]+$'"
-    },
-    {
-      "path": [
-        "contact_email"
-      ],
-      "message": "'<PUBLIC PROFESSIONAL CONTACT REQUIRED>' should not be valid under {'pattern': '[<>]'}"
-    }
-  ]
+  "schema_version": "1.0",
+  "official_schema_url": "https://github.com/usnistgov/ai-metrology-submissions/blob/main/validation/schemas/v1.json",
+  "official_schema_blob_sha": "0df5da6d28df2a6c43895814ffc8419f2ac37c95",
+  "draft": "docs/metrology/nist-submission-draft.yml",
+  "validator": "scripts/validate-nist-draft.py",
+  "validation_status": "passed_in_ci_at_documented_revision",
+  "scientific_readiness": "not_established",
+  "submitted_to_nist": false,
+  "note": "This records NIST schema v1.0 format validation on a reviewed PR revision. No scientific validation, NIST review, or external submission is implied.",
+  "valid": true,
+  "validation_reference_commit": "eea6755f07e72d73db4d041b1925773f169771b2",
+  "validation_workflow_url": "https://github.com/topherchris420/triad/actions/runs/38169899729",
+  "tested_platforms": [
+    "ubuntu-latest",
+    "windows-latest"
+  ],
+  "negative_schema_tests": "passed"
 }

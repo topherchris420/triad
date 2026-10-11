@@ -5,7 +5,7 @@
 [![Rust verification](https://github.com/topherchris420/triad/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/topherchris420/triad/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0B5D63.svg)](LICENSE)
 
-[Start here](#start-with-the-evidence) · [Milestone 3 findings](docs/milestone3-results-2026-10-11.md) · [Milestone 4 plan](docs/milestone4-plan.md) · [Original baseline](#baseline-results-the-system-is-accurate-in-some-places-and-fragile-in-others) · [Research code](#new-research-code-test-before-claiming) · [Evidence map](#evidence-map)
+[Start here](#start-with-the-evidence) · [Milestone 3 findings](docs/milestone3-results-2026-10-11.md) · [Milestone 4 findings](docs/milestone4-development-results-2026-10-11.md) · [Milestone 4 plan](docs/milestone4-plan.md) · [Original baseline](#baseline-results-the-system-is-accurate-in-some-places-and-fragile-in-others) · [Research code](#new-research-code-test-before-claiming) · [Evidence map](#evidence-map)
 
 *An independent Vers3Dynamics research instrument for sparse capacitive localization, physical observability, and the limits of confident inference.*
 
@@ -27,6 +27,10 @@ The research is deliberately staged. First model the field. Then invert the meas
 ![Recorded TRIAD baseline scenario comparison](results/plots/scenario-comparison.png)
 
 *Plot generated from the frozen conventional-estimator simulation. These are localization errors, not improvements from selective prediction.*
+
+### Milestone 4: numerical diagnosis reveals two distinct problems
+
+A separate ten-probe, development-only study split coarse dictionary interpolation error from direct FEM mesh discrepancy. An exploratory local interpolation stencil reduced **the maximum interpolation-only discrepancy from 29.86 to 2.28 covariance-whitened noise units** (about 92% on these probes). But direct 1 mm-versus-0.5 mm mesh differences still reached **9.82 noise units**, and candidate total-model mismatch reached **10.48**. **Numerical readiness remains false**; the candidate does not yet operate at inference time. Read the [executed diagnostic](docs/milestone4-development-results-2026-10-11.md), the [recorded output](results/numerical-components-v4.json), and the [next research plan](docs/milestone4-plan.md).
 
 ### Milestone 3: the experiment has been run
 
@@ -223,7 +227,7 @@ See [the complete Milestone 3 research protocol, limitations and reproducible co
 
 ## The next experiment: earn the right to abstain
 
-The next stage is **not** to bolt on a confidence percentage. The [Milestone 4 engineering plan](docs/milestone4-plan.md) now separates mesh discrepancy from dictionary interpolation, evaluates an exploratory local-refinement stencil, and plans a statistically feasible new study without reusing exposed v3 test labels. Run the development-only diagnostic on a separate evidence-preserving checkout using `cargo run --release --locked -- numerical-components`; it does not validate the original hypothesis.
+The next stage is **not** to bolt on a confidence percentage. The [Milestone 4 engineering plan](docs/milestone4-plan.md) separates mesh discrepancy from dictionary interpolation, evaluates local refinement as an engineering candidate, and plans a statistically feasible new study without reusing exposed v3 test labels. The development-only command `cargo run --release --locked -- numerical-components` now has an archived result and intentionally refuses replacing it. For a deterministic replay, use a separate checkout with a new output location; an unchanged replay is not new scientific evidence.
 
  It is to establish a stronger optimization reference, quantify mesh and surrogate-model mismatch in the same units as noise, then pre-register a new powered C2-versus-D comparison. All methods must have the same information budget and independent test sequences.
 
@@ -245,7 +249,7 @@ Read [the next-experiment plan](docs/next-experiment.md). The governing [origina
 | How are ambiguity and sensitivity assessed? | [Observability source](src/observability.rs), [finite-grid ambiguity](results/ambiguity.json) |
 | Can I reproduce it? | [Protocol](docs/experiment-protocol.md), [amendments](docs/protocol-amendments.md), [replay audit](results/reproducibility-check.json) |
 | Where could this fail? | [Limitations](docs/limitations.md), [optimizer audit](docs/optimizer-audit.md), [next experiment](docs/next-experiment.md) |
-| What is being repaired next? | [Milestone 4 numerical and statistical plan](docs/milestone4-plan.md), [exploratory design](experiments/milestone4-design.json) |
+| What is being repaired next? | [Recorded Milestone 4 numerical diagnosis](docs/milestone4-development-results-2026-10-11.md), [numerical and statistical plan](docs/milestone4-plan.md), [exploratory design](experiments/milestone4-design.json) |
 
 The first cached rerun exposed a floating-point JSON round-trip issue; it was corrected without changing scientific parameters. The corrected run reproduced the dataset and localization CSV byte-for-byte on the recorded host. Failure evidence is retained rather than erased.
 

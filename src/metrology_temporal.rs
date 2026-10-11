@@ -802,7 +802,11 @@ fn monitor(
     let den = (pairs.iter().map(|(a, _)| (a - ma).powi(2)).sum::<f64>()
         * pairs.iter().map(|(_, b)| (b - mb).powi(2)).sum::<f64>())
     .sqrt();
-    let rho = if den > 0.0 { num / den } else { 0.0 };
+    let rho = if !pairs.is_empty() && den > 0.0 {
+        num / den
+    } else {
+        0.0
+    };
     let rho_used = rho.clamp(0.0, 0.95);
     let deff = (1.0 + rho_used) / (1.0 - rho_used);
     // Development reference for KS (counts; KS is invariant to log1p).
@@ -938,6 +942,7 @@ fn monitor(
     let k_test = triad_test.iter().filter(|a| **a).count();
     policies.insert("triad".into(), triad_test.clone());
     calibration_alerts.insert("triad".into(), json!(k_cal));
+    let mut k_outcome_free = 0;
     for (name, fam) in ABLATIONS {
         let disabled = BTreeSet::from([fam]);
         let mut test_alerts = Vec::new();
@@ -950,6 +955,9 @@ fn monitor(
         }
         policies.insert(name.into(), test_alerts);
         calibration_alerts.insert(name.into(), json!(cal_alerts));
+        if fam == Family::Statistical {
+            k_outcome_free = cal_alerts;
+        }
     }
     for name in POLICY_SCORES {
         let cal: Vec<Option<f64>> = cal_scores
@@ -997,6 +1005,15 @@ fn monitor(
             apply(matched, &test, &test_extra),
         );
         policies.insert(format!("{name}_matched_test_topk"), topk);
+        if matches!(name, "cov" | "conf") {
+            // Protocol amendment 1: outcome-free comparators matched to TRIAD without R4.
+            let (v, c) = matched_threshold(&cal, &cal_extra, k_outcome_free);
+            policies.insert(
+                format!("{name}_matched_outcome_free"),
+                apply(v, &test, &test_extra),
+            );
+            calibration_alerts.insert(format!("{name}_matched_outcome_free"), json!(c));
+        }
         calibration_alerts.insert(
             format!("{name}_native"),
             json!(apply(native, &cal, &cal_extra)
@@ -1156,6 +1173,18 @@ fn monitor(
             secondary.push(comparisons("triad", name, *c, &[0.95], primary_block));
         }
     }
+    let outcome_free: Vec<Value> = [
+        "cov_matched_outcome_free",
+        "conf_matched_outcome_free",
+        "none",
+    ]
+    .iter()
+    .flat_map(|b| {
+        m.abstention_costs
+            .iter()
+            .map(|c| comparisons(ABLATIONS[3].0, b, *c, &[0.95], primary_block))
+    })
+    .collect();
     let interval = primary["bootstrap"][0]["intervals"][0]["interval"].clone();
     let delta = primary["delta_mean_cost_a_minus_b"].as_f64().unwrap();
     let identical = primary["identical_decision_days"].as_u64().unwrap() as usize == test_idx.len();
@@ -1182,6 +1211,11 @@ fn monitor(
         json!({"a":a,"b":b,"agreement":po,"cohen_kappa":(pe<1.0).then(|| (po-pe)/(1.0-pe)),
             "operationally_equivalent":po>=m.equivalence_agreement})
     };
+    let outcome_free_agreement: Vec<Value> =
+        ["cov_matched_outcome_free", "conf_matched_outcome_free"]
+            .iter()
+            .map(|b| agreement(ABLATIONS[3].0, b))
+            .collect();
     let agreements: Vec<Value> = policies
         .keys()
         .filter(|n| *n != "triad")
@@ -1200,6 +1234,8 @@ fn monitor(
         "policies":policy_reports,
         "primary":{"comparison":primary,"interval_level":adjusted,"decision":decision},
         "secondary_comparisons":secondary,
+        "amendment_1_outcome_free":{"k_calibration":k_outcome_free,"comparisons":outcome_free,
+            "agreement":outcome_free_agreement},
         "agreement":agreements,
     });
     if detail {

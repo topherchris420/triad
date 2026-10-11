@@ -16,8 +16,12 @@ fn recorded_development_diagnostic_preserves_baseline_and_failed_readiness() {
     assert_eq!(report["baseline_config_sha256"], hash_original);
     for row in report["rows"].as_array().unwrap() {
         let mesh = row["mesh_1mm_vs_0_5mm_noise_units"].as_f64().unwrap();
-        let interp = row["local_patch_vs_exact_1mm_noise_units"].as_f64().unwrap();
-        let total = row["local_patch_vs_exact_0_5mm_noise_units"].as_f64().unwrap();
+        let interp = row["local_patch_vs_exact_1mm_noise_units"]
+            .as_f64()
+            .unwrap();
+        let total = row["local_patch_vs_exact_0_5mm_noise_units"]
+            .as_f64()
+            .unwrap();
         assert!(mesh.is_finite() && interp.is_finite() && total.is_finite());
         assert!(mesh >= 0.0 && interp >= 0.0 && total >= 0.0);
         assert!(total <= mesh + interp + 1e-8);

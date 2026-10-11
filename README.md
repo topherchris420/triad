@@ -22,29 +22,36 @@ The research is deliberately staged. First model the field. Then invert the meas
 
 The current experiment solves an idealized **2D electrostatic cross-section**:
 
-\[
-\nabla\cdot\left(\varepsilon(\mathbf r)\nabla\phi(\mathbf r)\right)=0.
-\]
+$$
+\nabla\cdot\left(\varepsilon(\mathbf{r})\,\nabla\phi(\mathbf{r})\right)=0.
+$$
 
 Four boundary electrodes are excited in turn; reaction charges and energy integrals construct a Maxwell capacitance matrix. Ten unique entries form the measured vector, expressed in **pF/m** (capacitance per unit length), with a target-induced signal formed by subtracting a same-mesh empty reference.
 
 The simulated observation process introduces unknown dielectric properties, correlated noise, and time-varying drift:
 
-\[
-\mathbf z_t=\operatorname{diag}(1+\mathbf g_t)\mathbf f(x_t,y_t,\varepsilon_{r,t})
-+\mathbf b+\mathbf d_t+a_t\mathbf 1+\boldsymbol\eta_t.
-\]
+$$
+\mathbf{z}_t =
+\mathrm{diag}\!\left(\mathbf{1}+\mathbf{g}_t\right)
+\,\mathbf{f}(x_t,y_t,\varepsilon_{r,t})
++\mathbf{b}+\mathbf{d}_t+a_t\mathbf{1}+\boldsymbol{\eta}_t.
+$$
 
 The implemented estimator minimizes a noise-normalized residual over **position and unknown relative permittivity**. It always returns a point, even when an optimizer stopping condition is not met.
 
 The proposed, **not yet implemented**, selective experiment asks whether a position should be accepted when uncertainty and physics-based observability indicate that it may be wrong. Its principal future comparison is against *posterior expected-error rejection*, not merely an always-answer baseline:
 
-\[
-R(\tau)=\Pr\!\left(\|\hat{\mathbf x}-\mathbf x\|>5\ \mathrm{mm}
-\;\middle|\; s(\mathbf z)\geq\tau\right),
-\qquad
-C(\tau)=\Pr\!\left(s(\mathbf z)\geq\tau\right).
-\]
+$$
+R(\tau)=
+\mathbb{P}\!\left(
+\left\lVert\hat{\mathbf{x}}-\mathbf{x}\right\rVert>5\,\mathrm{mm}
+\,\middle|\,s(\mathbf{z})\geq\tau
+\right).
+$$
+
+$$
+C(\tau)=\mathbb{P}\!\left(s(\mathbf{z})\geq\tau\right).
+$$
 
 A reduction in risk caused merely by refusing more predictions is not a discovery. The proposed primary comparison holds **acceptance coverage at 80%** and separates retrospective ranking from a deployable threshold calibrated without test labels.
 

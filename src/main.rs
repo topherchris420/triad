@@ -10,16 +10,20 @@ Inspect the instrument and evidence:
   --version, -V    Show package version
   audit           Describe frozen optimizer outcomes
   information     Compute local nuisance-adjusted information
+  numerical-components  Diagnose FEM versus dictionary error on development probes
 
 Frozen baseline (writes baseline artifacts; preserve originals first):
   validate        Run numerical physics gates
   baseline        Generate and estimate the locked baseline
   all             Run validate, baseline, and audit
 
-Versioned research (run in this order; refuses existing outputs):
+Completed v3 research (archived; refuses existing outputs):
   numerical       Quantify mesh, interpolation, and optimizer mismatch
   selective       Evaluate C2 versus D on independent sequences
   geometry-screen Screen equal-width four-electrode layouts
+
+Milestone 4 development diagnostic (does not evaluate new selectors):
+  numerical-components  Test separate mesh/interpolation errors and local stencil
 
 --root selects a repository/data root containing experiments/ and results/.
 The default is the directory from which this binary was built.
@@ -52,6 +56,7 @@ fn main() -> Result<()> {
         }
         Some("baseline") => triad::experiment::run(&root)?,
         Some("information") => triad::observability::run_information_audit(&root)?,
+        Some("numerical-components") => triad::numerical_components::run(&root)?,
         Some("numerical") => triad::numerical_audit::run(&root)?,
         Some("selective") => triad::selective::run(&root)?,
         Some("geometry-screen") => triad::geometry_search::run(&root)?,

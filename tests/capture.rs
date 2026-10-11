@@ -1,6 +1,4 @@
-use triad::capture::{
-    Capture, CaptureFrame, CaptureSpace, CaptureUnit, FrameRole,
-};
+use triad::capture::{Capture, CaptureFrame, CaptureSpace, CaptureUnit, FrameRole};
 
 fn capture() -> Capture {
     Capture {
@@ -65,6 +63,9 @@ fn serde_capture_roundtrip_is_schema_strict() {
     let encoded = serde_json::to_string(&recording).unwrap();
     let decoded: Capture = serde_json::from_str(&encoded).unwrap();
     assert_eq!(decoded.audit().unwrap().empty_reference_frames, 4);
-    let extra = encoded.replace("\"schema_version\":1", "\"schema_version\":1,\"unknown\":true");
+    let extra = encoded.replace(
+        "\"schema_version\":1",
+        "\"schema_version\":1,\"unknown\":true",
+    );
     assert!(serde_json::from_str::<Capture>(&extra).is_err());
 }

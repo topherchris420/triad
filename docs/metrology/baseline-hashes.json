@@ -4,7 +4,6 @@
     "docs/algorithm-evidence.md": "ac2a3d711a88ee97199dcc3f81165bd2fc2075eda8575a6b3d0398bc8d4e6109",
     "docs/commercial-reference-analysis.md": "2e00d6a6a6c083725f8348094d7a107dafc6f9d4f5b78ad70a9ff0ce51d1f132",
     "docs/experiment-protocol.md": "6de6ef60268a2087c35b429244b28ee5c00f45a8518b3dd17b08c5cdbae3f2b2",
-    "docs/limitations.md": "bfe5c55da7b957f5f8e2294e240dc8b831ff335c55a040e0e3754a6c650e0a81",
     "docs/literature-review.md": "282cf524108ef83d10e170715992058f9859913be7027b513c7ac9d2181f233f",
     "docs/milestone3-results-2026-10-11.md": "7cc0bb0e1124feb9f57b7b112b20b19c84442aa1f2af52c452b92cc8fb0ece7e",
     "docs/milestone4-development-results-2026-10-11.md": "a5bb2d1e50c91734efba9d3a1c8637ab123dd022f49e29f4d6beb6f9b4c372a1",
@@ -64,5 +63,12 @@
     "results/sensitivity.json": "a5f6dddcd83bfd1742d28e5a6ea3feaaf69784de289ab1dc5b14bdadf9ca8853",
     "results/summary.json": "47dc8ebb5a6b3243c806d127bca111c0c8101e60b485ee3d24535697a8581305",
     "results/validation.json": "599906fb3eb2f954de7beb73f6cb59c09e65820a4273e971153d6d3821119ade"
+  },
+  "excluded_living_documentation": {
+    "docs/limitations.md": {
+      "historical_snapshot_sha256": "bfe5c55da7b957f5f8e2294e240dc8b831ff335c55a040e0e3754a6c650e0a81",
+      "observed_sha256_at_2026_10_11": "5668985b39096652d1482fa50d2c6357b565a9660a0d2de84f539503a99989a8",
+      "why": "Historical documentation was edited after the snapshot. It is not an immutable experiment output; protect all 62 other frozen file hashes and retain the old reference for audit. The current document must be reviewed by readers for subsequent interpretation."
+    }
   }
 }

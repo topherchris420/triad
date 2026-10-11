@@ -24,6 +24,8 @@ python scripts/validate-nist-draft.py --self-test
 
 These commands are run in CI on Linux and Windows. They validate **format and required fields only**. Before any real external submission, re-fetch NIST's current schema, compare with the vendored copy, run NIST's own `check-jsonschema` and `validate_submission.py inspect` against the candidate located under a *local copy* of its `submissions/` directory, and manually review the citations and all URLs.
 
+The [historical integrity manifest](baseline-hashes.json) protects 62 unchanged experimental and historical files. A later-edited living limitations document is explicitly excluded from the immutable test, with both hashes recorded; it has not been silently rebaselined. The original numerical evidence remains frozen.
+
 The [schema validation record](nist-schema-validation.json) indicates what has actually been checked; do not confuse a local schema check with reviewer acceptance.
 
 ## Mechanical readiness

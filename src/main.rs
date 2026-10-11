@@ -41,7 +41,11 @@ fn main() -> Result<()> {
     while let Some(arg) = args.next() {
         match arg.as_str() {
             "--root" => root = PathBuf::from(args.next().context("--root requires a path")?),
-            "--input" => input = Some(PathBuf::from(args.next().context("--input requires a path")?)),
+            "--input" => {
+                input = Some(PathBuf::from(
+                    args.next().context("--input requires a path")?,
+                ))
+            }
             "--help" | "-h" => {
                 println!("{HELP}");
                 return Ok(());

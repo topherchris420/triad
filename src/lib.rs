@@ -1,4 +1,5 @@
-//! Independent research, Vers3Dynamics, PI Christopher Woodyard.
+//! Independent Rust research, Vers3Dynamics, PI Christopher Woodyard.
+pub mod diagnostics;
 pub mod evaluation;
 pub mod experiment;
 pub mod forward;

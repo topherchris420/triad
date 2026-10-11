@@ -1,0 +1,235 @@
+{
+ "references": 39,
+ "failures": [],
+ "dois_cited_but_unregistered": [],
+ "not_machine_verifiable": [
+  "kelly2004"
+ ],
+ "results": [
+  {
+   "key": "chow1970",
+   "doi_resolves": true,
+   "registered_title": "On optimum recognition error and reject tradeoff",
+   "ok": true
+  },
+  {
+   "key": "elyaniv2010",
+   "page_title": "PDF",
+   "ok": true
+  },
+  {
+   "key": "geifman2017",
+   "page_title": "Selective Classification for Deep Neural Networks",
+   "ok": true
+  },
+  {
+   "key": "brier1950",
+   "doi_resolves": true,
+   "registered_title": "VERIFICATION OF FORECASTS EXPRESSED IN TERMS OF PROBABILITY",
+   "ok": true
+  },
+  {
+   "key": "guo2017",
+   "page_title": "On Calibration of Modern Neural Networks",
+   "ok": true
+  },
+  {
+   "key": "vovk2005",
+   "doi_resolves": true,
+   "registered_title": "Algorithmic Learning in a Random World",
+   "ok": true
+  },
+  {
+   "key": "papadopoulos2002",
+   "doi_resolves": true,
+   "registered_title": "Inductive Confidence Machines for Regression",
+   "ok": true
+  },
+  {
+   "key": "lei2018",
+   "doi_resolves": true,
+   "registered_title": "Distribution-Free Predictive Inference for Regression",
+   "ok": true
+  },
+  {
+   "key": "angelopoulos2023",
+   "doi_resolves": true,
+   "registered_title": "Conformal Prediction: A Gentle Introduction",
+   "ok": true
+  },
+  {
+   "key": "barber2023",
+   "doi_resolves": true,
+   "registered_title": "Conformal prediction beyond exchangeability",
+   "ok": true
+  },
+  {
+   "key": "gibbs2021",
+   "page_title": "[2106.00170] Adaptive Conformal Inference Under Distribution Shift",
+   "ok": true
+  },
+  {
+   "key": "angelopoulos2024",
+   "page_title": "[2208.02814] Conformal Risk Control",
+   "ok": true
+  },
+  {
+   "key": "quinonero2009",
+   "doi_resolves": true,
+   "registered_title": "Dataset Shift in Machine Learning",
+   "ok": true
+  },
+  {
+   "key": "lipton2018",
+   "page_title": "Detecting and Correcting for Label Shift with Black Box Predictors",
+   "ok": true
+  },
+  {
+   "key": "rabanser2019",
+   "page_title": "[1810.11953] Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift",
+   "ok": true
+  },
+  {
+   "key": "massey1951",
+   "doi_resolves": true,
+   "registered_title": "The Kolmogorov-Smirnov Test for Goodness of Fit",
+   "ok": true
+  },
+  {
+   "key": "page1954",
+   "doi_resolves": true,
+   "registered_title": "CONTINUOUS INSPECTION SCHEMES",
+   "ok": true
+  },
+  {
+   "key": "gama2004",
+   "doi_resolves": true,
+   "registered_title": "Learning with Drift Detection",
+   "ok": true
+  },
+  {
+   "key": "bifet2007",
+   "doi_resolves": true,
+   "registered_title": "Learning from Time-Changing Data with Adaptive Windowing",
+   "ok": true
+  },
+  {
+   "key": "gama2014",
+   "doi_resolves": true,
+   "registered_title": "A survey on concept drift adaptation",
+   "ok": true
+  },
+  {
+   "key": "clopper1934",
+   "doi_resolves": true,
+   "registered_title": "THE USE OF CONFIDENCE OR FIDUCIAL LIMITS ILLUSTRATED IN THE CASE OF THE BINOMIAL",
+   "ok": true
+  },
+  {
+   "key": "hanley1983",
+   "doi_resolves": true,
+   "registered_title": "If Nothing Goes Wrong, Is Everything All Right?",
+   "ok": true
+  },
+  {
+   "key": "bartlett1946",
+   "doi_resolves": true,
+   "registered_title": "On the Theoretical Specification and Sampling Properties of Autocorrelated Time-Series",
+   "ok": true
+  },
+  {
+   "key": "kunsch1989",
+   "doi_resolves": true,
+   "registered_title": "The Jackknife and the Bootstrap for General Stationary Observations",
+   "ok": true
+  },
+  {
+   "key": "politis1994",
+   "doi_resolves": true,
+   "registered_title": "The Stationary Bootstrap",
+   "ok": true
+  },
+  {
+   "key": "hyndman2006",
+   "doi_resolves": true,
+   "registered_title": "Another look at measures of forecast accuracy",
+   "ok": true
+  },
+  {
+   "key": "kaufman2012",
+   "doi_resolves": true,
+   "registered_title": "Leakage in data mining",
+   "ok": true
+  },
+  {
+   "key": "kapoor2023",
+   "doi_resolves": true,
+   "registered_title": "Leakage and the reproducibility crisis in machine-learning-based science",
+   "ok": true
+  },
+  {
+   "key": "kapoor2024",
+   "doi_resolves": true,
+   "registered_title": "REFORMS: Consensus-based Recommendations for Machine-learning-based Science",
+   "ok": true
+  },
+  {
+   "key": "collins2024",
+   "doi_resolves": true,
+   "registered_title": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods",
+   "ok": true
+  },
+  {
+   "key": "mitchell2019",
+   "doi_resolves": true,
+   "registered_title": "Model Cards for Model Reporting",
+   "ok": true
+  },
+  {
+   "key": "gebru2021",
+   "doi_resolves": true,
+   "registered_title": "Datasheets for datasets",
+   "ok": true
+  },
+  {
+   "key": "nist2023",
+   "doi_resolves": true,
+   "registered_title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+   "ok": true
+  },
+  {
+   "key": "fips180",
+   "doi_resolves": true,
+   "registered_title": "Secure hash standard",
+   "ok": true
+  },
+  {
+   "key": "jcgm2008",
+   "doi_resolves": true,
+   "registered_title": "Evaluation of measurement data \u2014 Guide to the expression of uncertainty in measurement",
+   "ok": true
+  },
+  {
+   "key": "kelly2004",
+   "machine_verifiable": false,
+   "ok": true
+  },
+  {
+   "key": "pedregosa2011",
+   "page_title": "Scikit-learn: Machine Learning in Python",
+   "ok": true
+  },
+  {
+   "key": "fanaee2014",
+   "doi_resolves": true,
+   "registered_title": "Event labeling combining ensemble detectors and background knowledge",
+   "ok": true
+  },
+  {
+   "key": "uci275",
+   "doi_resolves": true,
+   "registered_title": "Bike Sharing",
+   "ok": true
+  }
+ ]
+}

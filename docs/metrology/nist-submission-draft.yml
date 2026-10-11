@@ -1,77 +1,72 @@
 # Prototype draft for independent scientific review. NOT submitted to NIST.
+# Milestone 7 recommendation: further scientific validation required before any
+# submission (see docs/metrology/nist-readiness.md).
 # This contact address will be public if the file is submitted.
 schema_version: "1.0"
-name: Validity-qualified selective error risk at calibrated coverage
+name: Selective excessive-error risk at calibration-fixed coverage
 applied_definition: |
-  Evaluate a fixed model on labeled observations under a predeclared loss L,
-  unacceptable-error threshold epsilon, and uncertainty score s (smaller is
-  safer). At threshold t, report acceptance coverage C(t) = P(s at most t) and
-  conditional excessive-error risk R(t) = P(L(prediction, truth) > epsilon
-  | s at most t). Select t using disjoint calibration scores; evaluate on held-out
-  records, reporting actual test coverage, error counts, and scenario-specific
-  risk. R is undefined if no predictions are accepted.
-
-  Separately show test-set matched-coverage risk-coverage ranking as descriptive
-  analysis, never a deployed threshold. Accompany both with event counts,
-  calibration diagnostics where probabilities exist, cluster-aware intervals,
-  distribution-shift breakdowns, and explicit numerical/model validity status.
-  Validity flags describe available evidence; they do not certify reliability.
+  For a fixed model, loss $L$, unacceptable-error threshold $\varepsilon$ and
+  uncertainty score $s$ (smaller is safer), accept a prediction when
+  $s \le t$:
+  $$C(t)=P(s\le t),\qquad R(t)=P\big(L(\hat y,y)>\varepsilon \mid s\le t\big).$$
+  $R(t)$ is undefined when nothing is accepted. Choose $t$ from calibration
+  scores only, as the $\lceil nc\rceil$-th smallest calibration score for
+  target coverage $c$ (ties accepted). Report actual held-out coverage, $R(t)$,
+  and the accepted-error and acceptance counts. Report the retrospective
+  risk-coverage curve and its area separately: it is descriptive and never a
+  deployable threshold. For dependent data, report intervals from a
+  dependence-aware method such as a moving-block bootstrap over time units.
 submitter_organizations:
   - Vers3Dynamics
 contact_email: ciao_chris@proton.me
 ai_rmf_characteristics:
   - Valid & Reliable
-  - Accountable & Transparent
-primary_tevv_application:
-  - Tabular Data Benchmark Evaluation
 ai_lifecycle_stages:
   - Build
   - Operate & Monitor
 object_of_measurement:
   - model
 model_specificity: model agnostic
-domain_specificity: domain agnostic metric calculations; domain-specific validation needed
-modality:
-  - structured data
+domain_specificity: domain agnostic
 usage_details: |
-  Supply a frozen predictor's scored records with disjoint calibration/test
-  splits, independent sequence IDs, selected loss and error tolerance, and
-  documented uncertainty-score direction. Run the Rust CLI to evaluate the
-  fixed calibrated threshold and interpret risk alongside coverage, event
-  counts and shift conditions. The repository includes a trained synthetic
-  classification example and an exact-metric verification script.
-  An external OpenML Electricity benchmark adds frozen logistic/forest models,
-  temporal block sensitivity and independent NumPy metric checks. Combined
-  applicability/confidence warnings did not improve degraded-window recall over
-  a simpler covariate warning and increased false alarms. Identical simple
-  warning gates reproduce TRIAD decisions; added predictive utility is unproven.
-  Treat the numerical-evidence fields as input attestations, not as externally
-  verified certificates. No confidence guarantee under new conditions follows.
+  Use when a predictor may abstain and the cost of an accepted unacceptable
+  error matters. Supply frozen predictions, scores, labels and disjoint
+  calibration/test splits. The Rust implementation evaluates classification and
+  regression (regression via a normalised error with tolerance 1), together with
+  event Brier/ECE and, for regression, normalised split-conformal coverage.
+  Optional claim-relative evidence reports classify stated reliability claims
+  as supported within scope, insufficient, contradicted or not applicable.
+  In two pre-specified real-data studies (OpenML Electricity; UCI Bike
+  Sharing), adding evidence qualification or validity-based warnings to
+  selective risk did not improve reliability decisions; on Bike Sharing,
+  evidence-qualified day gating cost slightly more than standard monitoring.
+  Treat those reports as documentation aids, not as a reliability improvement.
 known_failure_modes: |
-  Calibration/test population shift can preserve coverage while collapsing
-  accuracy. Rare error events, tied scores, empty acceptance, missing labels,
-  score/probability confusion, unverifiable provenance, repeated observations,
-  dependent spatial pools and unrepresentative validation samples can undermine
-  interpretation. Separate sequence and spatial bootstrap intervals do not
-  account for crossed clustering. Reported physical model credibility can fail
-  despite solver convergence. TRIAD's 2D capacitive model still fails its
-  numerical readiness gate; no hardware or 3D validation exists.
-  Electricity's calendar chronology and upstream normalization/imputation are
-  unresolved. Few dependent degraded windows cannot establish warning utility
-  or concept drift. Computational cross-checks are not unrelated-team replication.
+  Coverage can be preserved while risk changes sharply under shift between
+  calibration and use (Bike Sharing conformal coverage moved from 83% to 97% by
+  month for one model). Calibration-quantile thresholds give no finite-sample
+  risk guarantee. Rare error events, tied scores, empty acceptance, missing
+  labels, dependent observations (hours, days, windows), score/probability
+  confusion and unrepresentative calibration samples mislead interpretation.
+  Absent time steps must not be treated as consecutive or as zero. Reducing
+  risk by refusing more predictions is not an improvement unless coverage is
+  matched or costed. Evidence classifications verify the consistency of
+  supplied evidence, not its truth; misleading inputs defeated them.
 references:
+  - "Ran El-Yaniv and Yair Wiener. On the Foundations of Noise-free Selective Classification. Journal of Machine Learning Research 11:1605-1641, 2010. https://www.jmlr.org/papers/volume11/el-yaniv10a/el-yaniv10a.pdf"
   - "Yonatan Geifman and Ran El-Yaniv. Selective Classification for Deep Neural Networks. NeurIPS 30, 2017. https://papers.nips.cc/paper_files/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html"
-  - "Chuan Guo, Geoff Pleiss, Yu Sun and Kilian Q. Weinberger. On Calibration of Modern Neural Networks. ICML, PMLR 70:1321-1330, 2017. https://proceedings.mlr.press/v70/guo17a.html"
+  - "Hans R. Kunsch. The Jackknife and the Bootstrap for General Stationary Observations. Annals of Statistics 17(3):1217-1241, 1989. https://doi.org/10.1214/aos/1176347265"
 implementation_resources:
   - https://github.com/topherchris420/triad/blob/master/src/metrology.rs
-  - https://github.com/topherchris420/triad/blob/master/docs/metrology/reproducibility.md
-  - https://github.com/topherchris420/triad/blob/master/docs/metrology/milestone6-real-world-results.md
-  - https://github.com/topherchris420/triad/blob/master/benchmarks/electricity/README.md
+  - https://github.com/topherchris420/triad/blob/master/src/metrology_temporal.rs
+  - https://github.com/topherchris420/triad/blob/master/docs/metrology/milestone7-reproduction.md
+  - https://github.com/topherchris420/triad/blob/master/docs/metrology/milestone7-results.md
 common_variants:
-  - Retrospective risk-coverage ranking at fixed test coverage (descriptive only)
+  - Retrospective risk-coverage curve and area under it (descriptive only)
+  - Selective risk at matched coverage across compared models
 related_metrics:
   - Coverage and abstention frequency
-  - Area under the risk-coverage curve (AURC)
   - Brier score and expected calibration error for excessive-error probabilities
-computational_requirements: Rust toolchain with Cargo; CPU for the generic evaluator; FEM experiments are optional and expensive.
+  - Split-conformal interval coverage
+computational_requirements: Rust toolchain with Cargo on a CPU; Python with NumPy/SciPy for the independent verifier.
 usage_rights: MIT

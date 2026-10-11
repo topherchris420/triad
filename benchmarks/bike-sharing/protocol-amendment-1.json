@@ -1,0 +1,12 @@
+{
+  "amends": "benchmarks/bike-sharing/protocol.json (bike-sharing-v7-1); the frozen file is unchanged and its hash remains in the manifest",
+  "recorded": "2026-10-11, after model fitting and before any development, calibration or test metric was computed",
+  "reason": "The Milestone 7 specification says not to use final-test labels to construct operational warnings. In one-hour-ahead autoregressive forecasting the previous hour's count is both an outcome and a legitimate model input, so every policy (and both models) necessarily uses earlier test-period counts. The enforceable requirement is causality: a day-d decision uses only data observed before day d, and no threshold, scale or rule is fitted on test-period data. The perf policy and TRIAD rule R4 additionally use the model's realised past errors (delayed-label monitoring).",
+  "primary_endpoint": "unchanged",
+  "added_secondary_descriptive_analysis": {
+    "name": "outcome-free comparison",
+    "policies": "triad_without_r4 (rules R1-R3 only) versus cov and conf, each matched on calibration days to triad_without_r4's own calibration alert count, and versus none",
+    "outputs": "mean cost difference at each abstention cost with the primary block length and 95% percentile interval; decision agreement",
+    "status": "descriptive; not part of the confirmatory family"
+  }
+}

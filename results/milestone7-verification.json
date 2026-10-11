@@ -1,0 +1,375 @@
+{
+ "recorded": "2026-10-11",
+ "platform": {
+  "os": "Linux",
+  "machine": "x86_64",
+  "python": "3.13.16",
+  "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07)",
+  "python_packages": "benchmarks/bike-sharing/requirements.txt (numpy 2.2.6, scipy 1.15.3, scikit-learn 1.6.1, matplotlib 3.10.3)"
+ },
+ "rust_replay": {
+  "results/bike-sharing-v7/report.json": "passed",
+  "results/evidence-suite-v7/report.json": "passed",
+  "results/evidence-example-v7.json": "passed",
+  "results/benchmark-electricity/report.json (Milestone 6 archive)": "passed"
+ },
+ "independent_python_checks": {
+  "script": "scripts/verify-milestone7.py",
+  "checks_passed": 3027,
+  "frozen_pre_m7_artifacts_verified": 102,
+  "covers": [
+   "hour.csv SHA-256 and byte-level equality of manifest rows with the source",
+   "cnt = casual + registered on all rows",
+   "model and protocol hashes",
+   "DST-aware elapsed hours via zoneinfo",
+   "partition and eligibility counts",
+   "conventional and reference-forecast errors",
+   "generic selective metrics, AURC, Brier, ECE",
+   "normalised conformal coverage",
+   "r_cal, design effect, development scales, native and matched thresholds",
+   "every policy alert, gated count, confusion, delay and cost",
+   "all paired block-bootstrap intervals",
+   "primary and tolerance-sensitivity decisions",
+   "all TRIAD, C and C+scope classifications and 13 ablations for 64 suite cases",
+   "Wilson and McNemar statistics",
+   "CLI example classifications"
+  ],
+  "tolerance": "relative 1e-9, absolute 1e-11"
+ },
+ "retraining_reproduction": {
+  "script": "scripts/check-bike-reproduction.py",
+  "result": "passed on the recorded host (second clean preparation was byte-identical)"
+ },
+ "report_sha256": {
+  "results/bike-sharing-v7/report.json": "540e9b1ca876aac8cc94e5e7ed5423d4c3201fc94ac8d583768a78f8daded98b",
+  "results/evidence-suite-v7/report.json": "b528ae419c98a5d81cfae305f43fb88c5440451ca58352fd2e679509d9ff31b3",
+  "results/evidence-example-v7.json": "3288410796394f95c1ac12bd9447e0f0676b40fea10f10904a57f6096700b7aa"
+ },
+ "evidence_suite_first_run": {
+  "note": "The suite was first run with the evidence engine committed in 9c63076. A conformance fix to axiom A5 (dependent or unknown units yield no i.i.d. bound in either direction) was then made before archiving. It changed no classification of any case for TRIAD, C, C+scope or any of the 13 ablations; only the reason text of H03, B14 and B18 changed.",
+  "first_run_classifications": {
+   "H01": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "H02": {
+    "triad": "contradicted",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "H03": {
+    "triad": "insufficient_evidence",
+    "standard": "insufficient_evidence",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "H04": {
+    "triad": "contradicted",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "H05": {
+    "triad": "contradicted",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "H06": {
+    "triad": "contradicted",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "H07": {
+    "triad": "insufficient_evidence",
+    "standard": "insufficient_evidence",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "H08": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "H09": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "H10": {
+    "triad": "contradicted",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "H11": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "H12": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "H13": {
+    "triad": "insufficient_evidence",
+    "standard": "insufficient_evidence",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "B01": {
+    "triad": "contradicted",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B02": {
+    "triad": "contradicted",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B03": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B04": {
+    "triad": "contradicted",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B05": {
+    "triad": "contradicted",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B06": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B07": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B08": {
+    "triad": "contradicted",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "B09": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B10": {
+    "triad": "insufficient_evidence",
+    "standard": "insufficient_evidence",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "B11": {
+    "triad": "insufficient_evidence",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "B12": {
+    "triad": "insufficient_evidence",
+    "standard": "insufficient_evidence",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "B13": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B14": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B15": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B16": {
+    "triad": "contradicted",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B17": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B18": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B19": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B20": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B21": {
+    "triad": "insufficient_evidence",
+    "standard": "insufficient_evidence",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "B22": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "B23": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B24": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B25": {
+    "triad": "contradicted",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "B26": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B27": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "B28": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "B29": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B30": {
+    "triad": "contradicted",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "B31": {
+    "triad": "insufficient_evidence",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "B32": {
+    "triad": "not_applicable",
+    "standard": "insufficient_evidence",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "B33": {
+    "triad": "insufficient_evidence",
+    "standard": "insufficient_evidence",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "B34": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B35": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B36": {
+    "triad": "contradicted",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "B37": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B38": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "insufficient_evidence"
+   },
+   "B39": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B40": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B41": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B42": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B43": {
+    "triad": "contradicted",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "B44": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B45": {
+    "triad": "insufficient_evidence",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "B46": {
+    "triad": "contradicted",
+    "standard": "contradicted",
+    "standard_plus_scope": "contradicted"
+   },
+   "B47": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "M01": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "M02": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "M03": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   },
+   "M04": {
+    "triad": "supported_within_scope",
+    "standard": "supported_within_scope",
+    "standard_plus_scope": "supported_within_scope"
+   }
+  },
+  "identical_to_archived": true
+ },
+ "cross_platform": "Linux and Windows status is recorded by the GitHub Actions run for the pull request, not by this file."
+}

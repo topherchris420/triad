@@ -138,3 +138,21 @@ fn geometry_rejects_tampered_selective_evidence_before_computation() {
     );
     assert!(!fixture.0.join("results/geometry-screen-v1.json").exists());
 }
+
+#[test]
+fn pre_milestone7_artifacts_are_byte_identical() {
+    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
+    let manifest: Value = serde_json::from_str(include_str!(
+        "../benchmarks/bike-sharing/frozen-before-v7.json"
+    ))
+    .unwrap();
+    let files = manifest["sha256"].as_object().unwrap();
+    assert!(files.len() > 100);
+    for (name, digest) in files {
+        assert_eq!(
+            triad::evaluation::hash(&std::fs::read(root.join(name)).unwrap()),
+            digest.as_str().unwrap(),
+            "frozen artifact changed: {name}"
+        );
+    }
+}

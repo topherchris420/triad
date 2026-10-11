@@ -5,7 +5,7 @@
 [![Rust verification](https://github.com/topherchris420/triad/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/topherchris420/triad/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0B5D63.svg)](LICENSE)
 
-[Start here](#start-with-the-evidence) · [Milestone 3 findings](docs/milestone3-results-2026-10-11.md) · [Original baseline](#baseline-results-the-system-is-accurate-in-some-places-and-fragile-in-others) · [Research code](#new-research-code-test-before-claiming) · [Evidence map](#evidence-map)
+[Start here](#start-with-the-evidence) · [Milestone 3 findings](docs/milestone3-results-2026-10-11.md) · [Milestone 4 plan](docs/milestone4-plan.md) · [Original baseline](#baseline-results-the-system-is-accurate-in-some-places-and-fragile-in-others) · [Research code](#new-research-code-test-before-claiming) · [Evidence map](#evidence-map)
 
 *An independent Vers3Dynamics research instrument for sparse capacitive localization, physical observability, and the limits of confident inference.*
 
@@ -17,6 +17,12 @@ Capacitive sensors register the world through changes in an electric field. Four
 The research is deliberately staged. First model the field. Then invert the measurements. Then, only when those foundations withstand numerical and statistical checks, investigate whether physics-informed uncertainty can identify the moments when the evidence is insufficient.
 
 **No hardware performance, commercial superiority, or original selective-prediction method is claimed.**
+
+<p align="center">
+  <img src="assets/triad-cad-blueprint.svg" alt="TRIAD technical blueprint: conceptual isometric extrusion of the two-dimensional four-electrode capacitive field model, with a dielectric target and schematic field curves." width="560" />
+</p>
+
+*Engineering illustration, not a 3D simulation or computed electric-field visualization. The archived pilot result is shown as context; see the independently recorded Milestone 3 findings below.*
 
 ![Recorded TRIAD baseline scenario comparison](results/plots/scenario-comparison.png)
 
@@ -66,7 +72,7 @@ $$
 
 The implemented estimator minimizes a noise-normalized residual over **position and unknown relative permittivity**. It always returns a point, even when an optimizer stopping condition is not met.
 
-The newly implemented, **not yet scientifically evaluated**, selective experiment asks whether a position should be accepted when uncertainty and physics-based observability indicate that it may be wrong. Its principal future comparison is against *posterior expected-error rejection*, not merely an always-answer baseline:
+The selective experiment has now been **executed once but has not passed scientific validation**. It asks whether a position should be accepted when uncertainty and physics-based observability indicate that it may be wrong. Its principal future comparison is against *posterior expected-error rejection*, not merely an always-answer baseline:
 
 $$
 R(\tau)=
@@ -217,7 +223,9 @@ See [the complete Milestone 3 research protocol, limitations and reproducible co
 
 ## The next experiment: earn the right to abstain
 
-The next stage is **not** to bolt on a confidence percentage. It is to establish a stronger optimization reference, quantify mesh and surrogate-model mismatch in the same units as noise, then pre-register a new powered C2-versus-D comparison. All methods must have the same information budget and independent test sequences.
+The next stage is **not** to bolt on a confidence percentage. The [Milestone 4 engineering plan](docs/milestone4-plan.md) now separates mesh discrepancy from dictionary interpolation, evaluates an exploratory local-refinement stencil, and plans a statistically feasible new study without reusing exposed v3 test labels. Run the development-only diagnostic on a separate evidence-preserving checkout using `cargo run --release --locked -- numerical-components`; it does not validate the original hypothesis.
+
+ It is to establish a stronger optimization reference, quantify mesh and surrogate-model mismatch in the same units as noise, then pre-register a new powered C2-versus-D comparison. All methods must have the same information budget and independent test sequences.
 
 1. **Audit numerical inference.** Separate projected/boundary stopping conditions from genuinely suboptimal fits; quantify surrogate-interpolation and mesh error.
 2. **Test meaningful ambiguity.** Account for unknown dielectric and restricted drift nuisance parameters, as well as near-identical measurements from distant states.
@@ -237,6 +245,7 @@ Read [the next-experiment plan](docs/next-experiment.md). The governing [origina
 | How are ambiguity and sensitivity assessed? | [Observability source](src/observability.rs), [finite-grid ambiguity](results/ambiguity.json) |
 | Can I reproduce it? | [Protocol](docs/experiment-protocol.md), [amendments](docs/protocol-amendments.md), [replay audit](results/reproducibility-check.json) |
 | Where could this fail? | [Limitations](docs/limitations.md), [optimizer audit](docs/optimizer-audit.md), [next experiment](docs/next-experiment.md) |
+| What is being repaired next? | [Milestone 4 numerical and statistical plan](docs/milestone4-plan.md), [exploratory design](experiments/milestone4-design.json) |
 
 The first cached rerun exposed a floating-point JSON round-trip issue; it was corrected without changing scientific parameters. The corrected run reproduced the dataset and localization CSV byte-for-byte on the recorded host. Failure evidence is retained rather than erased.
 

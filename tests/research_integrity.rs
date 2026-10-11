@@ -156,3 +156,22 @@ fn pre_milestone7_artifacts_are_byte_identical() {
         );
     }
 }
+
+#[test]
+fn pre_milestone8_artifacts_are_byte_identical() {
+    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
+    let manifest: Value = serde_json::from_str(include_str!(
+        "../benchmarks/evidence-outcomes/frozen-before-v8.json"
+    ))
+    .unwrap();
+    let files = manifest["sha256"].as_object().unwrap();
+    assert!(files.len() > 100);
+    assert!(files.contains_key("src/evidence.rs"));
+    for (name, digest) in files {
+        assert_eq!(
+            triad::evaluation::hash(&std::fs::read(root.join(name)).unwrap()),
+            digest.as_str().unwrap(),
+            "frozen artifact changed: {name}"
+        );
+    }
+}

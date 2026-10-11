@@ -42,6 +42,20 @@ jobs:
         run: |
           cargo run --locked -- audit
           cargo run --locked -- information
+      - name: Smoke-test portable experimental JSON contracts
+        run: |
+          cargo run --locked -- calibrate-abstention --input examples/abstention-calibration-demo.json > /tmp/triad-abstention.json
+          cargo run --locked -- inspect-capture --input examples/synthetic-capture.json > /tmp/triad-capture.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          policy = json.loads(Path("/tmp/triad-abstention.json").read_text())
+          capture = json.loads(Path("/tmp/triad-capture.json").read_text())
+          assert policy["status"] == "refused"
+          assert policy["threshold"] is None
+          assert capture["empty_reference_frames"] == 4
+          assert capture["space"] == "synthetic2d"
+          PY
       - name: Verify frozen baseline artifacts remain present
         run: |
           test -f results/validation.json

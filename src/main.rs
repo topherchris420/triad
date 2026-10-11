@@ -10,6 +10,8 @@ Inspect the instrument and evidence:
   --help, -h       Show this guide
   --version, -V    Show package version
   audit           Describe frozen optimizer outcomes
+  inspect-capture --input FILE       Validate sensor capture and inspect baseline variability
+  calibrate-abstention --input FILE  Fit conservative policy from independent labeled sequences
   information     Compute local nuisance-adjusted information
   numerical-components  Diagnose FEM versus dictionary error on development probes
 
@@ -26,6 +28,7 @@ Completed v3 research (archived; refuses existing outputs):
 Milestone 4 development diagnostic (does not evaluate new selectors):
   numerical-components  Test separate mesh/interpolation errors and local stencil
 
+--input selects a JSON file for the two read-only portable commands.
 --root selects a repository/data root containing experiments/ and results/.
 The default is the directory from which this binary was built.
 Audit commands write derived reports; they do not modify frozen evidence.
@@ -38,10 +41,16 @@ fn main() -> Result<()> {
     }
     let mut root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut command = None;
+    let mut input: Option<PathBuf> = None;
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
         match arg.as_str() {
             "--root" => root = PathBuf::from(args.next().context("--root requires a path")?),
+            "--input" => {
+                input = Some(PathBuf::from(
+                    args.next().context("--input requires a path")?,
+                ))
+            }
             "--help" | "-h" => {
                 println!("{HELP}");
                 return Ok(());
@@ -54,7 +63,25 @@ fn main() -> Result<()> {
             _ => bail!("unexpected argument '{arg}'; use --help"),
         }
     }
+    if input.is_some()
+        && !matches!(
+            command.as_deref(),
+            Some("inspect-capture") | Some("calibrate-abstention")
+        )
+    {
+        bail!("--input is only valid for inspect-capture or calibrate-abstention");
+    }
     match command.as_deref() {
+        Some("inspect-capture") => {
+            let path = input.context("inspect-capture requires --input FILE")?;
+            let result = triad::capture::inspect_file(&path)?;
+            println!("{}", serde_json::to_string_pretty(&result)?);
+        }
+        Some("calibrate-abstention") => {
+            let path = input.context("calibrate-abstention requires --input FILE")?;
+            let policy = triad::abstention::fit_file(&path)?;
+            println!("{}", serde_json::to_string_pretty(&policy)?);
+        }
         None => println!("{HELP}"),
         Some("validate") => {
             triad::validation::run(&root)?;

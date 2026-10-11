@@ -1,0 +1,9 @@
+{
+  "baseline_config_sha256": "dfa96dab7da944361ba8b9fe39b6f81a60df8e3511cb1e1f53c39292dbad10a1",
+  "completion_marker": "summary.json",
+  "dictionary_key": "e4fac601b7d133f018e84cd2439997f61119edde234ae7da549f7a5c087dddb7",
+  "experiment": "selective-v3",
+  "interrupted_run_policy": "Preserve this directory. Do not delete exposed test evidence to retry a study.",
+  "numerical_audit_sha256": "f0c3a36d6c65de8124b8efd315677887f8596ccf27a7e58022f8a5a3844ee9ac",
+  "protocol_sha256": "40137978dfefda624d1c193764cf0c48962b563438fe5b0b7101a113fcbcd4c7"
+}

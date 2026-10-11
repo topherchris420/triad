@@ -1,0 +1,126 @@
+{
+  "baseline_config_sha256": "dfa96dab7da944361ba8b9fe39b6f81a60df8e3511cb1e1f53c39292dbad10a1",
+  "dictionary_key": "e4fac601b7d133f018e84cd2439997f61119edde234ae7da549f7a5c087dddb7",
+  "kind": "independent_development_numerical_audit_v3",
+  "likelihood_ready_for_claims": false,
+  "limitations": [
+    "Synthetic 2D electrostatics; probes are not physical measurements.",
+    "This is a diagnostic sampling of model mismatch, not a uniform error bound.",
+    "The 1 noise-unit inspection criterion is provisional and not a validation of posterior calibration.",
+    "Test labels and the historical frozen dataset were not used.",
+    "A failed inspection gate does not prevent exploratory selectors, but prevents validated inference claims."
+  ],
+  "max_mesh_error_noise_units": 8.138053319747028,
+  "max_optimization_objective_gap": 0.0,
+  "max_surrogate_error_noise_units": 37.77753412455475,
+  "rows": [
+    {
+      "best_discrete_objective": 5233.394671823283,
+      "development_state": [
+        -0.0193,
+        0.0097,
+        5.4
+      ],
+      "estimated_state": [
+        -0.019554208092877494,
+        0.01044003361413121,
+        5.971280138218378
+      ],
+      "interpolation_to_refined_mahalanobis": 37.77753412455475,
+      "mesh_1mm_to_0_5mm_mahalanobis": 8.138053319747028,
+      "objective_gap_above_discrete": 0.0,
+      "optimizer_converged": true,
+      "optimizer_objective": 10.351442929782062
+    },
+    {
+      "best_discrete_objective": 151.70069110981177,
+      "development_state": [
+        -0.0079,
+        0.0143,
+        3.7
+      ],
+      "estimated_state": [
+        -0.007852046676931602,
+        0.014927254002701998,
+        4.050724544973638
+      ],
+      "interpolation_to_refined_mahalanobis": 8.23217966226065,
+      "mesh_1mm_to_0_5mm_mahalanobis": 1.8153457493766585,
+      "objective_gap_above_discrete": 0.0,
+      "optimizer_converged": true,
+      "optimizer_objective": 5.482657965044928
+    },
+    {
+      "best_discrete_objective": 23.519629939345943,
+      "development_state": [
+        0.0047,
+        0.0189,
+        6.2
+      ],
+      "estimated_state": [
+        0.004721797624298384,
+        0.01934275790575596,
+        6.58004422022457
+      ],
+      "interpolation_to_refined_mahalanobis": 3.164823845805352,
+      "mesh_1mm_to_0_5mm_mahalanobis": 1.0730998399712133,
+      "objective_gap_above_discrete": 0.0,
+      "optimizer_converged": true,
+      "optimizer_objective": 0.4957827305615296
+    },
+    {
+      "best_discrete_objective": 7.051071105581823,
+      "development_state": [
+        0.0163,
+        0.0241,
+        4.6
+      ],
+      "estimated_state": [
+        0.016246740921957825,
+        0.024184736683598947,
+        4.619982624559568
+      ],
+      "interpolation_to_refined_mahalanobis": 0.2645100390031403,
+      "mesh_1mm_to_0_5mm_mahalanobis": 0.46561364491191,
+      "objective_gap_above_discrete": 0.0,
+      "optimizer_converged": true,
+      "optimizer_objective": 0.050061255780878985
+    },
+    {
+      "best_discrete_objective": 521.6223022058008,
+      "development_state": [
+        0.0217,
+        0.0119,
+        7.1
+      ],
+      "estimated_state": [
+        0.022015767726449198,
+        0.011896288257373187,
+        6.7440185825689785
+      ],
+      "interpolation_to_refined_mahalanobis": 4.632343051509738,
+      "mesh_1mm_to_0_5mm_mahalanobis": 4.881783185950504,
+      "objective_gap_above_discrete": 0.0,
+      "optimizer_converged": true,
+      "optimizer_objective": 3.952534180042111
+    },
+    {
+      "best_discrete_objective": 1.6223014826869002,
+      "development_state": [
+        -0.0141,
+        0.0263,
+        2.7
+      ],
+      "estimated_state": [
+        -0.014030427644876727,
+        0.02677345662684126,
+        2.901518230392262
+      ],
+      "interpolation_to_refined_mahalanobis": 0.26490176730970566,
+      "mesh_1mm_to_0_5mm_mahalanobis": 0.2173162957558472,
+      "objective_gap_above_discrete": 0.0,
+      "optimizer_converged": true,
+      "optimizer_objective": 0.01845736269694697
+    }
+  ]
+}

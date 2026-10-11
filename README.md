@@ -4,7 +4,7 @@
 
 *An independent Vers3Dynamics research instrument for sparse capacitive localization, physical observability, and the limits of confident inference.*
 
-**Principal investigator:** Christopher Woodyard · **Language:** Rust · **Status:** validated 2D baseline, selective-prediction hypothesis **not yet tested**
+**Principal investigator:** Christopher Woodyard · **Language:** Rust · **Status:** validated 2D baseline; C2-versus-D study **implemented but not yet experimentally evaluated**
 
 > A precise measurement is not necessarily a trustworthy conclusion.
 
@@ -39,7 +39,7 @@ $$
 
 The implemented estimator minimizes a noise-normalized residual over **position and unknown relative permittivity**. It always returns a point, even when an optimizer stopping condition is not met.
 
-The proposed, **not yet implemented**, selective experiment asks whether a position should be accepted when uncertainty and physics-based observability indicate that it may be wrong. Its principal future comparison is against *posterior expected-error rejection*, not merely an always-answer baseline:
+The newly implemented, **not yet scientifically evaluated**, selective experiment asks whether a position should be accepted when uncertainty and physics-based observability indicate that it may be wrong. Its principal future comparison is against *posterior expected-error rejection*, not merely an always-answer baseline:
 
 $$
 R(\tau)=
@@ -68,7 +68,8 @@ A reduction in risk caused merely by refusing more predictions is not a discover
 | Nuisance-adjusted local information | Noise-whitened position Jacobian, dielectric Schur complement | **Implemented as a diagnostic**, not an abstention rule |
 | Frozen evidence | Saved datasets, predictions, metrics, plots, protocol amendments | **Recorded** and reproducible on the tested host |
 | Retrospective optimizer audit | Dedicated read-only analytical command | **Implemented**, generated report is exploratory |
-| Bayesian rejection / nuisance-aware Fisher information / Method D | Proposed future experiments | **Not implemented** |
+| Posterior C2 / physics-informed D / probability calibration | Versioned new Rust study | **Implemented, not yet executed or validated** |
+| Electrode geometry screening | Same four-channel-array width and 10 observable entries; new independent holdout | **Implemented as exploratory code; no result claimed** |
 | 3D fields, fabricated sensors, hardware trials | Outside the current study | **Not performed** |
 
 ### Baseline results: the system is accurate in some places and fragile in others
@@ -128,7 +129,7 @@ It writes `results/optimizer-audit.json` and records the evaluated source-file h
                                   |
                        error maps and ambiguity audit
 
-                    [FUTURE: posterior C2 vs physics-informed D]
+                    [NEW STUDY: C2 vs D; fresh test not yet evaluated]
 ```
 
 The 2D world consists of four zero-thickness 8 mm electrode strips on the lower boundary of a grounded finite enclosure. A 4 mm radius dielectric disk represents a cylinder extending without end in the omitted direction. The model is *not* a physically complete finite 3D coplanar sensor and does not include substrates, real readout electronics, dispersive losses, or parasitic capacitances.
@@ -182,13 +183,30 @@ A local test log records **nine passing numerical tests**; the added audit tests
 
 References and limits: [commercial source audit](docs/commercial-reference-analysis.md) · [algorithm evidence](docs/algorithm-evidence.md) · [REA capability audit](docs/rea-capability-audit.md) · [prior-art review](docs/literature-review.md).
 
+## New research code: test before claiming
+
+The experimental Milestone 3 code now provides numerical auditing, posterior C2, a preregistered physics-informed D score, probability calibration, drift-only selective risk evaluation, independent sequence-level bootstrap intervals, and exploratory electrode-layout screening. **These are implementations, not findings.** No new outcome is claimed until commands are executed, numerical discrepancies are addressed, and a fresh test has enough failure events.
+
+```sh
+cargo test --locked
+cargo run --release --locked -- numerical
+cargo run --release --locked -- selective
+cargo run --release --locked -- geometry-screen
+```
+
+**Run in this order.** `numerical` quantifies noise-normalized mesh, interpolation and optimizer error on six development probes. `selective` creates independently seeded development, calibration and test drift sequences, writes scores before test-truth evaluation, and compares C2 and D at exactly 80% retrospective test acceptance as well as independently calibrated deployment thresholds. It reports Brier/reliability/ECE and paired whole-sequence bootstrap intervals, including null or adverse findings. `geometry-screen` screens five equal-width, four-electrode layouts on an independent development and holdout split; **this is not proof of improved selective risk**.
+
+The old baseline is intentionally never rerun by these commands. Study artifacts use distinct, versioned paths and final reports refuse overwrite. Results will not be embedded into the README until verified.
+
+See [the complete Milestone 3 research protocol, limitations and reproducible commands](docs/selective-v3.md), the [versioned machine-readable protocol](experiments/selective-v3.json), and [the original next-experiment gate](docs/next-experiment.md).
+
 ## The next experiment: earn the right to abstain
 
 The next stage is **not** to bolt on a confidence percentage. It is to establish a stronger optimization reference, quantify mesh and surrogate-model mismatch in the same units as noise, then pre-register a new powered C2-versus-D comparison. All methods must have the same information budget and independent test sequences.
 
 1. **Audit numerical inference.** Separate projected/boundary stopping conditions from genuinely suboptimal fits; quantify surrogate-interpolation and mesh error.
 2. **Test meaningful ambiguity.** Account for unknown dielectric and restricted drift nuisance parameters, as well as near-identical measurements from distant states.
-3. **Build strong selectors.** Residual rejection, posterior variance, posterior expected-error rejection (**C2**), and physics-informed uncertainty rejection (**D**).
+3. **Evaluate strong selectors.** Posterior expected-error rejection (**C2**) and a fixed physics-informed rejection score (**D**) now have experimental code. Residual-only and posterior-variance comparators remain future extensions.
 4. **Freeze new tests.** Calibrate thresholds on calibration sequences and evaluate deployment coverage on unseen sequences. Also report matched-coverage risk without pretending it is a deployable threshold.
 5. **Accept the null.** If C2 matches or outperforms D, say so. A sophisticated observability score cannot manufacture information absent from the electrodes.
 
@@ -209,7 +227,7 @@ The first cached rerun exposed a floating-point JSON round-trip issue; it was co
 
 ### Scope, authorship, and reuse
 
-TRIAD is independent research by **Christopher Woodyard, Vers3Dynamics**. No external validation, peer review, or scientific novelty has been established. A repository-level reuse license has **not** yet been selected; visibility on GitHub does not, by itself, license redistribution. Commercial reference rights remain with their respective owners.
+TRIAD is independent research by **Christopher Woodyard, Vers3Dynamics**. No external validation, peer review, or scientific novelty has been established. A repository-level **MIT License** now permits reuse of the independent TRIAD code; GitHub visibility remains a separate setting. The rights to commercial reference material remain with their respective owners. Commercial reference rights remain with their respective owners.
 
 Contributions are welcome when permissions allow, but new inference results require reproducible experiments and honest provenance; see [contribution standards](CONTRIBUTING.md).
 

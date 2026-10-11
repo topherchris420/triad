@@ -3,6 +3,7 @@ name = "triad"
 version = "0.1.0"
 edition = "2021"
 description = "Vers3Dynamics independent 2D capacitive localization research"
+license = "MIT"
 
 [dependencies]
 fenris = "=0.0.33"

@@ -1,0 +1,38 @@
+{
+  "protocol_version": "3.0-independent-selective",
+  "status": "preregistered implementation; unexecuted final experiment",
+  "primary_scenario": "strong_drift",
+  "error_threshold_mm": 5.0,
+  "target_coverage": 0.8,
+  "sequence_counts": {
+    "development": 64,
+    "calibration": 64,
+    "test": 300
+  },
+  "frames_per_sequence": 12,
+  "calibration_frames": 24,
+  "positions_per_split": 24,
+  "development_seed": 9301101,
+  "calibration_seed": 9301102,
+  "test_seed": 9301103,
+  "independent_positions_per_split": true,
+  "observation_fem_spacing_m": 0.0005,
+  "dictionary_fem_spacing_m": 0.001,
+  "posterior_temperature": 2.0,
+  "d_physics_weight": 0.25,
+  "method_c2": "finite-grid posterior probability of error > 5 mm for the shared GLS point estimate",
+  "method_d": "0.75 C2 + 0.25 times equal-weight mixture of local nuisance-adjusted information deficit and global near-collision score",
+  "probability_calibration": "development-only monotone logistic fit; assess Brier/reliability on independent test",
+  "acceptance_thresholds": "calibration-only raw scores at nominal 80 percent coverage",
+  "primary_matched_test_coverage": "exactly 80 percent test scores ranked retrospectively without labels; does not represent a calibrated deployment threshold",
+  "bootstrap": {
+    "paired": true,
+    "unit": "complete strong-drift sequence",
+    "replicates": 500,
+    "seed": 901773
+  },
+  "practical_risk_improvement_absolute": 0.02,
+  "minimum_test_failures": 30,
+  "decision_rule": "To count as supportive exploratory evidence: numerical audit passes, >=30 independent-test error events, C2 risk - D risk >=0.02, paired 95% whole-sequence bootstrap lower bound >0. No automatic discovery claim.",
+  "no_hardware_claims": true
+}

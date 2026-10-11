@@ -5,9 +5,9 @@ name: Validity-qualified selective error risk at calibrated coverage
 applied_definition: |
   Evaluate a fixed model on labeled observations under a predeclared loss L,
   unacceptable-error threshold epsilon, and uncertainty score s (smaller is
-  safer). At threshold t, report acceptance coverage C(t) = P(s <= t) and
+  safer). At threshold t, report acceptance coverage C(t) = P(s at most t) and
   conditional excessive-error risk R(t) = P(L(prediction, truth) > epsilon
-  | s <= t). Select t using disjoint calibration scores; evaluate on held-out
+  | s at most t). Select t using disjoint calibration scores; evaluate on held-out
   records, reporting actual test coverage, error counts, and scenario-specific
   risk. R is undefined if no predictions are accepted.
 

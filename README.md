@@ -1,14 +1,13 @@
 # TRIAD
 
-**When should a sensor refuse to answer?**
+**trust and epistemic humility in physical sensing systems**
 
 *An independent Vers3Dynamics research instrument for sparse capacitive localization, physical observability, and the limits of confident inference.*
 
-**Principal investigator:** Christopher Woodyard · **Language:** Rust · **Status:** validated 2D baseline; C2-versus-D study **implemented but not yet experimentally evaluated**
 
 > A precise measurement is not necessarily a trustworthy conclusion.
 
-Capacitive sensors register the world through changes in an electric field. Four electrodes might yield ten distinct self/mutual capacitance measurements, yet multiple positions, dielectric properties, and environmental conditions can still explain what was observed. TRIAD asks what happens when a localization algorithm reports one answer anyway.
+Capacitive sensors register the world through changes in an electric field. Four electrodes might yield ten distinct self/mutual capacitance measurements, yet multiple positions, dielectric properties, and environmental conditions can still explain what was observed. TRIAD asks what happens when a localization algorithm still reports one answer.
 
 The research is deliberately staged. First model the field. Then invert the measurements. Then, only when those foundations withstand numerical and statistical checks, investigate whether physics-informed uncertainty can identify the moments when the evidence is insufficient.
 
@@ -16,7 +15,7 @@ The research is deliberately staged. First model the field. Then invert the meas
 
 ![Recorded TRIAD baseline scenario comparison](results/plots/scenario-comparison.png)
 
-*Plot generated from the frozen conventional-estimator simulation. These are localization errors, not selective-prediction improvements.*
+*Plot generated from the frozen conventional-estimator simulation. These are localization errors, not improvements from selective prediction.*
 
 ## The question, in equations
 
@@ -194,7 +193,7 @@ cargo run --release --locked -- selective
 cargo run --release --locked -- geometry-screen
 ```
 
-**Run in this order.** `numerical` quantifies noise-normalized mesh, interpolation and optimizer error on six development probes. `selective` creates independently seeded development, calibration and test drift sequences, writes scores before test-truth evaluation, and compares C2 and D at exactly 80% retrospective test acceptance as well as independently calibrated deployment thresholds. It reports Brier/reliability/ECE and paired whole-sequence bootstrap intervals, including null or adverse findings. `geometry-screen` screens five equal-width, four-electrode layouts on an independent development and holdout split; **this is not proof of improved selective risk**.
+**Run in this order.** `numerical` quantifies noise-normalized mesh, interpolation, and optimizer error on six development probes. `selective` creates independently seeded development, calibration, and test drift sequences, writes scores before test-truth evaluation, and compares C2 and D at exactly 80% retrospective test acceptance as well as independently calibrated deployment thresholds. It reports Brier/reliability/ECE and paired whole-sequence bootstrap intervals, including null or adverse findings. `geometry-screen` screens five equal-width, four-electrode layouts on an independent development and holdout split; **this is not proof of improved selective risk**.
 
 The old baseline is intentionally never rerun by these commands. Study artifacts use distinct, versioned paths and final reports refuse overwrite. Results will not be embedded into the README until verified.
 
@@ -227,7 +226,7 @@ The first cached rerun exposed a floating-point JSON round-trip issue; it was co
 
 ### Scope, authorship, and reuse
 
-TRIAD is independent research by **Christopher Woodyard, Vers3Dynamics**. No external validation, peer review, or scientific novelty has been established. A repository-level **MIT License** now permits reuse of the independent TRIAD code; GitHub visibility remains a separate setting. The rights to commercial reference material remain with their respective owners. Commercial reference rights remain with their respective owners.
+TRIAD is independent research by **Christopher Woodyard, Vers3Dynamics**.
 
 Contributions are welcome when permissions allow, but new inference results require reproducible experiments and honest provenance; see [contribution standards](CONTRIBUTING.md).
 

@@ -55,6 +55,34 @@ impl Default for Geometry {
     }
 }
 
+/// Four independently addressable equal-width electrodes, all on y=0.
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq)]
+pub struct ElectrodeLayout {
+    pub centers: [f64; 4],
+    pub half_width: f64,
+}
+impl Default for ElectrodeLayout {
+    fn default() -> Self {
+        Self { centers: [-0.027, -0.009, 0.009, 0.027], half_width: 0.004 }
+    }
+}
+impl ElectrodeLayout {
+    pub fn validate(self, g: Geometry) -> Result<()> {
+        if !self.half_width.is_finite() || self.half_width <= 0.0 {
+            bail!("invalid electrode half width");
+        }
+        for (i, center) in self.centers.iter().enumerate() {
+            if !center.is_finite() || center.abs() + self.half_width >= g.half_width {
+                bail!("electrode outside domain");
+            }
+            if i > 0 && *center - self.centers[i-1] <= 2.0 * self.half_width {
+                bail!("electrode strips overlap or touch");
+            }
+        }
+        Ok(())
+    }
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Solution {
     pub capacitance: [[f64; 5]; 5],
@@ -120,6 +148,15 @@ pub fn mesh(
     g: Geometry,
     position: Option<[f64; 2]>,
 ) -> Result<(TriangleMesh2d<f64>, Vec<bool>)> {
+    mesh_with_layout(spacing, g, position, ElectrodeLayout::default())
+}
+pub fn mesh_with_layout(
+    spacing: f64,
+    g: Geometry,
+    position: Option<[f64; 2]>,
+    layout: ElectrodeLayout,
+) -> Result<(TriangleMesh2d<f64>, Vec<bool>)> {
+    layout.validate(g)?;
     if spacing <= 0.0 || g.background <= 0.0 || g.radius <= 0.0 {
         bail!("invalid geometry");
     }
@@ -148,7 +185,9 @@ pub fn mesh(
         .chain(positive.iter().copied())
         .collect();
     let ys = axis(g.height);
-    xs.extend([-0.031, -0.023, -0.013, -0.005, 0.005, 0.013, 0.023, 0.031]);
+    for center in layout.centers {
+        xs.extend([center - layout.half_width, center + layout.half_width]);
+    }
     xs.sort_by(f64::total_cmp);
     xs.dedup_by(|a, b| (*a - *b).abs() < 1e-11);
     let mut polygon = Vec::new();
@@ -278,15 +317,19 @@ pub fn multiply(k: &CsrMatrix<f64>, u: &[Vec<f64>]) -> Vec<Vec<f64>> {
     r
 }
 
-fn solve_matrix(mesh: &TriangleMesh2d<f64>, k: &CsrMatrix<f64>, g: Geometry) -> Result<Solution> {
+fn solve_matrix(
+    mesh: &TriangleMesh2d<f64>,
+    k: &CsrMatrix<f64>,
+    g: Geometry,
+    layout: ElectrodeLayout,
+) -> Result<Solution> {
     let mut group = vec![None; mesh.vertices().len()];
-    let centers = [-0.027, -0.009, 0.009, 0.027];
     for (i, p) in mesh.vertices().iter().enumerate() {
         if (p.x.abs() - g.half_width).abs() < 1e-10 || (p.y - g.height).abs() < 1e-10 {
             group[i] = Some(4);
         } else if p.y.abs() < 1e-10 {
-            for (j, c) in centers.iter().enumerate() {
-                if (p.x - c).abs() <= 0.004 + 1e-10 {
+            for (j, c) in layout.centers.iter().enumerate() {
+                if (p.x - c).abs() <= layout.half_width + 1e-10 {
                     group[i] = Some(j);
                 }
             }
@@ -352,12 +395,20 @@ impl Model {
         }
     }
     pub fn solve(&self, state: Option<[f64; 3]>) -> Result<Solution> {
+        self.solve_with_layout(state, ElectrodeLayout::default())
+    }
+    pub fn solve_with_layout(
+        &self,
+        state: Option<[f64; 3]>,
+        layout: ElectrodeLayout,
+    ) -> Result<Solution> {
+        layout.validate(self.geometry)?;
         if state.is_some_and(|s| !s.iter().all(|v| v.is_finite()) || s[2] <= 0.0) {
             bail!("invalid target state");
         }
         // Uniform permittivity uses exactly the same mesh as the empty target.
         let state = state.filter(|s| s[2] != self.geometry.background);
-        let (mesh, inside) = mesh(self.spacing, self.geometry, state.map(|s| [s[0], s[1]]))?;
+        let (mesh, inside) = mesh_with_layout(self.spacing, self.geometry, state.map(|s| [s[0], s[1]]), layout)?;
         let coefficients = inside
             .iter()
             .map(|b| {
@@ -369,13 +420,14 @@ impl Model {
             })
             .collect();
         let k = stiffness(&mesh, coefficients)?;
-        let mut solution = solve_matrix(&mesh, &k, self.geometry)?;
+        let mut solution = solve_matrix(&mesh, &k, self.geometry, layout)?;
         if state.is_some() {
             // Same-mesh homogeneous reference cancels mesh-dependent empty offset.
             let empty = solve_matrix(
                 &mesh,
                 &stiffness(&mesh, vec![self.geometry.background; inside.len()])?,
                 self.geometry,
+                layout,
             )?;
             solution.signal = std::array::from_fn(|i| solution.vector[i] - empty.vector[i]);
         }

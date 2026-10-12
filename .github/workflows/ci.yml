@@ -82,7 +82,7 @@ jobs:
           cmp work/m8/score/report.json results/evidence-outcomes-v8/score/report.json
           mkdir -p work/m8-cache
           python -c "import json; [print(k, v['archive']) for k, v in json.load(open('benchmarks/evidence-outcomes/protocol.json'))['datasets'].items()]" > work/m8-archives.txt
-          while read -r key url; do curl -sSfL --retry 5 --retry-all-errors -o "work/m8-cache/$key.zip" "$url"; done < work/m8-archives.txt
+          while read -r key url; do url="${url%$'\r'}"; curl -sSfL --retry 5 --retry-all-errors -o "work/m8-cache/$key.zip" "$url"; done < work/m8-archives.txt
           python scripts/m8-generate.py --cache work/m8-cache --output work/m8-regenerated
           python scripts/verify-milestone8.py --run work/m8 --regenerated work/m8-regenerated
       - name: Train and independently verify the generic demonstration

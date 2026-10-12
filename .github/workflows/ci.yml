@@ -65,6 +65,26 @@ jobs:
           python scripts/verify-milestone7.py --bike results/ci-bike-sharing/report.json --suite results/ci-evidence-suite/report.json --evidence results/ci-evidence-example.json --data work/bike-cache
           python scripts/prepare-bike-sharing.py --cache work/bike-cache --output work/bike-retrained
           python scripts/check-bike-reproduction.py work/bike-retrained
+      - name: Replay, regenerate and independently verify Milestone 8 (outcome-grounded evidence sufficiency)
+        run: |
+          python -m pip install --disable-pip-version-check -r benchmarks/evidence-outcomes/requirements.txt
+          cargo run --release --locked -- metrology evidence-batch --help
+          mkdir -p work/m8
+          python -c "import gzip, shutil; shutil.copyfileobj(gzip.open('results/evidence-outcomes-v8/cases.json.gz'), open('work/m8/cases.json', 'wb'))"
+          cp results/evidence-outcomes-v8/truth.json results/evidence-outcomes-v8/units.json work/m8/
+          cargo run --release --locked -- metrology evidence-batch --input work/m8/cases.json --output work/m8/batch
+          cmp work/m8/batch/classifications.json results/evidence-outcomes-v8/classifications.json
+          cp work/m8/batch/classifications.json work/m8/
+          python -m pytest -q benchmarks/evidence-outcomes/comparators/test_m8_comparators.py
+          python benchmarks/evidence-outcomes/comparators/m8_comparators.py --input work/m8/cases.json --output work/m8/comparators.json
+          python -c "import json; a, b = (json.load(open(p, encoding='utf-8')) for p in ('work/m8/comparators.json', 'results/evidence-outcomes-v8/comparators.json')); assert a == b, 'comparator replay differs'"
+          python scripts/m8-score.py --truth work/m8/truth.json --triad work/m8/classifications.json --comparators work/m8/comparators.json --output work/m8/score
+          cmp work/m8/score/report.json results/evidence-outcomes-v8/score/report.json
+          mkdir -p work/m8-cache
+          python -c "import json; [print(k, v['archive']) for k, v in json.load(open('benchmarks/evidence-outcomes/protocol.json'))['datasets'].items()]" > work/m8-archives.txt
+          while read -r key url; do curl -sSfL --retry 5 --retry-all-errors -o "work/m8-cache/$key.zip" "$url"; done < work/m8-archives.txt
+          python scripts/m8-generate.py --cache work/m8-cache --output work/m8-regenerated
+          python scripts/verify-milestone8.py --run work/m8 --regenerated work/m8-regenerated
       - name: Train and independently verify the generic demonstration
         run: |
           cargo run --locked -- metrology demo --output results/ci-metrology-demo

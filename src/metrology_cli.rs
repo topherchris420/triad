@@ -11,7 +11,7 @@ use std::{
     time::Instant,
 };
 
-const HELP: &str="TRIAD metrology (exploratory measurement)\n\n  metrology evidence --input assessment.json --output report.json [--root DIR]\n  metrology evidence-suite --input suite.json --output NEW_DIRECTORY [--root DIR]\n  metrology benchmark --input manifest.json --output NEW_DIRECTORY\n  metrology evaluate --input predictions.json --output report.json\n  metrology validate --input report.json [--root DIR]\n  metrology demo --output NEW_DIRECTORY\n  metrology numerical --output NEW_DIRECTORY\n  metrology adaptive --output NEW_DIRECTORY\n  metrology plan --output planning.json\n\nOutputs are never overwritten. Numerical runs are expensive; demo does not run FEM.";
+const HELP: &str="TRIAD metrology (exploratory measurement)\n\n  metrology evidence --input assessment.json --output report.json [--root DIR]\n  metrology evidence-suite --input suite.json --output NEW_DIRECTORY [--root DIR]\n  metrology evidence-batch --input cases.json --output NEW_DIRECTORY\n  metrology benchmark --input manifest.json --output NEW_DIRECTORY\n  metrology evaluate --input predictions.json --output report.json\n  metrology validate --input report.json [--root DIR]\n  metrology demo --output NEW_DIRECTORY\n  metrology numerical --output NEW_DIRECTORY\n  metrology adaptive --output NEW_DIRECTORY\n  metrology plan --output planning.json\n\nOutputs are never overwritten. Numerical runs are expensive; demo does not run FEM.";
 
 fn write_report(input: &Input, output: &Path, raw_hash: &str) -> Result<()> {
     let markdown = output.with_extension("md");
@@ -47,6 +47,14 @@ pub fn run(args: &[String]) -> Result<()> {
     }
     if args == ["evidence", "--help"] {
         println!("metrology evidence --input ASSESSMENT.json --output NEW_REPORT.json [--root DIR]\n\nClassifies each typed claim (schema triad-evidence-1) as supported_within_scope,\ninsufficient_evidence, contradicted or not_applicable using the explicit rules of\ndocs/metrology/evidence-sufficiency-method.md, and reports the standard-checks\nbaseline beside it. file_hash paths resolve against --root (default: current\ndirectory) and may not leave it. Unknown evidence never passes; attestations are\nreported but never relied upon; a matching hash shows byte consistency only.\nNo confidence score is produced. Example: examples/evidence-assessment.json");
+        return Ok(());
+    }
+    if args == ["evaluate", "--help"] {
+        println!("metrology evaluate --input PREDICTIONS.json --output NEW_REPORT.json\n\nSelective risk at target coverage (schema triad-metrology-1; example: examples/predictions.json).\nThe acceptance threshold is the ceil(n*c)-th smallest calibration-split score (ties accepted;\ncalibration labels unused). On the test split it reports realised coverage, selective risk\n(accepted excess-loss events / accepted), both counts, the retrospective risk-coverage curve\nand AURC (descriptive only), event Brier/ECE and whole-sequence or whole-cluster bootstrap\nintervals. Definition: docs/metrology/selective-risk-quickstart.md");
+        return Ok(());
+    }
+    if args == ["evidence-batch", "--help"] {
+        println!("metrology evidence-batch --input CASES.json --output NEW_DIRECTORY\n\nClassifies every case of a triad-evidence-outcomes-cases-1 file (Milestone 8,\nbenchmarks/evidence-outcomes) with TRIAD, standard checks C, C+scope and one\nablation per rule family. Writes NEW_DIRECTORY/classifications.json. Cases carry\nno ground truth; scoring is done by scripts/m8-score.py.");
         return Ok(());
     }
     if args == ["evidence-suite", "--help"] {
@@ -109,6 +117,12 @@ pub fn run(args: &[String]) -> Result<()> {
                     f["classification"].as_str().unwrap()
                 );
             }
+        }
+        "evidence-batch" => {
+            crate::evidence_batch::run(
+                &input.context("evidence-batch requires --input")?,
+                &output.context("evidence-batch requires --output")?,
+            )?;
         }
         "evidence-suite" => {
             let bytes = fs::read(input.context("evidence-suite requires --input")?)?;

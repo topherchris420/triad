@@ -1,0 +1,44 @@
+{
+ "checked_on": "2026-10-11",
+ "candidate": "docs/metrology/nist-submission/submissions/selective-risk-at-target-coverage.yml",
+ "redirects_followed": false,
+ "results": [
+  {
+   "url": "https://www.jmlr.org/papers/v11/el-yaniv10a.html",
+   "status": 200,
+   "ok": true,
+   "note": null
+  },
+  {
+   "url": "https://papers.nips.cc/paper_files/paper/2017/hash/4a8423d5e91fda00bb7e46540e2b0cf1-Abstract.html",
+   "status": 200,
+   "ok": true,
+   "note": null
+  },
+  {
+   "url": "https://projecteuclid.org/journals/annals-of-statistics/volume-17/issue-3/The-Jackknife-and-the-Bootstrap-for-General-Stationary-Observations/10.1214/aos/1176347265.full",
+   "status": 200,
+   "ok": true,
+   "note": null
+  },
+  {
+   "url": "https://github.com/topherchris420/triad/blob/master/docs/metrology/selective-risk-quickstart.md",
+   "status": 404,
+   "ok": false,
+   "note": null
+  },
+  {
+   "url": "https://github.com/topherchris420/triad/blob/master/src/metrology.rs",
+   "status": 200,
+   "ok": true,
+   "note": null
+  },
+  {
+   "url": "https://torch-uncertainty.github.io/generated/torch_uncertainty.metrics.classification.RiskAtxCov.html",
+   "status": 200,
+   "ok": true,
+   "note": null
+  }
+ ],
+ "all_ok": false
+}

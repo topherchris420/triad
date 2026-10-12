@@ -5,6 +5,7 @@ pub mod capture;
 pub mod diagnostics;
 pub mod evaluation;
 pub mod evidence;
+pub mod evidence_batch;
 pub mod evidence_suite;
 pub mod experiment;
 pub mod forward;

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check TRIAD's *draft* against the vendored official NIST schema v1.0.
+"""Check TRIAD's NIST *candidate* against the vendored official NIST schema v1.0.
 
 This is a mechanical schema validator, never a scientific validation or submission.
 Run from any working directory. Requires PyYAML and jsonschema.
@@ -14,7 +14,7 @@ from jsonschema import Draft202012Validator
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = ROOT / "docs/metrology/nist-schema-v1.json"
-DRAFT = ROOT / "docs/metrology/nist-submission-draft.yml"
+DRAFT = ROOT / "docs/metrology/nist-submission/submissions/selective-risk-at-target-coverage.yml"
 
 
 def errors_for(candidate, schema):
@@ -53,7 +53,7 @@ def main():
                 return 2
             print("PASS: four intentionally invalid candidate submissions rejected")
         else:
-            print("PASS: local draft conforms to vendored NIST submission schema v1.0")
+            print("PASS: local candidate conforms to vendored NIST submission schema v1.0")
             print("NOTE: format validity does not imply scientific readiness, NIST review or submission")
         return 0
     except (OSError, json.JSONDecodeError, yaml.YAMLError, TypeError, ValueError) as exc:

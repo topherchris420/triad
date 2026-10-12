@@ -261,7 +261,10 @@ def main():
     report = {
         "schema_version": "triad-m8-score-1",
         "protocol_version": truth["protocol_version"],
-        "inputs_sha256": {k: hashlib.sha256(Path(getattr(args, k)).read_bytes()).hexdigest() for k in ("truth", "triad", "comparators")},
+        # Hashed with CRLF normalised to LF: the frozen comparator CLI writes text mode, so on
+        # Windows its output has CRLF; the JSON content (and every LF file's hash) is unchanged.
+        "inputs_sha256": {k: hashlib.sha256(Path(getattr(args, k)).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+                          for k in ("truth", "triad", "comparators")},
         "cases": len(rows),
         "claims_by_family": {f: {"true": sum(1 for r in rows if r["family"] == f and r["truth"]),
                                  "false": sum(1 for r in rows if r["family"] == f and not r["truth"])} for f in FAMILIES},

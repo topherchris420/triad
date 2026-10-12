@@ -1,0 +1,116 @@
+{
+  "schema_version": "triad-claims-ledger-1",
+  "purpose": "Every headline number in README.md is bound here to the archived artifact field that produced it. scripts/check-claims.py recomputes each value from the frozen artifact, checks that the README still quotes it verbatim, and checks that the README findings table is exactly the table rendered from this ledger. A sentence in the README cannot drift from the evidence without failing CI. This checks transcription, not scientific validity: a correctly quoted number can still come from a flawed study.",
+  "claims": {
+    "base-test": {"artifact": "results/summary.json", "pointer": "/test_predictions", "thousands": true, "display": "1,080", "quote": "**451 nonconvergence flags among 1,080 returned positions**"},
+    "base-nonconv": {"artifact": "results/evaluation.json", "count_where": [["converged", "==", false]], "display": "451", "quote": "**451 nonconvergence flags among 1,080 returned positions**"},
+    "base-big": {"artifact": "results/evaluation.json", "count_where": [["error_mm", ">", 5]], "display": "20", "quote": "Only **10 of the 20 errors above 5 mm** are flagged"},
+    "base-big-flagged": {"artifact": "results/evaluation.json", "count_where": [["error_mm", ">", 5], ["converged", "==", false]], "display": "10", "quote": "Only **10 of the 20 errors above 5 mm** are flagged"},
+
+    "m3-d": {"artifact": "results/selective-v3/summary.json", "pointer": "/primary_matched_80_percent/d/accepted_error_over_5mm", "display": "37", "quote": "accepted **37** errors above 5 mm"},
+    "m3-c2": {"artifact": "results/selective-v3/summary.json", "pointer": "/primary_matched_80_percent/c2/accepted_error_over_5mm", "display": "42", "quote": "versus **42** for posterior C2"},
+    "m3-diff": {"artifact": "results/selective-v3/summary.json", "pointer": "/primary_matched_80_percent/risk_reduction_c2_minus_d", "transform": "percent", "decimals": 3, "display": "0.174", "quote": "a **0.174-percentage-point** exploratory risk reduction"},
+    "m3-threshold": {"artifact": "experiments/selective-v3.json", "pointer": "/practical_risk_improvement_absolute", "transform": "percent", "decimals": 0, "display": "2", "quote": "preregistered **2-percentage-point** practical threshold"},
+    "m3-num": {"artifact": "results/numerical-audit-v3.json", "pointer": "/max_surrogate_error_noise_units", "decimals": 2, "display": "37.78", "quote": "**37.78 covariance-whitened noise units**"},
+    "m3-supported": {"artifact": "results/selective-v3/summary.json", "pointer": "/supports_declared_primary_hypothesis", "expect": false, "display": "not supported", "quote": "Scientific hypothesis not supported"},
+
+    "m4-orig": {"artifact": "results/numerical-components-v4.json", "pointer": "/max_original_interpolation_noise_units", "decimals": 2, "display": "29.86", "quote": "**the maximum interpolation-only discrepancy from 29.86 to 2.28 covariance-whitened noise units**"},
+    "m4-patch": {"artifact": "results/numerical-components-v4.json", "pointer": "/max_local_patch_interpolation_noise_units", "decimals": 2, "display": "2.28", "quote": "**the maximum interpolation-only discrepancy from 29.86 to 2.28 covariance-whitened noise units**"},
+    "m4-mesh": {"artifact": "results/numerical-components-v4.json", "pointer": "/max_mesh_discrepancy_noise_units", "decimals": 2, "display": "9.82", "quote": "still reached **9.82 noise units**"},
+    "m4-total": {"artifact": "results/numerical-components-v4.json", "pointer": "/max_local_patch_total_noise_units", "decimals": 2, "display": "10.48", "quote": "candidate total-model mismatch reached **10.48**"},
+
+    "m6-acc-lr": {"artifact": "results/benchmark-electricity/report.json", "pointer": "/report/models/0/conventional_and_selective/overall/operational/error_rate", "transform": "complement_percent", "decimals": 2, "suffix": "%", "display": "65.57%", "quote": "| Logistic regression | 65.57% | 77.34% | 31.19% | 55.55% / 30.39% |"},
+    "m6-acc-rf": {"artifact": "results/benchmark-electricity/report.json", "pointer": "/report/models/1/conventional_and_selective/overall/operational/error_rate", "transform": "complement_percent", "decimals": 2, "suffix": "%", "display": "66.00%", "quote": "| Random forest | 66.00% | 60.46% | 25.84% | 26.50% / 28.16% |"},
+    "m6-risk-lr": {"artifact": "results/benchmark-electricity/report.json", "pointer": "/report/models/0/conventional_and_selective/overall/operational/selective_error_risk", "transform": "percent", "decimals": 2, "suffix": "%", "display": "31.19%", "quote": "| Logistic regression | 65.57% | 77.34% | 31.19% | 55.55% / 30.39% |"},
+    "m6-gated-cov-lr": {"artifact": "results/benchmark-electricity/report.json", "pointer": "/report/models/0/policies/0/gated/coverage", "transform": "percent", "decimals": 2, "suffix": "%", "display": "55.55%", "quote": "| Logistic regression | 65.57% | 77.34% | 31.19% | 55.55% / 30.39% |"},
+    "m6-gated-risk-lr": {"artifact": "results/benchmark-electricity/report.json", "pointer": "/report/models/0/policies/0/gated/selective_error_risk", "transform": "percent", "decimals": 2, "suffix": "%", "display": "30.39%", "quote": "| Logistic regression | 65.57% | 77.34% | 31.19% | 55.55% / 30.39% |"},
+
+    "m7-ridge": {"artifact": "results/bike-sharing-v7/report.json", "pointer": "/report/confirmatory/per_model/0/delta", "decimals": 4, "signed": true, "display": "+0.0049", "quote": "(Δ = +0.0049 and +0.0062 per hour)"},
+    "m7-hgb": {"artifact": "results/bike-sharing-v7/report.json", "pointer": "/report/confirmatory/per_model/1/delta", "decimals": 4, "signed": true, "display": "+0.0062", "quote": "(Δ = +0.0049 and +0.0062 per hour)"},
+    "m7-triad-det": {"artifact": "results/evidence-suite-v7/report.json", "pointer": "/report/methods/triad/detected", "display": "43", "quote": "43/47 versus 20/47, with no false rejections"},
+    "m7-c-det": {"artifact": "results/evidence-suite-v7/report.json", "pointer": "/report/methods/standard_checks_c/detected", "display": "20", "quote": "43/47 versus 20/47, with no false rejections"},
+    "m7-unsup": {"artifact": "results/evidence-suite-v7/report.json", "pointer": "/report/methods/triad/unsupported_cases", "display": "47", "quote": "43/47 versus 20/47, with no false rejections"},
+    "m7-triad-fr": {"artifact": "results/evidence-suite-v7/report.json", "pointer": "/report/methods/triad/false_rejections", "display": "0", "quote": "43/47 versus 20/47, with no false rejections"},
+
+    "m8-cases": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/cases", "thousands": true, "display": "5,078", "quote": "The test covered 5,078 claims"},
+    "m8-triad": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/cost/triad", "decimals": 3, "display": "0.159", "quote": "Decision cost 0.159 versus 0.121 for a blind statistical reviewer"},
+    "m8-s": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/cost/s", "decimals": 3, "display": "0.121", "quote": "Decision cost 0.159 versus 0.121 for a blind statistical reviewer"},
+    "m8-ds": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/decision/comparisons/s/delta", "decimals": 3, "signed": true, "display": "+0.038", "quote": "(Δ = +0.038 [+0.008, +0.070], inferior)"},
+    "m8-ds-lo": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/decision/comparisons/s/two_sided_95/0", "decimals": 3, "signed": true, "display": "+0.008", "quote": "(Δ = +0.038 [+0.008, +0.070], inferior)"},
+    "m8-ds-hi": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/decision/comparisons/s/two_sided_95/1", "decimals": 3, "signed": true, "display": "+0.070", "quote": "(Δ = +0.038 [+0.008, +0.070], inferior)"},
+    "m8-s-class": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/decision/versus_better_strong_comparator/classification", "expect": "inferior", "display": "inferior", "quote": "(Δ = +0.038 [+0.008, +0.070], inferior)"},
+    "m8-r": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/cost/r", "decimals": 3, "display": "0.160", "quote": "0.160 for a blind REFORMS-style checklist (Δ = −0.001, indistinguishable)"},
+    "m8-dr": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/decision/comparisons/r/delta", "decimals": 3, "signed": true, "display": "−0.001", "quote": "0.160 for a blind REFORMS-style checklist (Δ = −0.001, indistinguishable)"},
+    "m8-never": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/cost/never", "decimals": 3, "display": "0.125", "quote": "Never endorsing anything costs 0.125"},
+    "m8-vs-c": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/secondary/replication_versus_c/c/delta", "decimals": 3, "signed": true, "display": "−0.172", "quote": "Δ = −0.172 versus standard checks and −0.050 versus checks with scope"},
+    "m8-vs-cs": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/secondary/replication_versus_c/c_scope/delta", "decimals": 3, "signed": true, "display": "−0.050", "quote": "Δ = −0.172 versus standard checks and −0.050 versus checks with scope"},
+    "m8-d-fs": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/family_detail/triad/D/false_supported", "display": "7", "quote": "it endorsed 7 of 19 false ones"},
+    "m8-d-false": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/family_detail/triad/D/false", "display": "19", "quote": "it endorsed 7 of 19 false ones"},
+    "m8-verdict": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/decision/verdict", "expect": "not_established", "display": "Not established", "quote": "**Not established** (pre-registered verdict)"}
+  },
+  "findings": [
+    {
+      "milestone": "2",
+      "question": "Does an optimizer's convergence flag tell you the answer is trustworthy?",
+      "finding": "**No.** {base-nonconv} nonconvergence flags among {base-test} positions, yet only {base-big-flagged} of the {base-big} errors above 5 mm were flagged",
+      "status": "Descriptive, synthetic pilot",
+      "source": "results/evaluation.json"
+    },
+    {
+      "milestone": "3",
+      "question": "Does a physics-informed rejection score (D) beat posterior expected-error rejection (C2)?",
+      "finding": "**No.** At matched 80% acceptance D accepted {m3-d} errors above 5 mm versus {m3-c2} for C2, a risk reduction of {m3-diff} percentage points against a {m3-threshold}-point threshold. Worst surrogate discrepancy {m3-num} noise units",
+      "status": "Hypothesis {m3-supported}; numerical gate failed",
+      "source": "results/selective-v3/summary.json"
+    },
+    {
+      "milestone": "4",
+      "question": "Is the simulated sensor accurate to within its own noise?",
+      "finding": "**No.** Local interpolation cut interpolation discrepancy from {m4-orig} to {m4-patch} noise units, but mesh discrepancy stays at {m4-mesh} and total mismatch at {m4-total}",
+      "status": "Numerical readiness false",
+      "source": "results/numerical-components-v4.json"
+    },
+    {
+      "milestone": "6",
+      "question": "Do validity warnings add value on real data (OpenML Electricity)?",
+      "finding": "**No.** Accuracy {m6-acc-lr} (logistic) and {m6-acc-rf} (forest). Gating cut logistic coverage to {m6-gated-cov-lr} while accepted error risk moved only from {m6-risk-lr} to {m6-gated-risk-lr}",
+      "status": "Negative",
+      "source": "results/benchmark-electricity/report.json"
+    },
+    {
+      "milestone": "7",
+      "question": "Do evidence-qualified trust decisions beat standard monitoring (UCI Bike Sharing)?",
+      "finding": "**No.** TRIAD minus standard monitoring: Δ cost {m7-ridge} (ridge) and {m7-hgb} (gradient boosting) per hour",
+      "status": "Negative; replicates Milestone 6",
+      "source": "results/bike-sharing-v7/report.json"
+    },
+    {
+      "milestone": "7",
+      "question": "Do explicit claim-relative rules catch unsupported claims that standard checks miss?",
+      "finding": "{m7-triad-det}/{m7-unsup} versus {m7-c-det}/{m7-unsup} with {m7-triad-fr} false rejections, **on an author-constructed suite**",
+      "status": "Engineering capability only",
+      "source": "results/evidence-suite-v7/report.json"
+    },
+    {
+      "milestone": "8",
+      "question": "Do those rules beat reviewers written without seeing TRIAD, judged by real outcomes?",
+      "finding": "**No.** Decision cost {m8-triad} versus {m8-s} (blind statistical reviewer, Δ {m8-ds}, {m8-s-class}) and {m8-r} (blind checklist). Never endorsing costs {m8-never}. {m8-cases} claims, five datasets",
+      "status": "{m8-verdict} (pre-registered)",
+      "source": "results/evidence-outcomes-v8/score/report.json"
+    },
+    {
+      "milestone": "8",
+      "question": "Does the Milestone 7 advantage over standard checks survive world truth?",
+      "finding": "**Yes.** Δ {m8-vs-c} versus standard checks and {m8-vs-cs} versus checks with scope, but blind reviewers reproduce it",
+      "status": "Replicated, not distinctive",
+      "source": "results/evidence-outcomes-v8/score/report.json"
+    },
+    {
+      "milestone": "8",
+      "question": "Where do the rules fail?",
+      "finding": "Next-week operational claims: {m8-d-fs} of {m8-d-false} false ones endorsed, because the rules do not forecast",
+      "status": "Repair needs a new frozen test",
+      "source": "results/evidence-outcomes-v8/score/report.json"
+    }
+  ]
+}

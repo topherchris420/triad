@@ -18,6 +18,7 @@ TRIAD is a research instrument, not a place to accumulate features without exper
 - Run `cargo fmt --all -- --check` and `cargo test --locked` and, when changing physics, the validated simulation on development inputs.
 - Avoid making the full expensive FEM rerun a requirement for every code change.
 - Treat archived artifacts as evidence, not scratch files.
+- When README.md quotes a result, bind it in [docs/claims-ledger.json](docs/claims-ledger.json) and run `python scripts/check-claims.py`. Edit the ledger, not the generated findings table; `--write` re-renders it.
 
 ## Third-party rights
 

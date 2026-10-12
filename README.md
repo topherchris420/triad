@@ -15,6 +15,44 @@ evidence-sufficiency rules did not beat independently designed reviewers when
 tested against real outcomes.** These negative results are documented,
 reproducible, and the main findings.
 
+## The research arc, machine-checked
+
+TRIAD began as a simulated capacitive sensor that asked when a position estimate
+should be refused. Milestone by milestone, the question widened to any predictive
+system, and then to the claims people make *about* such systems. Each step was frozen
+in Git before it ran, and each answer is reported whether or not it flattered the
+method.
+
+<!-- claims-ledger:start (rendered from docs/claims-ledger.json by scripts/check-claims.py --write; edit the ledger, not this table) -->
+| Milestone | Question | What the archived evidence says | Status | Source |
+|:--:|---|---|---|---|
+| 2 | Does an optimizer's convergence flag tell you the answer is trustworthy? | **No.** 451 nonconvergence flags among 1,080 positions, yet only 10 of the 20 errors above 5 mm were flagged | Descriptive, synthetic pilot | [evaluation.json](results/evaluation.json) |
+| 3 | Does a physics-informed rejection score (D) beat posterior expected-error rejection (C2)? | **No.** At matched 80% acceptance D accepted 37 errors above 5 mm versus 42 for C2, a risk reduction of 0.174 percentage points against a 2-point threshold. Worst surrogate discrepancy 37.78 noise units | Hypothesis not supported; numerical gate failed | [summary.json](results/selective-v3/summary.json) |
+| 4 | Is the simulated sensor accurate to within its own noise? | **No.** Local interpolation cut interpolation discrepancy from 29.86 to 2.28 noise units, but mesh discrepancy stays at 9.82 and total mismatch at 10.48 | Numerical readiness false | [numerical-components-v4.json](results/numerical-components-v4.json) |
+| 6 | Do validity warnings add value on real data (OpenML Electricity)? | **No.** Accuracy 65.57% (logistic) and 66.00% (forest). Gating cut logistic coverage to 55.55% while accepted error risk moved only from 31.19% to 30.39% | Negative | [report.json](results/benchmark-electricity/report.json) |
+| 7 | Do evidence-qualified trust decisions beat standard monitoring (UCI Bike Sharing)? | **No.** TRIAD minus standard monitoring: Δ cost +0.0049 (ridge) and +0.0062 (gradient boosting) per hour | Negative; replicates Milestone 6 | [report.json](results/bike-sharing-v7/report.json) |
+| 7 | Do explicit claim-relative rules catch unsupported claims that standard checks miss? | 43/47 versus 20/47 with 0 false rejections, **on an author-constructed suite** | Engineering capability only | [report.json](results/evidence-suite-v7/report.json) |
+| 8 | Do those rules beat reviewers written without seeing TRIAD, judged by real outcomes? | **No.** Decision cost 0.159 versus 0.121 (blind statistical reviewer, Δ +0.038, inferior) and 0.160 (blind checklist). Never endorsing costs 0.125. 5,078 claims, five datasets | Not established (pre-registered) | [report.json](results/evidence-outcomes-v8/score/report.json) |
+| 8 | Does the Milestone 7 advantage over standard checks survive world truth? | **Yes.** Δ −0.172 versus standard checks and −0.050 versus checks with scope, but blind reviewers reproduce it | Replicated, not distinctive | [report.json](results/evidence-outcomes-v8/score/report.json) |
+| 8 | Where do the rules fail? | Next-week operational claims: 7 of 19 false ones endorsed, because the rules do not forecast | Repair needs a new frozen test | [report.json](results/evidence-outcomes-v8/score/report.json) |
+<!-- claims-ledger:end -->
+
+Every number above, and the headline numbers quoted in the sections below, are bound
+to the archived field that produced it in the [claims ledger](docs/claims-ledger.json).
+`python scripts/check-claims.py` recomputes each one from the frozen artifacts and
+fails CI if this README misquotes any of them. It checks transcription, not
+validity: a correctly quoted number can still come from a flawed study.
+
+**What survives.** Three lessons hold up across every milestone. A stopping flag,
+a confidence score and a supplied evidence record each differ from evidence that the
+answer is right. Established selective-risk measurement can be implemented so that
+it is deterministic, replayable and independently recomputed. A rule set written by
+the people testing it should be judged against reviewers who never saw it, with
+truth taken from the world. **What has not survived** is any claim that TRIAD's own
+machinery predicts better, warns better or judges evidence better than strong
+existing practice. The repairs that Milestone 8 identified can only count once they
+pass a new frozen test that their authors have not seen.
+
 ## Milestone 8: independent, outcome-grounded test (October 11, 2026)
 
 | Question | Result | Status |
@@ -164,6 +202,8 @@ cargo run --release --locked -- metrology benchmark --input benchmarks/electrici
 cargo run --release --locked -- metrology validate --input results/my-electricity/report.json
 ```
 
+## Milestone 5: from one sensor to any predictive system
+
 Milestone 5 extends the question: **When should any predictive system refuse to
 answer because the evidence is insufficient?** The new generic evaluator measures
 selective error risk, calibration and distribution-shift behavior while reporting
@@ -201,6 +241,8 @@ cargo run --release --locked -- metrology demo --output results/my-demo
 
 Existing output paths are never overwritten. The original Milestones 2–4 evidence
 and negative findings remain visible below and are protected by SHA-256 tests.
+
+## Origins: the capacitive sensor (Milestones 2–4)
 
 **When Physics-Informed Confidence Fails: Numerical Model Error in Sparse Capacitive Localization**
 

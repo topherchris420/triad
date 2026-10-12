@@ -33,6 +33,8 @@ jobs:
           python-version: '3.12'
       - name: Check Rust formatting
         run: cargo fmt --all -- --check
+      - name: Check README claims against the archived evidence
+        run: python scripts/check-claims.py
       - name: Build and run numerical and research-integrity tests
         run: cargo test --locked
       - name: Lint Rust
@@ -81,7 +83,8 @@ jobs:
           python scripts/m8-score.py --truth work/m8/truth.json --triad work/m8/classifications.json --comparators work/m8/comparators.json --output work/m8/score
           cmp work/m8/score/report.json results/evidence-outcomes-v8/score/report.json
           mkdir -p work/m8-cache
-          python -c "import json; [print(k, v['archive']) for k, v in json.load(open('benchmarks/evidence-outcomes/protocol.json'))['datasets'].items()]" > work/m8-archives.txt
+          # Windows Python prints CRLF; strip CR so curl never sees a trailing '\r' in the URL.
+          python -c "import json; [print(k, v['archive']) for k, v in json.load(open('benchmarks/evidence-outcomes/protocol.json'))['datasets'].items()]" | tr -d '\r' > work/m8-archives.txt
           while read -r key url; do curl -sSfL --retry 5 --retry-all-errors -o "work/m8-cache/$key.zip" "$url"; done < work/m8-archives.txt
           python scripts/m8-generate.py --cache work/m8-cache --output work/m8-regenerated
           python scripts/verify-milestone8.py --run work/m8 --regenerated work/m8-regenerated

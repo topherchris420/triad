@@ -12,8 +12,7 @@ A system can converge on an answer and still be wrong. It can report uncertainty
 and still underestimate its errors. It can carry an evidence record and still make
 a claim that the record does not support.
 
-TRIAD makes those gaps inspectable. Built by **Christopher Woodyard at
-Vers3Dynamics**, it evaluates errors among accepted predictions, tests explicit
+TRIAD makes those gaps inspectable. Built at **Vers3Dynamics**, it evaluates errors among accepted predictions, tests explicit
 rules for assessing reliability claims, and traces its findings back to frozen
 protocols and machine-readable results. The work began with a simulated capacitive
 sensor and expanded into experiments on real prediction data.

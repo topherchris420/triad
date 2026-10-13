@@ -39,6 +39,10 @@ jobs:
         run: cargo test --locked
       - name: Lint Rust
         run: cargo clippy --locked --all-targets
+      - name: Check the quickstart's Python reference against TRIAD
+        run: |
+          cargo build --release --locked
+          python scripts/check-quickstart-reference.py
       - name: Reproduce and independently verify the external Electricity benchmark
         run: |
           python -m pip install --disable-pip-version-check -r benchmarks/electricity/requirements.txt

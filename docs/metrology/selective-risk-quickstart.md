@@ -61,6 +61,72 @@ bootstrap details) are in [method-definition.md](method-definition.md).
 example: hourly UCI Bike Sharing, regression, calibration-fixed threshold,
 moving-block bootstrap.
 
+## Without TRIAD: a Python reference
+
+The calibration-fixed form needs only a sort. This standard-library function
+follows the same conventions as `metrology evaluate`. CI runs
+[`scripts/check-quickstart-reference.py`](../../scripts/check-quickstart-reference.py),
+which executes the block below and requires it to match TRIAD exactly on the example
+and on randomized inputs with score ties, both loss types, and `c = 0` and `c = 1`.
+
+```python
+import math
+
+def selective_risk_at_coverage(cal_scores, test_scores, test_errors, c):
+    """Selective risk at target coverage c (El-Yaniv & Wiener 2010).
+
+    cal_scores   nonempty calibration scores (smaller = more confident)
+    test_scores  nonempty scores on a disjoint test split
+    test_errors  per test row, 1 if the loss event occurred, else 0
+                 (classification: y_hat != y; regression: |y_hat - y| > epsilon)
+    c            target coverage in [0, 1]
+
+    Score and error inputs are sequences; test vectors must have equal lengths.
+    """
+    if not 0.0 <= c <= 1.0:
+        raise ValueError("c must be in [0, 1]")
+    ranked = sorted(cal_scores)
+    if not ranked:
+        raise ValueError("cal_scores must not be empty")
+    if len(test_scores) != len(test_errors):
+        raise ValueError("test_scores and test_errors must have equal lengths")
+    if len(test_scores) == 0:
+        raise ValueError("test_scores must not be empty")
+    k = math.ceil(c * len(ranked))
+    t = ranked[k - 1] if k > 0 else None              # c = 0 rejects every input
+    accept = [t is not None and s <= t for s in test_scores]  # ties at t accepted
+    accepted = sum(accept)
+    accepted_errors = sum(1 for a, e in zip(accept, test_errors) if a and e)
+    return {
+        "threshold": t,
+        "coverage": accepted / len(test_scores),      # realised, not the target c
+        "selective_risk": accepted_errors / accepted if accepted else None,
+        "accepted": accepted,
+        "accepted_errors": accepted_errors,
+    }
+```
+
+For example, with a classifier's labels and scores already split:
+
+```python
+if not len(test_pred) == len(test_true) == len(test_scores):
+    raise ValueError("test_pred, test_true and test_scores must have equal lengths")
+result = selective_risk_at_coverage(
+    cal_scores, test_scores,
+    [int(p != y) for p, y in zip(test_pred, test_true)],
+    c=0.8,
+)
+```
+
+Empty splits and unequal test-vector lengths raise `ValueError`, including when
+`c = 0`. Zero acceptance on a nonempty test split remains valid: it reports zero
+coverage and an undefined (`None`) selective risk.
+
+Report `coverage`, `selective_risk` and both counts together. For an interval,
+use a binomial interval (for example Clopper-Pearson) on
+`accepted_errors / accepted` when test units are independent, or resample whole
+sequences or clusters when they are not.
+
 ## Where it does and does not apply
 
 It applies to any model that outputs a per-instance score and can defer, given

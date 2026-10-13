@@ -75,15 +75,23 @@ import math
 def selective_risk_at_coverage(cal_scores, test_scores, test_errors, c):
     """Selective risk at target coverage c (El-Yaniv & Wiener 2010).
 
-    cal_scores   uncertainty scores on a calibration split (smaller = more confident)
-    test_scores  scores on a disjoint test split
+    cal_scores   nonempty calibration scores (smaller = more confident)
+    test_scores  nonempty scores on a disjoint test split
     test_errors  per test row, 1 if the loss event occurred, else 0
                  (classification: y_hat != y; regression: |y_hat - y| > epsilon)
     c            target coverage in [0, 1]
+
+    Score and error inputs are sequences; test vectors must have equal lengths.
     """
     if not 0.0 <= c <= 1.0:
         raise ValueError("c must be in [0, 1]")
     ranked = sorted(cal_scores)
+    if not ranked:
+        raise ValueError("cal_scores must not be empty")
+    if len(test_scores) != len(test_errors):
+        raise ValueError("test_scores and test_errors must have equal lengths")
+    if len(test_scores) == 0:
+        raise ValueError("test_scores must not be empty")
     k = math.ceil(c * len(ranked))
     t = ranked[k - 1] if k > 0 else None              # c = 0 rejects every input
     accept = [t is not None and s <= t for s in test_scores]  # ties at t accepted
@@ -101,12 +109,18 @@ def selective_risk_at_coverage(cal_scores, test_scores, test_errors, c):
 For example, with a classifier's labels and scores already split:
 
 ```python
+if not len(test_pred) == len(test_true) == len(test_scores):
+    raise ValueError("test_pred, test_true and test_scores must have equal lengths")
 result = selective_risk_at_coverage(
     cal_scores, test_scores,
     [int(p != y) for p, y in zip(test_pred, test_true)],
     c=0.8,
 )
 ```
+
+Empty splits and unequal test-vector lengths raise `ValueError`, including when
+`c = 0`. Zero acceptance on a nonempty test split remains valid: it reports zero
+coverage and an undefined (`None`) selective risk.
 
 Report `coverage`, `selective_risk` and both counts together. For an interval,
 use a binomial interval (for example Clopper-Pearson) on

@@ -8,6 +8,8 @@ requires identical threshold, accepted count, accepted-error count, realised
 coverage and selective risk. The randomized inputs include score ties at the
 threshold, classification and Euclidean losses, c = 0 and c = 1, and calibration
 rows outside the calibration scenario, which TRIAD must ignore.
+It also checks that empty splits and mismatched vectors are rejected, including
+the classifier usage example's label-length guard.
 
   python scripts/check-quickstart-reference.py [--triad PATH] [--cases N] [--seed S]
 
@@ -38,6 +40,60 @@ def load_reference():
     namespace = {}
     exec(compile(source[0], str(QUICKSTART), "exec"), namespace)
     return namespace["selective_risk_at_coverage"]
+
+
+def check_reference_contract(fn):
+    """Exercise malformed standalone inputs that record-based parity cases cannot produce."""
+    invalid = []
+    for c in (0.0, 0.5, 1.0):
+        invalid.extend([
+            (f"empty calibration, c={c}", ([], [0.1], [1], c), "cal_scores must not be empty"),
+            (f"empty test, c={c}", ([0.1], [], [], c), "test_scores must not be empty"),
+            (f"short error vector, c={c}", ([0.1], [0.1, 0.1], [1], c),
+             "test_scores and test_errors must have equal lengths"),
+            (f"long error vector, c={c}", ([0.1], [0.1], [1, 1], c),
+             "test_scores and test_errors must have equal lengths"),
+        ])
+    for name, args, message in invalid:
+        try:
+            fn(*args)
+        except ValueError as error:
+            if str(error) != message:
+                sys.exit(f"FAIL: {name}: expected {message!r}, got {str(error)!r}")
+        else:
+            sys.exit(f"FAIL: reference accepted {name}")
+
+    empty_acceptance = {"threshold": None, "coverage": 0.0, "selective_risk": None,
+                        "accepted": 0, "accepted_errors": 0}
+    if fn([0.1], [0.1], [1], 0.0) != empty_acceptance:
+        sys.exit("FAIL: c = 0 must reject all rows with undefined selective risk")
+    if fn([0.1], [0.2], [1], 1.0) != dict(empty_acceptance, threshold=0.1):
+        sys.exit("FAIL: a fitted threshold accepting no test rows must have undefined risk")
+
+    blocks = re.findall(r"```python\n(.*?)```", QUICKSTART.read_text(encoding="utf-8"), re.S)
+    examples = [b for b in blocks if "result = selective_risk_at_coverage(" in b]
+    if len(examples) != 1:
+        sys.exit("FAIL: expected exactly one classifier usage example")
+    example = compile(examples[0], str(QUICKSTART), "exec")
+    for pred, truth, scores in (([0, 1], [1], [0.1]), ([0], [1, 1], [0.1]),
+                                ([0], [1], [0.1, 0.2])):
+        namespace = {"selective_risk_at_coverage": fn, "cal_scores": [0.1],
+                     "test_scores": scores, "test_pred": pred, "test_true": truth}
+        try:
+            exec(example, namespace)
+        except ValueError as error:
+            if str(error) != "test_pred, test_true and test_scores must have equal lengths":
+                sys.exit(f"FAIL: classifier example rejected mismatched labels incorrectly: {error}")
+        else:
+            sys.exit("FAIL: classifier example silently truncated mismatched labels")
+    namespace = {"selective_risk_at_coverage": fn, "cal_scores": [0.1],
+                 "test_scores": [0.1, 0.2], "test_pred": [0, 1], "test_true": [1, 1]}
+    exec(example, namespace)
+    expected = {"threshold": 0.1, "coverage": 0.5, "selective_risk": 1.0,
+                "accepted": 1, "accepted_errors": 1}
+    if namespace["result"] != expected:
+        sys.exit("FAIL: classifier usage example returned incorrect metrics")
+    print(f"PASS: reference rejects {len(invalid)} malformed inputs and checks classifier label alignment")
 
 
 def loss_event(record, inp):
@@ -117,6 +173,7 @@ def main():
         sys.exit("FAIL: TRIAD binary not found; run cargo build --release --locked or pass --triad")
 
     fn = load_reference()
+    check_reference_contract(fn)
     template = json.loads(EXAMPLE.read_text(encoding="utf-8"))
     rng = random.Random(args.seed)
     cases = [("example", template)] + [(f"random-{i}", random_case(rng, template, i))

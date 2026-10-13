@@ -1,5 +1,5 @@
 {
- "checked_on": "2026-10-11",
+ "checked_on": "2026-10-13",
  "candidate": "docs/metrology/nist-submission/submissions/selective-risk-at-target-coverage.yml",
  "redirects_followed": false,
  "results": [
@@ -23,8 +23,8 @@
   },
   {
    "url": "https://github.com/topherchris420/triad/blob/master/docs/metrology/selective-risk-quickstart.md",
-   "status": 404,
-   "ok": false,
+   "status": 200,
+   "ok": true,
    "note": null
   },
   {
@@ -40,5 +40,5 @@
    "note": null
   }
  ],
- "all_ok": false
+ "all_ok": true
 }

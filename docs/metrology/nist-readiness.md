@@ -1,15 +1,21 @@
 # NIST AI Metrology Center: readiness assessment (Milestone 8)
 
+**Status (October 13, 2026):** the established selective-risk metric was submitted
+on October 11, 2026 as
+[usnistgov/ai-metrology-submissions#24](https://github.com/usnistgov/ai-metrology-submissions/pull/24),
+after this branch was merged. It was not merged by NIST as of October 13, 2026.
+Nothing else has been submitted.
+
 **Recommendation:**
 
-- **Submit the established selective-risk metric** after this branch is merged and a
-  person at Vers3Dynamics passes the [submission gate](nist-submission/README.md#submission-gate).
-  TRIAD appears only as one implementation.
+- **Submit the established selective-risk metric.** Done (see status above). TRIAD
+  appears only as one implementation. Where each
+  [submission gate](nist-submission/README.md#submission-gate) item stands is
+  recorded in the package.
 - **Do not propose TRIAD's evidence-sufficiency method.** An independent,
   outcome-grounded test against blind strong comparators did not support it.
 
-Nothing has been submitted to NIST. Catalog inclusion, if it ever occurs, does not
-imply NIST endorsement.
+Catalog inclusion, if it ever occurs, does not imply NIST endorsement.
 
 Assessed October 11, 2026 against the official sources:
 [AI Metrology Center](https://airc.nist.gov/metrology/),
@@ -30,9 +36,9 @@ submitter revises in place.
 | Novelty claimed | None. TRIAD is one implementation, alongside TorchUncertainty | Would have been TRIAD's only distinctive contribution |
 | Scientific grounding | Peer-reviewed references about the metric itself | No peer-reviewed reference. Milestone 7 test was circular (single-author suite) |
 | Independent validation | Not needed for an established metric | **Milestone 8 failed it:** worse than a blind statistical reviewer (Δ cost +0.038 [+0.008, +0.070]), indistinguishable from a blind REFORMS checklist, and worse than never endorsing |
-| Catalog gap | Yes: no selective-risk, risk–coverage, abstention or conformal entry among the 147 published | — |
-| Official checks | `validate_submission.py inspect` and `check-jsonschema 0.38.2` pass | — |
-| Decision | **Prepared for submission** ([package](nist-submission/README.md)) | **Not to be proposed** |
+| Catalog gap | Yes: no selective-risk, risk–coverage, abstention or conformal entry among the 147 published (re-read October 13, 2026: unchanged) | — |
+| Official checks | `validate_submission.py inspect` and `check-jsonschema 0.38.2` pass (re-run on the submitted file October 13, 2026) | — |
+| Decision | **Submitted** as [#24](https://github.com/usnistgov/ai-metrology-submissions/pull/24) ([package](nist-submission/README.md)) | **Not to be proposed** |
 
 ## What Milestone 8 showed about evidence sufficiency
 
@@ -61,19 +67,27 @@ protocol, generator and comparators were frozen before any case existed.
 |---|---|---|
 | 1. Engineering ready | **Met**: implementation on `master`, deterministic replay, independent verifiers, Linux and Windows CI | Met |
 | 2. Scientifically reviewable | **Met**: established, peer-reviewed metric; TRIAD's real-data use is documented (Milestones 6–7) | Met as an object of study: frozen protocols and fully reported negative results |
-| 3. Compelling catalog candidate | **Likely, after merge**: one fixable item (the quickstart link resolves only after merge) | **Not met**, and Milestone 8 is evidence against it |
+| 3. Compelling catalog candidate | **Likely**: submitted as #24 after the merge, and the quickstart link now resolves. NIST reviewers decide | **Not met**, and Milestone 8 is evidence against it |
 
-## Remaining steps for the selective-risk submission
+## Selective-risk submission: steps and status
 
-1. Merge this branch with green CI.
+1. Merge this branch with green CI. *Merged October 11, 2026 (`7be64c8`).*
 2. Run `python scripts/check-nist-links.py`; all six links must return 200 without
-   redirect.
+   redirect. *Done October 13, 2026, after the pull request was opened: all six
+   return 200 ([`link-check.json`](nist-submission/link-check.json)).*
 3. Re-fetch the official repository and re-run both official checks if anything
-   changed.
+   changed. *Done October 13, 2026: still at `7f06092`, and both checks pass on the
+   submitted file.*
 4. A person at Vers3Dynamics reviews the YAML, confirms the public contact
    **ciao_chris@proton.me**, and opens the pull request from their own fork with the
    [prepared body](nist-submission/README.md#pull-request-body-pre-filled-from-the-official-template).
-5. Answer reviewer comments on the pull request. Revision in place is the normal path.
+   *Opened October 11, 2026 as
+   [#24](https://github.com/usnistgov/ai-metrology-submissions/pull/24) from the
+   Vers3Dynamics account.*
+5. Answer reviewer comments on the pull request. Revision in place is the normal
+   path, and NIST says a reviewer usually picks a submission up within two weeks.
+   Mirror any revision in
+   [`nist-submission/submissions/selective-risk-at-target-coverage.yml`](nist-submission/submissions/selective-risk-at-target-coverage.yml).
 
 ## If evidence sufficiency is ever to be reconsidered
 
@@ -95,9 +109,10 @@ It would also need:
 
 ## Public contact and process
 
-Submitter: **Vers3Dynamics**. Contact: **ciao_chris@proton.me**, which becomes
-public on submission. Submissions and review discussions on GitHub are public and
-non-confidential. No NIST-facing pull request has been opened, and none is
+Submitter: **Vers3Dynamics**. Contact: **ciao_chris@proton.me**, which is now
+public on the pull request. Submissions and review discussions on GitHub are public
+and non-confidential. The only NIST-facing pull request is
+[#24](https://github.com/usnistgov/ai-metrology-submissions/pull/24). No other is
 authorised by this repository's ordinary development workflow.
 
 Earlier assessments (Milestones 5–7) are preserved in the Git history of this file,

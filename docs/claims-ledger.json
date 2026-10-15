@@ -46,7 +46,17 @@
     "m8-vs-cs": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/secondary/replication_versus_c/c_scope/delta", "decimals": 3, "signed": true, "display": "−0.050", "quote": "Δ = −0.172 versus standard checks and −0.050 versus checks with scope"},
     "m8-d-fs": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/family_detail/triad/D/false_supported", "display": "7", "quote": "it endorsed 7 of 19 false ones"},
     "m8-d-false": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/family_detail/triad/D/false", "display": "19", "quote": "it endorsed 7 of 19 false ones"},
-    "m8-verdict": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/decision/verdict", "expect": "not_established", "display": "Not established", "quote": "**Not established** (pre-registered verdict)"}
+    "m8-verdict": {"artifact": "results/evidence-outcomes-v8/score/report.json", "pointer": "/decision/verdict", "expect": "not_established", "display": "Not established", "quote": "**Not established** (pre-registered verdict)"},
+
+    "m9-legacy-n80": {"artifact": "results/certify-v1/report.json", "pointer": "/report/hypotheses/H3_primary_efficiency/legacy_n80", "thousands": true, "display": "25,000", "quote": "TRIAD's legacy controller needed **25,000 independent sessions**"},
+    "m9-hb-n80": {"artifact": "results/certify-v1/report.json", "pointer": "/report/hypotheses/H3_primary_efficiency/n80", "thousands": true, "display": "2,500", "quote": "a linearised Hoeffding–Bentkus test needed **2,500**"},
+    "m9-bet-n80": {"artifact": "results/certify-v1/report.json", "pointer": "/report/hypotheses/H4_secondary_efficiency/n80", "thousands": true, "display": "1,000", "quote": "and a betting test **1,000**"},
+    "m9-dominance": {"artifact": "results/certify-v1/report.json", "pointer": "/report/hypotheses/H2_dominance/violating_datasets", "display": "0", "quote": "**0 dominance violations**"},
+    "m9-cov-legacy": {"artifact": "results/certify-v1/report.json", "pointer": "/report/cells/15/methods/legacy-hoeffding-ratio/mean_selected_true_coverage", "decimals": 2, "display": "0.65", "quote": "mean true coverage of the selected threshold is **0.65** for legacy, **0.75** for Hoeffding–Bentkus and **0.77** for betting"},
+    "m9-cov-hb": {"artifact": "results/certify-v1/report.json", "pointer": "/report/cells/15/methods/hoeffding-bentkus/mean_selected_true_coverage", "decimals": 2, "display": "0.75", "quote": "mean true coverage of the selected threshold is **0.65** for legacy, **0.75** for Hoeffding–Bentkus and **0.77** for betting"},
+    "m9-cov-bet": {"artifact": "results/certify-v1/report.json", "pointer": "/report/cells/15/methods/betting/mean_selected_true_coverage", "decimals": 2, "display": "0.77", "quote": "mean true coverage of the selected threshold is **0.65** for legacy, **0.75** for Hoeffding–Bentkus and **0.77** for betting"},
+    "m9-naive-n": {"artifact": "results/certify-v1/report.json", "pointer": "/report/cells/9/sequences", "display": "250", "quote": "certified **98%** of graded studies with only **250** sessions"},
+    "m9-naive-rate": {"artifact": "results/certify-v1/report.json", "pointer": "/report/cells/9/methods/naive-frame-binomial/certification_rate", "transform": "percent", "decimals": 0, "display": "98", "quote": "certified **98%** of graded studies with only **250** sessions"}
   },
   "findings": [
     {
@@ -111,6 +121,20 @@
       "finding": "Next-week operational claims: {m8-d-fs} of {m8-d-false} false ones endorsed, because the rules do not forecast",
       "status": "Repair needs a new frozen test",
       "source": "results/evidence-outcomes-v8/score/report.json"
+    },
+    {
+      "milestone": "9",
+      "question": "Can established risk-control tests certify the same refusal guarantee with fewer independent sessions?",
+      "finding": "**Yes.** 80% certification at {m9-hb-n80} sessions (Hoeffding–Bentkus) and {m9-bet-n80} (betting) versus {m9-legacy-n80} (legacy). {m9-dominance} dominance violations; no false certification above δ",
+      "status": "Supported; pre-registered simulation, not real data",
+      "source": "results/certify-v1/report.json"
+    },
+    {
+      "milestone": "9",
+      "question": "Does treating dependent frames as independent cause false certification?",
+      "finding": "**Not shown.** The naive frame-level test stayed below δ under moderate clustering, and certified {m9-naive-rate}% of graded studies at {m9-naive-n} sessions",
+      "status": "Exploratory expectation not confirmed",
+      "source": "results/certify-v1/report.json"
     }
   ]
 }

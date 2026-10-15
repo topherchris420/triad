@@ -24,6 +24,13 @@ For each fixed threshold t, let A be the fraction of accepted frames and B the f
 
 If lower_coverage is zero, the risk upper bound is 1. This construction takes a union bound over the 2K one-sided inequalities for a **fixed** candidate set, without assuming independent frames within a session. In this design, all sequences have the same frame count so the ratio targets a random sequence and frame. A ready policy requires *both* the coverage lower bound and the conditional-risk upper bound to meet their declared limits. If no candidate passes, the policy is refused, even if the empirical error rate is zero.
 
+**Sharper certification.** The same input can be certified with
+`certify-abstention`, which tests the identical family-wise claim with a linearised
+risk and Hoeffding–Bentkus bounds. It provably qualifies every threshold this
+controller qualifies, and needed about a tenth of the independent sessions in the
+pre-registered Milestone 9 simulation. `plan-certification` estimates the number
+of sessions to collect. See [certification](certification.md).
+
 A fitted policy's decide(Some(score)) returns accept only when the policy is ready, its selected threshold corresponds to a qualifying candidate, and the finite score is no greater than the threshold. Missing/nonfinite scores, invalid thresholds, and uncalibrated policies withhold the prediction. Consumers must also bind the policy to exactly the correct model, preprocessing, units and population; method_id is descriptive metadata, not a cryptographic lock.
 
 **Statistical assumptions and caveats:** The sequences must be independent, identically distributed samples from the intended deployment population. Calibration ground truth must be reliable, candidate thresholds precommitted, scores computed without the ground-truth label, and estimator/scoring code frozen before calibration. An adversarial environment, device-to-device variation, site shift, non-stationary temporal drift, incorrectly estimated FEM fields, or variable sequence selection can invalidate the nominal bound. No universal coverage or safety guarantee is claimed.

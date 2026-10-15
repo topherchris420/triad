@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Independent check of TRIAD's abstention certification (Milestone 9).
 
-  python scripts/verify-certify.py --triad target/release/triad --random 60
+  python scripts/verify-certify.py --random 60 [--triad PATH]
       Generate random calibration studies, run `calibrate-abstention` and
       `certify-abstention` for both deployable methods, recompute every
       candidate from first principles here, and require agreement. Also checks
@@ -278,7 +278,7 @@ def check_study(path):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--triad", help="path to the built triad binary")
+    ap.add_argument("--triad", help="TRIAD binary (default: target/release/triad[.exe])")
     ap.add_argument("--random", type=int, default=0, help="number of random studies to cross-check")
     ap.add_argument("--seed", type=int, default=20261015)
     ap.add_argument("--study", help="Milestone 9 report.json to re-derive")
@@ -286,9 +286,12 @@ def main():
     if not args.random and not args.study:
         ap.error("nothing to check: pass --random N with --triad, and/or --study REPORT")
     if args.random:
-        if not args.triad:
-            ap.error("--random requires --triad")
-        check_random(args.triad, args.random, args.seed)
+        root = Path(__file__).resolve().parents[1]
+        triad = args.triad or next((str(p) for p in (root / "target/release/triad", root / "target/release/triad.exe")
+                                    if p.is_file()), None)
+        if triad is None:
+            ap.error("TRIAD binary not found; run cargo build --release --locked or pass --triad")
+        check_random(triad, args.random, args.seed)
     if args.study:
         check_study(args.study)
 

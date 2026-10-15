@@ -1,0 +1,1971 @@
+{
+  "report": {
+    "cells": [
+      {
+        "cell_index": 0,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20261015,
+        "sequences": 100
+      },
+      {
+        "cell_index": 1,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.014,
+            "certified": 14,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.00955
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20262015,
+        "sequences": 250
+      },
+      {
+        "cell_index": 2,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.012,
+            "certified": 12,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.008
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.105,
+            "certified": 105,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0671
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20263015,
+        "sequences": 500
+      },
+      {
+        "cell_index": 3,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.325,
+            "certified": 325,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.20195
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.023,
+            "certified": 23,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0143
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.452,
+            "certified": 452,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.28395
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20264015,
+        "sequences": 1000
+      },
+      {
+        "cell_index": 4,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.958,
+            "certified": 958,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.6184
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.633,
+            "certified": 633,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.39115
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.985,
+            "certified": 985,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.65415
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20265015,
+        "sequences": 2500
+      },
+      {
+        "cell_index": 5,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.6931
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.66905
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.706
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20266015,
+        "sequences": 5000
+      },
+      {
+        "cell_index": 6,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.7269
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.7158
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.73315
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20267015,
+        "sequences": 10000
+      },
+      {
+        "cell_index": 7,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.74945
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.74765
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.63595
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.7506
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20268015,
+        "sequences": 25000
+      },
+      {
+        "cell_index": 8,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.471,
+            "certified": 471,
+            "false_certification_lower_99": 0.00001,
+            "false_certification_rate": 0.001,
+            "false_certification_upper_99": 0.00662,
+            "false_certified": 1,
+            "false_coverage": 0,
+            "false_risk": 1,
+            "mean_selected_true_coverage": 0.2988
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20269015,
+        "sequences": 100
+      },
+      {
+        "cell_index": 9,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.982,
+            "certified": 982,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.6512
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20270015,
+        "sequences": 250
+      },
+      {
+        "cell_index": 10,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.70655
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20271015,
+        "sequences": 500
+      },
+      {
+        "cell_index": 11,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.964,
+            "certified": 964,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.589
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.73155
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20272015,
+        "sequences": 1000
+      },
+      {
+        "cell_index": 12,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.7325
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.85,
+            "certified": 850,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.49125
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.7508
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20273015,
+        "sequences": 2500
+      },
+      {
+        "cell_index": 13,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.7505
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.66935
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.75445
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20274015,
+        "sequences": 5000
+      },
+      {
+        "cell_index": 14,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.75455
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.7033
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.76015
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20275015,
+        "sequences": 10000
+      },
+      {
+        "cell_index": 15,
+        "dominance_violations": 0,
+        "error_model": "graded",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.76965
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.75
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.6471
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 1.0,
+            "certified": 1000,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.7801
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20276015,
+        "sequences": 25000
+      },
+      {
+        "cell_index": 16,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20277015,
+        "sequences": 100
+      },
+      {
+        "cell_index": 17,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20278015,
+        "sequences": 250
+      },
+      {
+        "cell_index": 18,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20279015,
+        "sequences": 500
+      },
+      {
+        "cell_index": 19,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20280015,
+        "sequences": 1000
+      },
+      {
+        "cell_index": 20,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.001,
+            "certified": 1,
+            "false_certification_lower_99": 0.00001,
+            "false_certification_rate": 0.001,
+            "false_certification_upper_99": 0.00662,
+            "false_certified": 1,
+            "false_coverage": 0,
+            "false_risk": 1,
+            "mean_selected_true_coverage": 0.0008
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20281015,
+        "sequences": 2500
+      },
+      {
+        "cell_index": 21,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20282015,
+        "sequences": 5000
+      },
+      {
+        "cell_index": 22,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20283015,
+        "sequences": 10000
+      },
+      {
+        "cell_index": 23,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 1,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "independent_frames",
+        "replicates": 1000,
+        "seed": 20284015,
+        "sequences": 25000
+      },
+      {
+        "cell_index": 24,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.001,
+            "certified": 1,
+            "false_certification_lower_99": 0.00001,
+            "false_certification_rate": 0.001,
+            "false_certification_upper_99": 0.00662,
+            "false_certified": 1,
+            "false_coverage": 0,
+            "false_risk": 1,
+            "mean_selected_true_coverage": 0.001
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20285015,
+        "sequences": 100
+      },
+      {
+        "cell_index": 25,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.001,
+            "certified": 1,
+            "false_certification_lower_99": 0.00001,
+            "false_certification_rate": 0.001,
+            "false_certification_upper_99": 0.00662,
+            "false_certified": 1,
+            "false_coverage": 0,
+            "false_risk": 1,
+            "mean_selected_true_coverage": 0.0007
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20286015,
+        "sequences": 250
+      },
+      {
+        "cell_index": 26,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20287015,
+        "sequences": 500
+      },
+      {
+        "cell_index": 27,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20288015,
+        "sequences": 1000
+      },
+      {
+        "cell_index": 28,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20289015,
+        "sequences": 2500
+      },
+      {
+        "cell_index": 29,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20290015,
+        "sequences": 5000
+      },
+      {
+        "cell_index": 30,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20291015,
+        "sequences": 10000
+      },
+      {
+        "cell_index": 31,
+        "dominance_violations": 0,
+        "error_model": "null",
+        "frames_per_sequence": 10,
+        "methods": {
+          "betting": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "hoeffding-bentkus": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "legacy-hoeffding-ratio": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          },
+          "naive-frame-binomial": {
+            "certification_rate": 0.0,
+            "certified": 0,
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "false_certification_upper_99": 0.004595,
+            "false_certified": 0,
+            "false_coverage": 0,
+            "false_risk": 0,
+            "mean_selected_true_coverage": 0.0
+          }
+        },
+        "regime": "dependent_frames",
+        "replicates": 1000,
+        "seed": 20292015,
+        "sequences": 25000
+      }
+    ],
+    "hypotheses": {
+      "E1_exploratory": {
+        "naive_exceeds_delta": false,
+        "null_dependent_cells": [
+          {
+            "false_certification_lower_99": 0.00001,
+            "false_certification_rate": 0.001,
+            "sequences": 100
+          },
+          {
+            "false_certification_lower_99": 0.00001,
+            "false_certification_rate": 0.001,
+            "sequences": 250
+          },
+          {
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "sequences": 500
+          },
+          {
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "sequences": 1000
+          },
+          {
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "sequences": 2500
+          },
+          {
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "sequences": 5000
+          },
+          {
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "sequences": 10000
+          },
+          {
+            "false_certification_lower_99": 0.0,
+            "false_certification_rate": 0.0,
+            "sequences": 25000
+          }
+        ]
+      },
+      "H1_validity": {
+        "exceedances": [],
+        "supported": true
+      },
+      "H2_dominance": {
+        "supported": true,
+        "violating_datasets": 0
+      },
+      "H3_primary_efficiency": {
+        "legacy_n80": 25000,
+        "legacy_n80_note": "reached within grid",
+        "method": "hoeffding-bentkus",
+        "n80": 2500,
+        "supported": true
+      },
+      "H4_secondary_efficiency": {
+        "legacy_n80": 25000,
+        "legacy_n80_note": "reached within grid",
+        "method": "betting",
+        "n80": 1000,
+        "supported": true
+      }
+    },
+    "interpretation": "Simulation of statistical procedures under their stated assumptions (independent sequences, analytic truth). Not a sensor, hardware or real-data result.",
+    "protocol": {
+      "candidate_thresholds": [
+        0.05,
+        0.1,
+        0.15,
+        0.2,
+        0.25,
+        0.3,
+        0.35,
+        0.4,
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8,
+        0.85,
+        0.9,
+        0.95,
+        1.0
+      ],
+      "error_models": {
+        "graded": {
+          "a0": 0.01,
+          "a3": 0.3,
+          "frame_error_probability": "q(s) = a0 + a3 * s^3",
+          "true_conditional_error": "R(t) = a0 + a3 * t^3 / 4"
+        },
+        "null": {
+          "a0": 0.055,
+          "a3": 0.0,
+          "frame_error_probability": "q(s) = a0 + a3 * s^3",
+          "true_conditional_error": "R(t) = 0.055 > alpha at every candidate, so every certification is false"
+        }
+      },
+      "false_certification": "a certified selection t with R(t) > alpha or C(t) < minimum_coverage under the analytic truth",
+      "frozen_on": "2026-10-15",
+      "hypotheses": {
+        "E1_exploratory": "Expected but not a decision hypothesis: naive-frame-binomial, which treats dependent frames as independent, exceeds delta false certification in the null model with dependent frames.",
+        "H1_validity": "For legacy-hoeffding-ratio, hoeffding-bentkus and betting, in every cell the one-sided 99% Clopper-Pearson lower bound of the false-certification rate is at most delta. Any exceedance is a validity failure for that method.",
+        "H2_dominance": "In every simulated dataset hoeffding-bentkus qualifies every candidate that legacy-hoeffding-ratio qualifies and reports a coverage lower bound at least as large. Any violation is an implementation failure.",
+        "H3_primary_efficiency": "In the graded model with dependent frames, n80 for hoeffding-bentkus is at most half of n80 for legacy-hoeffding-ratio. n80 is the smallest listed sequence count whose certification rate is at least 0.80; if a method never reaches 0.80 its n80 is treated as exceeding 25000, and the hypothesis is then supported only if n80(hoeffding-bentkus) <= 12500.",
+        "H4_secondary_efficiency": "The H3 criterion with betting in place of hoeffding-bentkus."
+      },
+      "master_seed": 20261015,
+      "methods": {
+        "baseline": "legacy-hoeffding-ratio",
+        "comparator_invalid_under_dependence": "naive-frame-binomial",
+        "primary": "hoeffding-bentkus",
+        "secondary": "betting"
+      },
+      "milestone": 9,
+      "no_hardware_claims": true,
+      "outcomes": [
+        "certification rate",
+        "false-certification rate with one-sided 99% Clopper-Pearson bounds",
+        "mean true coverage of the selected threshold, counting refusals as zero",
+        "dominance violations of hoeffding-bentkus over legacy-hoeffding-ratio"
+      ],
+      "planning_disclosure": "The error model, targets and sequence grid were chosen from closed-form plug-in sample sizes (certify::plan) so that the grid brackets both methods. No Monte Carlo output existed when this protocol was frozen.",
+      "protocol_version": "certify-v1",
+      "question": "Can established risk-control tests certify the same family-wise abstention claim as TRIAD's legacy Hoeffding-ratio controller with fewer independent calibration sequences, without losing validity when frames inside a sequence are dependent?",
+      "regimes": {
+        "dependent_frames": {
+          "frames_per_sequence": 10,
+          "sequence_effect": true,
+          "sequence_effect_definition": "each sequence draws u ~ uniform(0,1); every frame error probability is multiplied by 2u, so the marginal q(s) and the truths R(t), C(t) are unchanged while errors cluster within sequences"
+        },
+        "independent_frames": {
+          "frames_per_sequence": 1,
+          "sequence_effect": false
+        }
+      },
+      "replicates_per_cell": 1000,
+      "scope": "A simulation of statistical procedures under their stated assumptions. It says nothing about sensors, hardware, drift, or whether any real scoring model is trustworthy.",
+      "score_distribution": "independent uniform(0,1) score per frame; true coverage C(t) = t",
+      "seed_rule": "cells ordered by error model (graded, null), regime (independent_frames, dependent_frames), then sequence count as listed; cell seed = master_seed + 1000 * cell_index; ChaCha8; draw order per sequence: u (dependent regime only), then per frame score then error uniform",
+      "selection_rule": "qualifying candidate with the largest observed calibration coverage; ties keep the smaller threshold",
+      "sequence_counts": [
+        100,
+        250,
+        500,
+        1000,
+        2500,
+        5000,
+        10000,
+        25000
+      ],
+      "targets": {
+        "delta": 0.05,
+        "maximum_accepted_error_rate": 0.05,
+        "minimum_coverage": 0.5
+      }
+    },
+    "protocol_sha256": "1137c0456d645f7e30e92e51ffdc02e9351abffa7e41630e480cc8801918d131",
+    "schema_version": "triad-certify-study-report-1",
+    "software_version": "0.1.0",
+    "source_sha256": {
+      "certify.rs": "f5f440956ad047c13d47fa5a8539f931ee8a698ecc46ee473ecd86e8b2b18336",
+      "certify_study.rs": "1afe580836357007085845757d20d775b1f1760db0b985393cc61c5047c486c8"
+    }
+  }
+}

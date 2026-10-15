@@ -21,11 +21,14 @@ sensor and expanded into experiments on real prediction data.
 an advantage over strong existing practice. Its sensor studies failed numerical
 readiness gates. The repository provides runnable measurement tools and archived
 negative findings; predictive superiority and hardware confidence remain unvalidated.
+Its newest result is statistical engineering, not a sensor finding: in a pre-registered
+simulation, established risk-control tests certified the same refusal guarantee with
+a tenth of the labeled data ([Milestone 9](#milestone-9-certifying-refusal-with-far-less-data)).
 
 [Quickstart](#start-with-the-evidence) ·
 [What you can use](#what-you-can-use) ·
 [Findings](#the-research-arc-machine-checked) ·
-[Latest study](#milestone-8-independent-outcome-grounded-test) ·
+[Latest study](#milestone-9-certifying-refusal-with-far-less-data) ·
 [Sensor origins](#origins-the-capacitive-sensor) ·
 [Evidence map](#evidence-map)
 
@@ -37,6 +40,7 @@ negative findings; predictive superiority and hardware confidence remain unvalid
 | Does this evidence support this particular claim? | Typed claims, explicit scope checks, evidence provenance, and four inspectable decision outcomes | [Evidence-sufficiency method](docs/metrology/evidence-sufficiency-method.md) |
 | Do extra warnings improve decisions on real streams? | Frozen Electricity and Bike Sharing benchmarks, simpler comparators, and independent verification code | [Real-data reproduction](docs/metrology/milestone7-reproduction.md) |
 | Can a fixed abstention policy meet declared risk and coverage bounds? | A conservative controller calibrated on independent labeled sequences; it refuses certification when evidence is insufficient | [Portable components](docs/portable-adoption.md) |
+| How many labeled sessions must I collect before a refusal policy can be certified? | A certifier that provably dominates that controller, a variance-adaptive betting variant, and a sample-size planner | [Certification method](docs/certification.md) |
 | Are my sensor recordings structurally usable? | Ten-channel capture validation, unit checks, covariance and reference-drift diagnostics | [Capture contract](docs/portable-adoption.md#b-physical-capture-interchange-and-noise-inspection) |
 | Why can a position estimator appear certain and still fail? | A 2D electrostatic model, inverse estimator, ambiguity diagnostics, and numerical error audits | [Physical model](docs/physical-model.md) |
 
@@ -83,14 +87,16 @@ Explore the other interfaces and check the archived claims:
 cargo run --locked -- metrology --help
 cargo run --locked -- metrology evidence --input examples/evidence-assessment.json --output my-evidence.json
 cargo run --locked -- calibrate-abstention --input examples/abstention-calibration-demo.json
+cargo run --locked -- certify-abstention --input examples/abstention-calibration-demo.json
+cargo run --locked -- plan-certification --coverage 0.6 --risk 0.026 --alpha 0.05 --min-coverage 0.5 --delta 0.05 --candidates 20
 cargo run --locked -- inspect-capture --input examples/synthetic-capture.json
 python scripts/check-claims.py
 cargo test --locked
 ```
 
-The abstention and capture examples are **synthetic fixtures**. The abstention
-example intentionally refuses certification because its calibration sample is
-insufficient. The capture inspector checks recordings; it does not infer physical
+The abstention and capture examples are **synthetic fixtures**. Both abstention
+commands intentionally refuse certification because the calibration sample is
+insufficient. The planner shows how many independent sessions would be needed. The capture inspector checks recordings; it does not infer physical
 positions or validate hardware performance.
 
 ## The measurement at the center
@@ -135,12 +141,51 @@ archived sources, including failed gates and negative comparisons.
 | 8 | Do those rules beat reviewers written without seeing TRIAD, judged by real outcomes? | **No.** Decision cost 0.159 versus 0.121 (blind statistical reviewer, Δ +0.038, inferior) and 0.160 (blind checklist). Never endorsing costs 0.125. 5,078 claims, five datasets | Not established (pre-registered) | [report.json](results/evidence-outcomes-v8/score/report.json) |
 | 8 | Does the Milestone 7 advantage over standard checks survive world truth? | **Yes.** Δ −0.172 versus standard checks and −0.050 versus checks with scope, but blind reviewers reproduce it | Replicated, not distinctive | [report.json](results/evidence-outcomes-v8/score/report.json) |
 | 8 | Where do the rules fail? | Next-week operational claims: 7 of 19 false ones endorsed, because the rules do not forecast | Repair needs a new frozen test | [report.json](results/evidence-outcomes-v8/score/report.json) |
+| 9 | Can established risk-control tests certify the same refusal guarantee with fewer independent sessions? | **Yes.** 80% certification at 2,500 sessions (Hoeffding–Bentkus) and 1,000 (betting) versus 25,000 (legacy). 0 dominance violations; no false certification above δ | Supported; pre-registered simulation, not real data | [report.json](results/certify-v1/report.json) |
+| 9 | Does treating dependent frames as independent cause false certification? | **Not shown.** The naive frame-level test stayed below δ under moderate clustering, and certified 98% of graded studies at 250 sessions | Exploratory expectation not confirmed | [report.json](results/certify-v1/report.json) |
 <!-- claims-ledger:end -->
 
 The [claims ledger](docs/claims-ledger.json) binds the table and quoted headline
 results below to their source fields. `python scripts/check-claims.py` recomputes
 them and fails CI on transcription drift. It checks faithful reporting;
 it does not establish scientific validity.
+
+## Milestone 9: certifying refusal with far less data
+
+October 15, 2026 · **Supported** (pre-registered simulation; statistical engineering,
+not a sensor or real-data result).
+
+A refusal rule is useful in deployment only if its guarantee can be obtained. To certify that
+accepted answers are wrong at most 5% of the time, with at least half accepted and
+δ = 0.05, TRIAD's legacy controller needed **25,000 independent sessions**
+to succeed in 80% of simulated studies. With the same guarantee and error budget,
+a linearised Hoeffding–Bentkus test needed **2,500**, and a betting test **1,000**.
+No valid method exceeded δ false certification in any simulated condition.
+
+| Pre-registered result | Archived finding |
+|---|---|
+| Validity | No legacy, Hoeffding–Bentkus or betting false-certification rate exceeded δ (null and graded truth, independent and clustered frames) |
+| Dominance, proved and tested | Hoeffding–Bentkus qualifies every threshold legacy qualifies: **0 dominance violations** across every simulated study |
+| Better operating point from the same data | At 25,000 clustered sessions, the mean true coverage of the selected threshold is **0.65** for legacy, **0.75** for Hoeffding–Bentkus and **0.77** for betting |
+| An expectation that failed | The naive test that treats dependent frames as independent did **not** over-certify here. It certified **98%** of graded studies with only **250** sessions, so this design shows its assumption is false but not that the error matters |
+
+The three ideas are established and credited: linearising selective risk, the
+Hoeffding–Bentkus bound of risk-controlling prediction sets and Learn then Test,
+and Waudby-Smith–Ramdas betting. TRIAD contributes an implementation behind its
+fail-closed decision API, a short dominance proof, a planner, and an archived
+study. The protocol was committed before any simulation code. The implementation
+and an independent standard-library verifier were committed before the single run.
+
+```sh
+cargo run --release --locked -- certify-abstention --input YOUR_REQUEST.json
+cargo run --release --locked -- certify-study --validate results/certify-v1/report.json
+python scripts/verify-certify.py --study results/certify-v1/report.json
+```
+
+[Method and proof](docs/certification.md) ·
+[Frozen protocol](experiments/certify-v1.json) ·
+[Results](results/certify-v1/report.md) ·
+[Independent verifier](scripts/verify-certify.py)
 
 ## Milestone 8: independent, outcome-grounded test
 
@@ -320,6 +365,7 @@ independent verifiers:
 | Electricity | [Benchmark package](benchmarks/electricity/README.md) |
 | Bike Sharing and author-constructed claim suite | [Milestone 7 package](docs/metrology/milestone7-reproduction.md) |
 | Outcome-grounded evidence sufficiency | [Milestone 8 package](docs/metrology/milestone8-results.md#7-verification-and-reproduction) |
+| Certification of refusal policies (simulation) | [Milestone 9 verification](docs/certification.md#verification) |
 | Original FEM and selective study | [Original protocol](docs/experiment-protocol.md), [selective protocol](docs/selective-v3.md), [integrity rules](docs/research-integrity.md) |
 
 Frozen sensor and study artifacts are protected by hashes. Versioned research
@@ -331,7 +377,8 @@ computational reproduction; a scientific revision needs a new frozen protocol an
 fresh independent test data.
 
 CI checks Rust formatting, locked tests, the claims ledger, the Python metric
-reference, benchmark replay, and independent verifiers on Linux and Windows.
+reference, benchmark replay, certification cross-checks, and independent verifiers
+on Linux and Windows.
 It does not rerun the full expensive FEM baseline on every commit. Passing CI
 establishes the checked software behavior, not a scientific hypothesis.
 
@@ -363,7 +410,10 @@ identify concrete work:
 3. **Run a powered fresh C2-versus-D study.** Hold information budgets and coverage
    comparisons explicit. Geometry improvements need independent holdouts and a
    demonstrated reduction in selective risk.
-4. **Cross the physical validation gap.** Collect repeatable hardware captures,
+4. **Certify a real refusal policy.** Apply the Milestone 9 certifier to real
+   labeled sessions under a new frozen protocol. Separately, probe stronger
+   within-session clustering, where ignoring dependence may actually fail.
+5. **Cross the physical validation gap.** Collect repeatable hardware captures,
    validate finite 3D fields and real noise, and evaluate held-out devices and
    sessions against measured ground truth.
 
@@ -378,6 +428,7 @@ These are research directions, not completed results. See the
 |---|---|
 | Headline claims and their archived fields | [Claims ledger](docs/claims-ledger.json), [claim checker](scripts/check-claims.py) |
 | Metric definition and independent Python reference | [Quickstart](docs/metrology/selective-risk-quickstart.md), [method definition](docs/metrology/method-definition.md) |
+| Certifying a refusal policy, and how much data it costs | [Certification method](docs/certification.md), [Milestone 9 report](results/certify-v1/report.json) |
 | Strongest evidence-rule test | [Milestone 8 results](docs/metrology/milestone8-results.md), [machine-readable report](results/evidence-outcomes-v8/score/report.json) |
 | Real-data decision costs and limitations | [Bike Sharing results](docs/metrology/milestone7-results.md), [Electricity results](docs/metrology/milestone6-real-world-results.md) |
 | Sensor assumptions, inference, and numerical checks | [Physical model](docs/physical-model.md), [forward source](src/forward.rs), [inverse source](src/inverse.rs), [validation](results/validation.json) |

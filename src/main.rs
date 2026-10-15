@@ -12,6 +12,9 @@ Inspect the instrument and evidence:
   audit           Describe frozen optimizer outcomes
   inspect-capture --input FILE       Validate sensor capture and inspect baseline variability
   calibrate-abstention --input FILE  Fit conservative policy from independent labeled sequences
+  certify-abstention --input FILE    Certify the same policy with sharper, dominating bounds
+  plan-certification --help          Independent sequences needed to certify, before collecting data
+  certify-study --help               Milestone 9 pre-registered certification simulation
   information     Compute local nuisance-adjusted information
   numerical-components  Diagnose FEM versus dictionary error on development probes
 
@@ -38,6 +41,14 @@ fn main() -> Result<()> {
     let early: Vec<_> = std::env::args().skip(1).collect();
     if early.first().is_some_and(|a| a == "metrology") {
         return triad::metrology_cli::run(&early[1..]);
+    }
+    if early.first().is_some_and(|a| {
+        matches!(
+            a.as_str(),
+            "certify-abstention" | "plan-certification" | "certify-study"
+        )
+    }) {
+        return triad::certify_study::cli(&early);
     }
     let mut root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut command = None;

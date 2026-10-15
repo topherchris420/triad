@@ -1,0 +1,66 @@
+{
+  "protocol_version": "certify-v1",
+  "milestone": 9,
+  "frozen_on": "2026-10-15",
+  "question": "Can established risk-control tests certify the same family-wise abstention claim as TRIAD's legacy Hoeffding-ratio controller with fewer independent calibration sequences, without losing validity when frames inside a sequence are dependent?",
+  "methods": {
+    "baseline": "legacy-hoeffding-ratio",
+    "primary": "hoeffding-bentkus",
+    "secondary": "betting",
+    "comparator_invalid_under_dependence": "naive-frame-binomial"
+  },
+  "targets": {
+    "maximum_accepted_error_rate": 0.05,
+    "minimum_coverage": 0.5,
+    "delta": 0.05
+  },
+  "candidate_thresholds": [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1.0],
+  "score_distribution": "independent uniform(0,1) score per frame; true coverage C(t) = t",
+  "error_models": {
+    "graded": {
+      "frame_error_probability": "q(s) = a0 + a3 * s^3",
+      "a0": 0.01,
+      "a3": 0.3,
+      "true_conditional_error": "R(t) = a0 + a3 * t^3 / 4"
+    },
+    "null": {
+      "frame_error_probability": "q(s) = a0 + a3 * s^3",
+      "a0": 0.055,
+      "a3": 0.0,
+      "true_conditional_error": "R(t) = 0.055 > alpha at every candidate, so every certification is false"
+    }
+  },
+  "regimes": {
+    "independent_frames": {
+      "frames_per_sequence": 1,
+      "sequence_effect": false
+    },
+    "dependent_frames": {
+      "frames_per_sequence": 10,
+      "sequence_effect": true,
+      "sequence_effect_definition": "each sequence draws u ~ uniform(0,1); every frame error probability is multiplied by 2u, so the marginal q(s) and the truths R(t), C(t) are unchanged while errors cluster within sequences"
+    }
+  },
+  "sequence_counts": [100, 250, 500, 1000, 2500, 5000, 10000, 25000],
+  "replicates_per_cell": 1000,
+  "master_seed": 20261015,
+  "seed_rule": "cells ordered by error model (graded, null), regime (independent_frames, dependent_frames), then sequence count as listed; cell seed = master_seed + 1000 * cell_index; ChaCha8; draw order per sequence: u (dependent regime only), then per frame score then error uniform",
+  "selection_rule": "qualifying candidate with the largest observed calibration coverage; ties keep the smaller threshold",
+  "false_certification": "a certified selection t with R(t) > alpha or C(t) < minimum_coverage under the analytic truth",
+  "outcomes": [
+    "certification rate",
+    "false-certification rate with one-sided 99% Clopper-Pearson bounds",
+    "mean true coverage of the selected threshold, counting refusals as zero",
+    "dominance violations of hoeffding-bentkus over legacy-hoeffding-ratio"
+  ],
+  "hypotheses": {
+    "H1_validity": "For legacy-hoeffding-ratio, hoeffding-bentkus and betting, in every cell the one-sided 99% Clopper-Pearson lower bound of the false-certification rate is at most delta. Any exceedance is a validity failure for that method.",
+    "H2_dominance": "In every simulated dataset hoeffding-bentkus qualifies every candidate that legacy-hoeffding-ratio qualifies and reports a coverage lower bound at least as large. Any violation is an implementation failure.",
+    "H3_primary_efficiency": "In the graded model with dependent frames, n80 for hoeffding-bentkus is at most half of n80 for legacy-hoeffding-ratio. n80 is the smallest listed sequence count whose certification rate is at least 0.80; if a method never reaches 0.80 its n80 is treated as exceeding 25000, and the hypothesis is then supported only if n80(hoeffding-bentkus) <= 12500.",
+    "H4_secondary_efficiency": "The H3 criterion with betting in place of hoeffding-bentkus.",
+    "E1_exploratory": "Expected but not a decision hypothesis: naive-frame-binomial, which treats dependent frames as independent, exceeds delta false certification in the null model with dependent frames."
+  },
+  "planning_disclosure": "The error model, targets and sequence grid were chosen from closed-form plug-in sample sizes (certify::plan) so that the grid brackets both methods. No Monte Carlo output existed when this protocol was frozen.",
+  "scope": "A simulation of statistical procedures under their stated assumptions. It says nothing about sensors, hardware, drift, or whether any real scoring model is trustworthy.",
+  "no_hardware_claims": true
+}

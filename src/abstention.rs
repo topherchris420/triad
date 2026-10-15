@@ -119,11 +119,9 @@ impl FittedPolicy {
     }
 }
 
-/// One-sided, simultaneous cluster-level bounds for *fixed* thresholds.
-/// Each sequence has identical length and is one independent unit. The ratio
-/// bounds accepted errors / accepted observations for a random sequence/frame.
-/// The result is NOT distribution-free under temporal or population shift.
-pub fn fit(spec: &FitSpecification, sequences: &[CalibrationSequence]) -> Result<FittedPolicy> {
+/// Shared study-design checks for `fit` and `crate::certify::certify`.
+/// Returns the common frame count per sequence.
+pub fn validate(spec: &FitSpecification, sequences: &[CalibrationSequence]) -> Result<usize> {
     ensure!(
         !spec.method_id.trim().is_empty() && spec.method_id.len() <= 128,
         "method_id must identify a single frozen scoring model"
@@ -172,6 +170,16 @@ pub fn fit(spec: &FitSpecification, sequences: &[CalibrationSequence]) -> Result
         );
     }
 
+    Ok(frames_per_sequence)
+}
+
+/// One-sided, simultaneous cluster-level bounds for *fixed* thresholds.
+/// Each sequence has identical length and is one independent unit. The ratio
+/// bounds accepted errors / accepted observations for a random sequence/frame.
+/// The result is NOT distribution-free under temporal or population shift.
+/// `crate::certify` tests the same claim with provably sharper bounds.
+pub fn fit(spec: &FitSpecification, sequences: &[CalibrationSequence]) -> Result<FittedPolicy> {
+    let frames_per_sequence = validate(spec, sequences)?;
     let n = sequences.len() as f64;
     let k = spec.candidate_thresholds.len() as f64;
     // Simultaneous bounds: 2 quantities x K fixed candidates, total delta.

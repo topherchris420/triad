@@ -112,6 +112,17 @@ jobs:
           cargo run --locked -- calibrate-abstention --input examples/abstention-calibration-demo.json > results/ci-portable/abstention.json
           cargo run --locked -- inspect-capture --input examples/synthetic-capture.json > results/ci-portable/capture.json
           python scripts/verify-portable.py results/ci-portable/abstention.json results/ci-portable/capture.json
+      - name: Cross-check abstention certification against the independent Python reference
+        run: |
+          cargo build --release --locked
+          cargo run --release --locked -- certify-abstention --input examples/abstention-calibration-demo.json > results/ci-portable/certificate.json
+          python -c "import json; c = json.load(open('results/ci-portable/certificate.json')); assert c['status'] == 'refused' and c['threshold'] is None, 'demo must refuse'"
+          python scripts/verify-certify.py --random 60
+          python scripts/verify-certify.py --study results/certify-v1/report.json
+      - name: Replay the Milestone 9 certification simulation exactly
+        # Platform libm may differ in the last bit; the exact replay is pinned to Linux.
+        if: runner.os == 'Linux'
+        run: cargo run --release --locked -- certify-study --validate results/certify-v1/report.json
       - name: Verify frozen baseline artifacts remain present
         run: |
           test -f results/validation.json

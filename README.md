@@ -387,8 +387,7 @@ establishes the checked software behavior, not a scientific hypothesis.
 The **established selective-risk metric** was submitted through the NIST AI
 Metrology Center's community process as
 [usnistgov/ai-metrology-submissions#24](https://github.com/usnistgov/ai-metrology-submissions/pull/24).
-TRIAD is listed as one implementation resource. The pull request remains open and
-unmerged as of **October 13, 2026**; submission does not imply acceptance or endorsement.
+TRIAD is listed as one implementation resource.
 
 TRIAD's experimental evidence-sufficiency method is excluded from the proposal.
 The [submission package](docs/metrology/nist-submission/README.md) records official

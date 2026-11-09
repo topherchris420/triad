@@ -1,0 +1,9 @@
+[package]
+name = "flexplan"
+version = "0.2.0"
+edition = "2021"
+license = "MIT"
+description = "Independent clean-room proof of concept of an event-driven, statically planned feature-engineering engine. Not Jane Street code."
+publish = false
+
+[dependencies]

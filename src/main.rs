@@ -11,6 +11,7 @@ Inspect the instrument and evidence:
   --version, -V    Show package version
   audit           Describe frozen optimizer outcomes
   inspect-capture --input FILE       Validate sensor capture and inspect baseline variability
+  stream-capture --input FILE        Causal per-frame reference, drift and staleness features
   calibrate-abstention --input FILE  Fit conservative policy from independent labeled sequences
   certify-abstention --input FILE    Certify the same policy with sharper, dominating bounds
   plan-certification --help          Independent sequences needed to certify, before collecting data
@@ -41,6 +42,9 @@ fn main() -> Result<()> {
     let early: Vec<_> = std::env::args().skip(1).collect();
     if early.first().is_some_and(|a| a == "metrology") {
         return triad::metrology_cli::run(&early[1..]);
+    }
+    if early.first().is_some_and(|a| a == "stream-capture") {
+        return triad::capture_stream::cli(&early[1..]);
     }
     if early.first().is_some_and(|a| {
         matches!(

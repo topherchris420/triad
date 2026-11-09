@@ -16,6 +16,8 @@ rand_chacha = "=0.3.1"
 rand_distr = "=0.4.3"
 sha2 = "0.10"
 anyhow = "1"
+# Vendored, dependency-free event-driven feature engine (see crates/flexplan/VENDORED.md).
+flexplan = { path = "crates/flexplan" }
 
 [profile.release]
 opt-level = 3

@@ -520,8 +520,7 @@ mod pinned_archived_benchmark_tests {
 
     #[test]
     fn recognizes_only_the_known_old_lock_and_rejects_changed_results() {
-        const OLD: &str =
-            "3dd3d6ed4f97b166bb0510731d2d634ad1dc14d2b80757754a442c278db6d97a";
+        const OLD: &str = "3dd3d6ed4f97b166bb0510731d2d634ad1dc14d2b80757754a442c278db6d97a";
         let current_lock_hash = crate::evaluation::hash(include_bytes!("../Cargo.lock"));
         let frozen = json!({
             "manifest_sha256":"known-manifest",
@@ -532,24 +531,40 @@ mod pinned_archived_benchmark_tests {
             "models":[{"selective_generic":{"dependency_lock_sha256":current_lock_hash,"risk":0.2}}]
         });
         assert!(validate_pinned_archived_benchmark(
-            &frozen, replay.clone(), "known-manifest", "selective_generic"
-        ).is_ok());
+            &frozen,
+            replay.clone(),
+            "known-manifest",
+            "selective_generic"
+        )
+        .is_ok());
 
         let mut altered_measurement = frozen.clone();
         altered_measurement["models"][0]["selective_generic"]["risk"] = json!(0.5);
         assert!(validate_pinned_archived_benchmark(
-            &altered_measurement, replay.clone(), "known-manifest", "selective_generic"
-        ).is_err());
+            &altered_measurement,
+            replay.clone(),
+            "known-manifest",
+            "selective_generic"
+        )
+        .is_err());
 
         let mut unrecognized_lock = frozen.clone();
         unrecognized_lock["models"][0]["selective_generic"]["dependency_lock_sha256"] =
             json!("unrecognized");
         assert!(validate_pinned_archived_benchmark(
-            &unrecognized_lock, replay.clone(), "known-manifest", "selective_generic"
-        ).is_err());
+            &unrecognized_lock,
+            replay.clone(),
+            "known-manifest",
+            "selective_generic"
+        )
+        .is_err());
         assert!(validate_pinned_archived_benchmark(
-            &frozen, replay, "wrong-manifest", "selective_generic"
-        ).is_err());
+            &frozen,
+            replay,
+            "wrong-manifest",
+            "selective_generic"
+        )
+        .is_err());
     }
 }
 

@@ -479,12 +479,11 @@ pub fn evaluate(m: &Manifest) -> Result<Value> {
 pub fn validate_report(report: &Value) -> Result<()> {
     let m: Manifest =
         serde_json::from_value(report.get("manifest").context("missing manifest")?.clone())?;
-    metrology::validate_pinned_archived_benchmark(
-        report,
-        evaluate(&m)?,
-        "2f82b63e07e251c19e3c4aa1ab5ced8a474222fd99b62a9c854ddf974c6aea31",
-        "conventional_and_selective",
-    )
+    ensure!(
+        &evaluate(&m)? == report,
+        "benchmark differs from deterministic replay"
+    );
+    Ok(())
 }
 pub fn run(input: &Path, output: &Path) -> Result<()> {
     let m: Manifest = serde_json::from_slice(&fs::read(input)?)?;

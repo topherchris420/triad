@@ -66,7 +66,10 @@ fn validate_pinned_benchmark_replay(
     let new_models = replay["models"]
         .as_array_mut()
         .context("replayed benchmark has no models")?;
-    ensure!(old_models.len() == new_models.len(), "benchmark model count changed");
+    ensure!(
+        old_models.len() == new_models.len(),
+        "benchmark model count changed"
+    );
     let current_lock = crate::evaluation::hash(include_bytes!("../Cargo.lock"));
     for (old, new) in old_models.iter().zip(new_models.iter_mut()) {
         ensure!(
@@ -74,8 +77,7 @@ fn validate_pinned_benchmark_replay(
             "unrecognized archived dependency lock"
         );
         ensure!(
-            new[generic_section]["dependency_lock_sha256"].as_str()
-                == Some(current_lock.as_str()),
+            new[generic_section]["dependency_lock_sha256"].as_str() == Some(current_lock.as_str()),
             "replay dependency hash does not match compiled lockfile"
         );
         new[generic_section]["dependency_lock_sha256"] = json!(OLD_LOCK_SHA256);
@@ -93,8 +95,7 @@ mod historical_replay_tests {
 
     #[test]
     fn permits_only_known_lock_provenance_and_preserves_all_metrics() {
-        const OLD: &str =
-            "3dd3d6ed4f97b166bb0510731d2d634ad1dc14d2b80757754a442c278db6d97a";
+        const OLD: &str = "3dd3d6ed4f97b166bb0510731d2d634ad1dc14d2b80757754a442c278db6d97a";
         let current = crate::evaluation::hash(include_bytes!("../Cargo.lock"));
         let archived = json!({"manifest_sha256":"pinned","models":[
             {"selective_generic":{"dependency_lock_sha256":OLD,"measured_risk":0.2}}
@@ -102,22 +103,31 @@ mod historical_replay_tests {
         let replay = json!({"manifest_sha256":"pinned","models":[
             {"selective_generic":{"dependency_lock_sha256":current,"measured_risk":0.2}}
         ]});
-        assert!(
-            validate_pinned_benchmark_replay(&archived, replay.clone(), "pinned", "selective_generic")
-                .is_ok()
-        );
+        assert!(validate_pinned_benchmark_replay(
+            &archived,
+            replay.clone(),
+            "pinned",
+            "selective_generic"
+        )
+        .is_ok());
         let mut altered = archived.clone();
         altered["models"][0]["selective_generic"]["measured_risk"] = json!(0.5);
-        assert!(
-            validate_pinned_benchmark_replay(&altered, replay.clone(), "pinned", "selective_generic")
-                .is_err()
-        );
+        assert!(validate_pinned_benchmark_replay(
+            &altered,
+            replay.clone(),
+            "pinned",
+            "selective_generic"
+        )
+        .is_err());
         let mut unknown = archived.clone();
         unknown["models"][0]["selective_generic"]["dependency_lock_sha256"] = json!("unknown");
-        assert!(
-            validate_pinned_benchmark_replay(&unknown, replay.clone(), "pinned", "selective_generic")
-                .is_err()
-        );
+        assert!(validate_pinned_benchmark_replay(
+            &unknown,
+            replay.clone(),
+            "pinned",
+            "selective_generic"
+        )
+        .is_err());
         assert!(
             validate_pinned_benchmark_replay(&archived, replay, "other", "selective_generic")
                 .is_err()
@@ -252,7 +262,10 @@ pub fn run(args: &[String]) -> Result<()> {
             match report["schema_version"].as_str() {
                 Some("triad-benchmark-report-1") => {
                     let manifest: crate::metrology_benchmark::Manifest = serde_json::from_value(
-                        report.get("manifest").context("missing benchmark manifest")?.clone(),
+                        report
+                            .get("manifest")
+                            .context("missing benchmark manifest")?
+                            .clone(),
                     )?;
                     validate_pinned_benchmark_replay(
                         report,
@@ -263,7 +276,10 @@ pub fn run(args: &[String]) -> Result<()> {
                 }
                 Some("triad-temporal-regression-report-1") => {
                     let manifest: crate::metrology_temporal::Manifest = serde_json::from_value(
-                        report.get("manifest").context("missing temporal manifest")?.clone(),
+                        report
+                            .get("manifest")
+                            .context("missing temporal manifest")?
+                            .clone(),
                     )?;
                     validate_pinned_benchmark_replay(
                         report,

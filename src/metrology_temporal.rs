@@ -1451,10 +1451,12 @@ pub fn evaluate(m: &Manifest) -> Result<Value> {
 pub fn validate_report(report: &Value) -> Result<()> {
     let m: Manifest =
         serde_json::from_value(report.get("manifest").context("missing manifest")?.clone())?;
-    if &evaluate(&m)? != report {
-        bail!("temporal benchmark report differs from deterministic replay");
-    }
-    Ok(())
+    metrology::validate_pinned_archived_benchmark(
+        report,
+        evaluate(&m)?,
+        "7c51d830c1dd81c6cf4bb841fa690f46f34bd6c1f8e85ebd123133e7de94f50a",
+        "selective_generic",
+    )
 }
 
 pub fn markdown(report: &Value) -> String {

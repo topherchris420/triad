@@ -461,6 +461,98 @@ pub fn evaluate(input: &Input) -> Result<Value> {
     )
 }
 
+/// The original Milestone 6/7 reports embed the SHA-256 of their historical
+/// Cargo.lock. Adding a *new*, unrelated dependency changes that provenance
+/// field even when the evaluator and every scientific measurement are unchanged.
+/// This narrowly permits only the explicitly pinned pre-flexplan provenance in
+/// the two frozen manifests. The complete remaining report must still match an
+/// exact deterministic replay; it never rewrites a frozen evidence file.
+pub(crate) fn validate_pinned_archived_benchmark(
+    archived: &Value,
+    mut replay: Value,
+    frozen_manifest_hash: &str,
+    generic_section: &str,
+) -> Result<()> {
+    if &replay == archived {
+        return Ok(());
+    }
+    const PRIOR_CARGO_LOCK_SHA256: &str =
+        "3dd3d6ed4f97b166bb0510731d2d634ad1dc14d2b80757754a442c278db6d97a";
+    ensure!(
+        archived["manifest_sha256"].as_str() == Some(frozen_manifest_hash)
+            && replay["manifest_sha256"].as_str() == Some(frozen_manifest_hash),
+        "archived benchmark manifest is not the explicitly pinned historical manifest"
+    );
+    let prior_models = archived["models"]
+        .as_array()
+        .context("archived benchmark has no models array")?;
+    let replay_models = replay["models"]
+        .as_array_mut()
+        .context("replayed benchmark has no models array")?;
+    ensure!(
+        prior_models.len() == replay_models.len(),
+        "archived benchmark model count changed"
+    );
+    let current_lock_hash = crate::evaluation::hash(include_bytes!("../Cargo.lock"));
+    for (prior, current) in prior_models.iter().zip(replay_models.iter_mut()) {
+        ensure!(
+            prior[generic_section]["dependency_lock_sha256"].as_str()
+                == Some(PRIOR_CARGO_LOCK_SHA256),
+            "archived benchmark contains an unrecognized dependency lock hash"
+        );
+        ensure!(
+            current[generic_section]["dependency_lock_sha256"].as_str()
+                == Some(current_lock_hash.as_str()),
+            "current benchmark dependency hash does not match the compiled lockfile"
+        );
+        current[generic_section]["dependency_lock_sha256"] = json!(PRIOR_CARGO_LOCK_SHA256);
+    }
+    ensure!(
+        &replay == archived,
+        "archived benchmark differs from deterministic replay beyond its pinned historical Cargo.lock provenance"
+    );
+    Ok(())
+}
+
+#[cfg(test)]
+mod pinned_archived_benchmark_tests {
+    use super::*;
+
+    #[test]
+    fn recognizes_only_the_known_old_lock_and_rejects_changed_results() {
+        const OLD: &str =
+            "3dd3d6ed4f97b166bb0510731d2d634ad1dc14d2b80757754a442c278db6d97a";
+        let current_lock_hash = crate::evaluation::hash(include_bytes!("../Cargo.lock"));
+        let frozen = json!({
+            "manifest_sha256":"known-manifest",
+            "models":[{"selective_generic":{"dependency_lock_sha256":OLD,"risk":0.2}}]
+        });
+        let replay = json!({
+            "manifest_sha256":"known-manifest",
+            "models":[{"selective_generic":{"dependency_lock_sha256":current_lock_hash,"risk":0.2}}]
+        });
+        assert!(validate_pinned_archived_benchmark(
+            &frozen, replay.clone(), "known-manifest", "selective_generic"
+        ).is_ok());
+
+        let mut altered_measurement = frozen.clone();
+        altered_measurement["models"][0]["selective_generic"]["risk"] = json!(0.5);
+        assert!(validate_pinned_archived_benchmark(
+            &altered_measurement, replay.clone(), "known-manifest", "selective_generic"
+        ).is_err());
+
+        let mut unrecognized_lock = frozen.clone();
+        unrecognized_lock["models"][0]["selective_generic"]["dependency_lock_sha256"] =
+            json!("unrecognized");
+        assert!(validate_pinned_archived_benchmark(
+            &unrecognized_lock, replay.clone(), "known-manifest", "selective_generic"
+        ).is_err());
+        assert!(validate_pinned_archived_benchmark(
+            &frozen, replay, "wrong-manifest", "selective_generic"
+        ).is_err());
+    }
+}
+
 /// Validate by recomputing the entire deterministic payload, not only its shape.
 pub fn validate_report(report: &Value) -> Result<()> {
     let input: Input =

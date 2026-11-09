@@ -40,6 +40,91 @@ fn write_report(input: &Input, output: &Path, raw_hash: &str) -> Result<()> {
     writeln!(file,"\n`null` means insufficient information, never zero risk.\n\nValidity:\n```json\n{}\n```\n\nEvaluation seconds: {elapsed}\n\nBootstrap intervals condition on fitted model and calibration threshold, assume independent sampled clusters, and do not cover model discrepancy or unseen shift. Sequence and spatial intervals are separate sensitivity analyses, not a crossed-cluster guarantee. Individual uncertainty scores are distinct from population metric uncertainty.",serde_json::to_string_pretty(&report["validity"])?)?;
     Ok(())
 }
+// Only two frozen benchmark manifests predate flexplan's addition to
+// Cargo.lock. Their reports identify the original lockfile; the re-evaluated
+// metrics and all source hashes must still agree exactly. Keep this exception
+// in the CLI, outside the source-hashed scientific evaluators.
+fn validate_pinned_benchmark_replay(
+    archived: &Value,
+    mut replay: Value,
+    pinned_manifest_sha256: &str,
+    generic_section: &str,
+) -> Result<()> {
+    if &replay == archived {
+        return Ok(());
+    }
+    const OLD_LOCK_SHA256: &str =
+        "3dd3d6ed4f97b166bb0510731d2d634ad1dc14d2b80757754a442c278db6d97a";
+    ensure!(
+        archived["manifest_sha256"].as_str() == Some(pinned_manifest_sha256)
+            && replay["manifest_sha256"].as_str() == Some(pinned_manifest_sha256),
+        "historical lock compatibility is restricted to a pinned frozen manifest"
+    );
+    let old_models = archived["models"]
+        .as_array()
+        .context("archived benchmark has no models")?;
+    let new_models = replay["models"]
+        .as_array_mut()
+        .context("replayed benchmark has no models")?;
+    ensure!(old_models.len() == new_models.len(), "benchmark model count changed");
+    let current_lock = crate::evaluation::hash(include_bytes!("../Cargo.lock"));
+    for (old, new) in old_models.iter().zip(new_models.iter_mut()) {
+        ensure!(
+            old[generic_section]["dependency_lock_sha256"].as_str() == Some(OLD_LOCK_SHA256),
+            "unrecognized archived dependency lock"
+        );
+        ensure!(
+            new[generic_section]["dependency_lock_sha256"].as_str()
+                == Some(current_lock.as_str()),
+            "replay dependency hash does not match compiled lockfile"
+        );
+        new[generic_section]["dependency_lock_sha256"] = json!(OLD_LOCK_SHA256);
+    }
+    ensure!(
+        &replay == archived,
+        "frozen benchmark differs from deterministic replay beyond its pinned dependency provenance"
+    );
+    Ok(())
+}
+
+#[cfg(test)]
+mod historical_replay_tests {
+    use super::*;
+
+    #[test]
+    fn permits_only_known_lock_provenance_and_preserves_all_metrics() {
+        const OLD: &str =
+            "3dd3d6ed4f97b166bb0510731d2d634ad1dc14d2b80757754a442c278db6d97a";
+        let current = crate::evaluation::hash(include_bytes!("../Cargo.lock"));
+        let archived = json!({"manifest_sha256":"pinned","models":[
+            {"selective_generic":{"dependency_lock_sha256":OLD,"measured_risk":0.2}}
+        ]});
+        let replay = json!({"manifest_sha256":"pinned","models":[
+            {"selective_generic":{"dependency_lock_sha256":current,"measured_risk":0.2}}
+        ]});
+        assert!(
+            validate_pinned_benchmark_replay(&archived, replay.clone(), "pinned", "selective_generic")
+                .is_ok()
+        );
+        let mut altered = archived.clone();
+        altered["models"][0]["selective_generic"]["measured_risk"] = json!(0.5);
+        assert!(
+            validate_pinned_benchmark_replay(&altered, replay.clone(), "pinned", "selective_generic")
+                .is_err()
+        );
+        let mut unknown = archived.clone();
+        unknown["models"][0]["selective_generic"]["dependency_lock_sha256"] = json!("unknown");
+        assert!(
+            validate_pinned_benchmark_replay(&unknown, replay.clone(), "pinned", "selective_generic")
+                .is_err()
+        );
+        assert!(
+            validate_pinned_benchmark_replay(&archived, replay, "other", "selective_generic")
+                .is_err()
+        );
+    }
+}
+
 pub fn run(args: &[String]) -> Result<()> {
     if args == ["benchmark", "--help"] {
         println!("metrology benchmark --input MANIFEST --output NEW_DIRECTORY\n\nThe manifest schema selects the benchmark:\n  triad-benchmark-1            ordered binary-classification stream (benchmarks/electricity/manifest.json)\n  triad-temporal-regression-1  hourly regression with prospective day-level trust decisions\n                               (benchmarks/bike-sharing/manifest.json)\nCalibration-only thresholds, paired temporal block bootstrap, deterministic replay.\nOutputs report.json and report.md. Run metrology validate --input NEW_DIRECTORY/report.json to replay.");
@@ -166,10 +251,26 @@ pub fn run(args: &[String]) -> Result<()> {
             let report = envelope.get("report").context("missing report payload")?;
             match report["schema_version"].as_str() {
                 Some("triad-benchmark-report-1") => {
-                    crate::metrology_benchmark::validate_report(report)?
+                    let manifest: crate::metrology_benchmark::Manifest = serde_json::from_value(
+                        report.get("manifest").context("missing benchmark manifest")?.clone(),
+                    )?;
+                    validate_pinned_benchmark_replay(
+                        report,
+                        crate::metrology_benchmark::evaluate(&manifest)?,
+                        "2f82b63e07e251c19e3c4aa1ab5ced8a474222fd99b62a9c854ddf974c6aea31",
+                        "conventional_and_selective",
+                    )?;
                 }
                 Some("triad-temporal-regression-report-1") => {
-                    crate::metrology_temporal::validate_report(report)?
+                    let manifest: crate::metrology_temporal::Manifest = serde_json::from_value(
+                        report.get("manifest").context("missing temporal manifest")?.clone(),
+                    )?;
+                    validate_pinned_benchmark_replay(
+                        report,
+                        crate::metrology_temporal::evaluate(&manifest)?,
+                        "7c51d830c1dd81c6cf4bb841fa690f46f34bd6c1f8e85ebd123133e7de94f50a",
+                        "selective_generic",
+                    )?;
                 }
                 Some("triad-evidence-report-1") => {
                     crate::evidence::validate_report(report, Some(&root))?

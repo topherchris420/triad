@@ -60,7 +60,23 @@ jobs:
           cargo run --release --locked -- metrology benchmark --input benchmarks/bike-sharing/manifest.json --output results/ci-bike-sharing
           cargo run --release --locked -- metrology validate --input results/ci-bike-sharing/report.json
           cargo run --release --locked -- metrology validate --input results/bike-sharing-v7/report.json
-          cmp results/ci-bike-sharing/report.json results/bike-sharing-v7/report.json
+          # The frozen report records the pre-flexplan Cargo.lock hash. Compare
+          # the complete JSON after restoring only that pinned historic provenance
+          # field; do not reauthor the archived report or omit scientific metrics.
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          def read(path):
+              return json.loads(Path(path).read_text(encoding="utf-8"))
+
+          fresh = read("results/ci-bike-sharing/report.json")
+          historical = read("results/bike-sharing-v7/report.json")
+          old_lock = "3dd3d6ed4f97b166bb0510731d2d634ad1dc14d2b80757754a442c278db6d97a"
+          for model in fresh["report"]["models"]:
+              model["selective_generic"]["dependency_lock_sha256"] = old_lock
+          assert fresh == historical, "Bike Sharing report differs beyond pinned historical Cargo.lock provenance"
+          PY
           cargo run --release --locked -- metrology evidence-suite --input benchmarks/evidence-validation/suite.json --output results/ci-evidence-suite
           cargo run --release --locked -- metrology validate --input results/ci-evidence-suite/report.json
           cargo run --release --locked -- metrology validate --input results/evidence-suite-v7/report.json

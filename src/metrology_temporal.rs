@@ -7,7 +7,7 @@
 //! evidence engine. No independence, stationarity or drift guarantee follows.
 use crate::evidence::{self, Assessment, Claim, Class, Dependence, Evidence, Family};
 use crate::metrology::{self, Input, Loss, Record, Split};
-use anyhow::{bail, ensure, Context, Result};
+use anyhow::{ensure, Context, Result};
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::{

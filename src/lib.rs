@@ -2,6 +2,7 @@
 pub mod abstention;
 pub mod adaptive;
 pub mod capture;
+pub mod capture_stream;
 pub mod certify;
 pub mod certify_study;
 pub mod diagnostics;

@@ -42,6 +42,7 @@ a tenth of the labeled data ([Milestone 9](#milestone-9-certifying-refusal-with-
 | Can a fixed abstention policy meet declared risk and coverage bounds? | A conservative controller calibrated on independent labeled sequences; it refuses certification when evidence is insufficient | [Portable components](docs/portable-adoption.md) |
 | How many labeled sessions must I collect before a refusal policy can be certified? | A certifier that provably dominates that controller, a variance-adaptive betting variant, and a sample-size planner | [Certification method](docs/certification.md) |
 | Are my sensor recordings structurally usable? | Ten-channel capture validation, unit checks, covariance and reference-drift diagnostics | [Capture contract](docs/portable-adoption.md#b-physical-capture-interchange-and-noise-inspection) |
+| What could a live system have known at each frame? | Causal per-frame reference statistics, drift since baseline, target deviation in reference-noise units and baseline staleness; an unvalidated candidate refusal score | [Capture stream](docs/capture-stream.md) |
 | Why can a position estimator appear certain and still fail? | A 2D electrostatic model, inverse estimator, ambiguity diagnostics, and numerical error audits | [Physical model](docs/physical-model.md) |
 
 The generic evaluator works with saved predictions and labels; it does not require
@@ -90,6 +91,7 @@ cargo run --locked -- calibrate-abstention --input examples/abstention-calibrati
 cargo run --locked -- certify-abstention --input examples/abstention-calibration-demo.json
 cargo run --locked -- plan-certification --coverage 0.6 --risk 0.026 --alpha 0.05 --min-coverage 0.5 --delta 0.05 --candidates 20
 cargo run --locked -- inspect-capture --input examples/synthetic-capture.json
+cargo run --locked -- stream-capture --input examples/synthetic-capture.json
 python scripts/check-claims.py
 cargo test --locked
 ```

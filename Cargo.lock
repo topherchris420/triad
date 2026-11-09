@@ -560,6 +560,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "flexplan"
+version = "0.2.0"
+
+[[package]]
 name = "fnv"
 version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1886,6 +1890,7 @@ dependencies = [
  "anyhow",
  "faer",
  "fenris",
+ "flexplan",
  "rand 0.8.5",
  "rand_chacha",
  "rand_distr",

@@ -60,6 +60,8 @@ The committed capture fixture is **synthetic** and demonstrates only file parsin
 
 The physical instrument must establish whether self/mutual capacitance and readout signs actually match this mapping. An incompatible readout needs an explicit, documented electrical calibration/adapter, not guessed sign flips or a silent channel permutation.
 
+For a causal, per-frame view of the same recording (what a live system could have known at each frame), see [capture-stream.md](capture-stream.md).
+
 The audit returns per-channel empty-reference means, sample standard deviations, the sample covariance and late-minus-early reference means. These are **descriptive baseline-variation diagnostics**. They conflate electronic noise, drift, temperature, parasitics and environmental changes, and short sample covariance matrices can be singular. They do not estimate target positions, validate real sensor noise assumptions, or produce calibrated uncertainty.
 
 **Non-negotiable units boundary:** physical three-dimensional capacitances are in pF. The current 2D cross-sectional solver outputs capacitance **per omitted length** in pF/m. Direct insertion of pF data into its 2D likelihood is dimensionally wrong. The importer refuses mismatched physical-space/unit pairs and performs **no** automatic dimensional conversion or inverse inference.

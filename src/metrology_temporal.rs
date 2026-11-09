@@ -7,7 +7,7 @@
 //! evidence engine. No independence, stationarity or drift guarantee follows.
 use crate::evidence::{self, Assessment, Claim, Class, Dependence, Evidence, Family};
 use crate::metrology::{self, Input, Loss, Record, Split};
-use anyhow::{ensure, Context, Result};
+use anyhow::{bail, ensure, Context, Result};
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::{
@@ -1451,12 +1451,10 @@ pub fn evaluate(m: &Manifest) -> Result<Value> {
 pub fn validate_report(report: &Value) -> Result<()> {
     let m: Manifest =
         serde_json::from_value(report.get("manifest").context("missing manifest")?.clone())?;
-    metrology::validate_pinned_archived_benchmark(
-        report,
-        evaluate(&m)?,
-        "7c51d830c1dd81c6cf4bb841fa690f46f34bd6c1f8e85ebd123133e7de94f50a",
-        "selective_generic",
-    )
+    if &evaluate(&m)? != report {
+        bail!("temporal benchmark report differs from deterministic replay");
+    }
+    Ok(())
 }
 
 pub fn markdown(report: &Value) -> String {

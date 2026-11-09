@@ -49,45 +49,6 @@ jobs:
           cargo run --release --locked -- metrology benchmark --help
           cargo run --release --locked -- metrology benchmark --input benchmarks/electricity/manifest.json --output results/ci-electricity
           cargo run --release --locked -- metrology validate --input results/ci-electricity/report.json
-          # Temporary read-only diagnosis. Compare freshly replayed output with the
-          # frozen report; never overwrite or silently normalize historical data.
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          fresh = json.loads(Path("results/ci-electricity/report.json").read_text(encoding="utf-8"))
-          archived = json.loads(Path("results/benchmark-electricity/report.json").read_text(encoding="utf-8"))
-
-          def first_difference(a, b, path="$"):
-              if type(a) is not type(b):
-                  return (path, a, b)
-              if isinstance(a, dict):
-                  if a.keys() != b.keys():
-                      return (path + ".keys", sorted(a.keys()), sorted(b.keys()))
-                  for key in sorted(a):
-                      diff = first_difference(a[key], b[key], f"{path}.{key}")
-                      if diff is not None:
-                          return diff
-              elif isinstance(a, list):
-                  if len(a) != len(b):
-                      return (path + ".length", len(a), len(b))
-                  for i, (x, y) in enumerate(zip(a, b)):
-                      diff = first_difference(x, y, f"{path}[{i}]")
-                      if diff is not None:
-                          return diff
-              elif a != b:
-                  return (path, a, b)
-              return None
-
-          mismatch = first_difference(fresh, archived)
-          if mismatch:
-              path, current, historical = mismatch
-              print(f"ELECTRICITY REPLAY MISMATCH at {path}")
-              print(f"  fresh:    {str(current)[:400]}")
-              print(f"  archived: {str(historical)[:400]}")
-          else:
-              print("Current run and frozen archive have identical JSON structure and values.")
-          PY
           cargo run --release --locked -- metrology validate --input results/benchmark-electricity/report.json
           python scripts/verify-benchmark.py results/ci-electricity/report.json
           python scripts/prepare-electricity.py --cache work/electricity-cache --output work/electricity-retrained

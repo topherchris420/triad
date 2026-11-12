@@ -526,14 +526,6 @@ the [MIT License](LICENSE). Contributions should preserve archived findings,
 record provenance, and test new scientific claims against fresh evidence.
 See [contribution standards](CONTRIBUTING.md).
 
-[Infineon CAPSENSE](https://github.com/Infineon/capsense) is an industrial reference
-for the architectural review; no vendor source, firmware, or compiled library is
-redistributed. [REA: Reverse Engineer Anything](https://github.com/morluto/rea)
-informed a capability audit; no commercial binary was decompiled, and TRIAD's
-scientific model does not require it. External references retain their own
-licensing terms. See the [commercial reference analysis](docs/commercial-reference-analysis.md)
-and [REA audit](docs/rea-capability-audit.md).
-
 ---
 
 **Vers3Dynamics**  

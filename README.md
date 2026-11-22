@@ -333,6 +333,8 @@ real outcomes and stronger blinded reviewers.
 
 ![Bike Sharing: selective risk, reliability, conformal coverage, and prospective decision costs](results/milestone7-plots/bike-sharing.png)
 
+*Milestone 7’s Bike Sharing panels show how accepted error, calibration, interval coverage, and decision costs change under the evaluated policies.*
+
 [Milestone 7 results](docs/metrology/milestone7-results.md) ·
 [Manuscript](docs/metrology/milestone7-manuscript.md) / [PDF](docs/metrology/milestone7-manuscript.pdf) ·
 [Reproduction](docs/metrology/milestone7-reproduction.md) ·

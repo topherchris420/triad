@@ -185,7 +185,8 @@ future protocol should probe stronger clustering, nulls closer to α and looser
   graph-based testing (as in Learn then Test) could do better when the candidate
   ordering is predeclared.
 - No real dataset has been certified with these methods yet. That requires a
-  new frozen protocol and fresh independent sessions.
+  new frozen protocol and fresh independent sessions. See the proposed
+  [writer-grouped real-data test](certification-real-data-plan.md).
 
 ## Verification
 

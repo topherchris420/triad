@@ -1,0 +1,56 @@
+{
+  "schema": "triad.sd19-writer-inventory/v1",
+  "archive_members_only": true,
+  "digit_member_manifest_sha256": "296b3a5700082a0f2cf230ae82094584db45c60bdde833dc4b1f14f1ec2d4a70",
+  "split_salt": "triad-sd19-writer-split-v1",
+  "minimum_digit_members_per_writer": 32,
+  "minimum_writers_per_target_split": 800,
+  "partitions": {
+    "hsf_0": {
+      "writer_ids": 500,
+      "eligible_writer_ids": 499
+    },
+    "hsf_1": {
+      "writer_ids": 498,
+      "eligible_writer_ids": 496
+    },
+    "hsf_2": {
+      "writer_ids": 497,
+      "eligible_writer_ids": 495
+    },
+    "hsf_3": {
+      "writer_ids": 586,
+      "eligible_writer_ids": 583
+    },
+    "hsf_4": {
+      "writer_ids": 500,
+      "eligible_writer_ids": 500
+    },
+    "hsf_6": {
+      "writer_ids": 499,
+      "eligible_writer_ids": 499
+    },
+    "hsf_7": {
+      "writer_ids": 499,
+      "eligible_writer_ids": 499
+    },
+    "hsf_8": {
+      "writer_ids": 0,
+      "eligible_writer_ids": 0
+    }
+  },
+  "eligible_writers_by_role": {
+    "development": 995,
+    "calibration": 1024,
+    "audit": 1052,
+    "shift": 500
+  },
+  "inventory_floor_met": true,
+  "not_verified": [
+    "image validity",
+    "label linkage",
+    "independence",
+    "power",
+    "certification"
+  ]
+}
